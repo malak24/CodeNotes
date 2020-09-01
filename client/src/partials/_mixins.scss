@@ -1,0 +1,40 @@
+@mixin dimensions ($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin positioning ($justify-content, $flex-direction:row) {
+  display: flex;
+  justify-content: $justify-content;
+  flex-direction: $flex-direction;
+}
+
+@mixin font ($font-s, $line-h, $font-w:normal) {
+    font-size: $font-s;
+    line-height: $line-h; 
+    font-weight: $font-w;
+}
+
+@mixin placement ($top, $left) {
+  position : absolute;
+  top : $top;
+  left: $left;
+}
+
+@mixin mobileL {
+    @media screen and (min-width: $mobileL-breakpoint) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+      @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+      @content;
+    }
+}
