@@ -1,2 +1,19 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
+
+.folders {
+  background-color : rgb(218, 161, 154);
+  width:20vw;
+  border:2px solid lightcoral;
+  position : relative;
+
+  &__resizer {
+    position:absolute;
+    cursor: col-resize;
+    height:100%;
+    right:0;
+    top:0;
+    width:2px;
+    background-color:lightcoral;
+  }
+}
