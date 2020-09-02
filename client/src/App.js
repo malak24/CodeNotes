@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
-import Folders from './components/Folders/Folders'
+import SideBar from './components/SideBar/SideBar'
 
 function App() {
   return (
     <div className="App">
-      <Folders />
+      <SideBar />
     </div>
   );
 }

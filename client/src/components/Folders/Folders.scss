@@ -1,17 +1,2 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
-
-.sideBar {
-  display:flex;
-  flex-direction: column;
-  background-color:rgb(49, 49, 49);
-  width: 3.6rem;
-  height:100vh;
-  padding-left:0.6rem;
-  padding-top:2rem;
-
-  &__icon {
-    @include dimensions (2.5rem, 2.5rem);
-    padding-top:1.5rem;
-  }
-}
