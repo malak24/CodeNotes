@@ -2,6 +2,8 @@ import React from 'react';
 import './App.scss';
 import SideBar from './components/SideBar/SideBar'
 import Folders from './components/Folders/Folders'
+import Files from './components/Files/Files'
+import Main from './components/Main/Main'
 
 
 function App() {
@@ -9,6 +11,8 @@ function App() {
     <div className="App">
       <SideBar />
       <Folders />
+      <Files />
+      <Main />
     </div>
   );
 }

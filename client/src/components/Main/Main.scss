@@ -1,0 +1,13 @@
+.main {
+  background-color: rgb(246, 246, 246);
+  width:54.8%; //change me
+  max-height:100vh;
+  padding-top:1rem;
+  padding-left:1rem;
+  font-family: 'Baloo 2', cursive;
+  border:0;
+
+  &:focus {
+    outline: 0;
+  }
+}

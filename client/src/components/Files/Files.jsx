@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import './Folders.scss';
-import add from '../../assets/add-folder.png'
+import './Files.scss';
+import drag from '../../assets/chevron.png'
+import add from '../../assets/add-file.png'
 
-class Folders extends Component {
+class Files extends Component {
 
   componentDidMount() {
-    const folders = document.querySelector('.folders');
+    const files = document.querySelector('.files');
     let currMouseX = 0;
-    let foldersW = 0;
+    let filesW = 0;
 
     /*mousedown on the resizers: Track the current 
     position of mouse and dimension of the original element 
@@ -16,8 +17,8 @@ class Folders extends Component {
       currMouseX = e.clientX;
 
       //calculate the dimensions of the element
-      const styles = window.getComputedStyle(folders);
-      foldersW = parseInt(styles.width, 10);
+      const styles = window.getComputedStyle(files);
+      filesW = parseInt(styles.width, 10);
 
       /*  mousemove on document: Calculate how far the mouse has been 
         moved, and adjust the dimension of the element */
@@ -31,12 +32,10 @@ class Folders extends Component {
       const distanceX = e.clientX - currMouseX;
 
       // Adjust the dimension of element
-      folders.style.width = `${foldersW + distanceX}px`;
-
-      console.log('mouse move handler is called')
+      files.style.width = `${filesW + distanceX}px`;
     };
 
-    const resizer = document.querySelector('.folders__resizer')
+    const resizer = document.querySelector('.files__resizer')
     resizer.addEventListener('mousedown', mouseDownHandler);
 
     const mouseUpHandler = function () {
@@ -49,16 +48,19 @@ class Folders extends Component {
 
   render() {
     return (
-      <div className='folders'>
-        <div className='folders__resizer'></div>
-        <div className = 'folders__input-wrapper'>
-          <input className = 'folders__input' type='text' name='folderName' placeholder='Enter folder name' />
-          <img className = 'folders__add' src={add} alt='add file button' />
+      <div className='files'>
+        <div className='files__resizer'></div>
+        <div className = 'files__input-wrapper'>
+          <input className = 'files__input' type='text' name='folderName' placeholder='Enter file name' />
+          <img className = 'files__add' src={add} alt='add file button' />
         </div>
+        <img src = {drag} alt = 'drag' className = 'files__drag'/>
+        <div className = 'files__drag'></div>
+
       </div>
     )
   }
 }
 
-export default Folders;
+export default Files;
 

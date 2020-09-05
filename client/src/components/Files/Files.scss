@@ -1,8 +1,8 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
 
-.folders {
-  background-color:rgb(71, 71, 71);
+.files {
+  background-color : rgb(236, 236, 236);
   max-width:20vw;
   position : relative;
 
@@ -13,7 +13,11 @@
     right:0;
     top:0;
     width:4px;
-    background-color:rgb(189, 197, 201);
+    background-color:rgb(116, 114, 114);
+  }
+
+  &__drag {
+    position:absolute;
   }
 
   &__input-wrapper {
@@ -28,6 +32,7 @@
     border-radius : 5px;
     padding-left:0.5rem;
     box-shadow: 1px 1px 5px rgb(155, 155, 155);
+    user-select: none;
 
     &:focus {
       outline: none;
@@ -39,5 +44,6 @@
     height:2rem;
     padding-top:0.5rem;
     padding-right:0.6rem;
+    user-select: none;
   }
 }

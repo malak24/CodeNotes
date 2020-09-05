@@ -5,7 +5,7 @@ import folders from '../../assets/folders.png'
 import files from '../../assets/files.png'
 import search from '../../assets/search.png'
 import customize from '../../assets/customize.png'
-import zen from '../../assets/zen.png'
+import zen from '../../assets/zen-white.png'
 import cheatsheet from '../../assets/cheatsheet.png'
 
 class SideBar extends Component {
