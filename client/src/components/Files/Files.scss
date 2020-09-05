@@ -2,8 +2,8 @@
 @import '../../partials/variables.scss';
 
 .files {
-  background-color : rgb(236, 236, 236);
-  max-width:20vw;
+  background-color : #b9bacc;
+  max-width:299px;
   position : relative;
 
   &__resizer {
@@ -13,7 +13,7 @@
     right:0;
     top:0;
     width:4px;
-    background-color:rgb(116, 114, 114);
+    background-color: #e6e6e6
   }
 
   &__drag {

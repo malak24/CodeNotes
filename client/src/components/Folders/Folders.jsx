@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './Folders.scss';
-import add from '../../assets/add-folder.png'
 
 class Folders extends Component {
 
@@ -53,7 +52,6 @@ class Folders extends Component {
         <div className='folders__resizer'></div>
         <div className = 'folders__input-wrapper'>
           <input className = 'folders__input' type='text' name='folderName' placeholder='Enter folder name' />
-          <img className = 'folders__add' src={add} alt='add file button' />
         </div>
       </div>
     )

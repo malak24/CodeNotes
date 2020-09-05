@@ -2,7 +2,7 @@
 @import '../../partials/variables.scss';
 
 .folders {
-  background-color:rgb(71, 71, 71);
+  background-color:#7e7f9c;
   max-width:20vw;
   position : relative;
 
@@ -32,12 +32,5 @@
     &:focus {
       outline: none;
     }
-  }
-
-  &__add {
-    width:2rem;
-    height:2rem;
-    padding-top:0.5rem;
-    padding-right:0.6rem;
   }
 }

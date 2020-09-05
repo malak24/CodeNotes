@@ -2,7 +2,13 @@
 @import './partials/mixins.scss';
 @import './partials/variables.scss';
 
-.App {
+.app {
   font-family: 'Baloo 2', cursive;
   display:flex;
+
+  &__right-section {
+    display:flex;
+    flex-direction: column;
+    width:100%;
+  }
 }
