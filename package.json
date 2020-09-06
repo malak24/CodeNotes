@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/malak24/codeNote/issues"
   },
-  "homepage": "https://github.com/malak24/codeNote#readme"
+  "homepage": "https://github.com/malak24/codeNote#readme",
+  "dependencies": {
+    "react-froala-wysiwyg": "file:froala"
+  }
 }
