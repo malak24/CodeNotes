@@ -3,6 +3,7 @@ import './App.scss';
 import SideBar from './components/SideBar/SideBar'
 import Folders from './components/Folders/Folders'
 import Files from './components/Files/Files'
+import Editor from './components/Editor/Editor'
 // import Topbar from './components/Topbar/Topbar'
 // import Main from './components/Main/Main'
 
@@ -31,8 +32,8 @@ function App() {
       <Folders />
       <Files />
       <div className='app__right-section'>
-        {/* <Topbar /> */}
-        <FroalaEditorComponent className = 'app__editor' tag = 'textarea' />
+        <Editor />
+        {/* <FroalaEditorComponent tag = 'textarea'/> */}
       </div>
     </div>
   );

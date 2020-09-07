@@ -1,7 +1,23 @@
 import React, { Component } from 'react';
 import './Folders.scss';
+import add from '../../assets/add.png'
+import { findByPlaceholderText } from '@testing-library/react';
 
 class Folders extends Component {
+
+  // state = {
+  //   addFolder : false,
+  // }
+
+  // constructor(props) {
+  //   super(props)
+  //   this.addFolder = this.addFolder.bind(this)
+  // }
+
+  // addFolder(e) {
+  //   console.log(e);
+  //   this.setState(addFolder = true)
+  // }
 
   componentDidMount() {
     const folders = document.querySelector('.folders');
@@ -52,6 +68,7 @@ class Folders extends Component {
         <div className='folders__resizer'></div>
         <div className = 'folders__input-wrapper'>
           <input className = 'folders__input' type='text' name='folderName' placeholder='Enter folder name' />
+          <img className = 'folders__add' src = {add} alt='add'/>
         </div>
       </div>
     )

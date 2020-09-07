@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Files.scss';
+import add from '../../assets/add.png'
 
 class Files extends Component {
 
@@ -50,6 +51,7 @@ class Files extends Component {
         <div className='files__resizer'></div>
         <div className = 'files__input-wrapper'>
           <input className = 'files__input' type='text' name='folderName' placeholder='Enter file name' />
+          <img className = 'files__add' src = {add} alt='add'/>
         </div>
         <div className = 'files__drag'></div>
 
