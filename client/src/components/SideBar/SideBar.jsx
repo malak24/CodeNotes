@@ -8,21 +8,39 @@ import customize from '../../assets/customize.png'
 import del from '../../assets/delete.png'
 import zen from '../../assets/zen-white.png'
 import tag from '../../assets/tag.png'
-import img from '../../assets/img.png'
 
 
 class SideBar extends Component {
+  constructor(props) {
+    super(props);
+    this.foldersClick = this.foldersClick.bind(this);
+
+    this.state = {
+      toggle : false,
+    };
+  }
+
+  foldersClick(e) {
+    console.log(e);
+    console.log(this.props);
+
+    const currState = this.state.toggle;
+    this.setState({
+      toggle : !currState
+    });
+  };
+
+
   render() {
     return (
-      <div className = 'sideBar'>
-        <img className = 'sideBar__icon' src = {folders} alt = 'folder icon'/>
-        <img className = 'sideBar__icon' src = {files} alt = 'files icon'/>
-        <img className = 'sideBar__icon' src = {img} alt = 'tag icon'/>
-        <img className = 'sideBar__icon' src = {tag} alt = 'image icon'/>
-        <img className = 'sideBar__icon' src = {search} alt = 'search icon'/>
-        <img className = 'sideBar__icon' src = {customize} alt = 'customize icon'/>
-        <img className = 'sideBar__icon' src = {del} alt = 'delete icon' />
-        <img className = 'sideBar__icon' src = {zen} alt = 'circle icon'/>
+      <div className = 'sidebar'>
+        <img className = '' onClick = {this.foldersClick} src = {folders} alt = 'folder icon' title = 'Display Folders'/>
+        <img className = '' src = {files} alt = 'files icon' title = 'Display Files'/>
+        <img className = '' src = {tag} alt = 'image icon' title = 'Add tag'/>
+        <img className = '' src = {search} alt = 'search icon' title = 'Search'/>
+        <img className = '' src = {customize} alt = 'customize icon' title = 'Themes'/>
+        <img className = '' src = {del} alt = 'delete icon' title = 'Delete'/>
+        <img className = '' src = {zen} alt = 'circle icon' title = 'Zen mode'/>
       </div>
     )
   }

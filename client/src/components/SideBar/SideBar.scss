@@ -1,7 +1,7 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
 
-.sideBar {
+.sidebar {
   display:flex;
   flex-direction: column;
   background-color:rgb(49, 49, 49);
@@ -10,8 +10,9 @@
   padding-left:0.6rem;
   padding-top:2rem;
 
-  &__icon {
+  & img {
     @include dimensions (2.5rem, 2.5rem);
     padding-top:1.5rem;
+    cursor: pointer;
   }
 }
