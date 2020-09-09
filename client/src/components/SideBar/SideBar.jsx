@@ -1,40 +1,28 @@
 import React, { Component } from 'react';
 
 import './SideBar.scss';
-import folders from '../../assets/folders.png'
-import files from '../../assets/files.png'
-import search from '../../assets/search.png'
-import customize from '../../assets/customize.png'
-import del from '../../assets/delete.png'
-import zen from '../../assets/zen-white.png'
-import tag from '../../assets/tag.png'
+import folders from '../../assets/folders.png';
+import files from '../../assets/files.png';
+import search from '../../assets/search.png';
+import customize from '../../assets/customize.png';
+import del from '../../assets/delete.png';
+import zen from '../../assets/zen-white.png';
+import tag from '../../assets/tag.png';
 
 
 class SideBar extends Component {
-  constructor(props) {
-    super(props);
-    this.foldersClick = this.foldersClick.bind(this);
+  // constructor() {
+  //   // super(props);
 
-    this.state = {
-      toggle : false,
-    };
-  }
-
-  foldersClick(e) {
-    console.log(e);
-    console.log(this.props);
-
-    const currState = this.state.toggle;
-    this.setState({
-      toggle : !currState
-    });
-  };
-
+  //   this.state = {
+  //     toggle : false,
+  //   };
+  // }
 
   render() {
     return (
       <div className = 'sidebar'>
-        <img className = '' onClick = {this.foldersClick} src = {folders} alt = 'folder icon' title = 'Display Folders'/>
+        <img onClick = {this.foldersClick} src = {folders} alt = 'folder icon' title = 'Display Folders'/>
         <img className = '' src = {files} alt = 'files icon' title = 'Display Files'/>
         <img className = '' src = {tag} alt = 'image icon' title = 'Add tag'/>
         <img className = '' src = {search} alt = 'search icon' title = 'Search'/>

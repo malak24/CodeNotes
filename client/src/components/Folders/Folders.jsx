@@ -4,6 +4,16 @@ import add from '../../assets/add.png'
 import { findByPlaceholderText } from '@testing-library/react';
 
 class Folders extends Component {
+  // constructor (props) {
+  //   super(props),
+
+
+    // this.state = {
+    //   toggle: false,
+    // };
+  // }
+
+
 
   // state = {
   //   addFolder : false,
@@ -64,7 +74,7 @@ class Folders extends Component {
 
   render() {
     return (
-      <div className='folders'>
+      <div className = {this.props.toggle ? 'folders--hide' : 'folders' }>
         <div className='folders__resizer'></div>
         <div className = 'folders__input-wrapper'>
           <input className = 'folders__input' type='text' name='folderName' placeholder='Enter folder name' />

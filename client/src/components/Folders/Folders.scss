@@ -7,6 +7,10 @@
   max-width:20vw;
   position : relative;
 
+  &--hide {
+    display:none;
+  }
+
   &__resizer {
     position:absolute;
     cursor: col-resize;

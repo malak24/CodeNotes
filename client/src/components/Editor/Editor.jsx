@@ -19,8 +19,13 @@ class Editor extends React.Component {
 
   render() {
     return <Froala
-      model={this.state.model}
-      onModelChange={this.handleModelChange}
+      model = {this.state.model}
+      onModelChange = {this.handleModelChange}
+      config= {{
+        placeholderText: 'Edit Your Content Here!',
+        charCounterCount: false,
+        height: 100,
+      }}
     />
   }
 }

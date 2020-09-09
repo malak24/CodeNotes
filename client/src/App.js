@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
+
 import SideBar from './components/SideBar/SideBar'
 import Folders from './components/Folders/Folders'
 import Files from './components/Files/Files'
@@ -25,18 +26,33 @@ import 'froala-editor/js/third_party/spell_checker.min.js';
 // import FroalaEditorInput from './froala/lib/FroalaEditorInput';
 
 
-function App() {
-  return (
-    <div className="app">
-      <SideBar />
-      <Folders />
-      <Files />
-      <div className='app__right-section'>
-        <Editor />
-        {/* <FroalaEditorComponent tag = 'textarea'/> */}
+class App extends Component {
+      state = {
+        toggle: false,
+      };
+
+  render() {
+    return (
+      <div className="app">
+        <SideBar foldersClick={this.foldersClick.bind(this)} />
+        <Folders toggle={this.state.toggle} />
+        <Files />
+        <div className='app__right-section'>
+          <Editor />
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  foldersClick(toggle) {
+    // console.log(this.props);
+
+    // const currState = this.state.toggle;
+    this.setState({
+      toggle: !toggle
+    });
+  };
+
 }
 
 export default App;
