@@ -4,16 +4,10 @@ import add from '../../assets/add.png'
 import { findByPlaceholderText } from '@testing-library/react';
 
 class Folders extends Component {
-  // constructor (props) {
-  //   super(props),
 
-
-    // this.state = {
-    //   toggle: false,
-    // };
-  // }
-
-
+  handleChange(e) {
+    console.log(e.target.value);
+  }
 
   // state = {
   //   addFolder : false,
@@ -75,10 +69,24 @@ class Folders extends Component {
   render() {
     return (
       <div className = {this.props.toggle ? 'folders--hide' : 'folders' }>
-        <div className='folders__resizer'></div>
+        <div 
+        className='folders__resizer'></div>
         <div className = 'folders__input-wrapper'>
-          <input className = 'folders__input' type='text' name='folderName' placeholder='Enter folder name' />
-          <img className = 'folders__add' src = {add} alt='add'/>
+
+          <input 
+          onChange = {this.handleChange}
+          className = 'folders__input' 
+          type='text' 
+          name='folderName' 
+          placeholder='Enter folder name' 
+          />
+
+          <img 
+          className = 'folders__add' 
+          src = {add} 
+          alt='add'
+          />
+          
         </div>
       </div>
     )
@@ -87,3 +95,21 @@ class Folders extends Component {
 
 export default Folders;
 
+// class Post extends Component {
+//   constructor (props) {
+//     super(props);
+//     this.titleWasClicked = this.titleWasClicked.bind(this)
+//   }
+
+//   titleWasClicked(e) {
+//     alert (this.props);
+//     console.log(e);
+//     e.preventDefault();  
+//   }
+
+//   render () {
+//     return (
+//       <h1 onClick = {this.titleWasClicked}>this title was clicked</h1>
+//     )
+//   }
+// }

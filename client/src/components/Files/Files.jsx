@@ -4,6 +4,10 @@ import add from '../../assets/add.png'
 
 class Files extends Component {
 
+  handleChange(e) {
+    console.log(e.target.value);
+  }
+
   componentDidMount() {
     const files = document.querySelector('.files');
     let currMouseX = 0;
@@ -49,11 +53,15 @@ class Files extends Component {
     return (
       <div className='files'>
         <div className='files__resizer'></div>
-        <div className = 'files__input-wrapper'>
-          <input className = 'files__input' type='text' name='folderName' placeholder='Enter file name' />
-          <img className = 'files__add' src = {add} alt='add'/>
+        <div className='files__input-wrapper'>
+          <input onChange={this.handleChange}
+                 className='files__input'
+                 type='text'
+                 name='folderName'
+                 placeholder='Enter file name' />
+          <img className='files__add' src={add} alt='add' />
         </div>
-        <div className = 'files__drag'></div>
+        <div className='files__drag'></div>
 
       </div>
     )

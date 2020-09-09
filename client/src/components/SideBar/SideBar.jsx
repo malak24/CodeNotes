@@ -11,24 +11,33 @@ import tag from '../../assets/tag.png';
 
 
 class SideBar extends Component {
-  // constructor() {
-  //   // super(props);
+  constructor() {
+    super();
+    this.foldersClick = this.foldersClick.bind(this);
+  }
+  
 
-  //   this.state = {
-  //     toggle : false,
-  //   };
-  // }
+  foldersClick() {
+    const currState = this.props.toggle;
+
+    this.setState({
+      toggle: !currState
+    });
+  };
 
   render() {
     return (
-      <div className = 'sidebar'>
-        <img onClick = {this.foldersClick} src = {folders} alt = 'folder icon' title = 'Display Folders'/>
-        <img className = '' src = {files} alt = 'files icon' title = 'Display Files'/>
-        <img className = '' src = {tag} alt = 'image icon' title = 'Add tag'/>
-        <img className = '' src = {search} alt = 'search icon' title = 'Search'/>
-        <img className = '' src = {customize} alt = 'customize icon' title = 'Themes'/>
-        <img className = '' src = {del} alt = 'delete icon' title = 'Delete'/>
-        <img className = '' src = {zen} alt = 'circle icon' title = 'Zen mode'/>
+      <div className='sidebar'>
+        <img onClick={this.foldersClick, console.log('button is clicked')}
+             src={folders} alt='folder icon'
+             title='Display Folders' />
+
+        <img className='' src={files} alt='files icon' title='Display Files' />
+        <img className='' src={tag} alt='image icon' title='Add tag' />
+        <img className='' src={search} alt='search icon' title='Search' />
+        <img className='' src={customize} alt='customize icon' title='Themes' />
+        <img className='' src={del} alt='delete icon' title='Delete' />
+        <img className='' src={zen} alt='circle icon' title='Zen mode' />
       </div>
     )
   }
