@@ -1,64 +1,76 @@
 import React, { Component } from 'react';
 import './Folders.scss';
-import add from '../../assets/add.png'
+import addIcon from '../../assets/add.png'
 
 class Folders extends Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      folders: [],
+    }
+
     this.add = this.add.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
-  add(inputValue) {
-    const folder = React.createElement('p', {className : 'name'}, `${inputValue}`)
+  add(inputValue) {    
+    if(this.state.folders.length === 0) {
+      this.setState ({folders : inputValue});
+      console.log('if stayment is working');
+    } else {
+      this.setState({folders : this.state.folders.concat(inputValue)});
+    }
   }
 
   handleChange(e) {
-    const inputValue = e.target.value
-    add(inputValue);
+    let inputValue = null;
+      inputValue = e.target.value;
+      console.log(inputValue)
+      this.add(inputValue);
   }
 
-  componentDidMount() {
-    const folders = document.querySelector('.folders');
-    let currMouseX = 0;
-    let foldersW = 0;
+  // componentDidMount() {
+  //   const folders = document.querySelector('.folders');
+  //   let currMouseX = 0;
+  //   let foldersW = 0;
 
-    /*mousedown on the resizers: Track the current 
-    position of mouse and dimension of the original element 
-    it is triggered when the user drags the element*/
-    const mouseDownHandler = function (e) {
-      currMouseX = e.clientX;
+  //   /*mousedown on the resizers: Track the current 
+  //   position of mouse and dimension of the original element 
+  //   it is triggered when the user drags the element*/
+  //   const mouseDownHandler = function (e) {
+  //     currMouseX = e.clientX;
 
-      //calculate the dimensions of the element
-      const styles = window.getComputedStyle(folders);
-      foldersW = parseInt(styles.width, 10);
+  //     //calculate the dimensions of the element
+  //     const styles = window.getComputedStyle(folders);
+  //     foldersW = parseInt(styles.width, 10);
 
-      /*  mousemove on document: Calculate how far the mouse has been 
-        moved, and adjust the dimension of the element */
-      document.addEventListener('mousemove', mouseMoveHandler)
-      document.addEventListener('mouseup', mouseUpHandler);
-    }
+  //     /*  mousemove on document: Calculate how far the mouse has been 
+  //       moved, and adjust the dimension of the element */
+  //     document.addEventListener('mousemove', mouseMoveHandler)
+  //     document.addEventListener('mouseup', mouseUpHandler);
+  //   }
 
 
-    const mouseMoveHandler = function (e) {
-      // How far the mouse has been moved
-      const distanceX = e.clientX - currMouseX;
+  //   const mouseMoveHandler = function (e) {
+  //     // How far the mouse has been moved
+  //     const distanceX = e.clientX - currMouseX;
 
-      // Adjust the dimension of element
-      folders.style.width = `${foldersW + distanceX}px`;
+  //     // Adjust the dimension of element
+  //     folders.style.width = `${foldersW + distanceX}px`;
 
-      console.log('mouse move handler is called')
-    };
+  //     console.log('mouse move handler is called')
+  //   };
 
-    const resizer = document.querySelector('.folders__resizer')
-    resizer.addEventListener('mousedown', mouseDownHandler);
+  //   const resizer = document.querySelector('.folders__resizer')
+  //   resizer.addEventListener('mousedown', mouseDownHandler);
 
-    const mouseUpHandler = function () {
-      // Remove the handlers of `mousemove` and `mouseup`
-      document.removeEventListener('mousemove', mouseMoveHandler);
-      document.removeEventListener('mouseup', mouseUpHandler);
-    };
-  }
+  //   const mouseUpHandler = function () {
+  //     // Remove the handlers of `mousemove` and `mouseup`
+  //     document.removeEventListener('mousemove', mouseMoveHandler);
+  //     document.removeEventListener('mouseup', mouseUpHandler);
+  //   };
+  // }
 
   render() {
     return (
@@ -78,7 +90,7 @@ class Folders extends Component {
           <img
             onClick={this.add}
             className='folders__add'
-            src={add}
+            src={addIcon}
             alt='add'
           />
 

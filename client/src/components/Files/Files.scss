@@ -6,6 +6,10 @@
   @extend .folders;
   background-color : #b9bacc;
 
+  &--hide {
+    display:none;
+  }
+  
   &__resizer {
     @extend .folders__resizer;
     background-color: #e6e6e6
