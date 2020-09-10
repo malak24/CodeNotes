@@ -57,12 +57,12 @@ class App extends Component {
       <div className="app">
         <SideBar 
         toggleFolders = {this.state.toggleFolders} 
-        toggleFiles = {this.state.toggleFolders} 
+        toggleFiles = {this.state.toggleFiles} 
         foldersClick = {this.foldersClick}
         filesClick = {this.filesClick}/>
 
-        <Folders toggleFolders = {this.state.toggleFolders} filesClick = {this.filesClick}/>
-        <Files />
+        <Folders toggleFolders = {this.state.toggleFolders} foldersClick = {this.foldersClick}/>
+        <Files toggleFiles = {this.state.toggleFolders} filesClick = {this.filesClick}/>
         <div className='app__right-section'>
           <Editor />
         </div>
