@@ -29,17 +29,39 @@ import 'froala-editor/js/third_party/spell_checker.min.js';
 class App extends Component {
   constructor() {
     super();
-    
+
+    this.foldersClick = this.foldersClick.bind(this);
+    this.filesClick = this.filesClick.bind(this);
+
     this.state = {
-      toggle: false,
+      toggleFolders : false,
+      toggleFiles : false
     };
   }
+
+  foldersClick() {
+    this.setState({
+      toggleFolders : !(this.state.toggleFolders)
+    });
+  };
+
+  filesClick() {
+    this.setState({
+      toggleFiles : !(this.state.toggleFiles)
+    });
+  };
+
 
   render() {
     return (
       <div className="app">
-        <SideBar toggle = {this.state.toggle} />
-        <Folders toggle = {this.state.toggle}/>
+        <SideBar 
+        toggleFolders = {this.state.toggleFolders} 
+        toggleFiles = {this.state.toggleFolders} 
+        foldersClick = {this.foldersClick}
+        filesClick = {this.filesClick}/>
+
+        <Folders toggleFolders = {this.state.toggleFolders} filesClick = {this.filesClick}/>
         <Files />
         <div className='app__right-section'>
           <Editor />

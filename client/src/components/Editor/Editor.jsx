@@ -27,7 +27,7 @@ class Editor extends React.Component {
         onModelChange={this.handleModelChange}
         config={{
           charCounterCount: false,
-          height: 800,
+          height: 515,
         }}
       />
     )

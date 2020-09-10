@@ -1,27 +1,22 @@
 import React, { Component } from 'react';
 import './Folders.scss';
 import add from '../../assets/add.png'
-import { findByPlaceholderText } from '@testing-library/react';
 
 class Folders extends Component {
 
-  handleChange(e) {
-    console.log(e.target.value);
+  constructor(props) {
+    super(props);
+    this.add = this.add.bind(this);
   }
 
-  // state = {
-  //   addFolder : false,
-  // }
+  add(inputValue) {
+    const folder = React.createElement('p', {className : 'name'}, `${inputValue}`)
+  }
 
-  // constructor(props) {
-  //   super(props)
-  //   this.addFolder = this.addFolder.bind(this)
-  // }
-
-  // addFolder(e) {
-  //   console.log(e);
-  //   this.setState(addFolder = true)
-  // }
+  handleChange(e) {
+    const inputValue = e.target.value
+    add(inputValue);
+  }
 
   componentDidMount() {
     const folders = document.querySelector('.folders');
@@ -63,30 +58,30 @@ class Folders extends Component {
       document.removeEventListener('mousemove', mouseMoveHandler);
       document.removeEventListener('mouseup', mouseUpHandler);
     };
-
   }
 
   render() {
     return (
-      <div className = {this.props.toggle ? 'folders--hide' : 'folders' }>
-        <div 
-        className='folders__resizer'></div>
-        <div className = 'folders__input-wrapper'>
+      <div className={this.props.toggleFolders ? 'folders--hide' : 'folders'}>
+        <div
+          className='folders__resizer'></div>
+        <div className='folders__input-wrapper'>
 
-          <input 
-          onChange = {this.handleChange}
-          className = 'folders__input' 
-          type='text' 
-          name='folderName' 
-          placeholder='Enter folder name' 
+          <input
+            onChange={this.handleChange}
+            className='folders__input'
+            type='text'
+            name='folderName'
+            placeholder='Enter folder name'
           />
 
-          <img 
-          className = 'folders__add' 
-          src = {add} 
-          alt='add'
+          <img
+            onClick={this.add}
+            className='folders__add'
+            src={add}
+            alt='add'
           />
-          
+
         </div>
       </div>
     )
