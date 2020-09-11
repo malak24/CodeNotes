@@ -30,7 +30,7 @@ connection.end(function(error) {
 
 
 app.get('/', function(req, res) {
-  // connection.query('DESCRIBE folders; DESCRIBE files;
+    connection.query('DESCRIBE folders; DESCRIBE files');
   if(!!error) {
     console.log('Error in query');
   } else {

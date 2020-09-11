@@ -28,53 +28,43 @@ class App extends Component {
     this.zenClick = this.zenClick.bind(this);
 
     this.state = {
-      toggleFolders : false,
-      toggleFiles : false,
+      openFolders : true,
+      openFiles : true,
     };
   }
 
   foldersClick() {
     this.setState({
-      toggleFolders : !(this.state.toggleFolders)
+      openFolders : !(this.state.openFolders)
     });
   };
 
   filesClick() {
     this.setState({
-      toggleFiles : !(this.state.toggleFiles)
+      openFiles : !(this.state.openFiles)
     });
   };
 
-  // zenClick(){
-  //   if (this.state.toggleFolders) {
-  //     this.foldersClick()
-  //   } else if (this.state.toggleFiles) {
-  //     this.filesClick()
-  //   } else if (this.state.toggleFolders && this.state.toggleFiles) {
-  //     this.state.foldersClick()
-  //     this.state.filesClick()
-  //   }
-
-    zenClick() {
-      this.foldersClick()
-      this.filesClick()
-      console.log('button is clicked')
+  zenClick(){
+    this.setState ({
+      openFolders : false,
+      openFiles : false,
+    })
   }
-
 
   render() {
     return (
       <div className="app">
         <SideBar 
-        toggleFolders = {this.state.toggleFolders} 
-        toggleFiles = {this.state.toggleFiles} 
+        openFolders = {this.state.openFolders} 
+        openFiles = {this.state.openFiles} 
         foldersClick = {this.foldersClick}
         filesClick = {this.filesClick}
         zenClick = {this.zenClick}
         />
 
-        <Folders toggleFolders = {this.state.toggleFolders} foldersClick = {this.foldersClick}/>
-        <Files toggleFiles = {this.state.toggleFiles} filesClick = {this.filesClick}/>
+        <Folders openFolders = {this.state.openFolders} foldersClick = {this.foldersClick}/>
+        <Files openFiles = {this.state.openFiles} filesClick = {this.filesClick}/>
         <div className='app__right-section'>
           <Editor />
         </div>

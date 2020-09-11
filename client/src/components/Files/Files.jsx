@@ -70,7 +70,7 @@ class Files extends Component {
 
   render() {
     return (
-      <div className={this.props.toggleFiles ? 'files--hide' : 'files'}>
+      <div className={this.props.openFiles ? 'files' : 'files--hide'}>
         <div className='files__resizer'></div>
         <div className='files__input-wrapper'>
           <input onChange={this.handleChange}

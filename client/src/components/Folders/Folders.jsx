@@ -74,7 +74,7 @@ class Folders extends Component {
 
   render() {
     return (
-      <div className={this.props.toggleFolders ? 'folders--hide' : 'folders'}>
+      <div className={this.props.openFolders ? 'folders' : 'folders--hide'}>
         <div
           className='folders__resizer'></div>
         <div className='folders__input-wrapper'>
