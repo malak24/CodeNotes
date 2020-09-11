@@ -2,42 +2,43 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql'); //importing mysql module
 
-const connection = mysql.createConnection({ //create connection between node js and the database
-  host : localhost,
-  user: 'root',
-  password: '',
-  database : 'CodeNotes'
-});
+// const connection = mysql.createConnection({ //create connection between node js and the database
+//   host : localhost,
+//   user: 'root',
+//   password: '',
+//   database : 'CodeNotes'
+// });
 
 
-//start connection between nodeJs and the db
-connection.connect(function(error) { //call the connect method
-  if(error) {
-    return console.error('error : ' + error.message);
-  } else {
-    console.log('Connected to MySQL server');
-  }
-});
+// //start connection between nodeJs and the db
+// connection.connect(function(error) { //call the connect method
+//   if(error) throw error;
+
+//   connection.query("DESCRIBE folders; DESCRIBE files" , function (error, response) {
+//     if (error) throw error;
+//     console.log(response);
+//   });
+// });
 
 
-//end the connection betweem nodeJs and db
-connection.end(function(error) {
-  if (error) {
-    return console.log('error:' + err.message);
-  }
-  console.log('Close the database connection.');
-});
+// //end the connection betweem nodeJs and db
+// connection.end(function(error) {
+//   if (error) {
+//     return console.log('error:' + err.message);
+//   }
+//   console.log('Close the database connection.');
+// });
 
 
-app.get('/', function(req, res) {
-    connection.query('DESCRIBE folders; DESCRIBE files');
-  if(!!error) {
-    console.log('Error in query');
-  } else {
-    console.log(res); //console database data requested
-    //res.send(the data that we want to get from the db)
-  }
-})
+// app.get('/', function(req, res) {
+//    let all =  connection.query('DESCRIBE folders; DESCRIBE files');
+//   if(!!error) {
+//     console.log('Error in query');
+//   } else {
+//     console.log(res);
+//     res.send(all)
+//   }
+// })
 
 //on page render if the data is empty, render a folder and its file by default
 
@@ -49,6 +50,36 @@ app.get('/', function(req, res) {
 //app.post '/files'       =>  post a file
 //app.get '/files/fileId  =>  get the note of a certain file on click 
 
-app.listen(3306);
+// app.listen(3306);
 
-module.exports = router;
+// module.exports = router;
+
+// router.get("/:courseId", (req, res) => {
+//     console.log(req.params);
+//     let obj = courses.find(course => course.name === req.params.courseId);
+//     if (!obj) {
+//         res.status(404).send("Course not found")
+//     }
+//     res.status(200).send(obj)
+// })
+
+// router.post("/", (req, res) => { 
+//     console.log(req.body)
+//     courses.push(req.body)
+//     res.status(200).send("data posted successfully")
+// })
+
+// router.get('/', (req, res) => {
+//   console.log(videosData);
+//   res.status(200).send(videosData);
+// });
+
+
+// router.get('/:videoId', (req, res) => { //responds with specific video
+//   const currVideoId = req.params.videoId;
+//   const currVideo = videosData.find(video => video.id === currVideoId);
+//   if (!currVideo) {
+//     res.status(400).send('Video not found!')
+//   }
+//   res.status(200).send(currVideo)
+// })
