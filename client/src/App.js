@@ -25,10 +25,11 @@ class App extends Component {
 
     this.foldersClick = this.foldersClick.bind(this);
     this.filesClick = this.filesClick.bind(this);
+    this.zenClick = this.zenClick.bind(this);
 
     this.state = {
       toggleFolders : false,
-      toggleFiles : false
+      toggleFiles : false,
     };
   }
 
@@ -44,6 +45,22 @@ class App extends Component {
     });
   };
 
+  // zenClick(){
+  //   if (this.state.toggleFolders) {
+  //     this.foldersClick()
+  //   } else if (this.state.toggleFiles) {
+  //     this.filesClick()
+  //   } else if (this.state.toggleFolders && this.state.toggleFiles) {
+  //     this.state.foldersClick()
+  //     this.state.filesClick()
+  //   }
+
+    zenClick() {
+      this.foldersClick()
+      this.filesClick()
+      console.log('button is clicked')
+  }
+
 
   render() {
     return (
@@ -53,6 +70,7 @@ class App extends Component {
         toggleFiles = {this.state.toggleFiles} 
         foldersClick = {this.foldersClick}
         filesClick = {this.filesClick}
+        zenClick = {this.zenClick}
         />
 
         <Folders toggleFolders = {this.state.toggleFolders} foldersClick = {this.foldersClick}/>

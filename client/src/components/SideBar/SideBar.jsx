@@ -30,11 +30,15 @@ class SideBar extends Component {
              alt='files icon' 
              title='Display Files' />
 
-        <img className='' src={tag} alt='image icon' title='Add tag' />
-        <img className='' src={search} alt='search icon' title='Search' />
-        <img className='' src={customize} alt='customize icon' title='Themes' />
-        <img className='' src={del} alt='delete icon' title='Delete' />
-        <img className='' src={zen} alt='circle icon' title='Zen mode' />
+        <img src={tag} alt='image icon' title='Add tag' />
+        <img src={search} alt='search icon' title='Search' />
+        <img src={customize} alt='customize icon' title='Themes' />
+        <img src={del} alt='delete icon' title='Delete' />
+
+        <img onClick = {this.props.zenClick}
+             src={zen} 
+             alt='circle icon' 
+             title='Zen mode' />
       </div>
     )
   }
