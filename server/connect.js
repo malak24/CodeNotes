@@ -2,26 +2,37 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql'); //importing mysql module
 
-// const connection = mysql.createConnection({ //create connection between node js and the database
-//   host : localhost,
-//   user: 'root',
-//   password: '',
-//   database : 'CodeNotes'
-// });
+const connection = mysql.createConnection({ //create connection between node js and the database
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'CodeNotes'
+});
 
 
-// //start connection between nodeJs and the db
-// connection.connect(function(error) { //call the connect method
-//   if(error) throw error;
+// start connection between nodeJs and the db
+connection.connect(function (error) {
+  if (error) throw error;
+});
 
-//   connection.query("DESCRIBE folders; DESCRIBE files" , function (error, response) {
+
+// connection.query("DESCRIBE folders; DESCRIBE files" , (error, response)  {
 //     if (error) throw error;
+
 //     console.log(response);
-//   });
 // });
 
+router.get('/', function (req, res) {
+  connection.query('SELECT * FROM folders', (error, results, fields) => {
+    if (error) throw error;
+    console.log('Result is : ', results[0]); //use results[0].folder_id for specific data
+    res.status(200).send(results)
+  });
+});
 
-// //end the connection betweem nodeJs and db
+
+
+//end the connection betweem nodeJs and db
 // connection.end(function(error) {
 //   if (error) {
 //     return console.log('error:' + err.message);
@@ -30,15 +41,7 @@ const mysql = require('mysql'); //importing mysql module
 // });
 
 
-// app.get('/', function(req, res) {
-//    let all =  connection.query('DESCRIBE folders; DESCRIBE files');
-//   if(!!error) {
-//     console.log('Error in query');
-//   } else {
-//     console.log(res);
-//     res.send(all)
-//   }
-// })
+
 
 //on page render if the data is empty, render a folder and its file by default
 
@@ -83,3 +86,5 @@ const mysql = require('mysql'); //importing mysql module
 //   }
 //   res.status(200).send(currVideo)
 // })
+
+module.exports = router;
