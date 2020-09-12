@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './App.scss';
 
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import SideBar from './components/SideBar/SideBar'
 import Folders from './components/Folders/Folders'
@@ -28,43 +29,98 @@ class App extends Component {
     this.zenClick = this.zenClick.bind(this);
 
     this.state = {
-      openFolders : true,
-      openFiles : true,
+      openFolders: true,
+      openFiles: true,
     };
   }
 
   foldersClick() {
     this.setState({
-      openFolders : !(this.state.openFolders)
+      openFolders: !(this.state.openFolders)
     });
   };
 
   filesClick() {
     this.setState({
-      openFiles : !(this.state.openFiles)
+      openFiles: !(this.state.openFiles)
     });
   };
 
-  zenClick(){
-    this.setState ({
-      openFolders : false,
-      openFiles : false,
+  zenClick() {
+    this.setState({
+      openFolders: false,
+      openFiles: false,
     })
+  }
+
+  getFolders() {
+    axios
+      .get('/')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  getOneFolder() {
+    axios
+      .get('/folderId')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  createOneFolder() {
+    axios
+      .post('/folderId')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  getOneFile() {
+    axios
+      .get('/folderId/fileId')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  createOneFile() {
+    axios
+      .post('/folderId/fileId')
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   render() {
     return (
       <div className="app">
-        <SideBar 
-        openFolders = {this.state.openFolders} 
-        openFiles = {this.state.openFiles} 
-        foldersClick = {this.foldersClick}
-        filesClick = {this.filesClick}
-        zenClick = {this.zenClick}
+        <SideBar
+          openFolders={this.state.openFolders}
+          openFiles={this.state.openFiles}
+          foldersClick={this.foldersClick}
+          filesClick={this.filesClick}
+          zenClick={this.zenClick}
         />
 
-        <Folders openFolders = {this.state.openFolders} foldersClick = {this.foldersClick}/>
-        <Files openFiles = {this.state.openFiles} filesClick = {this.filesClick}/>
+        <Folders openFolders={this.state.openFolders} foldersClick={this.foldersClick} />
+        <Files openFiles={this.state.openFiles} filesClick={this.filesClick} />
         <div className='app__right-section'>
           <Editor />
         </div>
