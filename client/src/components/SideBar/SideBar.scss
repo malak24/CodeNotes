@@ -14,6 +14,10 @@
     width:11%;
   }
 
+  &__wrapper {
+    position : relative;
+  }
+
   & img {
     @include dimensions (2.5rem, 2.5rem);
     padding-top:1.5rem;
@@ -22,6 +26,74 @@
     @include tablet {
       @include dimensions(5vw, 5vw);
     }
+  }
 
+  @keyframes animation {
+    from   {width: 0;}
+    to {width: 34vw;}
+  }
+
+  &__cus {
+    list-style-type: none;
+    display:flex;
+    border-radius : 6px;
+    width:34vw;
+    height:3.2rem;
+    position : absolute;
+    top : 0rem;
+    left:5rem;
+    z-index : 1;
+    background-color:rgba(66, 65, 65, 0.63);
+    padding-left:0;
+    padding-top : 0.8rem;
+    animation-name : animation;
+    animation-direction: alternate;
+    animation-duration: 0.7s;
+    transition: ease-in-out;
+
+    &--hide {
+      display : none;
+    }
+
+    & li {
+      width:2.2rem;
+      height:2.2rem;
+      margin-left:0.8rem;
+      border-radius:20px;
+    }
+  }
+
+  &__cus-yelw {
+    background-color:#ebdca1;
+  }
+
+  &__cus-org {
+    background-color: #dab0a3;
+  }
+
+  &__cus-pnk {
+    background-color:#9b6c7a
+  }
+
+  &__cus-prpl {
+    background-color: #b9bacc;
+  }
+
+  &__cus-blu {
+    background-color: #aecbe2;
+
+  }
+
+  &__cus-teal {
+    background-color: #8ca9ad;
+
+  }
+
+  &__cus-grn {
+    background-color:#a4b49a
+  }
+
+  &__cus-grey {
+    background-color: #ececec;
   }
 }
