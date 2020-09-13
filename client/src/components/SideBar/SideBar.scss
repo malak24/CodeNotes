@@ -6,13 +6,22 @@
   flex-direction: column;
   background-color:rgb(49, 49, 49);
   width: 7.5%;
-  height:100vh;
+  height:94.5vh;
   padding-left:0.6rem;
   padding-top:2rem;
+
+  @include tablet {
+    width:11%;
+  }
 
   & img {
     @include dimensions (2.5rem, 2.5rem);
     padding-top:1.5rem;
     cursor: pointer;
+
+    @include tablet {
+      @include dimensions(5vw, 5vw);
+    }
+
   }
 }

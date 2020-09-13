@@ -21,8 +21,8 @@
   left: $left;
 }
 
-@mixin mobileL {
-    @media screen and (min-width: $mobileL-breakpoint) {
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
         @content;
     }
 }

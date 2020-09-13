@@ -6,6 +6,7 @@
   width:22vw;
   max-width:20vw;
   position : relative;
+  height:100vh;
 
   &--hide {
     display:none;
@@ -24,6 +25,11 @@
   &__input-wrapper {
     display:flex;
     margin-left:0.5rem;
+
+    @include tablet {
+      width:8rem;
+      height:1rem;
+    }
   }
 
   &__input {
@@ -39,6 +45,12 @@
     &:focus {
       outline: none;
     }
+
+    @include tablet {
+      font-size:0.7rem;
+      height:1.5rem;
+      margin-left:0;
+    }
   }
 
   &__add {
@@ -50,6 +62,11 @@
     cursor:pointer;
     border-radius:2px;
     box-shadow: 1px 1px 5px rgb(155, 155, 155);
+
+    @include tablet {
+      @include dimensions(0.6rem, 0.6rem);
+      margin-top:0.9rem;
+    }
   }
 
   &__name {

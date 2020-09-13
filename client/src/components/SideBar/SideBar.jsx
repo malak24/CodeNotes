@@ -15,7 +15,6 @@ class SideBar extends Component {
     super();
   }
   
-
   render() {
     return (
       <div className='sidebar'>
@@ -33,6 +32,9 @@ class SideBar extends Component {
         <img src={tag} alt='image icon' title='Add tag' />
         <img src={search} alt='search icon' title='Search' />
         <img src={customize} alt='customize icon' title='Themes' />
+        <ul>
+          <li></li>
+        </ul>
         <img src={del} alt='delete icon' title='Delete' />
 
         <img onClick = {this.props.zenClick}

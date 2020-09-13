@@ -22,14 +22,16 @@ class Editor extends React.Component {
 
   render() {
     return (
-      <Froala
-        model={this.state.model}
-        onModelChange={this.handleModelChange}
-        config={{
-          charCounterCount: false,
-          height: 515,
-        }}
-      />
+      <div className = 'editor'>
+        <Froala
+          model={this.state.model}
+          onModelChange={this.handleModelChange}
+          config={{
+            charCounterCount: false,
+            height: 490,
+          }}
+        />
+      </div>
     )
   }
 }
