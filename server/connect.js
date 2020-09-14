@@ -23,20 +23,16 @@ router.get('/folders', function (req, res) {
   });
 });
 
-//Post a new folder with its id and create a default file to it
 router.post('/folders/:folderId', function (req, res) {
   connection.query(`INSERT INTO folders (folder_name) VALUES ('${req.body.folder_name}')`, (error, results, fields) => {
     if (error) throw error;
-    console.log('The selected folder is : ', results);
     res.status(200).send("Folder created successfully")
   })
 })
 
-// Get the note of a certain file on click 
-router.get('/:folderId/:fileId', function (req, res) {
-  connection.query(`SELECT * FROM files WHERE file_id = ${folder_id}`, (error, results, fields) => {
+router.get('/folders/:folderId/files', function (req, res) {
+  connection.query(`SELECT * FROM files WHERE folder_id = ${req.params.folderId}`, (error, results, fields) => {
     if (error) throw error;
-    console.log('The selected file is : ', results); //use results[0].folder_id for specific data
     res.status(200).send(results)
   });
 });

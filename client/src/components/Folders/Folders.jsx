@@ -11,8 +11,8 @@ class Folders extends Component {
         <div className='folders__input-wrapper'>
 
           <input
-            onChange={this.props.getInput}
-            className='folders__input'
+            onChange = {this.props.getInputFolder}
+            className = 'folders__input'
             type='text'
             name='folderName'
             placeholder='Enter folder name'
@@ -27,7 +27,7 @@ class Folders extends Component {
 
           <ul className='folders__list'>
             {this.props.folders.map((folder) => (
-              <li>{folder.folder_name}</li>
+              <li onClick = {() => this.props.getFiles(folder.folder_id)}>{folder.folder_name} </li>
             ))}
           </ul>
         </div>

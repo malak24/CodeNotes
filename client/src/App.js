@@ -17,7 +17,9 @@ import 'froala-editor/js/third_party/image_tui.min.js';
 import 'froala-editor/js/third_party/embedly.min.js';
 import 'froala-editor/js/third_party/spell_checker.min.js';
 
-let inputValue;
+let inputValueFo;
+let inputValueFi;
+
 
 class App extends Component {
   constructor() {
@@ -26,14 +28,19 @@ class App extends Component {
     this.foldersClick = this.foldersClick.bind(this);
     this.filesClick = this.filesClick.bind(this);
     this.zenClick = this.zenClick.bind(this);
-    this.getInput = this.getInput.bind(this);
+
+    this.getInputFolder = this.getInputFolder.bind(this);
     this.createOneFolder = this.createOneFolder.bind(this); 
+    // this.createFile = this.createFile.bind(this);
+    this.getFiles = this.getFiles.bind(this);
 
     this.state = {
       openFolders: true,
       openFiles: true,
       folders: [],
-      folderName: ''
+      files : [],
+      folderName: '',
+      fileName: ''
     };
   }
 
@@ -64,7 +71,21 @@ class App extends Component {
     axios
       .get('http://localhost:8080/folders')
       .then(response => {
+        console.log(response.data)
         this.setState({ folders: response.data })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  getFiles(folder_id) {
+    axios
+      .get(`http://localhost:8080/folders/${folder_id}/files`)
+      .then(response => {
+        console.log(response.data)
+        this.setState({ files: response.data });
+      console.log(this.state.files)
       })
       .catch(error => {
         console.log(error)
@@ -118,9 +139,16 @@ class App extends Component {
       })
   }
 
-  getInput = (e) => {
-    inputValue = e.target.value;
-    this.setState({folderName: inputValue})
+  getInputFolder = (e) => {
+    inputValueFo = e.target.value;
+    this.setState({folderName: inputValueFo})
+    console.log(inputValueFo)
+  }
+
+  getInputFile = (e) => {
+    inputValueFi = e.target.value;
+    this.setState({fileName: inputValueFi})
+    console.log(inputValueFi)
   }
 
   render() {
@@ -135,14 +163,21 @@ class App extends Component {
         />
 
         <Folders
-          getInput={this.getInput}
+          getInputFolder={this.getInputFolder}
           createOneFolder = {this.createOneFolder}
           folders = {this.state.folders}
           openFolders={this.state.openFolders}
           foldersClick={this.foldersClick}
+          getFiles = {this.getFiles}
         />
 
-        <Files openFiles={this.state.openFiles} filesClick={this.filesClick} />
+        <Files 
+        openFiles={this.state.openFiles} 
+        filesClick={this.filesClick}
+        files = {this.state.files} 
+        getInputFile = {this.getInputFile}
+        />
+
         <div className='app__right-section'>
           <Editor />
         </div>

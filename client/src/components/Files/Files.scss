@@ -12,7 +12,6 @@
   
   &__resizer {
     @extend .folders__resizer;
-    background-color: #e6e6e6
   }
 
   &__input-wrapper {
@@ -30,5 +29,9 @@
 
   &__add {
     @extend .folders__add;
+  }
+
+  &__list {
+    @extend .folders__list 
   }
 }
