@@ -10,8 +10,7 @@ class Folders extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      folders: [{ name: '' }],
-      folderName : ''
+      folderName: ''
     }
 
     this.add = this.add.bind(this);
@@ -19,20 +18,32 @@ class Folders extends Component {
     this.createFolderName = this.createFolderName.bind(this);
   }
 
+  componentDidMount() {
+    this.renderFolders();
+  }
+
+  renderFolders() {
+    console.log(this.props.foldersArr);
+    // for (let i = 0; i < this.props.foldersArr.length; i++) {
+    //   console.log(this.props.foldersArr)
+    //   console.log(this.props.foldersArr[i])
+    //   folder = React.createElement('li', {}, this.props.foldersArr[i])
+    // }
+  }
 
   add(inputValue) {
+    console.log('add function');
     console.log(inputValue)
-    this.setState({
-      folders: this.state.folders.concat({ name: inputValue })
-    })
-    for (let i = 0; i<= this.state.folders.length; i++) {
-      folder = React.createElement('li', {}, `${this.state.folders[i].name}`)
-    }
+    this.props.foldersArr.concat({ name: inputValue })
   }
+
 
   getInput = (e) => {
     inputValue = e.target.value;
-    this.setState({folderName : inputValue})
+    console.log(inputValue);
+    this.setState({ folderName: inputValue })
+    console.log(this.state.folderName);
+    console.log(this.props.folders)
   }
 
   createFolderName() {
@@ -54,16 +65,17 @@ class Folders extends Component {
           />
 
           <img
-            onClick={this.createFolder}
+            onClick={this.createFolderName}
             className='folders__add'
             src={addIcon}
             alt='add'
           />
 
           <ul className='folders__list'>
-            {folder}
+            {this.props.foldersArr.map((folder) => (
+              <li>{folder.folder_name}</li>
+            ))}
           </ul>
-
         </div>
       </div>
     )

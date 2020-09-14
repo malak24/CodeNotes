@@ -4,7 +4,7 @@
 .folders {
   background-color:#7e7f9c;
   width:22vw;
-  max-width:20vw;
+  max-width:22vw;
   position : relative;
   height:100vh;
 
@@ -19,7 +19,6 @@
     right:0;
     top:0;
     width:4px;
-    background-color:rgb(189, 197, 201);
   }
 
   &__input-wrapper {
@@ -33,9 +32,9 @@
   }
 
   &__input {
+    width:5.5rem;
     height: 1.8rem;
     margin:0.5rem;
-    overflow: auto;
     border:none;
     border-radius : 5px;
     padding-left:0.5rem;
@@ -66,6 +65,24 @@
     @include tablet {
       @include dimensions(0.6rem, 0.6rem);
       margin-top:0.9rem;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    position:absolute;
+    top : 2rem;
+    left:0;
+    color:white;
+    width:100%;
+    padding:0;
+    
+    & li {
+      padding-left:0.5rem;
+    }
+
+    & li:hover {
+      background-color:rgba(51, 51, 51, 0.493);
     }
   }
 }

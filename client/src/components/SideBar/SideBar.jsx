@@ -17,7 +17,7 @@ class SideBar extends Component {
     this.changeTheme = this.changeTheme.bind(this);
 
     this.state = {
-      displayColors: true,
+      displayColors: false,
     }
   }
 

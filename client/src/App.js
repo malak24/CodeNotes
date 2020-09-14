@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import SideBar from './components/SideBar/SideBar'
 import Folders from './components/Folders/Folders'
 import Files from './components/Files/Files'
@@ -31,7 +29,12 @@ class App extends Component {
     this.state = {
       openFolders: true,
       openFiles: true,
+      folders: [],
     };
+  }
+
+  componentDidMount() {
+    this.getFolders();
   }
 
   foldersClick() {
@@ -55,9 +58,9 @@ class App extends Component {
 
   getFolders() {
     axios
-      .get('/')
+      .get('http://localhost:8080/folders')
       .then(response => {
-        console.log(response);
+        this.setState({folders : response.data})
       })
       .catch(error => {
         console.log(error)
@@ -66,7 +69,7 @@ class App extends Component {
 
   getOneFolder() {
     axios
-      .get('/folderId')
+      .get('http://localhost:8080/folderId')
       .then(response => {
         console.log(response);
       })
@@ -77,7 +80,7 @@ class App extends Component {
 
   createOneFolder() {
     axios
-      .post('/folderId')
+      .post('http://localhost:8080/folderId')
       .then(response => {
         console.log(response);
       })
@@ -88,7 +91,7 @@ class App extends Component {
 
   getOneFile() {
     axios
-      .get('/folderId/fileId')
+      .get('http://localhost:8080/folderId/fileId')
       .then(response => {
         console.log(response);
       })
@@ -99,7 +102,7 @@ class App extends Component {
 
   createOneFile() {
     axios
-      .post('/folderId/fileId')
+      .post('http://localhost:8080/folderId/fileId')
       .then(response => {
         console.log(response);
       })
@@ -119,7 +122,7 @@ class App extends Component {
           zenClick={this.zenClick}
         />
 
-        <Folders openFolders={this.state.openFolders} foldersClick={this.foldersClick} />
+        <Folders foldersArr={this.state.folders} openFolders={this.state.openFolders} foldersClick={this.foldersClick} />
         <Files openFiles={this.state.openFiles} filesClick={this.filesClick} />
         <div className='app__right-section'>
           <Editor />

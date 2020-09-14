@@ -18,10 +18,10 @@ connection.connect(function (error) {
 
 
 // Endpoint to get all folders
-router.get('/', function (req, res) {
-  connection.query('SELECT * FROM files', (error, results, fields) => {
+router.get('/folders', function (req, res) {
+  connection.query('SELECT * FROM folders', (error, results, fields) => {
     if (error) throw error;
-    console.log('These are all folders with a default file ', results); //use results[0].folder_id for specific data
+    console.log('These are all folders ', results); //use results[0].folder_id for specific data
     res.status(200).send(results)
   });
 });
