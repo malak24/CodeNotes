@@ -17,6 +17,7 @@ import 'froala-editor/js/third_party/image_tui.min.js';
 import 'froala-editor/js/third_party/embedly.min.js';
 import 'froala-editor/js/third_party/spell_checker.min.js';
 
+let inputValue;
 
 class App extends Component {
   constructor() {
@@ -25,11 +26,15 @@ class App extends Component {
     this.foldersClick = this.foldersClick.bind(this);
     this.filesClick = this.filesClick.bind(this);
     this.zenClick = this.zenClick.bind(this);
+    this.add = this.add.bind(this);
+    this.getInput = this.getInput.bind(this);
+    this.createFolderName = this.createFolderName.bind(this);
 
     this.state = {
       openFolders: true,
       openFiles: true,
       folders: [],
+      folderName: ''
     };
   }
 
@@ -60,7 +65,7 @@ class App extends Component {
     axios
       .get('http://localhost:8080/folders')
       .then(response => {
-        this.setState({folders : response.data})
+        this.setState({ folders: response.data })
       })
       .catch(error => {
         console.log(error)
@@ -111,6 +116,20 @@ class App extends Component {
       })
   }
 
+  getInput = (e) => {
+    inputValue = e.target.value;
+    this.setState({ folderName: inputValue })
+  }
+
+  createFolderName() {
+    this.add(this.state.folderName);
+    console.log(this.state.folderName)
+  }
+
+  add(inputValue) {
+    this.state.folders.concat({ name: inputValue })
+  }
+
   render() {
     return (
       <div className="app">
@@ -122,7 +141,13 @@ class App extends Component {
           zenClick={this.zenClick}
         />
 
-        <Folders foldersArr={this.state.folders} openFolders={this.state.openFolders} foldersClick={this.foldersClick} />
+        <Folders
+          getInput={this.state.getInput}
+          folders = {this.state.folders}
+          openFolders={this.state.openFolders}
+          foldersClick={this.foldersClick}
+        />
+
         <Files openFiles={this.state.openFiles} filesClick={this.filesClick} />
         <div className='app__right-section'>
           <Editor />
