@@ -26,9 +26,8 @@ class App extends Component {
     this.foldersClick = this.foldersClick.bind(this);
     this.filesClick = this.filesClick.bind(this);
     this.zenClick = this.zenClick.bind(this);
-    this.add = this.add.bind(this);
     this.getInput = this.getInput.bind(this);
-    this.createFolderName = this.createFolderName.bind(this);
+    this.createOneFolder = this.createOneFolder.bind(this); 
 
     this.state = {
       openFolders: true,
@@ -85,7 +84,9 @@ class App extends Component {
 
   createOneFolder() {
     axios
-      .post('http://localhost:8080/folderId')
+      .post('http://localhost:8080/folderId', {
+        folder_name : this.state.folderName,
+      })
       .then(response => {
         console.log(response);
       })
@@ -118,16 +119,7 @@ class App extends Component {
 
   getInput = (e) => {
     inputValue = e.target.value;
-    this.setState({ folderName: inputValue })
-  }
-
-  createFolderName() {
-    this.add(this.state.folderName);
-    console.log(this.state.folderName)
-  }
-
-  add(inputValue) {
-    this.state.folders.concat({ name: inputValue })
+    this.setState({folderName: inputValue})
   }
 
   render() {
@@ -142,7 +134,8 @@ class App extends Component {
         />
 
         <Folders
-          getInput={this.state.getInput}
+          getInput={this.getInput}
+          createOneFolder = {this.createOneFolder}
           folders = {this.state.folders}
           openFolders={this.state.openFolders}
           foldersClick={this.foldersClick}

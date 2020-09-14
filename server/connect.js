@@ -39,9 +39,11 @@ router.get('/:folderId', function (req, res) {
 
 //Post a new folder with its id and create a default file to it
 router.post('/:folderId', function (req, res) {
-    console.log(req.body)
-    // courses.push(req.body)
+  connection.query(`INSERT INTO folders (folder_name) VALUES ('${req.body.folder_name}')`, (error, results, fields) => {
+    if (error) throw error;
+    console.log('The selected folder is : ', results);
     res.status(200).send("Folder created successfully")
+  })
 })
 
 
@@ -56,15 +58,15 @@ router.get('/:folderId/:fileId', function (req, res) {
 
 
 router.post('/:folderId/:fileId', function (req, res) {
-    console.log(req.body)
-    courses.push(req.body)
-    res.status(200).send("File created successfully")
+  console.log(req.body)
+  courses.push(req.body)
+  res.status(200).send("File created successfully")
 });
 
 
 // end the connection betweem nodeJs and db
 function endconnection() {
-  connection.end(function(error) {
+  connection.end(function (error) {
     if (error) {
       return console.log('error:' + err.message);
     }

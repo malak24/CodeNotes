@@ -19,7 +19,7 @@ class Folders extends Component {
           />
 
           <img
-            onClick={this.createFolderName}
+            onClick={this.props.createOneFolder}
             className='folders__add'
             src={addIcon}
             alt='add'
