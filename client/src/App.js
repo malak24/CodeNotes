@@ -71,22 +71,23 @@ class App extends Component {
       })
   }
 
-  getOneFolder() {
+  createOneFolder() {
     axios
-      .get('http://localhost:8080/folderId')
+      .post('http://localhost:8080/folders/folderId', {
+        folder_name : this.state.folderName,
+      })
       .then(response => {
         console.log(response);
+        this.getFolders();
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  createOneFolder() {
+  getOneFolder() {
     axios
-      .post('http://localhost:8080/folderId', {
-        folder_name : this.state.folderName,
-      })
+      .get('http://localhost:8080/folderId')
       .then(response => {
         console.log(response);
       })
