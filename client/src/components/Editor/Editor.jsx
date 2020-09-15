@@ -16,8 +16,6 @@ class Editor extends React.Component {
     this.setState({
       model: model
     })
-
-    console.log(model);
   }
 
   render() {

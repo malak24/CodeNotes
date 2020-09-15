@@ -7,15 +7,15 @@ class Files extends Component {
 
   render() {
     let filesThemes = classNames ({
-      'files--yellow' : this.props.yellowFi,
-      'files--orange' : this.props.orangeFi,
-      'files--pink' : this.props.pinkFi,
-      'files--purple' : this.props.purpleFi,
-      'files--blue' : this.props.blueFi,
-      'files--teal' : this.props.tealFi,
-      'files--green' : this.props.greenFi,
-      'files--grey' : this.props.greyFi,
-      'files--hide' : !this.props.openFiles
+      'files files--yellow' : this.props.yellowFi,
+      'files files--orange' : this.props.orangeFi,
+      'files files--pink' : this.props.pinkFi,
+      'files files--purple' : this.props.purpleFi,
+      'files files--blue' : this.props.blueFi,
+      'files files--teal' : this.props.tealFi,
+      'files files--green' : this.props.greenFi,
+      'files files--grey' : this.props.greyFi,
+      'files files--hide' : !this.props.openFiles
     });    
     
     return (

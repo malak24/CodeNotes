@@ -41,10 +41,6 @@
     display:none;
   }
   
-  &__resizer {
-    @extend .folders__resizer;
-  }
-
   &__input-wrapper {
     display:flex;
     margin-left:0.5rem;

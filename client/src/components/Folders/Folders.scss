@@ -6,8 +6,6 @@
   max-width:22vw;
   position : relative;
   height:100vh;
-  background-color: #7e7f9c;
-
 
   &--yellow {
     background-color: #e2c74d;
@@ -43,15 +41,6 @@
 
   &--hide {
     display:none;
-  }
-
-  &__resizer {
-    position:absolute;
-    cursor: col-resize;
-    height:100%;
-    right:0;
-    top:0;
-    width:4px;
   }
 
   &__input-wrapper {

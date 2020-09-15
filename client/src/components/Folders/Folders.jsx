@@ -7,15 +7,15 @@ class Folders extends Component {
 
   render() {
     let foldersThemes = classNames ({
-      'folders--yellow' : this.props.yellowFo,
-      'folders--orange' : this.props.orangeFo,
-      'folders--pink' : this.props.pinkFo,
-      'folders--purple' : this.props.purpleFo,
-      'folders--blue' : this.props.blueFo,
-      'folders--teal' : this.props.tealFo,
-      'folders--green' : this.props.greenFo,
-      'folders--grey' : this.props.greyFo,
-      'folders--hide' : !this.props.openFolders
+      'folders folders--yellow' : this.props.yellowFo,
+      'folders folders--orange' : this.props.orangeFo,
+      'folders folders--pink' : this.props.pinkFo,
+      'folders folders--purple' : this.props.purpleFo,
+      'folders folders--blue' : this.props.blueFo,
+      'folders folders--teal' : this.props.tealFo,
+      'folders folders--green' : this.props.greenFo,
+      'folders folders--grey' : this.props.greyFo,
+      'folders folders--hide' : !this.props.openFolders
     });
 
     return (
