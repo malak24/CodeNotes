@@ -6,9 +6,12 @@
   max-width:22vw;
   position : relative;
   height:100vh;
+  background-color: #7e7f9c;
+
 
   &--yellow {
-    background-color: #e2c74d
+    background-color: #e2c74d;
+  cursor : poiter;
   }
 
   &--orange {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
-
+import classnames from 'classnames'
 import SideBar from './components/SideBar/SideBar'
 import Folders from './components/Folders/Folders'
 import Files from './components/Files/Files'
@@ -42,6 +42,14 @@ class App extends Component {
       folderName: '',
       fileName: '',
       folderId :'',
+      yellow : false,
+      orange : false,
+      pink : false,
+      purple : false,
+      blue : false,
+      teal : false,
+      green : false,
+      grey : false
     };
   }
 
@@ -150,35 +158,51 @@ class App extends Component {
   }
 
   yellow = () => {
-
+    this.setState({
+      yellow: !(this.state.yellow)
+    });  
   }
 
   orange = () => {
-    
+    this.setState({
+      orange: !(this.state.orange)
+    });  
   }
 
   pink = () => {
-    
+    this.setState({
+      pink: !(this.state.pink)
+    });  
   }
 
   purple = () => {
-    
+    this.setState({
+      purple: !(this.state.purple)
+    });  
   }
 
   blue = () => {
-    
+    this.setState({
+      blue: !(this.state.blue)
+    });  
   }
 
   teal = () => {
-    
+    this.setState({
+      teal: !(this.state.teal)
+    });  
   }
 
   green = () => {
-    
+    this.setState({
+      green: !(this.state.green)
+    });  
   }
 
   grey = () => {
-    
+    this.setState({
+      grey: !(this.state.grey)
+    });  
   }
 
   render() {
@@ -190,6 +214,14 @@ class App extends Component {
           foldersClick={this.foldersClick}
           filesClick={this.filesClick}
           zenClick={this.zenClick}
+          yellow = {this.yellow}
+          orange = {this.orange}
+          pink = {this.pink}
+          purple = {this.purple}
+          blue = {this.blue}
+          teal = {this.teal}
+          green = {this.green}
+          grey = {this.grey}
         />
 
         <Folders

@@ -77,14 +77,14 @@ class SideBar extends Component {
           />
 
           <ul className={this.state.displayColors ? 'sidebar__cus' : 'sidebar__cus--hide'} >
-            <li onClick={this.state.yellow} className='sidebar__cus-yelw'></li>
-            <li onClick={this.state.orange} className='sidebar__cus-org'></li>
-            <li onClick={this.state.pink} className='sidebar__cus-pnk'></li>
-            <li onClick={this.state.purple} className='sidebar__cus-prpl'></li>
-            <li onClick={this.state.blue} className='sidebar__cus-blu'></li>
-            <li onClick={this.state.teal} className='sidebar__cus-teal'></li>
-            <li onClick={this.state.green} className='sidebar__cus-grn'></li>
-            <li onClick={this.state.grey} className='sidebar__cus-grey'></li>
+            <li onClick={this.props.yellow} className='sidebar__cus-yelw'></li>
+            <li onClick={this.props.orange} className='sidebar__cus-org'></li>
+            <li onClick={this.props.pink} className='sidebar__cus-pnk'></li>
+            <li onClick={this.props.purple} className='sidebar__cus-prpl'></li>
+            <li onClick={this.props.blue} className='sidebar__cus-blu'></li>
+            <li onClick={this.props.teal} className='sidebar__cus-teal'></li>
+            <li onClick={this.props.green} className='sidebar__cus-grn'></li>
+            <li onClick={this.props.grey} className='sidebar__cus-grey'></li>
           </ul>
         </div>
 
