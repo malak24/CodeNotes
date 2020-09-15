@@ -19,7 +19,7 @@ import 'froala-editor/js/third_party/spell_checker.min.js';
 
 let inputValueFo;
 let inputValueFi;
-
+let searchVal;
 
 class App extends Component {
   constructor() {
@@ -144,39 +144,40 @@ class App extends Component {
     console.log(inputValueFi)
   }
 
+  search = (e) => {
+    searchVal = e.target.value;
+    //SELECT * FROM folders, files WHERE string = search input value
+  }
+
   yellow = () => {
 
   }
 
-  yellow = () => {
+  orange = () => {
     
   }
 
-  yellow = () => {
+  pink = () => {
     
   }
 
-  yellow = () => {
+  purple = () => {
     
   }
 
-  yellow = () => {
+  blue = () => {
     
   }
 
-  yellow = () => {
+  teal = () => {
     
   }
 
-  yellow = () => {
+  green = () => {
     
   }
 
-  yellow = () => {
-    
-  }
-
-  yellow = () => {
+  grey = () => {
     
   }
 

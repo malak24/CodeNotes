@@ -2,11 +2,42 @@
 @import '../../partials/variables.scss';
 
 .folders {
-  background-color:#7e7f9c;
   width:22vw;
   max-width:22vw;
   position : relative;
   height:100vh;
+
+  &--yellow {
+    background-color: #e2c74d
+  }
+
+  &--orange {
+    background-color: #db907a
+  }
+
+  &--pink {
+    background-color: #8d304c
+  }
+
+  &--purple {
+    background-color: #7e7f9c
+  }
+
+  &--blue {
+    background-color: #4e7492
+  }
+
+  &--teal {
+    background-color: #528e96
+  }
+
+  &--green {
+    background-color: #819c5c
+  }
+
+  &--grey {
+    background-color: #474747
+  }
 
   &--hide {
     display:none;
@@ -26,13 +57,13 @@
     margin-left:0.5rem;
 
     @include tablet {
-      width:8rem;
+      width:9rem;
       height:1rem;
     }
   }
 
   &__input {
-    width:5.5rem;
+    width:8.3rem;
     height: 1.8rem;
     margin:0.5rem;
     border:none;

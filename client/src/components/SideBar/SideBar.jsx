@@ -14,9 +14,12 @@ class SideBar extends Component {
     super();
 
     this.changeTheme = this.changeTheme.bind(this);
+    this.displaySearch = this.displaySearch.bind(this);
+
 
     this.state = {
       displayColors: false,
+      displaySearch: false,
     }
   }
 
@@ -26,23 +29,46 @@ class SideBar extends Component {
     })
   }
 
+  displaySearch() {
+    this.setState({
+      displaySearch: !(this.state.displaySearch)
+    })
+  }
+
   render() {
     return (
       <div className='sidebar'>
 
-        <img onClick={this.props.foldersClick}
+        <img
+          onClick={this.props.foldersClick}
           src={folders}
           alt='folder icon'
-          title='Display Folders' />
+          title='Display Folders'
+        />
 
-        <img onClick={this.props.filesClick}
+        <img
+          onClick={this.props.filesClick}
           src={files}
           alt='files icon'
-          title='Display Files' />
-
-        <img src={search} alt='search icon' title='Search' />
-
+          title='Display Files'
+        />
         <div className = 'sidebar__wrapper'>
+          <img
+            onClick={this.displaySearch}
+            src={search}
+            alt='search icon'
+            title='Search'
+          />
+
+          <input
+          // onChange = {this.props.search}
+            className={this.state.displaySearch ? 'sidebar__input' : 'sidebar__input--hide'}
+            type='text'
+            placeholder='Search ...' 
+            />
+        </div>
+
+        <div className='sidebar__wrapper'>
           <img
             onClick={this.changeTheme}
             src={customize}
@@ -51,14 +77,14 @@ class SideBar extends Component {
           />
 
           <ul className={this.state.displayColors ? 'sidebar__cus' : 'sidebar__cus--hide'} >
-            <li onClick = {this.state.yellow} className='sidebar__cus-yelw'></li>
-            <li onClick = {this.state.orange} className='sidebar__cus-org'></li>
-            <li onClick = {this.state.pink} className='sidebar__cus-pnk'></li>
-            <li onClick = {this.state.purple} className='sidebar__cus-prpl'></li>
-            <li onClick = {this.state.blue} className='sidebar__cus-blu'></li>
-            <li onClick = {this.state.teal} className='sidebar__cus-teal'></li>
-            <li onClick = {this.state.green} className='sidebar__cus-grn'></li>
-            <li onClick = {this.state.grey} className='sidebar__cus-grey'></li>
+            <li onClick={this.state.yellow} className='sidebar__cus-yelw'></li>
+            <li onClick={this.state.orange} className='sidebar__cus-org'></li>
+            <li onClick={this.state.pink} className='sidebar__cus-pnk'></li>
+            <li onClick={this.state.purple} className='sidebar__cus-prpl'></li>
+            <li onClick={this.state.blue} className='sidebar__cus-blu'></li>
+            <li onClick={this.state.teal} className='sidebar__cus-teal'></li>
+            <li onClick={this.state.green} className='sidebar__cus-grn'></li>
+            <li onClick={this.state.grey} className='sidebar__cus-grey'></li>
           </ul>
         </div>
 
