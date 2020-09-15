@@ -6,8 +6,7 @@ import files from '../../assets/files.png';
 import search from '../../assets/search.png';
 import customize from '../../assets/customize.png';
 import del from '../../assets/delete.png';
-import zen from '../../assets/zen-white.png';
-import tag from '../../assets/tag.png';
+import zen from '../../assets/zen.png';
 
 
 class SideBar extends Component {
@@ -41,7 +40,6 @@ class SideBar extends Component {
           alt='files icon'
           title='Display Files' />
 
-        <img src={tag} alt='image icon' title='Add tag' />
         <img src={search} alt='search icon' title='Search' />
 
         <div className = 'sidebar__wrapper'>
@@ -53,14 +51,14 @@ class SideBar extends Component {
           />
 
           <ul className={this.state.displayColors ? 'sidebar__cus' : 'sidebar__cus--hide'} >
-            <li className='sidebar__cus-yelw'></li>
-            <li className='sidebar__cus-org'></li>
-            <li className='sidebar__cus-pnk'></li>
-            <li className='sidebar__cus-prpl'></li>
-            <li className='sidebar__cus-blu'></li>
-            <li className='sidebar__cus-teal'></li>
-            <li className='sidebar__cus-grn'></li>
-            <li className='sidebar__cus-grey'></li>
+            <li onClick = {this.state.yellow} className='sidebar__cus-yelw'></li>
+            <li onClick = {this.state.orange} className='sidebar__cus-org'></li>
+            <li onClick = {this.state.pink} className='sidebar__cus-pnk'></li>
+            <li onClick = {this.state.purple} className='sidebar__cus-prpl'></li>
+            <li onClick = {this.state.blue} className='sidebar__cus-blu'></li>
+            <li onClick = {this.state.teal} className='sidebar__cus-teal'></li>
+            <li onClick = {this.state.green} className='sidebar__cus-grn'></li>
+            <li onClick = {this.state.grey} className='sidebar__cus-grey'></li>
           </ul>
         </div>
 

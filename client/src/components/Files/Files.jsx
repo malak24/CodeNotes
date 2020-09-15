@@ -19,12 +19,12 @@ class Files extends Component {
             />
 
           <img
-            onClick = {this.props.createFile} 
+            onClick = {() => this.props.createOneFile(this.props.folderId)} 
             className='files__add' 
             src={addIcon} 
             alt='add' 
           />
-
+          
           <ul className = 'files__list'>
           {this.props.files.map((file) => (
               <li>{file.file_name}</li>

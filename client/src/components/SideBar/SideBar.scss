@@ -11,7 +11,7 @@
   padding-top:2rem;
 
   @include tablet {
-    width:11%;
+    width:7%;
   }
 
   &__wrapper {
@@ -24,7 +24,7 @@
     cursor: pointer;
 
     @include tablet {
-      @include dimensions(5vw, 5vw);
+      @include dimensions(3.5vw, 3.5vw);
     }
   }
 

@@ -37,28 +37,12 @@ router.get('/folders/:folderId/files', function (req, res) {
   });
 });
 
-
-
-
-
-
-//Endpoint to get a specific folder with all its files
-router.get('/:folderId', function (req, res) {
-  connection.query(`SELECT * FROM files WHERE folder_id = ${folder_id}`, (error, results, fields) => {
+router.post('/folders/:folderId/:fileId', function (req, res) {
+  console.log(req.params.folderId);
+  connection.query(`INSERT INTO files (folder_id, file_name) VALUES ('${req.params.folderId}', '${req.body.file_name}')`, (error, results, fields) => {
     if (error) throw error;
-    console.log('The selected folder is : ', results);
-    res.status(200).send(results)
-  });
-});
-
-
-
-
-
-router.post('/:folderId/:fileId', function (req, res) {
-  console.log(req.body)
-  courses.push(req.body)
-  res.status(200).send("File created successfully")
+    res.status(200).send("File created successfully")
+  })
 });
 
 

@@ -30,17 +30,18 @@ class App extends Component {
     this.zenClick = this.zenClick.bind(this);
 
     this.getInputFolder = this.getInputFolder.bind(this);
-    this.createOneFolder = this.createOneFolder.bind(this); 
-    // this.createFile = this.createFile.bind(this);
+    this.createOneFolder = this.createOneFolder.bind(this);
+    this.createOneFile = this.createOneFile.bind(this)
     this.getFiles = this.getFiles.bind(this);
 
     this.state = {
       openFolders: true,
       openFiles: true,
       folders: [],
-      files : [],
+      files: [],
       folderName: '',
-      fileName: ''
+      fileName: '',
+      folderId :'',
     };
   }
 
@@ -84,8 +85,8 @@ class App extends Component {
       .get(`http://localhost:8080/folders/${folder_id}/files`)
       .then(response => {
         console.log(response.data)
-        this.setState({ files: response.data });
-      console.log(this.state.files)
+        this.setState({ files: response.data, folderId : folder_id});
+        console.log(this.state.folderId)
       })
       .catch(error => {
         console.log(error)
@@ -95,7 +96,7 @@ class App extends Component {
   createOneFolder() {
     axios
       .post('http://localhost:8080/folders/folderId', {
-        folder_name : this.state.folderName,
+        folder_name: this.state.folderName,
       })
       .then(response => {
         console.log(response);
@@ -106,20 +107,9 @@ class App extends Component {
       })
   }
 
-  getOneFolder() {
-    axios
-      .get('http://localhost:8080/folderId')
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
   getOneFile() {
     axios
-      .get('http://localhost:8080/folderId/fileId')
+      .get('http://localhost:8080/folders/folderId/fileId')
       .then(response => {
         console.log(response);
       })
@@ -128,11 +118,14 @@ class App extends Component {
       })
   }
 
-  createOneFile() {
+  createOneFile(folder_id) {
     axios
-      .post('http://localhost:8080/folderId/fileId')
+      .post(`http://localhost:8080/folders/${folder_id}/fileId`, {
+        file_name: this.state.fileName,
+      })
       .then(response => {
         console.log(response);
+        this.getFiles(folder_id);
       })
       .catch(error => {
         console.log(error)
@@ -141,14 +134,50 @@ class App extends Component {
 
   getInputFolder = (e) => {
     inputValueFo = e.target.value;
-    this.setState({folderName: inputValueFo})
+    this.setState({ folderName: inputValueFo })
     console.log(inputValueFo)
   }
 
   getInputFile = (e) => {
     inputValueFi = e.target.value;
-    this.setState({fileName: inputValueFi})
+    this.setState({ fileName: inputValueFi })
     console.log(inputValueFi)
+  }
+
+  yellow = () => {
+
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
+  }
+
+  yellow = () => {
+    
   }
 
   render() {
@@ -164,18 +193,20 @@ class App extends Component {
 
         <Folders
           getInputFolder={this.getInputFolder}
-          createOneFolder = {this.createOneFolder}
-          folders = {this.state.folders}
+          createOneFolder={this.createOneFolder}
+          folders={this.state.folders}
           openFolders={this.state.openFolders}
           foldersClick={this.foldersClick}
-          getFiles = {this.getFiles}
+          getFiles={this.getFiles}
         />
 
-        <Files 
-        openFiles={this.state.openFiles} 
-        filesClick={this.filesClick}
-        files = {this.state.files} 
-        getInputFile = {this.getInputFile}
+        <Files
+          openFiles={this.state.openFiles}
+          createOneFile={this.createOneFile}
+          filesClick={this.filesClick}
+          files={this.state.files}
+          getInputFile={this.getInputFile}
+          folderId = {this.state.folderId}
         />
 
         <div className='app__right-section'>
