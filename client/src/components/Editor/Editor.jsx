@@ -2,28 +2,14 @@ import React from 'react';
 import Froala from '../../froala/lib/FroalaEditor'
 
 class Editor extends React.Component {
-  constructor() {
-    super();
-
-    this.handleModelChange = this.handleModelChange.bind(this);
-
-    this.state = {
-      model: 'Start writing here'
-    };
-  }
-
-  handleModelChange(model) {
-    this.setState({
-      model: model
-    })
-  }
 
   render() {
     return (
       <div className = 'editor'>
         <Froala
-          model={this.state.model}
-          onModelChange={this.handleModelChange}
+          onModelChange={this.props.handleModelChange}
+          onKeyPress = {this.props.saveNote}
+          model = {this.props.model}
           config={{
             charCounterCount: false,
             height: 490,

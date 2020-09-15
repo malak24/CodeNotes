@@ -40,7 +40,7 @@ class Files extends Component {
           
           <ul className = 'files__list'>
           {this.props.files.map((file) => (
-              <li>{file.file_name}</li>
+              <li onClick = {() => this.props.getNote(file.folder_id, file.file_id)}>{file.file_name}</li>
             ))}          
           </ul>
         </div>

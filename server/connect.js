@@ -45,6 +45,19 @@ router.post('/folders/:folderId/:fileId', function (req, res) {
   })
 });
 
+router.get('/folders/:folder_id/:file_id', function (req, res) {
+  connection.query(`SELECT file_content FROM files WHERE file_id = ${req.params.file_id}` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  })
+})
+
+router.post('/folders/folder_id/file_id'), function (req, res) {
+  connection.query(`UPDATE files SET(file_content) = '${req.params.fileContent}' WHERE file_id = ${req.params.fileId} )` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send("File created successfully")
+  })
+};
 
 // end the connection betweem nodeJs and db
 function endconnection() {
