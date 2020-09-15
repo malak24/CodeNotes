@@ -17,6 +17,7 @@ import 'froala-editor/js/third_party/image_tui.min.js';
 import 'froala-editor/js/third_party/embedly.min.js';
 import 'froala-editor/js/third_party/spell_checker.min.js';
 
+
 let inputValueFo;
 let inputValueFi;
 let searchVal;
@@ -42,14 +43,25 @@ class App extends Component {
       folderName: '',
       fileName: '',
       folderId :'',
-      yellow : false,
-      orange : false,
-      pink : false,
-      purple : false,
-      blue : false,
-      teal : false,
-      green : false,
-      grey : false
+      search : '',
+
+      yellowFo : false,
+      orangeFo : false,
+      pinkFo : false,
+      purpleFo : false,
+      blueFo : false,
+      tealFo : false,
+      greenFo : false,
+      greyFo : true,
+
+      yellowFi : false,
+      orangeFi : false,
+      pinkFi : false,
+      purpleFi : false,
+      blueFi : false,
+      tealFi : false,
+      greenFi : false,
+      greyFi : true
     };
   }
 
@@ -143,66 +155,192 @@ class App extends Component {
   getInputFolder = (e) => {
     inputValueFo = e.target.value;
     this.setState({ folderName: inputValueFo })
-    console.log(inputValueFo)
   }
 
   getInputFile = (e) => {
     inputValueFi = e.target.value;
     this.setState({ fileName: inputValueFi })
-    console.log(inputValueFi)
   }
 
   search = (e) => {
     searchVal = e.target.value;
+    this.setState ({search : searchVal})
     //SELECT * FROM folders, files WHERE string = search input value
   }
 
-  yellow = () => {
-    this.setState({
-      yellow: !(this.state.yellow)
-    });  
+  yellowFn = () => {
+    this.setState ({
+      orangeFo : false,
+      pinkFo :false,
+      purpleFo :false,
+      blueFo :false,
+      tealFo : false,
+      greenFo :false,
+      greyFo : false,
+      yellowFo : !this.state.yellowFo,
+
+      orangeFi : false,
+      pinkFi :false,
+      purpleFi :false,
+      blueFi :false,
+      tealFi : false,
+      greenFi :false,
+      greyFi : false,
+      yellowFi : !this.state.yellowFi
+    })
   }
 
-  orange = () => {
-    this.setState({
-      orange: !(this.state.orange)
-    });  
+  orangeFn = () => {
+    this.setState ({
+      orangeFo : !this.state.orangeFo,
+      pinkFo :false,
+      purpleFo :false,
+      blueFo :false,
+      tealFo : false,
+      greenFo :false,
+      greyFo  : false,
+      yellowFo  : false,
+
+      orangeFi : !this.state.orangeFi,
+      pinkFi :false,
+      purpleFi :false,
+      blueFi :false,
+      tealFi : false,
+      greenFi :false,
+      greyFi : false,
+      yellowFi : false
+    })
   }
 
-  pink = () => {
-    this.setState({
-      pink: !(this.state.pink)
-    });  
+  pinkFn = () => {
+    this.setState ({
+      orangeFo  : false,
+      pinkFo :!this.state.pinkFo,
+      purpleFo :false,
+      blueFo :false,
+      tealFo  : false,
+      greenFo :false,
+      greyFo  : false,
+      yellowFo  : false,
+    
+      orangeFi : false,
+      pinkFi : !this.state.pinkFi,
+      purpleFi :false,
+      blueFi :false,
+      tealFi : false,
+      greenFi :false,
+      greyFi : false,
+      yellowFi : false
+    }) 
   }
 
-  purple = () => {
-    this.setState({
-      purple: !(this.state.purple)
-    });  
+  purpleFn = () => {
+    this.setState ({
+      orangeFo  : false,
+      pinkFo :false,
+      purpleFo :!this.state.purpleFo,
+      blueFo :false,
+      tealFo  : false,
+      greenFo :false,
+      greyFo  : false,
+      yellowFo  : false,
+
+      orangeFi : false,
+      pinkFi :false,
+      purpleFi :!this.state.purpleFi,
+      blueFi :false,
+      tealFi : false,
+      greenFi :false,
+      greyFi : false,
+      yellowFi : false
+    }) 
   }
 
-  blue = () => {
-    this.setState({
-      blue: !(this.state.blue)
-    });  
+  blueFn = () => {
+    this.setState ({
+      orangeFo  : false,
+      pinkFo :false,
+      purpleFo :false,
+      blueFo :!this.state.blueFo,
+      tealFo  : false,
+      greenFo :false,
+      greyFo  : false,
+      yellowFo : false,
+
+      orangeFi : false,
+      pinkFi :false,
+      blueFi :!this.state.blueFi,
+      tealFi : false,
+      greenFi :false,
+      greyFi : false,
+      yellowFi : false
+    }) 
   }
 
-  teal = () => {
-    this.setState({
-      teal: !(this.state.teal)
-    });  
+  tealFn = () => {
+    this.setState ({
+      orangeFo  : false,
+      pinkFo :false,
+      purpleFo :false,
+      blueFo :false,
+      tealFo  : !this.state.tealFo,
+      greenFo :false,
+      greyFo  : false,
+      yellowFo : false,
+
+      orangeFi : false,
+      pinkFi :false,
+      purpleFi :false,
+      blueFi :false,
+      tealFi  : !this.state.tealFi,
+      greenFi :false,
+      greyFi : false,
+      yellowFi : false
+    })  
   }
 
-  green = () => {
-    this.setState({
-      green: !(this.state.green)
-    });  
+  greenFn = () => {
+    this.setState ({
+      orangeFo  : false,
+      pinkFo :false,
+      purpleFo :false,
+      blueFo :false,
+      tealFo  : false,
+      greenFo : !this.state.greenFo,
+      greyFo  : false,
+      yellowFo  : false,
+
+      orangeFi : false,
+      pinkFi :false,
+      purpleFi :false,
+      blueFi :false,
+      tealFi : false,
+      greenFi : !this.state.greenFi,
+      greyFi : false,
+      yellowFi : false
+    }) 
   }
 
-  grey = () => {
-    this.setState({
-      grey: !(this.state.grey)
-    });  
+  greyFn = () => {
+    this.setState ({
+      orangeFo  : false,
+      pinkFo :false,
+      purpleFo :false,
+      blueFo :false,
+      tealFo  : false,
+      greenFo :false,
+      greyFo  : !this.state.greyFo,
+      yellowFo  : false,
+
+      orangeFi : false,
+      pinkFi :false,
+      purpleFi :false,
+      blueFi :false,
+      tealFi : false,
+      greenFi :false,
+      greyFi : !this.state.greyFi,
+      yellowFi : false
+    }) 
   }
 
   render() {
@@ -214,14 +352,17 @@ class App extends Component {
           foldersClick={this.foldersClick}
           filesClick={this.filesClick}
           zenClick={this.zenClick}
-          yellow = {this.yellow}
-          orange = {this.orange}
-          pink = {this.pink}
-          purple = {this.purple}
-          blue = {this.blue}
-          teal = {this.teal}
-          green = {this.green}
-          grey = {this.grey}
+          search = {this.search}
+
+          yellowFn = {this.yellowFn}
+          orangeFn = {this.orangeFn}
+          pinkFn = {this.pinkFn}          
+          purpleFn = {this.purpleFn}          
+          blueFn = {this.blueFn}
+          tealFn = {this.tealFn}
+          greenFn = {this.greenFn}
+          greyFn = {this.greyFn}
+
         />
 
         <Folders
@@ -231,6 +372,15 @@ class App extends Component {
           openFolders={this.state.openFolders}
           foldersClick={this.foldersClick}
           getFiles={this.getFiles}
+
+          yellowFo = {this.state.yellowFo}
+          orangeFo = {this.state.orangeFo}
+          pinkFo = {this.state.pinkFo}
+          purpleFo = {this.state.purpleFo}
+          blueFo = {this.state.blueFo}
+          tealFo = {this.state.tealFo}
+          greenFo = {this.state.greenFo}
+          greyFo = {this.state.greyFo}
         />
 
         <Files
@@ -240,6 +390,15 @@ class App extends Component {
           files={this.state.files}
           getInputFile={this.getInputFile}
           folderId = {this.state.folderId}
+
+          yellowFi = {this.state.yellowFi}
+          orangeFi = {this.state.orangeFi}
+          pinkFi = {this.state.pinkFi}
+          purpleFi = {this.state.purpleFi}
+          blueFi = {this.state.blueFi}
+          tealFi = {this.state.tealFi}
+          greenFi = {this.state.greenFi}
+          greyFi = {this.state.greyFi}
         />
 
         <div className='app__right-section'>

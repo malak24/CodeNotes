@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import './Files.scss';
 import addIcon from '../../assets/add.png'
+import classNames from 'classnames'
 
 class Files extends Component {
 
   render() {
+    let filesThemes = classNames ({
+      'files--yellow' : this.props.yellowFi,
+      'files--orange' : this.props.orangeFi,
+      'files--pink' : this.props.pinkFi,
+      'files--purple' : this.props.purpleFi,
+      'files--blue' : this.props.blueFi,
+      'files--teal' : this.props.tealFi,
+      'files--green' : this.props.greenFi,
+      'files--grey' : this.props.greyFi,
+      'files--hide' : !this.props.openFiles
+    });    
+    
     return (
-      <div className={this.props.openFiles ? 'files' : 'files--hide'}>
+      <div className={filesThemes}>
         <div className='files__resizer'></div>
         <div className='files__input-wrapper'>
 

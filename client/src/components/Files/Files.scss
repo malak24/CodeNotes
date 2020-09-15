@@ -4,7 +4,38 @@
 
 .files {
   @extend .folders;
-  background-color : #b9bacc;
+
+  &--yellow {
+    background-color:#ebdca1;
+  }
+
+  &--orange {
+    background-color: #dab0a3;
+  }
+
+  &--pink {
+    background-color:#9b6c7a;
+  }
+
+  &--purple {
+    background-color: #b9bacc;
+  }
+
+  &--blue {
+    background-color: #aecbe2;
+  }
+
+  &--teal {
+    background-color: #8ca9ad;
+  }
+
+  &--green {
+    background-color:#a4b49a;
+  }
+
+  &--grey {
+    background-color: #ececec;
+  }
 
   &--hide {
     display:none;
