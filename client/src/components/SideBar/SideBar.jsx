@@ -52,7 +52,7 @@ class SideBar extends Component {
           alt='files icon'
           title='Display Files'
         />
-        <div className = 'sidebar__wrapper'>
+        <div className='sidebar__wrapper'>
           <img
             onClick={this.displaySearch}
             src={search}
@@ -60,12 +60,37 @@ class SideBar extends Component {
             title='Search'
           />
 
+            <p className='sidebar__search-text' >The search tool works by searching for a letter,
+            few letters, a word or sentence. chose one of
+            the options below and enter the word you are looking
+            for in the search box
+            </p>
+
+            <form className = 'sidebar__search-wrapper'>
+            <div className='sidebar__search-options'>
+              <div className='sidebar__search-option'>
+                <input type="radio" id="folderName" name="search" value="Folder name" />
+                <label for="male">Folder name</label>
+              </div>
+
+              <div className='sidebar__search-option'>
+                <input type="radio" id="fileName" name="search" value="File name" />
+                <label for="male">File name</label>
+              </div>
+
+              <div className='sidebar__search-option'>
+                <input type="radio" id="fileContent" name="search" value="File content" />
+                <label for="male">File content</label>
+              </div>
+            </div>
+
+          </form>
+
           <input
-          // onChange = {this.props.search}
             className={this.state.displaySearch ? 'sidebar__input' : 'sidebar__input--hide'}
             type='text'
-            placeholder='Search ...' 
-            />
+            placeholder='Search ...'
+          />
         </div>
 
         <div className='sidebar__wrapper'>
