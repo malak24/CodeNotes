@@ -24,15 +24,22 @@ class App extends Component {
     this.state = {
       openFolders: true,
       openFiles: true,
+
       folders: [],
       files: [],
+
       folderName: '',
       fileName: '',
       fileContent :'',
+
       folderId: '',
       fileId : '',
+      
       search: '',
       model : 'Start writing here',
+      folderSearch : false,
+      fileSearch : false,
+      noteSearch : false,
 
       yellowFo: false,
       orangeFo: false,

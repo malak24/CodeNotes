@@ -93,7 +93,7 @@ class SideBar extends Component {
 
               <div className='sidebar__search-option'>
                 <input type="radio" id="fileContent" name="search" value="File content" />
-                <label for="male">File content</label>
+                <label for="male">Note</label>
               </div>
             </div>
 
@@ -106,7 +106,7 @@ class SideBar extends Component {
             onChange = {this.props.getSearchVal}
           />
 
-          <img onClick = {this.state.search} className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} src = {add} alt = 'add' />
+          <img onClick = {this.props.search} className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} src = {add} alt = 'add' />
         </div>
 
         <div className='sidebar__wrapper'>

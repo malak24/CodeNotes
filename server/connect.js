@@ -37,8 +37,6 @@ router.get('/folders/:folderId/files', function (req, res) {
   });
 });
 
-
-
 router.get('/folders/:folder_id/:file_id/note', function (req, res) {
   connection.query(`SELECT file_content FROM files WHERE file_id = ${req.params.file_id}`, (error, results, fields) => {
     if (error) throw error;
