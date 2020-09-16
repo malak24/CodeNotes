@@ -7,6 +7,7 @@ import search from '../../assets/search.png';
 import customize from '../../assets/customize.png';
 import del from '../../assets/delete.png';
 import zen from '../../assets/zen.png';
+import add from '../../assets/add.png';
 
 
 class SideBar extends Component {
@@ -20,6 +21,9 @@ class SideBar extends Component {
     this.state = {
       displayColors: false,
       displaySearch: false,
+      displayText: false,
+      displayOptions: false,
+      displayAdd : false
     }
   }
 
@@ -31,7 +35,10 @@ class SideBar extends Component {
 
   displaySearch() {
     this.setState({
-      displaySearch: !(this.state.displaySearch)
+      displaySearch: !(this.state.displaySearch),
+      displayText: !(this.state.displayText),
+      displayOptions: !(this.state.displayOptions),
+      displayAdd : !(this.state.displayAdd),
     })
   }
 
@@ -44,6 +51,7 @@ class SideBar extends Component {
           src={folders}
           alt='folder icon'
           title='Display Folders'
+          className = 'sidebar__img'
         />
 
         <img
@@ -51,23 +59,28 @@ class SideBar extends Component {
           src={files}
           alt='files icon'
           title='Display Files'
+          className = 'sidebar__img'
         />
-        <div className='sidebar__wrapper'>
-          <img
-            onClick={this.displaySearch}
-            src={search}
-            alt='search icon'
-            title='Search'
-          />
 
-            <p className='sidebar__search-text' >The search tool works by searching for a letter,
-            few letters, a word or sentence. chose one of
-            the options below and enter the word you are looking
-            for in the search box
+        <img
+          onClick={this.displaySearch}
+          src={search}
+          alt='search icon'
+          title='Search'
+          className = 'sidebar__img'
+        />
+
+        <div className='sidebar__wrapper'>
+
+          <p className={this.state.displayText ? 'sidebar__search-text' : 'sidebar__search-text--hide'} >The search tool works by searching for a letter,
+          few letters, a word or sentence. chose one of
+          the options on the left and enter the word you are looking
+          for in the search box
             </p>
 
-            <form className = 'sidebar__search-wrapper'>
-            <div className='sidebar__search-options'>
+          <form className='sidebar__search-wrapper'>
+            <div className={this.state.displayOptions ? 'sidebar__search-options' : 'sidebar__search-options--hide'}>
+
               <div className='sidebar__search-option'>
                 <input type="radio" id="folderName" name="search" value="Folder name" />
                 <label for="male">Folder name</label>
@@ -90,7 +103,10 @@ class SideBar extends Component {
             className={this.state.displaySearch ? 'sidebar__input' : 'sidebar__input--hide'}
             type='text'
             placeholder='Search ...'
+            onChange = {this.props.getSearchVal}
           />
+
+          <img onClick = {this.state.search} className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} src = {add} alt = 'add' />
         </div>
 
         <div className='sidebar__wrapper'>
@@ -99,6 +115,7 @@ class SideBar extends Component {
             src={customize}
             alt='customize icon'
             title='Themes'
+            className = 'sidebar__img'
           />
 
           <ul className={this.state.displayColors ? 'sidebar__cus' : 'sidebar__cus--hide'} >
@@ -113,12 +130,18 @@ class SideBar extends Component {
           </ul>
         </div>
 
-        <img src={del} alt='delete icon' title='Delete' />
+        <img src={del} 
+        alt='delete icon' 
+        title='Delete' 
+        className = 'sidebar__img'
+        />
 
         <img onClick={this.props.zenClick}
           src={zen}
           alt='circle icon'
-          title='Zen mode' />
+          title='Zen mode' 
+          className = 'sidebar__img'
+          />
       </div>
     )
   }

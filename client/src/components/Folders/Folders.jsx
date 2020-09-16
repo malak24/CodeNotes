@@ -21,8 +21,8 @@ class Folders extends Component {
     return (
       <div className= {foldersThemes}>
         <div className='folders__resizer'></div>
-        <div className='folders__input-wrapper'>
 
+        <div className='folders__input-wrapper'>
           <input
             onChange = {this.props.getInputFolder}
             className = 'folders__input'

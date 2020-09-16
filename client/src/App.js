@@ -36,21 +36,21 @@ class App extends Component {
 
       yellowFo: false,
       orangeFo: false,
-      pinkFo: false,
+      pinkFo: true,
       purpleFo: false,
       blueFo: false,
       tealFo: false,
       greenFo: false,
-      greyFo: true,
+      greyFo: false,
 
       yellowFi: false,
       orangeFi: false,
-      pinkFi: false,
+      pinkFi: true,
       purpleFi: false,
       blueFi: false,
       tealFi: false,
       greenFi: false,
-      greyFi: true
+      greyFi: false
     };
   }
 
@@ -156,6 +156,20 @@ class App extends Component {
       })
   }
 
+  // deleteFolder = (folder_id) => {
+  //   axios
+  //   .post(`http://localhost:8080/folders/${folder_id}`, {
+  //     folderId: folder_id 
+  //   })
+  //   .then(response => {
+  //     console.log(response);
+  //     this.getFolders(folder_id);
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+  // }
+
   getInputFolder = (e) => {
     inputValueFo = e.target.value;
     this.setState({ folderName: inputValueFo })
@@ -166,9 +180,14 @@ class App extends Component {
     this.setState({ fileName: inputValueFi })
   }
 
-  search = (e) => {
+  getSearchVal = (e) => {
     searchVal = e.target.value;
     this.setState({search: searchVal})
+    console.log(searchVal)
+  }
+
+  search = () => {
+    console.log('search is working')
   }
 
   yellowFn = () => {
@@ -362,7 +381,8 @@ class App extends Component {
           foldersClick={this.foldersClick}
           filesClick={this.filesClick}
           zenClick={this.zenClick}
-          search={this.search}
+          getSearchVal={this.getSearchVal}
+          search = {this.search}
 
           yellowFn={this.yellowFn}
           orangeFn={this.orangeFn}
