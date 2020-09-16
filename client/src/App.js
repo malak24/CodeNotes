@@ -116,7 +116,7 @@ class App extends Component {
 
   getNote = (folder_id, file_id) => {
     axios
-      .get(`http://localhost:8080/folders/${folder_id}/${file_id}`)
+      .get(`http://localhost:8080/folders/${folder_id}/${file_id}/note`)
       .then(response => {
         this.setState({ 
           model : response.data[0].file_content,
@@ -131,14 +131,11 @@ class App extends Component {
 
   saveNote(folder_id, file_id) {
     axios
-      .post(`http://localhost:8080/folders/${folder_id}/${file_id}`, {
+      .post(`http://localhost:8080/folders/${folder_id}/${file_id}/note`, {
         fileContent: this.state.model,
       })
       .then(response => {
         console.log(response);
-        console.log(folder_id)
-        console.log(file_id)
-        // this.getFiles(folder_id);
       })
       .catch(error => {
         console.log(error)
@@ -171,8 +168,7 @@ class App extends Component {
 
   search = (e) => {
     searchVal = e.target.value;
-    this.setState({ search: searchVal })
-    //SELECT * FROM folders, files WHERE string = search input value
+    this.setState({search: searchVal})
   }
 
   yellowFn = () => {
@@ -354,6 +350,7 @@ class App extends Component {
     this.setState({
       model: model
     })
+    this.saveNote(this.state.folderId, this.state.fileId)
   }
 
   render() {
@@ -421,6 +418,8 @@ class App extends Component {
           handleModelChange = {this.handleModelChange}
           model = {this.state.model}
           saveNote = {this.saveNote}
+          folderId = {this.state.folderId}
+          fileId = {this.state.fileId}
           />
         </div>
       </div>

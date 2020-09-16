@@ -37,27 +37,29 @@ router.get('/folders/:folderId/files', function (req, res) {
   });
 });
 
-router.post('/folders/:folderId/:fileId', function (req, res) {
-  console.log(req.params.folderId);
-  connection.query(`INSERT INTO files (folder_id, file_name) VALUES ('${req.params.folderId}', '${req.body.file_name}')`, (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send("File created successfully")
-  })
-});
 
-router.get('/folders/:folder_id/:file_id', function (req, res) {
-  connection.query(`SELECT file_content FROM files WHERE file_id = ${req.params.file_id}` , (error, results, fields) => {
+
+router.get('/folders/:folder_id/:file_id/note', function (req, res) {
+  connection.query(`SELECT file_content FROM files WHERE file_id = ${req.params.file_id}`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })
 })
 
-router.post('/folders/folder_id/file_id'), function (req, res) {
-  connection.query(`UPDATE files SET(file_content) = '${req.params.fileContent}' WHERE file_id = ${req.params.fileId} )` , (error, results, fields) => {
+router.post('/folders/:folderId/:fileId/note', function (req, res) {
+  connection.query(`UPDATE files SET file_content = '${req.body.fileContent}' WHERE file_id = ${req.params.fileId}`, (error, results, fields) => {
     if (error) throw error;
-    res.status(200).send("File created successfully")
+    res.status(200).send("Note saved !")
   })
-};
+})
+
+router.post('/folders/:folderId/:fileId', function (req, res) {
+  console.log(req.params.folderId);
+  connection.query(`INSERT INTO files (folder_id, file_name) VALUES ('${req.params.folderId}', '${req.body.file_name}')`, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send("File saved !")
+  })
+});
 
 // end the connection betweem nodeJs and db
 function endconnection() {
