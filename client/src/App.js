@@ -30,16 +30,16 @@ class App extends Component {
 
       folderName: '',
       fileName: '',
-      fileContent :'',
+      fileContent: '',
 
       folderId: '',
-      fileId : '',
-      
+      fileId: '',
+
       search: '',
-      model : 'Start writing here',
-      folderSearch : false,
-      fileSearch : false,
-      noteSearch : false,
+      model: 'Start writing here',
+      folderSearch: false,
+      fileSearch: false,
+      noteSearch: false,
 
       yellowFo: false,
       orangeFo: false,
@@ -71,20 +71,20 @@ class App extends Component {
     });
   };
 
-  filesClick = () =>  {
+  filesClick = () => {
     this.setState({
       openFiles: !(this.state.openFiles)
     });
   };
 
-  zenClick = () =>  {
+  zenClick = () => {
     this.setState({
       openFolders: false,
       openFiles: false,
     })
   }
 
-  getFolders = () =>  {
+  getFolders = () => {
     axios
       .get('http://localhost:8080/folders')
       .then(response => {
@@ -107,7 +107,7 @@ class App extends Component {
       })
   }
 
-  createOneFolder = () =>  {
+  createOneFolder = () => {
     axios
       .post('http://localhost:8080/folders/folderId', {
         folder_name: this.state.folderName,
@@ -125,9 +125,9 @@ class App extends Component {
     axios
       .get(`http://localhost:8080/folders/${folder_id}/${file_id}/note`)
       .then(response => {
-        this.setState({ 
-          model : response.data[0].file_content,
-          fileId: file_id 
+        this.setState({
+          model: response.data[0].file_content,
+          fileId: file_id
         });
         console.log(this.state.model)
       })
@@ -189,12 +189,47 @@ class App extends Component {
 
   getSearchVal = (e) => {
     searchVal = e.target.value;
-    this.setState({search: searchVal})
+    this.setState({ search: searchVal })
     console.log(searchVal)
   }
 
-  search = () => {
-    console.log('search is working')
+  folderSearchFn = () => {
+    axios
+      .post(`http://localhost:8080/folders`, {
+        search : this.state.search
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  fileSearchFn = (folder_id) => {
+    axios
+      .post(`http://localhost:8080/folders/${folder_id}/files`, {
+        search : this.state.search
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  noteSearchFn = (folder_id, file_id) => {
+    axios
+      .post(`http://localhost:8080/folders/${folder_id}/${file_id}/note`, {
+        search : this.state.search
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   yellowFn = () => {
@@ -389,7 +424,13 @@ class App extends Component {
           filesClick={this.filesClick}
           zenClick={this.zenClick}
           getSearchVal={this.getSearchVal}
-          search = {this.search}
+          search={this.search}
+          folderSearch={this.state.folderSearch}
+          fileSearch={this.state.fileSearch}
+          noteSearch={this.state.noteSearch}
+          folderSearchFn={this.folderSearchFn}
+          fileSearchFn={this.fileSearchFn}
+          noteSearchFn={this.noteSearchFn}
 
           yellowFn={this.yellowFn}
           orangeFn={this.orangeFn}
@@ -427,7 +468,7 @@ class App extends Component {
           files={this.state.files}
           getInputFile={this.getInputFile}
           folderId={this.state.folderId}
-          fileId = {this.state.fileId}
+          fileId={this.state.fileId}
 
           yellowFi={this.state.yellowFi}
           orangeFi={this.state.orangeFi}
@@ -437,16 +478,16 @@ class App extends Component {
           tealFi={this.state.tealFi}
           greenFi={this.state.greenFi}
           greyFi={this.state.greyFi}
-          getNote = {this.getNote}
+          getNote={this.getNote}
         />
 
         <div className='app__right-section'>
-          <Editor 
-          handleModelChange = {this.handleModelChange}
-          model = {this.state.model}
-          saveNote = {this.saveNote}
-          folderId = {this.state.folderId}
-          fileId = {this.state.fileId}
+          <Editor
+            handleModelChange={this.handleModelChange}
+            model={this.state.model}
+            saveNote={this.saveNote}
+            folderId={this.state.folderId}
+            fileId={this.state.fileId}
           />
         </div>
       </div>

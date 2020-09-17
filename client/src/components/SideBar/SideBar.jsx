@@ -7,7 +7,7 @@ import search from '../../assets/search.png';
 import customize from '../../assets/customize.png';
 import del from '../../assets/delete.png';
 import zen from '../../assets/zen.png';
-import add from '../../assets/add.png';
+import add from '../../assets/add-white.png';
 
 
 class SideBar extends Component {
@@ -73,8 +73,8 @@ class SideBar extends Component {
         <div className='sidebar__wrapper'>
 
           <p className={this.state.displayText ? 'sidebar__search-text' : 'sidebar__search-text--hide'} >The search tool works by searching for a letter,
-          few letters, a word or sentence. chose one of
-          the options on the left and enter the word you are looking
+          few letters, a word or sentence. Make sure to select one of
+          the options on the left before entering the word that you're are looking
           for in the search box
             </p>
 
@@ -82,17 +82,17 @@ class SideBar extends Component {
             <div className={this.state.displayOptions ? 'sidebar__search-options' : 'sidebar__search-options--hide'}>
 
               <div className='sidebar__search-option'>
-                <input type="radio" id="folderName" name="search" value="Folder name" />
+                <input onClick = {this.props.folderSearchFn} type="radio" id="folderName" name="search" value="Folder name" />
                 <label for="male">Folder name</label>
               </div>
 
               <div className='sidebar__search-option'>
-                <input type="radio" id="fileName" name="search" value="File name" />
+                <input onClick = {this.props.fileSearchFn} type="radio" id="fileName" name="search" value="File name" />
                 <label for="male">File name</label>
               </div>
 
               <div className='sidebar__search-option'>
-                <input type="radio" id="fileContent" name="search" value="File content" />
+                <input  onClick = {this.props.noteSearchFn} type="radio" id="fileContent" name="search" value="File content" />
                 <label for="male">Note</label>
               </div>
             </div>
