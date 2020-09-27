@@ -23,7 +23,8 @@ class SideBar extends Component {
       displaySearch: false,
       displayText: false,
       displayOptions: false,
-      displayAdd : false
+      displayAdd : false,
+      selectedOption : ''
     }
   }
 
@@ -40,6 +41,16 @@ class SideBar extends Component {
       displayOptions: !(this.state.displayOptions),
       displayAdd : !(this.state.displayAdd),
     })
+  }
+
+  input(e) {
+    console.log(e)
+  }
+
+  handleOptionChange = (e) => {
+    this.setState ({
+      selectedOption : e.target.value
+    });
   }
 
   render() {
@@ -82,18 +93,33 @@ class SideBar extends Component {
             <div className={this.state.displayOptions ? 'sidebar__search-options' : 'sidebar__search-options--hide'}>
 
               <div className='sidebar__search-option'>
-                <input onClick = {this.props.folderSearchFn} type="radio" id="folderName" name="search" value="Folder name" />
-                <label for="male">Folder name</label>
+                <input 
+                type="radio" 
+                value="folder name" 
+                checked={this.state.selectedOption === 'folder name'}
+                onChange = {this.handleOptionChange}
+                />
+                <label>Folder name</label>
               </div>
 
               <div className='sidebar__search-option'>
-                <input onClick = {this.props.fileSearchFn} type="radio" id="fileName" name="search" value="File name" />
-                <label for="male">File name</label>
+                <input 
+                type="radio" 
+                value="file name" 
+                checked={this.state.selectedOption === 'file name'}
+                onChange = {this.handleOptionChange}
+                />
+                <label>File name</label>
               </div>
 
               <div className='sidebar__search-option'>
-                <input  onClick = {this.props.noteSearchFn} type="radio" id="fileContent" name="search" value="File content" />
-                <label for="male">Note</label>
+                <input 
+                type="radio" 
+                value="note" 
+                checked={this.state.selectedOption === 'note'} 
+                onChange = {this.handleOptionChange}
+                />
+                <label>Note</label>
               </div>
             </div>
 
@@ -106,7 +132,7 @@ class SideBar extends Component {
             onChange = {this.props.getSearchVal}
           />
 
-          <img onClick = {this.props.search} className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} src = {add} alt = 'add' />
+          <img className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} src = {add} alt = 'add' />
         </div>
 
         <div className='sidebar__wrapper'>

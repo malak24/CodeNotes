@@ -193,6 +193,10 @@ class App extends Component {
     console.log(searchVal)
   }
 
+  search = () => {
+    
+  }
+
   folderSearchFn = () => {
     axios
       .post(`http://localhost:8080/folders`, {
