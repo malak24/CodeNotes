@@ -24,7 +24,6 @@ class SideBar extends Component {
       displayText: false,
       displayOptions: false,
       displayAdd : false,
-      selectedOption : ''
     }
   }
 
@@ -41,16 +40,6 @@ class SideBar extends Component {
       displayOptions: !(this.state.displayOptions),
       displayAdd : !(this.state.displayAdd),
     })
-  }
-
-  input(e) {
-    console.log(e)
-  }
-
-  handleOptionChange = (e) => {
-    this.setState ({
-      selectedOption : e.target.value
-    });
   }
 
   render() {
@@ -96,8 +85,8 @@ class SideBar extends Component {
                 <input 
                 type="radio" 
                 value="folder name" 
-                checked={this.state.selectedOption === 'folder name'}
-                onChange = {this.handleOptionChange}
+                checked={this.props.selectedOption === 'folder name'}
+                onClick = {this.props.handleOptionChange}
                 />
                 <label>Folder name</label>
               </div>
@@ -106,8 +95,8 @@ class SideBar extends Component {
                 <input 
                 type="radio" 
                 value="file name" 
-                checked={this.state.selectedOption === 'file name'}
-                onChange = {this.handleOptionChange}
+                checked={this.props.selectedOption === 'file name'}
+                onClick = {this.props.handleOptionChange}
                 />
                 <label>File name</label>
               </div>
@@ -116,8 +105,8 @@ class SideBar extends Component {
                 <input 
                 type="radio" 
                 value="note" 
-                checked={this.state.selectedOption === 'note'} 
-                onChange = {this.handleOptionChange}
+                checked={this.props.selectedOption === 'note'} 
+                onClick = {this.props.handleOptionChange}
                 />
                 <label>Note</label>
               </div>
@@ -132,7 +121,12 @@ class SideBar extends Component {
             onChange = {this.props.getSearchVal}
           />
 
-          <img className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} src = {add} alt = 'add' />
+          <img 
+          className={this.state.displayAdd ? 'sidebar__add' : 'sidebar__add--hide'} 
+          src = {add} 
+          alt = 'add' 
+          onClick = {this.props.search}
+          />
         </div>
 
         <div className='sidebar__wrapper'>

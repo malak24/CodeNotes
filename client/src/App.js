@@ -37,9 +37,7 @@ class App extends Component {
 
       search: '',
       model: 'Start writing here',
-      folderSearch: false,
-      fileSearch: false,
-      noteSearch: false,
+      selectedOption : '',
 
       yellowFo: false,
       orangeFo: false,
@@ -193,11 +191,8 @@ class App extends Component {
     console.log(searchVal)
   }
 
-  search = () => {
-    
-  }
-
   folderSearchFn = () => {
+    console.log('folder search function is working')
     axios
       .post(`http://localhost:8080/folders`, {
         search : this.state.search
@@ -235,6 +230,24 @@ class App extends Component {
         console.log(error)
       })
   }
+
+  handleOptionChange = (e) => {
+    this.setState ({
+      selectedOption : e.target.value
+    });
+    console.log(e.target.value)
+  }
+
+  search = () => {
+    if (this.state.selectedOption === 'folder name') {
+      this.folderSearchFn()
+    } else if (this.state.selectedOption === 'file name') {
+      this.fileSearchFn()
+    } else {
+      this.noteSearchFn()
+    } 
+  }
+
 
   yellowFn = () => {
     this.setState({
@@ -428,13 +441,9 @@ class App extends Component {
           filesClick={this.filesClick}
           zenClick={this.zenClick}
           getSearchVal={this.getSearchVal}
-          search={this.search}
-          folderSearch={this.state.folderSearch}
-          fileSearch={this.state.fileSearch}
-          noteSearch={this.state.noteSearch}
-          folderSearchFn={this.folderSearchFn}
-          fileSearchFn={this.fileSearchFn}
-          noteSearchFn={this.noteSearchFn}
+          selectedOption = {this.state.selectedOption}
+          handleOptionChange = {this.handleOptionChange}
+          search = {this.search}
 
           yellowFn={this.yellowFn}
           orangeFn={this.orangeFn}

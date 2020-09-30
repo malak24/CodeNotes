@@ -9,12 +9,10 @@ const connection = mysql.createConnection({ //create connection between node js 
   database: 'CodeNotes'
 });
 
-// start connection between nodeJs and the db
 connection.connect(function (error) {
   if (error) throw error;
 });
 
-// Endpoint to get all folders
 router.get('/folders', function (req, res) {
   connection.query('SELECT * FROM folders', (error, results, fields) => {
     if (error) throw error;
@@ -23,8 +21,19 @@ router.get('/folders', function (req, res) {
   });
 });
 
+router.post('/folders', function (req, res) {
+  connection.query(`SELECT folder_name, 
+  LOCATE('${req.body.search}', folder_name ) 
+  FROM folders;`, (error, results, fields) => {
+      if (error) throw error;
+      res.status(200).send("Searching")
+    })
+})
+
 router.post('/folders/:folderId', function (req, res) {
-  connection.query(`INSERT INTO folders (folder_name) VALUES ('${req.body.folder_name}')`, (error, results, fields) => {
+  connection.query(
+    `INSERT INTO folders (folder_name) 
+     VALUES ('${req.body.folder_name}')`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send("Folder created successfully")
   })
