@@ -68,6 +68,20 @@ router.post('/folders/:folderId/:fileId', function (req, res) {
   })
 });
 
+router.get('/files', function(req, res) {
+  connection.query(`SELECT LOCATE (${req.body.search}, file_name) FROM files;` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  })
+})
+
+router.get('/notes', function(req, res) {
+  connection.query(`SELECT LOCATE (${req.body.search}, file_content) FROM files;` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  })
+})
+
 // end the connection betweem nodeJs and db
 function endconnection() {
   connection.end(function (error) {

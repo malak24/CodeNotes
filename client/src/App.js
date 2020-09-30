@@ -26,7 +26,8 @@ class App extends Component {
       openFiles: true,
 
       folders: [],
-      files: [],
+      allFiles: [],
+      allNotes : [],
 
       folderName: '',
       fileName: '',
@@ -37,7 +38,7 @@ class App extends Component {
 
       search: '',
       model: 'Start writing here',
-      selectedOption : '',
+      selectedOption: '',
 
       yellowFo: false,
       orangeFo: false,
@@ -61,6 +62,27 @@ class App extends Component {
 
   componentDidMount() {
     this.getFolders();
+
+    axios
+      .get('http://localhost:8080/files')
+      .then(response => {
+        console.log(response.data)
+        this.setState({ allFiles: response.data })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+    axios
+      .get('http://localhost:8080/notes')
+      .then(response => {
+        console.log(response.data)
+        this.setState({ allNotes: response.data })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
   }
 
   foldersClick = () => {
@@ -195,7 +217,7 @@ class App extends Component {
     console.log('folder search function is working')
     axios
       .post(`http://localhost:8080/folders`, {
-        search : this.state.search
+        search: this.state.search
       })
       .then(response => {
         console.log(response);
@@ -205,10 +227,10 @@ class App extends Component {
       })
   }
 
-  fileSearchFn = (folder_id) => {
+  fileSearchFn = () => {
     axios
-      .post(`http://localhost:8080/folders/${folder_id}/files`, {
-        search : this.state.search
+      .post(`http://localhost:8080/files`, {
+        search: this.state.search
       })
       .then(response => {
         console.log(response);
@@ -218,10 +240,10 @@ class App extends Component {
       })
   }
 
-  noteSearchFn = (folder_id, file_id) => {
+  noteSearchFn = () => {
     axios
-      .post(`http://localhost:8080/folders/${folder_id}/${file_id}/note`, {
-        search : this.state.search
+      .post(`http://localhost:8080/notes`, {
+        search: this.state.search
       })
       .then(response => {
         console.log(response);
@@ -232,8 +254,8 @@ class App extends Component {
   }
 
   handleOptionChange = (e) => {
-    this.setState ({
-      selectedOption : e.target.value
+    this.setState({
+      selectedOption: e.target.value
     });
     console.log(e.target.value)
   }
@@ -245,7 +267,7 @@ class App extends Component {
       this.fileSearchFn()
     } else {
       this.noteSearchFn()
-    } 
+    }
   }
 
 
@@ -441,9 +463,9 @@ class App extends Component {
           filesClick={this.filesClick}
           zenClick={this.zenClick}
           getSearchVal={this.getSearchVal}
-          selectedOption = {this.state.selectedOption}
-          handleOptionChange = {this.handleOptionChange}
-          search = {this.search}
+          selectedOption={this.state.selectedOption}
+          handleOptionChange={this.handleOptionChange}
+          search={this.search}
 
           yellowFn={this.yellowFn}
           orangeFn={this.orangeFn}
