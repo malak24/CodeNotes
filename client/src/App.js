@@ -26,6 +26,7 @@ class App extends Component {
       openFiles: true,
 
       folders: [],
+      files : [],
       allFiles: [],
       allNotes : [],
 

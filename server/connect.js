@@ -22,11 +22,9 @@ router.get('/folders', function (req, res) {
 });
 
 router.post('/folders', function (req, res) {
-  connection.query(`SELECT folder_name, 
-  LOCATE('${req.body.search}', folder_name ) 
-  FROM folders;`, (error, results, fields) => {
+  connection.query(`SELECT LOCATE('${req.body.search}', folder_name) FROM folders;`, (error, results, fields) => {
       if (error) throw error;
-      res.status(200).send("Searching")
+      res.status(200).send(results)
     })
 })
 
@@ -69,14 +67,29 @@ router.post('/folders/:folderId/:fileId', function (req, res) {
 });
 
 router.get('/files', function(req, res) {
-  connection.query(`SELECT LOCATE (${req.body.search}, file_name) FROM files;` , (error, results, fields) => {
+  connection.query(`SELECT file_name FROM files;` , (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })
 })
 
 router.get('/notes', function(req, res) {
-  connection.query(`SELECT LOCATE (${req.body.search}, file_content) FROM files;` , (error, results, fields) => {
+  connection.query(`SELECT file_content FROM files;` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  })
+})
+
+router.post('/files', function(req, res) {
+  connection.query(`SELECT LOCATE('${req.body.search}', file_name) FROM files;` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  })
+})
+
+router.post('/notes', function(req, res) {
+  console.log(req.body)
+  connection.query(`SELECT LOCATE('${req.body.search}', file_content) FROM files;` , (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })
