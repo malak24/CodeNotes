@@ -1,7 +1,0 @@
-**/.DS_STORE
-bower_components
-node_modules
-dist
-modules
-demo/dist/*
-package-lock.json

@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
+import TopBar from './components/TopBar/TopBar'
 import SideBar from './components/SideBar/SideBar'
-import Folders from './components/Folders/Folders'
-import Files from './components/Files/Files'
-import Editor from './components/Editor/Editor'
-import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';
-import 'froala-editor/js/plugins.pkgd.min.js';
-import 'froala-editor/js/languages/de.js';
-import 'froala-editor/js/third_party/image_tui.min.js';
-import 'froala-editor/js/third_party/embedly.min.js';
-import 'froala-editor/js/third_party/spell_checker.min.js';
+
 
 let inputValueFo;
 let inputValueFi;
@@ -65,7 +57,7 @@ class App extends Component {
     this.getFolders();
 
     axios
-      .get('http://localhost:8080/files')
+      .get('http://api.kataie.com/files')
       .then(response => {
         console.log(response.data)
         this.setState({ allFiles: response.data })
@@ -75,7 +67,7 @@ class App extends Component {
       })
 
     axios
-      .get('http://localhost:8080/notes')
+      .get('http://api.kataie.com/notes')
       .then(response => {
         console.log(response.data)
         this.setState({ allNotes: response.data })
@@ -107,7 +99,7 @@ class App extends Component {
 
   getFolders = () => {
     axios
-      .get('http://localhost:8080/folders')
+      .get('http://api.kataie.com/folders')
       .then(response => {
         console.log(response.data)
         this.setState({ folders: response.data })
@@ -119,7 +111,7 @@ class App extends Component {
 
   getFiles = (folder_id) => {
     axios
-      .get(`http://localhost:8080/folders/${folder_id}/files`)
+      .get(`http://api.kataie.com/folders/${folder_id}/files`)
       .then(response => {
         this.setState({ files: response.data, folderId: folder_id });
       })
@@ -130,7 +122,7 @@ class App extends Component {
 
   createOneFolder = () => {
     axios
-      .post('http://localhost:8080/folders/folderId', {
+      .post('http://api.kataie.com/folders/folderId', {
         folder_name: this.state.folderName,
       })
       .then(response => {
@@ -144,7 +136,7 @@ class App extends Component {
 
   getNote = (folder_id, file_id) => {
     axios
-      .get(`http://localhost:8080/folders/${folder_id}/${file_id}/note`)
+      .get(`http://api.kataie.com/folders/${folder_id}/${file_id}/note`)
       .then(response => {
         this.setState({
           model: response.data[0].file_content,
@@ -159,7 +151,7 @@ class App extends Component {
 
   saveNote(folder_id, file_id) {
     axios
-      .post(`http://localhost:8080/folders/${folder_id}/${file_id}/note`, {
+      .post(`http://api.kataie.com/folders/${folder_id}/${file_id}/note`, {
         fileContent: this.state.model,
       })
       .then(response => {
@@ -172,7 +164,7 @@ class App extends Component {
 
   createOneFile = (folder_id) => {
     axios
-      .post(`http://localhost:8080/folders/${folder_id}/fileId`, {
+      .post(`http://api.kataie.com/folders/${folder_id}/fileId`, {
         file_name: this.state.fileName,
       })
       .then(response => {
@@ -186,7 +178,7 @@ class App extends Component {
 
   // deleteFolder = (folder_id) => {
   //   axios
-  //   .post(`http://localhost:8080/folders/${folder_id}`, {
+  //   .post(`http://api.kataie.com/folders/${folder_id}`, {
   //     folderId: folder_id 
   //   })
   //   .then(response => {
@@ -217,7 +209,7 @@ class App extends Component {
   folderSearchFn = () => {
     console.log('folder search function is working')
     axios
-      .post(`http://localhost:8080/folders`, {
+      .post(`http://api.kataie.com/folders`, {
         search: this.state.search
       })
       .then(response => {
@@ -230,7 +222,7 @@ class App extends Component {
 
   fileSearchFn = () => {
     axios
-      .post(`http://localhost:8080/files`, {
+      .post(`http://api.kataie.com/files`, {
         search: this.state.search
       })
       .then(response => {
@@ -243,7 +235,7 @@ class App extends Component {
 
   noteSearchFn = () => {
     axios
-      .post(`http://localhost:8080/notes`, {
+      .post(`http://api.kataie.com/notes`, {
         search: this.state.search
       })
       .then(response => {
@@ -456,6 +448,8 @@ class App extends Component {
 
   render() {
     return (
+      <>
+      <TopBar />
       <div className="app">
         <SideBar
           openFolders={this.state.openFolders}
@@ -476,57 +470,19 @@ class App extends Component {
           tealFn={this.tealFn}
           greenFn={this.greenFn}
           greyFn={this.greyFn}
-
-        />
-
-        <Folders
-          getInputFolder={this.getInputFolder}
-          createOneFolder={this.createOneFolder}
-          folders={this.state.folders}
-          openFolders={this.state.openFolders}
-          foldersClick={this.foldersClick}
-          getFiles={this.getFiles}
-
-          yellowFo={this.state.yellowFo}
-          orangeFo={this.state.orangeFo}
-          pinkFo={this.state.pinkFo}
-          purpleFo={this.state.purpleFo}
-          blueFo={this.state.blueFo}
-          tealFo={this.state.tealFo}
-          greenFo={this.state.greenFo}
-          greyFo={this.state.greyFo}
-        />
-
-        <Files
-          openFiles={this.state.openFiles}
-          createOneFile={this.createOneFile}
-          filesClick={this.filesClick}
-          files={this.state.files}
-          getInputFile={this.getInputFile}
-          folderId={this.state.folderId}
-          fileId={this.state.fileId}
-
-          yellowFi={this.state.yellowFi}
-          orangeFi={this.state.orangeFi}
-          pinkFi={this.state.pinkFi}
-          purpleFi={this.state.purpleFi}
-          blueFi={this.state.blueFi}
-          tealFi={this.state.tealFi}
-          greenFi={this.state.greenFi}
-          greyFi={this.state.greyFi}
-          getNote={this.getNote}
         />
 
         <div className='app__right-section'>
-          <Editor
+          {/* <Editor
             handleModelChange={this.handleModelChange}
             model={this.state.model}
             saveNote={this.saveNote}
             folderId={this.state.folderId}
             fileId={this.state.fileId}
-          />
+          /> */}
         </div>
       </div>
+      </>
     );
   }
 }
