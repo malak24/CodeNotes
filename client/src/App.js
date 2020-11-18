@@ -14,8 +14,6 @@ class App extends Component {
     super();
 
     this.state = {
-      openFolders: true,
-      openFiles: true,
 
       folders: [],
       files : [],
@@ -32,24 +30,6 @@ class App extends Component {
       search: '',
       model: 'Start writing here',
       selectedOption: '',
-
-      yellowFo: false,
-      orangeFo: false,
-      pinkFo: true,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: false,
-      greenFo: false,
-      greyFo: false,
-
-      yellowFi: false,
-      orangeFi: false,
-      pinkFi: true,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: false,
-      greenFi: false,
-      greyFi: false
     };
   }
 
@@ -76,25 +56,6 @@ class App extends Component {
         console.log(error)
       })
 
-  }
-
-  foldersClick = () => {
-    this.setState({
-      openFolders: !(this.state.openFolders)
-    });
-  };
-
-  filesClick = () => {
-    this.setState({
-      openFiles: !(this.state.openFiles)
-    });
-  };
-
-  zenClick = () => {
-    this.setState({
-      openFolders: false,
-      openFiles: false,
-    })
   }
 
   getFolders = () => {
@@ -263,182 +224,6 @@ class App extends Component {
     }
   }
 
-
-  yellowFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: false,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: false,
-      greenFo: false,
-      greyFo: false,
-      yellowFo: !this.state.yellowFo,
-
-      orangeFi: false,
-      pinkFi: false,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: false,
-      greenFi: false,
-      greyFi: false,
-      yellowFi: !this.state.yellowFi
-    })
-  }
-
-  orangeFn = () => {
-    this.setState({
-      orangeFo: !this.state.orangeFo,
-      pinkFo: false,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: false,
-      greenFo: false,
-      greyFo: false,
-      yellowFo: false,
-
-      orangeFi: !this.state.orangeFi,
-      pinkFi: false,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: false,
-      greenFi: false,
-      greyFi: false,
-      yellowFi: false
-    })
-  }
-
-  pinkFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: !this.state.pinkFo,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: false,
-      greenFo: false,
-      greyFo: false,
-      yellowFo: false,
-
-      orangeFi: false,
-      pinkFi: !this.state.pinkFi,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: false,
-      greenFi: false,
-      greyFi: false,
-      yellowFi: false
-    })
-  }
-
-  purpleFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: false,
-      purpleFo: !this.state.purpleFo,
-      blueFo: false,
-      tealFo: false,
-      greenFo: false,
-      greyFo: false,
-      yellowFo: false,
-
-      orangeFi: false,
-      pinkFi: false,
-      purpleFi: !this.state.purpleFi,
-      blueFi: false,
-      tealFi: false,
-      greenFi: false,
-      greyFi: false,
-      yellowFi: false
-    })
-  }
-
-  blueFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: false,
-      purpleFo: false,
-      blueFo: !this.state.blueFo,
-      tealFo: false,
-      greenFo: false,
-      greyFo: false,
-      yellowFo: false,
-
-      orangeFi: false,
-      pinkFi: false,
-      blueFi: !this.state.blueFi,
-      tealFi: false,
-      greenFi: false,
-      greyFi: false,
-      yellowFi: false
-    })
-  }
-
-  tealFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: false,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: !this.state.tealFo,
-      greenFo: false,
-      greyFo: false,
-      yellowFo: false,
-
-      orangeFi: false,
-      pinkFi: false,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: !this.state.tealFi,
-      greenFi: false,
-      greyFi: false,
-      yellowFi: false
-    })
-  }
-
-  greenFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: false,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: false,
-      greenFo: !this.state.greenFo,
-      greyFo: false,
-      yellowFo: false,
-
-      orangeFi: false,
-      pinkFi: false,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: false,
-      greenFi: !this.state.greenFi,
-      greyFi: false,
-      yellowFi: false
-    })
-  }
-
-  greyFn = () => {
-    this.setState({
-      orangeFo: false,
-      pinkFo: false,
-      purpleFo: false,
-      blueFo: false,
-      tealFo: false,
-      greenFo: false,
-      greyFo: !this.state.greyFo,
-      yellowFo: false,
-
-      orangeFi: false,
-      pinkFi: false,
-      purpleFi: false,
-      blueFi: false,
-      tealFi: false,
-      greenFi: false,
-      greyFi: !this.state.greyFi,
-      yellowFi: false
-    })
-  }
-
   handleModelChange = (model) => {
     this.setState({
       model: model
@@ -452,35 +237,11 @@ class App extends Component {
       <TopBar />
       <div className="app">
         <SideBar
-          openFolders={this.state.openFolders}
-          openFiles={this.state.openFiles}
-          foldersClick={this.foldersClick}
-          filesClick={this.filesClick}
-          zenClick={this.zenClick}
           getSearchVal={this.getSearchVal}
           selectedOption={this.state.selectedOption}
           handleOptionChange={this.handleOptionChange}
           search={this.search}
-
-          yellowFn={this.yellowFn}
-          orangeFn={this.orangeFn}
-          pinkFn={this.pinkFn}
-          purpleFn={this.purpleFn}
-          blueFn={this.blueFn}
-          tealFn={this.tealFn}
-          greenFn={this.greenFn}
-          greyFn={this.greyFn}
         />
-
-        <div className='app__right-section'>
-          {/* <Editor
-            handleModelChange={this.handleModelChange}
-            model={this.state.model}
-            saveNote={this.saveNote}
-            folderId={this.state.folderId}
-            fileId={this.state.fileId}
-          /> */}
-        </div>
       </div>
       </>
     );
