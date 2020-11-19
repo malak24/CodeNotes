@@ -30,14 +30,14 @@
     width:28px;
     height:28px;
     position : absolute;
-    left:30rem;
+    left:22rem;
     top:0.7rem;
 
     &-word {
       color:white;
       position : absolute;
       top : 0;
-      left: 32.5rem;
+      left: 24.5rem;
       font-weight:bold;
     }
   }
@@ -46,14 +46,30 @@
     width:30px;
     height:28px;
     position : absolute;
-    left:37rem;
+    left:29rem;
     top:0.6rem;
 
     &-word {
       color : white;
       position : absolute;
       top : 0;
-      left: 39.2rem;
+      left: 31.2rem;
+      font-weight:bold;
+    }
+  }
+
+  &__new {
+    width:28px;
+    height:28px;
+    position : absolute;
+    left:74%;
+    top:0.6rem;
+
+    &-word {
+      color : white;
+      position : absolute;
+      top : 0;
+      right: 19.5%;
       font-weight:bold;
     }
   }

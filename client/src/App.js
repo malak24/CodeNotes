@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.scss';
 import TopBar from './components/TopBar/TopBar'
 import SideBar from './components/SideBar/SideBar'
+import Main from './components/Main/Main'
 
 
 let inputValueFo;
@@ -241,7 +242,13 @@ class App extends Component {
           selectedOption={this.state.selectedOption}
           handleOptionChange={this.handleOptionChange}
           search={this.search}
+          folders={this.state.folders}
         />
+        {/* Added the main section with no code
+        then added the state in here to be able to
+        get the data in the array in the Main.jsx file
+         - step 1 */}
+        <Main />
       </div>
       </>
     );
