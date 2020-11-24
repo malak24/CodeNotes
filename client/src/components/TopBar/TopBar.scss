@@ -17,7 +17,7 @@
   &__search {
     height:1.9rem;
     position:absolute;
-    left:5.5rem;
+    left:6.3rem;
     top : 0.68rem;
     border-radius:5px;
     outline:none;
@@ -26,51 +26,45 @@
     font-weight:bold;
   }
 
-  &__save {
-    width:28px;
-    height:28px;
+  &__button {
     position : absolute;
-    left:22rem;
-    top:0.7rem;
+    left:16rem;
+    top : 0.68rem;
+    height:2.04rem;
+    border-radius:0 5px 5px 0;
+    border:none;
+  }
 
-    &-word {
-      color:white;
-      position : absolute;
-      top : 0;
-      left: 24.5rem;
-      font-weight:bold;
+  &__container {
+    position : absolute;
+    height:28px;
+
+    &--save {
+      left : 24.5rem;
+      top : 0.7rem;
+    }
+
+    &--del {
+      left : 32rem;
+      top : 0.7rem;
+    }
+
+    &--new{
+      right : 10rem;
+      top : 0.7rem;
     }
   }
 
-  &__del {
-    width:30px;
-    height:28px;
+  &__words {
+    color:white;
     position : absolute;
-    left:29rem;
-    top:0.6rem;
-
-    &-word {
-      color : white;
-      position : absolute;
-      top : 0;
-      left: 31.2rem;
-      font-weight:bold;
-    }
+    top : 0.2rem;
+    left: 2.5rem;
+    font-weight:bold;
+    margin:0;
   }
 
-  &__new {
+  &__imgs {
     width:28px;
-    height:28px;
-    position : absolute;
-    left:74%;
-    top:0.6rem;
-
-    &-word {
-      color : white;
-      position : absolute;
-      top : 0;
-      right: 19.5%;
-      font-weight:bold;
-    }
   }
 }
