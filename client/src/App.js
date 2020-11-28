@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.scss';
-import TopBar from './components/TopBar/TopBar'
+import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Main from './components/Main/Main'
-
 
 let inputValueFo;
 let inputValueFi;
@@ -17,9 +16,9 @@ class App extends Component {
     this.state = {
 
       folders: [],
-      files : [],
+      files: [],
       allFiles: [],
-      allNotes : [],
+      allNotes: [],
 
       folderName: '',
       fileName: '',
@@ -235,21 +234,22 @@ class App extends Component {
   render() {
     return (
       <>
-      <TopBar />
-      <div className="app">
-        <SideBar
-          getSearchVal={this.getSearchVal}
-          selectedOption={this.state.selectedOption}
-          handleOptionChange={this.handleOptionChange}
-          search={this.search}
-          folders={this.state.folders}
-        />
-        {/* Added the main section with no code
-        then added the state in here to be able to
-        get the data in the array in the Main.jsx file
-         - step 1 */}
-        <Main />
-      </div>
+        <Topbar />
+        <div className="app">
+          <SideBar
+            getSearchVal={this.getSearchVal}
+            selectedOption={this.state.selectedOption}
+            handleOptionChange={this.handleOptionChange}
+            search={this.search}
+            folders={this.state.folders}
+          />
+          <div>
+            <Main />
+            <Main />
+            <Main />
+          </div>
+
+        </div>
       </>
     );
   }

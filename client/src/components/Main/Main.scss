@@ -1,0 +1,34 @@
+@import '../../partials/mixins.scss';
+@import '../../partials/variables.scss';
+
+p {
+  margin-top : 1rem;
+}
+.main {
+  box-sizing: unset;
+  margin-left:1rem;
+  max-width: unset;
+  width:71vw;
+
+  &__header {
+    padding: 0.3rem 0.3rem;
+    padding-left: 1rem;
+    padding-right:0.6rem;
+    background-color: #d1c6c9;
+  }
+
+  &__title {
+    font-size: 1.4rem;
+    margin-top: 0.2rem;
+  }
+}
+
+.btn {
+  background-color :#a8717f;
+  color:white;
+  border:none;
+}
+
+.btn-secondary {
+  background-color: grey;
+}

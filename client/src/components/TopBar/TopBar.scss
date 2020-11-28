@@ -1,70 +1,35 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
+@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
 
-.topBar {
-  width:100%;
-  height: 4.5vw;
-  background-color: rgb(124, 124, 124);
-  position:relative;
+.topbar {
 
   &__logo {
-    width:48px;
-    height:48px;
-    padding-left:1rem;
-    padding-top:0.15rem;
+    font-weight:bold;
+    font-size: 2.2rem;
+    font-family: 'Unica One', cursive;
+    letter-spacing: -0.24rem;
+    color: grey;
   }
 
-  &__search {
-    height:1.9rem;
-    position:absolute;
-    left:6.3rem;
-    top : 0.68rem;
-    border-radius:5px;
-    outline:none;
-    border:none;
-    padding-left:0.5rem;
-    font-weight:bold;
+  &__word {
+    margin-left:12.1rem;
   }
 
   &__button {
-    position : absolute;
-    left:16rem;
-    top : 0.68rem;
-    height:2.04rem;
-    border-radius:0 5px 5px 0;
-    border:none;
-  }
-
-  &__container {
-    position : absolute;
-    height:28px;
-
-    &--save {
-      left : 24.5rem;
-      top : 0.7rem;
-    }
-
-    &--del {
-      left : 32rem;
-      top : 0.7rem;
-    }
-
-    &--new{
-      right : 10rem;
-      top : 0.7rem;
-    }
-  }
-
-  &__words {
-    color:white;
-    position : absolute;
-    top : 0.2rem;
-    left: 2.5rem;
-    font-weight:bold;
-    margin:0;
-  }
-
-  &__imgs {
-    width:28px;
+    width:2.6rem;
+    height:2.6rem;
   }
 }
+.btn-secondary {
+  background-color: grey;
+}
+
+.navbar {
+  height : 4rem;
+}
+
+.form-inline {
+  margin-right:0.3rem;
+}
+
