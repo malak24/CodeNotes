@@ -8,6 +8,7 @@ import Main from './components/Main/Main'
 let inputValueFo;
 let inputValueFi;
 let searchVal;
+let url = 'http://localhost:8080'
 
 class App extends Component {
   constructor() {
@@ -16,9 +17,9 @@ class App extends Component {
     this.state = {
 
       folders: [],
-      files: [],
-      allFiles: [],
-      allNotes: [],
+      notes: [],
+      // allFiles: [],
+      // allNotes: [],
 
       folderName: '',
       fileName: '',
@@ -36,18 +37,18 @@ class App extends Component {
   componentDidMount() {
     this.getFolders();
 
-    axios
-      .get('http://api.kataie.com/files')
-      .then(response => {
-        console.log(response.data)
-        this.setState({ allFiles: response.data })
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    // axios
+    //   .get(`${url}/files`)
+    //   .then(response => {
+    //     console.log(response.data)
+    //     this.setState({ allFiles: response.data })
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
 
     axios
-      .get('http://api.kataie.com/notes')
+      .get(`${url}/notes`)
       .then(response => {
         console.log(response.data)
         this.setState({ allNotes: response.data })
@@ -60,7 +61,7 @@ class App extends Component {
 
   getFolders = () => {
     axios
-      .get('http://api.kataie.com/folders')
+      .get(`${url}/folders`)
       .then(response => {
         console.log(response.data)
         this.setState({ folders: response.data })
@@ -72,7 +73,7 @@ class App extends Component {
 
   getFiles = (folder_id) => {
     axios
-      .get(`http://api.kataie.com/folders/${folder_id}/files`)
+      .get(`${url}/folders/${folder_id}/files`)
       .then(response => {
         this.setState({ files: response.data, folderId: folder_id });
       })
@@ -83,7 +84,7 @@ class App extends Component {
 
   createOneFolder = () => {
     axios
-      .post('http://api.kataie.com/folders/folderId', {
+      .post(`${url}/folders/folderId`, {
         folder_name: this.state.folderName,
       })
       .then(response => {
@@ -97,7 +98,7 @@ class App extends Component {
 
   getNote = (folder_id, file_id) => {
     axios
-      .get(`http://api.kataie.com/folders/${folder_id}/${file_id}/note`)
+      .get(`${url}/folders/${folder_id}/${file_id}/note`)
       .then(response => {
         this.setState({
           model: response.data[0].file_content,
@@ -112,7 +113,7 @@ class App extends Component {
 
   saveNote(folder_id, file_id) {
     axios
-      .post(`http://api.kataie.com/folders/${folder_id}/${file_id}/note`, {
+      .post(`${url}/folders/${folder_id}/${file_id}/note`, {
         fileContent: this.state.model,
       })
       .then(response => {
@@ -125,7 +126,7 @@ class App extends Component {
 
   createOneFile = (folder_id) => {
     axios
-      .post(`http://api.kataie.com/folders/${folder_id}/fileId`, {
+      .post(`${url}/folders/${folder_id}/fileId`, {
         file_name: this.state.fileName,
       })
       .then(response => {
@@ -139,7 +140,7 @@ class App extends Component {
 
   // deleteFolder = (folder_id) => {
   //   axios
-  //   .post(`http://api.kataie.com/folders/${folder_id}`, {
+  //   .post(`${url}/folders/${folder_id}`, {
   //     folderId: folder_id 
   //   })
   //   .then(response => {
@@ -170,7 +171,7 @@ class App extends Component {
   folderSearchFn = () => {
     console.log('folder search function is working')
     axios
-      .post(`http://api.kataie.com/folders`, {
+      .post(`${url}/folders`, {
         search: this.state.search
       })
       .then(response => {
@@ -183,7 +184,7 @@ class App extends Component {
 
   fileSearchFn = () => {
     axios
-      .post(`http://api.kataie.com/files`, {
+      .post(`${url}/files`, {
         search: this.state.search
       })
       .then(response => {
@@ -196,7 +197,7 @@ class App extends Component {
 
   noteSearchFn = () => {
     axios
-      .post(`http://api.kataie.com/notes`, {
+      .post(`${url}/notes`, {
         search: this.state.search
       })
       .then(response => {
@@ -243,12 +244,9 @@ class App extends Component {
             search={this.search}
             folders={this.state.folders}
           />
-          <div>
-            <Main />
-            <Main />
-            <Main />
-          </div>
-
+          {/* <div>
+          {this.props.notes.map((note) => (<Main />))}
+          </div> */}
         </div>
       </>
     );

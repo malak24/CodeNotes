@@ -11,9 +11,10 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Modal.Dialog className = 'main'>
-          <Modal.Header className = 'main__header' closeButton>
-            <Modal.Title className = 'main__title'>Note title</Modal.Title>
+        {/* <li>onClick={() => this.props.getFiles(folder.folder_id)}> {folder.folder_name}</li> */}
+        <Modal.Dialog className='main'>
+          <Modal.Header className='main__header' closeButton>
+            <Modal.Title className='main__title'>Note title</Modal.Title>
           </Modal.Header>
 
           <Modal.Body>

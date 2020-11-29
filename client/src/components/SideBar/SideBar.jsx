@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './SideBar.scss';
 import Calendar from 'react-calendar';
-import Folders from '../Folders/Folders';
+import Folders from './Folders/Folders';
 import 'react-calendar/dist/Calendar.css';
 
 
