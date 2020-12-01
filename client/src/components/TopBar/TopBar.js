@@ -11,9 +11,6 @@ class Topbar extends Component {
   }
 
   render() {
-    $(function () {
-      $('[data-toggle="tooltip"]').tooltip();
-    });
 
     return (
       <div>
@@ -27,7 +24,7 @@ class Topbar extends Component {
             <p className="topbar__logo">CodeNotes</p>
 
             <div className="navbar-nav mr-auto mt-2 mt-lg-0">
-                <p className="topbar__word btn"> New</p>
+                <p onClick = {this.props.createNote} className="btn"> New</p>
             </div>
 
             <form className="form-inline my-2 my-lg-0">

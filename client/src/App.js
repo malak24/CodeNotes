@@ -18,15 +18,13 @@ class App extends Component {
 
       folders: [],
       notes: [],
-      // allFiles: [],
-      // allNotes: [],
 
       folderName: '',
-      fileName: '',
-      fileContent: '',
+      notetitle: '',
+      noteContent: '',
 
       folderId: '',
-      fileId: '',
+      noteId: '',
 
       search: '',
       model: 'Start writing here',
@@ -36,29 +34,21 @@ class App extends Component {
 
   componentDidMount() {
     this.getFolders();
+  }
 
-    // axios
-    //   .get(`${url}/files`)
-    //   .then(response => {
-    //     console.log(response.data)
-    //     this.setState({ allFiles: response.data })
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   })
-
+  //Get the notes of one folder
+  getNotes = (folder_id) => {
     axios
-      .get(`${url}/notes`)
+      .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
-        console.log(response.data)
-        this.setState({ allNotes: response.data })
+        this.setState({ notes: response.data, folderId: folder_id });
       })
       .catch(error => {
         console.log(error)
       })
-
   }
 
+  //Get folders
   getFolders = () => {
     axios
       .get(`${url}/folders`)
@@ -71,18 +61,8 @@ class App extends Component {
       })
   }
 
-  getFiles = (folder_id) => {
-    axios
-      .get(`${url}/folders/${folder_id}/files`)
-      .then(response => {
-        this.setState({ files: response.data, folderId: folder_id });
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  createOneFolder = () => {
+  //Create a new folder
+  createFolder = () => {
     axios
       .post(`${url}/folders/folderId`, {
         folder_name: this.state.folderName,
@@ -96,25 +76,11 @@ class App extends Component {
       })
   }
 
-  getNote = (folder_id, file_id) => {
+  //Save the note's content
+  saveNote(folder_id, note_id) {
     axios
-      .get(`${url}/folders/${folder_id}/${file_id}/note`)
-      .then(response => {
-        this.setState({
-          model: response.data[0].file_content,
-          fileId: file_id
-        });
-        console.log(this.state.model)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  saveNote(folder_id, file_id) {
-    axios
-      .post(`${url}/folders/${folder_id}/${file_id}/note`, {
-        fileContent: this.state.model,
+      .post(`${url}/folders/${folder_id}/${note_id}/note`, {
+        noteContent: this.state.model,
       })
       .then(response => {
         console.log(response);
@@ -124,14 +90,15 @@ class App extends Component {
       })
   }
 
-  createOneFile = (folder_id) => {
+  //Create a new note
+  createNote = (folder_id) => {
     axios
-      .post(`${url}/folders/${folder_id}/fileId`, {
-        file_name: this.state.fileName,
+      .post(`${url}/folders/${folder_id}/noteId`, {
+        note_name: this.state.notetitle,
       })
       .then(response => {
         console.log(response);
-        this.getFiles(folder_id);
+        this.getNotes(folder_id);
       })
       .catch(error => {
         console.log(error)
@@ -157,9 +124,9 @@ class App extends Component {
     this.setState({ folderName: inputValueFo })
   }
 
-  getInputFile = (e) => {
+  getInputNote = (e) => {
     inputValueFi = e.target.value;
-    this.setState({ fileName: inputValueFi })
+    this.setState({ noteName: inputValueFi })
   }
 
   getSearchVal = (e) => {
@@ -182,9 +149,9 @@ class App extends Component {
       })
   }
 
-  fileSearchFn = () => {
+  noteSearchFn = () => {
     axios
-      .post(`${url}/files`, {
+      .post(`${url}/notes`, {
         search: this.state.search
       })
       .then(response => {
@@ -218,8 +185,8 @@ class App extends Component {
   search = () => {
     if (this.state.selectedOption === 'folder name') {
       this.folderSearchFn()
-    } else if (this.state.selectedOption === 'file name') {
-      this.fileSearchFn()
+    } else if (this.state.selectedOption === 'note name') {
+      this.noteSearchFn()
     } else {
       this.noteSearchFn()
     }
@@ -229,7 +196,7 @@ class App extends Component {
     this.setState({
       model: model
     })
-    this.saveNote(this.state.folderId, this.state.fileId)
+    this.saveNote(this.state.folderId, this.state.noteId)
   }
 
   render() {
@@ -244,9 +211,13 @@ class App extends Component {
             search={this.search}
             folders={this.state.folders}
           />
+
           {/* <div>
-          {this.props.notes.map((note) => (<Main />))}
+            {this.props.notes.map((note) => (<Main noteTitle={this.state.noteTitle} 
+            noteContent={this.state.noteContent} 
+            />))}
           </div> */}
+
         </div>
       </>
     );

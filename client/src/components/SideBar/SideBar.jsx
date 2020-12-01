@@ -10,11 +10,12 @@ class SideBar extends Component {
   render() {
     return (
       <div className='sidebar'>
-        <div className = 'sidebar__profile'>
-          <p className = 'sidebar__email'>malakkataie@gmail.com</p>
-          <p className = 'sidebar__name'>Malak Kataie</p>
+        <div className='sidebar__profile'>
+          <div className='sidebar__avatar'></div>
+          <p className='sidebar__email'>malakkataie@gmail.com</p>
+          <p className='sidebar__name'>Malak Kataie</p>
         </div>
-        <Calendar className = 'sidebar__calendar' />
+        <Calendar className='sidebar__calendar' />
         <Folders />
       </div>
     )

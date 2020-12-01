@@ -13,6 +13,7 @@ connection.connect(function (error) {
   if (error) throw error;
 });
 
+//FOLDERS
 router.get('/folders', function (req, res) {
   connection.query('SELECT * FROM folders', (error, results, fields) => {
     if (error) throw error;
@@ -21,12 +22,12 @@ router.get('/folders', function (req, res) {
   });
 });
 
-router.post('/folders', function (req, res) {
-  connection.query(`SELECT LOCATE('${req.body.search}', folder_name) FROM folders;`, (error, results, fields) => {
-      if (error) throw error;
-      res.status(200).send(results)
-    })
-})
+// router.post('/folders', function (req, res) {
+//   connection.query(`SELECT LOCATE('${req.body.search}', folder_name) FROM folders;`, (error, results, fields) => {
+//       if (error) throw error;
+//       res.status(200).send(results)
+//     })
+// })
 
 router.post('/folders/:folderId', function (req, res) {
   connection.query(
@@ -37,63 +38,63 @@ router.post('/folders/:folderId', function (req, res) {
   })
 })
 
-router.get('/folders/:folderId/files', function (req, res) {
-  connection.query(`SELECT * FROM files WHERE folder_id = ${req.params.folderId}`, (error, results, fields) => {
+router.get('/folders/:folderId/notes', function (req, res) {
+  connection.query(`SELECT * FROM notes WHERE folder_id = ${req.params.folderId}`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   });
 });
 
-router.get('/folders/:folder_id/:file_id/note', function (req, res) {
-  connection.query(`SELECT file_content FROM files WHERE file_id = ${req.params.file_id}`, (error, results, fields) => {
+router.get('/folders/:folder_id/:note_id/note', function (req, res) {
+  connection.query(`SELECT note_content FROM notes WHERE note_id = ${req.params.note_id}`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })
 })
 
-router.post('/folders/:folderId/:fileId/note', function (req, res) {
-  connection.query(`UPDATE files SET file_content = '${req.body.fileContent}' WHERE file_id = ${req.params.fileId}`, (error, results, fields) => {
+router.post('/folders/:folderId/:noteId/note', function (req, res) {
+  connection.query(`UPDATE notes SET note_content = '${req.body.noteContent}' WHERE note_id = ${req.params.noteId}`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send("Note saved !")
   })
 })
 
-router.post('/folders/:folderId/:fileId', function (req, res) {
+router.post('/folders/:folderId/:noteId', function (req, res) {
   console.log(req.params.folderId);
-  connection.query(`INSERT INTO files (folder_id, file_name) VALUES ('${req.params.folderId}', '${req.body.file_name}')`, (error, results, fields) => {
+  connection.query(`INSERT INTO notes (folder_id, note_name) VALUES ('${req.params.folderId}', '${req.body.note_name}')`, (error, results, fields) => {
     if (error) throw error;
-    res.status(200).send("File saved !")
+    res.status(200).send("Note saved !")
   })
 });
 
-router.get('/files', function(req, res) {
-  connection.query(`SELECT file_name FROM files;` , (error, results, fields) => {
+router.get('/notes', function(req, res) {
+  connection.query(`SELECT note_name FROM notes;` , (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })
 })
 
 router.get('/notes', function(req, res) {
-  connection.query(`SELECT file_content FROM files;` , (error, results, fields) => {
+  connection.query(`SELECT note_content FROM notes;` , (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })
 })
 
-router.post('/files', function(req, res) {
-  connection.query(`SELECT LOCATE('${req.body.search}', file_name) FROM files;` , (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send(results)
-  })
-})
+// router.post('/notes', function(req, res) {
+//   connection.query(`SELECT LOCATE('${req.body.search}', note_name) FROM notes;` , (error, results, fields) => {
+//     if (error) throw error;
+//     res.status(200).send(results)
+//   })
+// })
 
-router.post('/notes', function(req, res) {
-  console.log(req.body)
-  connection.query(`SELECT LOCATE('${req.body.search}', file_content) FROM files;` , (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send(results)
-  })
-})
+// router.post('/notes', function(req, res) {
+//   console.log(req.body)
+//   connection.query(`SELECT LOCATE('${req.body.search}', note_content) FROM notes;` , (error, results, fields) => {
+//     if (error) throw error;
+//     res.status(200).send(results)
+//   })
+// })
 
 // end the connection betweem nodeJs and db
 function endconnection() {
