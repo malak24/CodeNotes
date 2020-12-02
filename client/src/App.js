@@ -209,7 +209,8 @@ class App extends Component {
             selectedOption={this.state.selectedOption}
             handleOptionChange={this.handleOptionChange}
             search={this.search}
-            folders={this.state.folders}
+            folders = {this.state.folders}
+            notes = {this.state.notes}
           />
 
           {/* <div>

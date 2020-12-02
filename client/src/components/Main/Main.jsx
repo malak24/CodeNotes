@@ -10,8 +10,6 @@ class Main extends Component {
 
   render() {
     return (
-      //note has to contain : title - body
-      //render a whole note component when the new button is clicked
       <div>
         <Modal.Dialog className='main'>
           <Modal.Header className='main__header' closeButton>
