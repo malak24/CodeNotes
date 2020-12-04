@@ -11,7 +11,7 @@ class Folders extends Component {
           <div className='folders__title-container'>
             <p className='folders__title'>Folders</p>
             <div className = 'folders__new-folder'>
-              <input className = 'folders__input' type='text' value='' placeholder='Folder name ...' />
+              <input onChange = {this.props.getFolderName} className = 'folders__input' type='text' value='' placeholder='Folder name ...' />
               <p onClick={this.props.createFolder} className="btn folders__new-btn">New</p>
             </div>
           </div>

@@ -16,7 +16,12 @@ class SideBar extends Component {
           <p className='sidebar__name'>Malak Kataie</p>
         </div>
         <Calendar className='sidebar__calendar' />
-        <Folders folders={this.props.folders} notes={this.props.notes} />
+        <Folders
+          folders={this.props.folders}
+          notes={this.props.notes}
+          getNotes={this.props.getNotes}
+          getFolderName = {this.props.getFolderName}
+        />
       </div>
     )
   }

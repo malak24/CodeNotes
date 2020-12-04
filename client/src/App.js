@@ -28,7 +28,7 @@ class App extends Component {
       noteId: '',
 
       search: '',
-      model: 'Start writing here',
+      // model: 'Start writing here',
       selectedOption: '',
     };
   }
@@ -38,7 +38,7 @@ class App extends Component {
   }
 
   //Get the notes of one folder
-  getNotes = (folder_id) => {
+  getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
@@ -120,9 +120,10 @@ class App extends Component {
   //   })
   // }
 
-  getFolderInput = (e) => {
+  getFolderName = (e) => {
     folderInp = e.target.value;
     this.setState({ folderName: folderInp })
+    console.log(folderInp);
   }
 
   getNoteInput = (e) => {
@@ -212,6 +213,8 @@ class App extends Component {
             search={this.search}
             folders = {this.state.folders}
             notes = {this.state.notes}
+            getNotes = {this.getNotes}
+            getFolderName = {this.getFolderName}
           />
 
           {/* <div>

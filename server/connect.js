@@ -13,7 +13,7 @@ connection.connect(function (error) {
   if (error) throw error;
 });
 
-//FOLDERS
+//GET ALL DATA FROM FOLDERS TABLE (DATABASE)
 router.get('/folders', function (req, res) {
   connection.query('SELECT * FROM folders', (error, results, fields) => {
     if (error) throw error;
@@ -29,6 +29,7 @@ router.get('/folders', function (req, res) {
 //     })
 // })
 
+//ADD A NEW FOLDER TO THE FOLDERS TABLE (DATABASE)
 router.post('/folders/:folderId', function (req, res) {
   connection.query(
     `INSERT INTO folders (folder_name) 
