@@ -4,6 +4,7 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Main from './components/Main/Main'
+import Folders from './components/SideBar/Folders/Folders';
 
 let inputValueFo;
 let inputValueFi;
@@ -94,7 +95,7 @@ class App extends Component {
   createNote = (folder_id) => {
     axios
       .post(`${url}/folders/${folder_id}/noteId`, {
-        note_name: this.state.notetitle,
+        note_title: this.state.notetitle,
       })
       .then(response => {
         console.log(response);

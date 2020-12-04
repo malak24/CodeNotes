@@ -14,21 +14,21 @@ class Folders extends Component {
               <p onClick={this.props.createFolder} className="btn folders__title-new">New</p>
               <p className="folders__title-arrow">▾</p>
             </div>
-
-            {this.props.folders.map((folder) => (
-              <ul class="list-group">
-                <li onClick = {() => {this.props.getNotes(folder.folder_id)}} class="list-group-item">{this.props.folders.folder_name}</li>
-
-                {/* {this.props.notes.map((note) => ( */ }
-                  {/* <ul> */ }
-                    {/* <li>{this.props.note_title}</li> */ }
-                  {/* </ul> */ }
-                 {/* ))} */ }
-              </ul>
-             ))}
           </div>
+
+          {this.props.folders.map((folder) => (
+            <ul class="list-group">
+              <li onClick={() => { this.props.getNotes(folder.folder_id) }} class="list-group-item">{folder.folder_name}</li>
+
+              {/* {this.props.notes.map((note) => ( */}
+              {/* <ul> */}
+              {/* <li>{this.props.note_title}</li> */}
+              {/* </ul> */}
+              {/* ))} */}
+            </ul>
+          ))}
+        </div>
       </div>
-      </div >
     )
   }
 }

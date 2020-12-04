@@ -17,7 +17,7 @@ connection.connect(function (error) {
 router.get('/folders', function (req, res) {
   connection.query('SELECT * FROM folders', (error, results, fields) => {
     if (error) throw error;
-    console.log('These are all folders ', results); //use results[0].folder_id for specific data
+    console.log('Folders : ', results); //use results[0].folder_id for specific data
     res.status(200).send(results)
   });
 });
