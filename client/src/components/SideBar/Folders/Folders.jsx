@@ -10,15 +10,16 @@ class Folders extends Component {
         <div className='folders'>
           <div className='folders__title-container'>
             <p className='folders__title'>Folders</p>
-            <div className='folders__buttons'>
-              <p onClick={this.props.createFolder} className="btn folders__title-new">New</p>
-              <p className="folders__title-arrow">▾</p>
+            <div className = 'folders__new-folder'>
+              <input className = 'folders__input' type='text' value='' placeholder='Folder name ...' />
+              <p onClick={this.props.createFolder} className="btn folders__new-btn">New</p>
             </div>
           </div>
 
           {this.props.folders.map((folder) => (
             <ul class="list-group">
-              <li onClick={() => { this.props.getNotes(folder.folder_id) }} class="list-group-item">{folder.folder_name}</li>
+              <li onClick={() => { this.props.getNotes(folder.folder_id) }} class="list-group-item">{folder.folder_name}               <p className="folders__title-arrow">▾</p>
+              </li>
 
               {/* {this.props.notes.map((note) => ( */}
               {/* <ul> */}

@@ -6,9 +6,9 @@ import SideBar from './components/SideBar/SideBar'
 import Main from './components/Main/Main'
 import Folders from './components/SideBar/Folders/Folders';
 
-let inputValueFo;
-let inputValueFi;
-let searchVal;
+let folderInp;
+let noteInp;
+let searchInp;
 let url = 'http://localhost:8080'
 
 class App extends Component {
@@ -120,20 +120,20 @@ class App extends Component {
   //   })
   // }
 
-  getInputFolder = (e) => {
-    inputValueFo = e.target.value;
-    this.setState({ folderName: inputValueFo })
+  getFolderInput = (e) => {
+    folderInp = e.target.value;
+    this.setState({ folderName: folderInp })
   }
 
-  getInputNote = (e) => {
-    inputValueFi = e.target.value;
-    this.setState({ noteName: inputValueFi })
+  getNoteInput = (e) => {
+    noteInp = e.target.value;
+    this.setState({ noteName: noteInp })
   }
 
   getSearchVal = (e) => {
-    searchVal = e.target.value;
-    this.setState({ search: searchVal })
-    console.log(searchVal)
+    searchInp = e.target.value;
+    this.setState({ search: searchInp })
+    console.log(searchInp)
   }
 
   folderSearchFn = () => {
