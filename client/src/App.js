@@ -201,6 +201,10 @@ class App extends Component {
     this.saveNote(this.state.folderId, this.state.noteId)
   }
 
+  getFolderId = (folder_id) => {
+    console.log(folder_id)
+  }
+
   render() {
     return (
       <>
@@ -215,6 +219,8 @@ class App extends Component {
             notes = {this.state.notes}
             getNotes = {this.getNotes}
             getFolderName = {this.getFolderName}
+            createFolder = {this.createFolder}
+            getFolderId = {this.getFolderId}
           />
 
           {/* <div>
