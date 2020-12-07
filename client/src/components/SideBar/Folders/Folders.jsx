@@ -24,15 +24,16 @@ class Folders extends Component {
               <li
                 key={uuidv4()}
                 onClick={() => {
-                  // this.props.getFolderId(folder.folder_id) }}
                   this.props.getNotes(folder.folder_id)
                 }}
                 className="list-group-item">
-                <p>{folder.folder_name}</p>
-                <img src={down} className="folders__name-arrow" alt = 'arrow'/>
-                <ul>
+                <div className = "folders__wrapper">
+                  <p className = 'folders__folder-name'>{folder.folder_name}</p>
+                  <img src={down} className="folders__name-arrow" alt='arrow' />
+                </div>
+                <ul className = 'folders__notes-list'>
                   {this.props.notes.map((note) => (
-                    <li>{this.props.note_title}</li>
+                    <li className = 'folders__notes-item'>{note.note_title}</li>
                   ))}
                 </ul>
               </li>
