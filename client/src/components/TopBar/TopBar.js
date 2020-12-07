@@ -1,14 +1,7 @@
 import React, { Component } from 'react';
-import logo from '../../assets/logo.png';
-import $ from 'jquery';
 import './Topbar.scss';
-import Popper from 'popper.js';
 
 class Topbar extends Component {
-  constructor() {
-    super();
-
-  }
 
   render() {
 

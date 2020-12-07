@@ -4,6 +4,7 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Main from './components/Main/Main'
+import Folders from './components/SideBar/Folders/Folders';
 
 let folderInp;
 let noteInp;
@@ -209,12 +210,11 @@ class App extends Component {
       <>
         <Topbar />
         <div className="app">
-
           <SideBar
-            // getSearchVal={this.getSearchVal}
-            // selectedOption={this.state.selectedOption}
-            // handleOptionChange={this.handleOptionChange}
-            // search={this.search}
+            getSearchVal={this.getSearchVal}
+            selectedOption={this.state.selectedOption}
+            handleOptionChange={this.handleOptionChange}
+            search={this.search}
             folders = {this.state.folders}
             notes = {this.state.notes}
             getNotes = {this.getNotes}
@@ -223,8 +223,12 @@ class App extends Component {
             getFolderId = {this.getFolderId}
           />
 
-          <Main 
-          notes = {this.state.notes}/>
+          {/* <div>
+            {this.props.notes.map((note) => (<Main noteTitle={this.state.noteTitle} 
+            noteContent={this.state.noteContent} 
+            />))}
+          </div> */}
+
         </div>
       </>
     );

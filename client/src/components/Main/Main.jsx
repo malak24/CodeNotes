@@ -11,24 +11,29 @@ class Main extends Component {
   render() {
     return (
       <div>
-        <Modal.Dialog className='main'>
-          <Modal.Header className='main__header' closeButton>
-            <Modal.Title className='main__title'>Note title</Modal.Title>
-          </Modal.Header>
+        {this.props.notes.map((note) => (
+          <div>
+            <Modal.Dialog className='main'>
+              <Modal.Header className='main__header' closeButton>
+                <Modal.Title className='main__title'>{note.note_title}</Modal.Title>
+              </Modal.Header>
 
-          <Modal.Body>
-            <p>Type your text here ...</p>
-          </Modal.Body>
+              <Modal.Body>
+                <p>{note.note_content}</p>
+              </Modal.Body>
 
-          <Modal.Footer>
-            <Button variant="secondary">Close</Button>
-            <Button>Save</Button>
-          </Modal.Footer>
-        </Modal.Dialog>
+              <Modal.Footer>
+                <Button variant="secondary">Close</Button>
+                <Button>Save</Button>
+              </Modal.Footer>
+            </Modal.Dialog>
+          </div>
+        ))}
       </div>
     )
   }
 }
+
 
 
 export default Main;
