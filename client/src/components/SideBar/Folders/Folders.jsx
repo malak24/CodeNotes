@@ -18,7 +18,6 @@ class Folders extends Component {
             </div>
           </div>
 
-
           <ul className="list-group">
             {this.props.folders.map((folder) => (
               <li

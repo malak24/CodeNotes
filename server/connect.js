@@ -9,9 +9,20 @@ const connection = mysql.createConnection({ //create connection between node js 
   database: 'CodeNotes'
 });
 
+let notes = [];
+
 connection.connect(function (error) {
   if (error) throw error;
 });
+
+getData = () => {
+  connection.query('SELECT * FROM notes', (error, results) => {
+    notes = results
+    console.log(notes);
+  })
+} 
+
+getData();
 
 //GET ALL DATA FROM FOLDERS TABLE (DATABASE)
 router.get('/folders', function (req, res) {
