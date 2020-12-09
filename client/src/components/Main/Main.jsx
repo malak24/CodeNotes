@@ -13,13 +13,13 @@ class Main extends Component {
       <div>
         {this.props.notes.map((note) => (
           <div>
-            <Modal.Dialog className='main'>
-              <Modal.Header className='main__header' closeButton>
-                <Modal.Title className='main__title'>{note.note_title}</Modal.Title>
+            <Modal.Dialog className='note'>
+              <Modal.Header className='note__header' closeButton>
+                <Modal.Title className='note__title'><textarea rows='1' cols='66' className = 'note__title-input'>{note.note_title}</textarea></Modal.Title>
               </Modal.Header>
 
               <Modal.Body>
-                <p>{note.note_content}</p>
+                <textarea rows='1' cols='75' className = 'note__content'>{note.note_content}</textarea>
               </Modal.Body>
 
               <Modal.Footer>

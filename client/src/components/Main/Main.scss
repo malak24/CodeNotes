@@ -4,7 +4,7 @@
 p {
   margin-top : 1rem;
 }
-.main {
+.note {
   box-sizing: unset;
   margin-left:1rem;
   max-width: unset;
@@ -20,6 +20,20 @@ p {
   &__title {
     font-size: 1.4rem;
     margin-top: 0.2rem;
+    line-height:1;
+  }
+
+  &__title-input {
+    resize: none;
+    border:none;
+    outline:none;
+    background-color: #d1c6c9;
+  }
+
+  &__content {
+    outline : none;
+    // border:none;
+    font-size:1.4rem;
   }
 }
 
