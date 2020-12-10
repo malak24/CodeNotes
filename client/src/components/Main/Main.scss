@@ -32,8 +32,13 @@ p {
 
   &__content {
     outline : none;
-    // border:none;
+    border:1px solid black;
     font-size:1.4rem;
+    resize:both;
+    display: block;
+    overflow: hidden;
+    min-height:40px;
+    line-height:20px;
   }
 }
 

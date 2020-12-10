@@ -15,11 +15,13 @@ class Main extends Component {
           <div>
             <Modal.Dialog className='note'>
               <Modal.Header className='note__header' closeButton>
-                <Modal.Title className='note__title'><textarea rows='1' cols='66' className = 'note__title-input'>{note.note_title}</textarea></Modal.Title>
+                <Modal.Title className='note__title'><textarea rows='1' cols='66' className='note__title-input'>{note.note_title}</textarea></Modal.Title>
               </Modal.Header>
 
               <Modal.Body>
-                <textarea rows='1' cols='75' className = 'note__content'>{note.note_content}</textarea>
+                <p>
+                  <span role='textbox' className='note__content' contenteditable>{note.note_content}</span>
+                </p>
               </Modal.Body>
 
               <Modal.Footer>
