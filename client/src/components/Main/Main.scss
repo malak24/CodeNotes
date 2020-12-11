@@ -2,25 +2,23 @@
 @import '../../partials/variables.scss';
 
 p {
-  margin-top : 1rem;
+  margin:0.45rem 0;
 }
 .note {
   box-sizing: unset;
   margin-left:1rem;
   max-width: unset;
   width:71vw;
+  -webkit-user-select: text;
+  -moz-user-select: text; 
+  -ms-user-select: text;
+  user-select: text;
 
   &__header {
     padding: 0.3rem 0.3rem;
     padding-left: 1rem;
-    padding-right:0.6rem;
+    padding-right:1rem;
     background-color: #d1c6c9;
-  }
-
-  &__title {
-    font-size: 1.4rem;
-    margin-top: 0.2rem;
-    line-height:1;
   }
 
   &__title-input {
@@ -32,7 +30,6 @@ p {
 
   &__content {
     outline : none;
-    border:1px solid black;
     font-size:1.4rem;
     resize:both;
     display: block;
@@ -50,4 +47,13 @@ p {
 
 .btn-secondary {
   background-color: grey;
+}
+
+.modal-header {
+  align-items: unset;
+}
+
+.modal-body {
+  padding-top:0;
+  margin-top:0.4rem;
 }
