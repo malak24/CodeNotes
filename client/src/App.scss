@@ -4,14 +4,9 @@
 
 .app {
   font-family: 'Baloo 2', cursive;
-  display:flex;
   background-color: rgb(233, 233, 233);
 
-  &__right-section {
-    display:flex;
-    flex-direction: column;
-    width:100%;
-    height:100% !important;
-    border:none;
+  &__container {
+    display : flex;
   }
 }

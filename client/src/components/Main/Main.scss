@@ -9,16 +9,23 @@ p {
   margin-left:1rem;
   max-width: unset;
   width:71vw;
-  -webkit-user-select: text;
-  -moz-user-select: text; 
-  -ms-user-select: text;
-  user-select: text;
 
   &__header {
-    padding: 0.3rem 0.3rem;
+    padding: 0 0.3rem;
     padding-left: 1rem;
     padding-right:1rem;
     background-color: #d1c6c9;
+    height : 2.4rem;
+  }
+
+  &__title {
+    min-width:5rem;
+    display: inline-block;
+    outline : none;
+  }
+
+  &__title:hover {
+    cursor : text;
   }
 
   &__title-input {
@@ -32,10 +39,9 @@ p {
     outline : none;
     font-size:1.4rem;
     resize:both;
-    display: block;
     overflow: hidden;
-    min-height:40px;
-    line-height:20px;
+    display : inline-block;
+    min-width : 10rem;
   }
 }
 

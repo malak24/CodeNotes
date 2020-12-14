@@ -21,13 +21,10 @@ class Main extends Component {
               </Modal.Header>
 
               <Modal.Body>
-                <p>
                   <span role='textbox' className='note__content' contenteditable = 'true'>{note.note_content}</span>
-                </p>
               </Modal.Body>
 
               <Modal.Footer>
-                <Button variant="secondary">Close</Button>
                 <Button>Save</Button>
               </Modal.Footer>
             </Modal.Dialog>

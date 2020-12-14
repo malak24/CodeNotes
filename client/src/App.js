@@ -206,27 +206,27 @@ class App extends Component {
 
   render() {
     return (
-      <>
-        <Topbar />
         <div className="app">
-
+          <Topbar/>
+          
+          <div className = 'app__container'>
           <SideBar
             // getSearchVal={this.getSearchVal}
             // selectedOption={this.state.selectedOption}
             // handleOptionChange={this.handleOptionChange}
             // search={this.search}
-            folders = {this.state.folders}
-            notes = {this.state.notes}
-            getNotes = {this.getNotes}
-            getFolderName = {this.getFolderName}
-            createFolder = {this.createFolder}
-            getFolderId = {this.getFolderId}
+            folders={this.state.folders}
+            notes={this.state.notes}
+            getNotes={this.getNotes}
+            getFolderName={this.getFolderName}
+            createFolder={this.createFolder}
+            getFolderId={this.getFolderId}
           />
 
-          <Main 
-          notes = {this.state.notes}/>
+          <Main
+            notes={this.state.notes} />
+          </div>
         </div>
-      </>
     );
   }
 }
