@@ -7,6 +7,7 @@ import Main from './components/Main/Main'
 
 let folderInp;
 let noteInp;
+let noteHeader;
 let searchInp;
 let url = 'http://localhost:8080'
 
@@ -20,15 +21,13 @@ class App extends Component {
       notes: [],
 
       folderName: '',
-      notetitle: '',
+      noteTitle: '',
       noteContent: '',
 
       folderId: '',
       noteId: '',
 
       search: '',
-      // model: 'Start writing here',
-      selectedOption: '',
     };
   }
 
@@ -36,7 +35,7 @@ class App extends Component {
     this.getFolders();
   }
 
-  //Get the notes of one folder
+  //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
     axios
       .get(`${url}/folders/${folder_id}/notes`)
@@ -48,7 +47,7 @@ class App extends Component {
       })
   }
 
-  //Get folders
+  //GET ALL FOLDERS
   getFolders = () => {
     axios
       .get(`${url}/folders`)
@@ -61,7 +60,7 @@ class App extends Component {
       })
   }
 
-  //Create a new folder
+  //CREATE A NEW FOLDER
   createFolder = () => {
     axios
       .post(`${url}/folders/folderId`, {
@@ -70,13 +69,26 @@ class App extends Component {
       .then(response => {
         console.log(response);
         this.getFolders();
+        this.console();
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  //Save the note's content
+  //SET STATE NOTETITLE FROM NOTE TITLE INPUT 
+  setNoteTitle = (e) => {
+    noteHeader = e.currentTarget.textContent;
+    console.log(e.currentTarget.textContent);
+    this.setState({NoteTitle : noteHeader})
+  }
+
+  //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
+  setNoteContent = (e) => {
+    this.setState({NoteContent : e.currentTarget.textContent})
+  }
+
+  //SAVE THE NOTE'S CONTENT
   saveNote(folder_id, note_id) {
     axios
       .post(`${url}/folders/${folder_id}/${note_id}/note`, {
@@ -90,11 +102,16 @@ class App extends Component {
       })
   }
 
-  //Create a new note
+  console = () => {
+    console.log(this.state.noteTitle);
+    console.log(this.state.noteContent);
+  }
+
+  //CREATE A NEW NOTE
   createNote = (folder_id) => {
     axios
       .post(`${url}/folders/${folder_id}/noteId`, {
-        note_title: this.state.notetitle,
+        note_title: this.state.noteTitle,
       })
       .then(response => {
         console.log(response);
@@ -105,6 +122,7 @@ class App extends Component {
       })
   }
 
+  //DELETE A SPECIFIC FOLDER
   // deleteFolder = (folder_id) => {
   //   axios
   //   .post(`${url}/folders/${folder_id}`, {
@@ -119,23 +137,21 @@ class App extends Component {
   //   })
   // }
 
+  //GET THE FOLDER NAME
   getFolderName = (e) => {
     folderInp = e.target.value;
     this.setState({ folderName: folderInp })
     console.log(folderInp);
   }
 
-  getNoteInput = (e) => {
-    noteInp = e.target.value;
-    this.setState({ noteName: noteInp })
-  }
-
+  //GET SEARCH WORD (INPUT BY USER)
   getSearchVal = (e) => {
     searchInp = e.target.value;
     this.setState({ search: searchInp })
     console.log(searchInp)
   }
 
+  //SEARCH FOR A FOLDER BY FOLDER NAME
   folderSearchFn = () => {
     console.log('folder search function is working')
     axios
@@ -150,6 +166,7 @@ class App extends Component {
       })
   }
 
+  //SEARCH FOR NOTE BY NOTE TITLE
   noteSearchFn = () => {
     axios
       .post(`${url}/notes`, {
@@ -163,6 +180,7 @@ class App extends Component {
       })
   }
 
+  //SEARCH FOR NOTE BY NOTE CONTENT
   noteSearchFn = () => {
     axios
       .post(`${url}/notes`, {
@@ -176,23 +194,18 @@ class App extends Component {
       })
   }
 
-  handleOptionChange = (e) => {
-    this.setState({
-      selectedOption: e.target.value
-    });
-    console.log(e.target.value)
-  }
-
+  //GENERAL SEARCH FUNCTION FOR FOLDERS AND NOTES
   search = () => {
     if (this.state.selectedOption === 'folder name') {
       this.folderSearchFn()
-    } else if (this.state.selectedOption === 'note name') {
+    } else if (this.state.selectedOption === 'note title') {
       this.noteSearchFn()
     } else {
       this.noteSearchFn()
     }
   }
 
+  //GET CHANGES IN NOTE CONTENT TO SAVE IT WITH SAVE FUNCTION
   handleModelChange = (model) => {
     this.setState({
       model: model
@@ -200,6 +213,7 @@ class App extends Component {
     this.saveNote(this.state.folderId, this.state.noteId)
   }
 
+  //GET A FOLDER'S ID
   getFolderId = (folder_id) => {
     console.log(folder_id)
   }
@@ -212,8 +226,6 @@ class App extends Component {
           <div className = 'app__container'>
           <SideBar
             // getSearchVal={this.getSearchVal}
-            // selectedOption={this.state.selectedOption}
-            // handleOptionChange={this.handleOptionChange}
             // search={this.search}
             folders={this.state.folders}
             notes={this.state.notes}
@@ -224,7 +236,12 @@ class App extends Component {
           />
 
           <Main
-            notes={this.state.notes} />
+            notes={this.state.notes} 
+            onModelChange = {this.state.onModelChange}
+            model = {this.state.model}
+            setNoteTitle = {this.state.setNoteTitle}
+            setNoteContent = {this.state.setNoteContent}
+          />
           </div>
         </div>
     );

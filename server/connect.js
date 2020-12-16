@@ -104,7 +104,7 @@ router.post('/folders/:folderId/:noteId', function (req, res) {
 
 //GET LIST OF GENERAL NOTES TITLES
 router.get('/notes', function(req, res) {
-  connection.query(`SELECT note_name FROM notes;` , (error, results, fields) => {
+  connection.query(`SELECT note_title FROM notes;` , (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })

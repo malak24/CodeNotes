@@ -32,7 +32,7 @@ class Folders extends Component {
                 </div>
                 <ul className = 'folders__notes-list'>
                   {this.props.notes.map((note) => (
-                    <li className = 'folders__notes-item'>{note.note_title}</li>
+                    <li key = {uuidv4()} className = 'folders__notes-item'>{note.note_title}</li>
                   ))}
                 </ul>
               </li>
