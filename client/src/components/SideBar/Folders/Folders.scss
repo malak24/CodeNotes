@@ -38,6 +38,16 @@
       margin:0;
     }
 
+    .btn:active{
+      outline : none;
+      background-color:#ac8891;
+      color:white;
+    }
+  
+    .btn:hover {
+      color:white;
+    }
+
     &__wrapper {
       display: flex;
       justify-content: space-between;

@@ -2,32 +2,44 @@
 @import '../../partials/variables.scss';
 @import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
 
-.topbar {
+#topbar {
+  .topbar {
+    &__logo {
+      font-weight:bold;
+      font-size: 2.2rem;
+      font-family: 'Unica One', cursive;
+      letter-spacing: -0.24rem;
+      color: white;
+      margin-right:12rem;
+    }
 
-  &__logo {
-    font-weight:bold;
-    font-size: 2.2rem;
-    font-family: 'Unica One', cursive;
-    letter-spacing: -0.24rem;
-    color: white;
-    margin-right:12rem;
+    &__button {
+      width:2.6rem;
+      height:2.6rem;
+    }
   }
 
-  &__button {
-    width:2.6rem;
-    height:2.6rem;
+  .btn:active{
+    outline : none;
+    background-color:#ac8891;
+    color:white;
   }
-}
-.btn-secondary {
-  background-color: grey;
-}
 
-.navbar {
-  height : 4rem;
-  background-color: rgb(173, 173, 173);
-}
+  .btn:hover {
+    color:white;
+  }
 
-.form-inline {
-  margin-right:0.3rem;
+  .btn-secondary {
+    background-color: grey;
+  }
+
+  .navbar {
+    height : 4rem;
+    background-color: rgb(173, 173, 173);
+  }
+
+  .form-inline {
+    margin-right:0.3rem;
+  }
 }
 
