@@ -6,8 +6,8 @@ import SideBar from './components/SideBar/SideBar'
 import Main from './components/Main/Main'
 
 let folderInp;
-let noteInp;
-let noteHeader;
+let noteCont;
+let noteTit;
 let searchInp;
 let url = 'http://localhost:8080'
 
@@ -69,7 +69,6 @@ class App extends Component {
       .then(response => {
         console.log(response);
         this.getFolders();
-        this.console();
       })
       .catch(error => {
         console.log(error)
@@ -78,14 +77,14 @@ class App extends Component {
 
   //SET STATE NOTETITLE FROM NOTE TITLE INPUT 
   setNoteTitle = (e) => {
-    noteHeader = e.currentTarget.textContent;
-    console.log(e.currentTarget.textContent);
-    this.setState({NoteTitle : noteHeader})
+    noteTit = e.target.innerText
+    this.setState({NoteTitle : noteTit});
+    console.log('this is working');
   }
 
   //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
   setNoteContent = (e) => {
-    this.setState({NoteContent : e.currentTarget.textContent})
+    this.setState({NoteContent : e.target.innerText})
   }
 
   //SAVE THE NOTE'S CONTENT
@@ -100,11 +99,6 @@ class App extends Component {
       .catch(error => {
         console.log(error)
       })
-  }
-
-  console = () => {
-    console.log(this.state.noteTitle);
-    console.log(this.state.noteContent);
   }
 
   //CREATE A NEW NOTE
@@ -239,8 +233,8 @@ class App extends Component {
             notes={this.state.notes} 
             onModelChange = {this.state.onModelChange}
             model = {this.state.model}
-            setNoteTitle = {this.state.setNoteTitle}
-            setNoteContent = {this.state.setNoteContent}
+            setNoteTitle = {this.setNoteTitle}
+            setNoteContent = {this.setNoteContent}
           />
           </div>
         </div>

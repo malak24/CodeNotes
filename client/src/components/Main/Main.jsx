@@ -9,7 +9,7 @@ import { v4 as uuidv4 } from 'uuid';
 class Main extends Component {
 
 setNoteTitle = (e) => {
-  console.log(e.currentTarget);
+  console.log(e.target.innerText);
 }
 
   render() {
@@ -20,7 +20,7 @@ setNoteTitle = (e) => {
             <Modal.Dialog className='note'>
               <Modal.Header className='note__header' closeButton>
                 <Modal.Title>
-                  <span onInput = {this.setNoteTitle} className = 'note__title' contentEditable = 'true'>{note.note_title}</span>
+                  <span onInput = {this.props.setNoteTitle} className = 'note__title' contentEditable = 'true'>{note.note_title}</span>
                 </Modal.Title>
               </Modal.Header>
 
