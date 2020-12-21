@@ -5,6 +5,7 @@ import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Main from './components/Main/Main'
 
+
 let folderInp;
 let noteCont;
 let noteTit;
@@ -21,6 +22,7 @@ class App extends Component {
       notes: [],
 
       folderName: '',
+
       noteTitle: '',
       noteContent: '',
 
@@ -28,6 +30,7 @@ class App extends Component {
       noteId: '',
 
       search: '',
+
     };
   }
 
@@ -76,16 +79,20 @@ class App extends Component {
   }
 
   //SET STATE NOTETITLE FROM NOTE TITLE INPUT 
-  setNoteTitle = (e) => {
-    noteTit = e.target.innerText
-    this.setState({NoteTitle : noteTit});
-    console.log('this is working');
-  }
+  // setNoteTitle = (e) => {
+  //   noteTit = e.target.textContent;
+  //   this.setState({noteTitle : noteTit});
+  //   e.preventDefault();
+  //   console.log(noteTit);
+  // }
 
-  //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
-  setNoteContent = (e) => {
-    this.setState({NoteContent : e.target.innerText})
-  }
+  // //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
+  // setNoteContent = (e) => {
+  //   noteCont = e.target.textContent;
+  //   this.setState({noteContent : noteCont});
+  //   e.preventDefault();
+  //   console.log(noteCont);
+  // }
 
   //SAVE THE NOTE'S CONTENT
   saveNote(folder_id, note_id) {
@@ -235,6 +242,8 @@ class App extends Component {
             model = {this.state.model}
             setNoteTitle = {this.setNoteTitle}
             setNoteContent = {this.setNoteContent}
+            innerRef = {this.state.contenteditable}
+            html = {this.state.html}
           />
           </div>
         </div>

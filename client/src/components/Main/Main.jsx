@@ -5,6 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './Main.scss';
 import { v4 as uuidv4 } from 'uuid';
+import ContentEditable from 'react-contenteditable';
 
 class Main extends Component {
 
@@ -18,10 +19,13 @@ setNoteTitle = (e) => {
         {this.props.notes.map((note) => (
           <div key = {uuidv4()}>
             <Modal.Dialog className='note'>
-              <Modal.Header className='note__header' closeButton>
-                <Modal.Title>
-                  <span onInput = {this.props.setNoteTitle} className = 'note__title' contentEditable = 'true'>{note.note_title}</span>
-                </Modal.Title>
+              <Modal.Header closeButton>
+                <textarea 
+                onChange = {this.props.setNoteTitle} 
+                className = 'note__title note__header'
+                defaultValue = {note.note_title}
+                >
+                </textarea>
               </Modal.Header>
 
               <Modal.Body>

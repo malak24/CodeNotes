@@ -19,20 +19,19 @@ p {
   }
 
   &__title {
-    min-width:5rem;
+    min-width:8rem;
     display: inline-block;
     outline : none;
+    resize: vertical;
+    width:100%;
+    overflow: hidden;
+    height:auto;
+    background-origin: content-box;
+    display: block;
   }
 
   &__title:hover {
     cursor : text;
-  }
-
-  &__title-input {
-    resize: none;
-    border:none;
-    outline:none;
-    background-color: #d1c6c9;
   }
 
   &__content {
