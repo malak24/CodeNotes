@@ -9,9 +9,9 @@ import ContentEditable from 'react-contenteditable';
 
 class Main extends Component {
 
-setNoteTitle = (e) => {
-  console.log(e.target.innerText);
-}
+  assignRef = (element) => {
+    this.target = element;
+  }
 
   render() {
     return (
@@ -20,19 +20,19 @@ setNoteTitle = (e) => {
           <div key = {uuidv4()}>
             <Modal.Dialog className='note'>
               <Modal.Header closeButton>
-                <textarea 
-                onChange = {this.props.setNoteTitle} 
+                <textarea
+                ref = {'target'}
+                // onClick = {this.props.getTarget}
+                onChange = {this.props.autoexpand}
+                // onChange = {this.props.setNoteTitle} 
                 className = 'note__title note__header'
-                defaultValue = {note.note_title}
-                >
+                defaultValue = {note.note_title}>
                 </textarea>
               </Modal.Header>
 
               <Modal.Body>
                   <span 
-                  role='textbox' 
                   className='note__content' 
-                  contentEditable = 'true'
                   onInput = {this.props.setNoteContent}
                   model = {this.props.model}>{note.note_content}</span>
               </Modal.Body>
