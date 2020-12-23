@@ -78,9 +78,10 @@ class App extends Component {
   }
 
   autoexpand = (target) => {
+    console.log(target);
     target.style.height = 'inherit'
 
-    let computed = window.getComputedStyle(this.container);
+    let computed = window.getComputedStyle(target);
     let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
       + parseInt(computed.getPropertyValue('padding-top'), 10)
       + target.scrollHeight

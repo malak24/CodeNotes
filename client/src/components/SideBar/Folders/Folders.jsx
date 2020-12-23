@@ -26,13 +26,15 @@ class Folders extends Component {
                   this.props.getNotes(folder.folder_id)
                 }}
                 className="list-group-item">
-                <div className = "folders__wrapper">
-                  <p className = 'folders__folder-name'>{folder.folder_name}</p>
+                
+                <div className="folders__wrapper">
+                  <p className='folders__folder-name'>{folder.folder_name}</p>
                   <img src={down} className="folders__name-arrow" alt='arrow' />
                 </div>
-                <ul className = 'folders__notes-list'>
+                
+                <ul className='folders__notes-list'>
                   {this.props.notes.map((note) => (
-                    <li key = {uuidv4()} className = 'folders__notes-item'>{note.note_title}</li>
+                    <li key={uuidv4()} className='folders__notes-item'>{note.note_title}</li>
                   ))}
                 </ul>
               </li>

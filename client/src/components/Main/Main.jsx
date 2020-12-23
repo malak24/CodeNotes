@@ -11,6 +11,7 @@ class Main extends Component {
 
   assignRef = (element) => {
     this.target = element;
+    console.log(element);
   }
 
   render() {
@@ -22,7 +23,6 @@ class Main extends Component {
               <Modal.Header closeButton>
                 <textarea
                 ref = {'target'}
-                // onClick = {this.props.getTarget}
                 onChange = {this.props.autoexpand}
                 // onChange = {this.props.setNoteTitle} 
                 className = 'note__title note__header'
@@ -31,10 +31,10 @@ class Main extends Component {
               </Modal.Header>
 
               <Modal.Body>
-                  <span 
+                  <textarea 
                   className='note__content' 
-                  onInput = {this.props.setNoteContent}
-                  model = {this.props.model}>{note.note_content}</span>
+                  onChange = {this.props.setNoteContent}
+                  model = {this.props.model}>{note.note_content}</textarea>
               </Modal.Body>
 
               <Modal.Footer>
