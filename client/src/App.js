@@ -30,7 +30,7 @@ class App extends Component {
       noteId: '',
 
       search: '',
-      };
+    };
   }
 
   componentDidMount() {
@@ -77,8 +77,8 @@ class App extends Component {
       })
   }
 
-  autoexpand = (target) => {
-    console.log(target);
+  autoexpand = (event) => {
+    let target = event.target
     target.style.height = 'inherit'
 
     let computed = window.getComputedStyle(target);
@@ -91,176 +91,182 @@ class App extends Component {
     target.style.height = height + 'px';
   };
 
-//SET STATE NOTETITLE FROM NOTE TITLE INPUT 
-// setNoteTitle = (e) => {
-//   noteTit = e.target.textContent;
-//   this.setState({noteTitle : noteTit});
-//   e.preventDefault();
-//   console.log(noteTit);
-// }
+  //SET STATE NOTETITLE FROM NOTE TITLE INPUT 
+  // setNoteTitle = (e) => {
+  //   noteTit = e.target.textContent;
+  //   this.setState({noteTitle : noteTit});
+  //   e.preventDefault();
+  //   console.log(noteTit);
+  // }
 
-// //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
-// setNoteContent = (e) => {
-//   noteCont = e.target.textContent;
-//   this.setState({noteContent : noteCont});
-//   e.preventDefault();
-//   console.log(noteCont);
-// }
+  // //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
+  // setNoteContent = (e) => {
+  //   noteCont = e.target.textContent;
+  //   this.setState({noteContent : noteCont});
+  //   e.preventDefault();
+  //   console.log(noteCont);
+  // }
 
-//SAVE THE NOTE'S CONTENT
-saveNote(folder_id, note_id) {
-  axios
-    .post(`${url}/folders/${folder_id}/${note_id}/note`, {
-      noteContent: this.state.model,
-    })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
-//CREATE A NEW NOTE
-createNote = (folder_id) => {
-  axios
-    .post(`${url}/folders/${folder_id}/noteId`, {
-      note_title: this.state.noteTitle,
-    })
-    .then(response => {
-      console.log(response);
-      this.getNotes(folder_id);
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
-//DELETE A SPECIFIC FOLDER
-// deleteFolder = (folder_id) => {
-//   axios
-//   .post(`${url}/folders/${folder_id}`, {
-//     folderId: folder_id 
-//   })
-//   .then(response => {
-//     console.log(response);
-//     this.getFolders(folder_id);
-//   })
-//   .catch(error => {
-//     console.log(error)
-//   })
-// }
-
-//GET THE FOLDER NAME
-getFolderName = (e) => {
-  folderInp = e.target.value;
-  this.setState({ folderName: folderInp })
-  console.log(folderInp);
-}
-
-//GET SEARCH WORD (INPUT BY USER)
-getSearchVal = (e) => {
-  searchInp = e.target.value;
-  this.setState({ search: searchInp })
-  console.log(searchInp)
-}
-
-//SEARCH FOR A FOLDER BY FOLDER NAME
-folderSearchFn = () => {
-  console.log('folder search function is working')
-  axios
-    .post(`${url}/folders`, {
-      search: this.state.search
-    })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
-//SEARCH FOR NOTE BY NOTE TITLE
-noteSearchFn = () => {
-  axios
-    .post(`${url}/notes`, {
-      search: this.state.search
-    })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
-//SEARCH FOR NOTE BY NOTE CONTENT
-noteSearchFn = () => {
-  axios
-    .post(`${url}/notes`, {
-      search: this.state.search
-    })
-    .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error)
-    })
-}
-
-//GENERAL SEARCH FUNCTION FOR FOLDERS AND NOTES
-search = () => {
-  if (this.state.selectedOption === 'folder name') {
-    this.folderSearchFn()
-  } else if (this.state.selectedOption === 'note title') {
-    this.noteSearchFn()
-  } else {
-    this.noteSearchFn()
+  //SAVE THE NOTE'S CONTENT
+  saveNote(folder_id, note_id) {
+    axios
+      .post(`${url}/folders/${folder_id}/${note_id}/note`, {
+        noteContent: this.state.model,
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
-}
 
-//GET CHANGES IN NOTE CONTENT TO SAVE IT WITH SAVE FUNCTION
-handleModelChange = (model) => {
-  this.setState({
-    model: model
-  })
-  this.saveNote(this.state.folderId, this.state.noteId)
-}
+  //CREATE A NEW NOTE
+  createNote = (folder_id) => {
+    console.log(typeof (folder_id))
+    // if (typeof(folder_id == 'undefined')) {
+    //   alert ('Please select a folder to create a note')
+    // }
+    axios
+      .post(`${url}/folders/${folder_id}/noteId`, {
+        note_title: this.state.noteTitle,
+      })
+      .then(response => {
+        console.log(response);
+        this.getNotes(folder_id);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
 
-//GET A FOLDER'S ID
-getFolderId = (folder_id) => {
-  console.log(folder_id)
-}
+  //DELETE A SPECIFIC FOLDER
+  // deleteFolder = (folder_id) => {
+  //   axios
+  //   .post(`${url}/folders/${folder_id}`, {
+  //     folderId: folder_id 
+  //   })
+  //   .then(response => {
+  //     console.log(response);
+  //     this.getFolders(folder_id);
+  //   })
+  //   .catch(error => {
+  //     console.log(error)
+  //   })
+  // }
 
-render() {
-  return (
-    <div className="app">
-      <Topbar />
+  //GET THE FOLDER NAME
+  getFolderName = (e) => {
+    folderInp = e.target.value;
+    this.setState({ folderName: folderInp })
+    console.log(folderInp);
+  }
 
-      <div className='app__container'>
-        <SideBar
-          // getSearchVal={this.getSearchVal}
-          // search={this.search}
-          folders={this.state.folders}
-          notes={this.state.notes}
-          getNotes={this.getNotes}
-          getFolderName={this.getFolderName}
-          createFolder={this.createFolder}
-          getFolderId={this.getFolderId}
+  //GET SEARCH WORD (INPUT BY USER)
+  getSearchVal = (e) => {
+    searchInp = e.target.value;
+    this.setState({ search: searchInp })
+    console.log(searchInp)
+  }
+
+  //SEARCH FOR A FOLDER BY FOLDER NAME
+  folderSearchFn = () => {
+    console.log('folder search function is working')
+    axios
+      .post(`${url}/folders`, {
+        search: this.state.search
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  //SEARCH FOR NOTE BY NOTE TITLE
+  noteSearchFn = () => {
+    axios
+      .post(`${url}/notes`, {
+        search: this.state.search
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  //SEARCH FOR NOTE BY NOTE CONTENT
+  noteSearchFn = () => {
+    axios
+      .post(`${url}/notes`, {
+        search: this.state.search
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  //GENERAL SEARCH FUNCTION FOR FOLDERS AND NOTES
+  search = () => {
+    if (this.state.selectedOption === 'folder name') {
+      this.folderSearchFn()
+    } else if (this.state.selectedOption === 'note title') {
+      this.noteSearchFn()
+    } else {
+      this.noteSearchFn()
+    }
+  }
+
+  //GET CHANGES IN NOTE CONTENT TO SAVE IT WITH SAVE FUNCTION
+  handleModelChange = (model) => {
+    this.setState({
+      model: model
+    })
+    this.saveNote(this.state.folderId, this.state.noteId)
+  }
+
+  //GET A FOLDER'S ID
+  getFolderId = (folder_id) => {
+    console.log(folder_id)
+  }
+
+  render() {
+    return (
+      <div className="app">
+        <Topbar
+          createNote={this.createNote}
         />
 
-        <Main
-          notes={this.state.notes}
-          onModelChange={this.state.onModelChange}
-          model={this.state.model}
-          target = {this.state.target}
-          // getTarget = {this.getTarget}
-          autoexpand = {this.autoexpand}
-        />
+        <div className='app__container'>
+          <SideBar
+            // getSearchVal={this.getSearchVal}
+            // search={this.search}
+            folders={this.state.folders}
+            notes={this.state.notes}
+            getNotes={this.getNotes}
+            getFolderName={this.getFolderName}
+            createFolder={this.createFolder}
+            getFolderId={this.getFolderId}
+          />
+
+          <Main
+            notes={this.state.notes}
+            onModelChange={this.state.onModelChange}
+            model={this.state.model}
+            target={this.state.target}
+            // getTarget = {this.getTarget}
+            autoexpand={this.autoexpand}
+          />
+        </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
 }
 
 export default App;

@@ -29,7 +29,6 @@ class Folders extends Component {
                 
                 <div className="folders__wrapper">
                   <p className='folders__folder-name'>{folder.folder_name}</p>
-                  <img src={down} className="folders__name-arrow" alt='arrow' />
                 </div>
                 
                 <ul className='folders__notes-list'>

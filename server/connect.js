@@ -96,7 +96,7 @@ router.post('/folders/:folderId/:noteId/note', function (req, res) {
 router.post('/folders/:folderId/:noteId', function (req, res) {
   connection.query(`INSERT INTO notes (folder_id, note_title) VALUES ('${req.params.folderId}', '${req.body.note_title}')`, (error, results, fields) => {
     if (error) throw error;
-    res.status(200).send("Note saved !")
+    res.status(200).send("Note created !")
   })
 });
 
