@@ -33,7 +33,8 @@ class Main extends Component {
               <Modal.Body>
                   <textarea 
                   className='note__content' 
-                  onChange = {this.props.setNoteContent}
+                  onChange = {this.props.autoexpand}
+                  // onChange = {this.props.setNoteContent}
                   model = {this.props.model}>{note.note_content}</textarea>
               </Modal.Body>
 
