@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
-import Main from './components/Main/Main'
+import Notes from './components/Notes/Notes'
 
 
 let folderInp;
@@ -255,7 +255,7 @@ class App extends Component {
             getFolderId={this.getFolderId}
           />
 
-          <Main
+          <Notes
             notes={this.state.notes}
             onModelChange={this.state.onModelChange}
             model={this.state.model}

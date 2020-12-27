@@ -3,7 +3,7 @@ import axios from 'axios';
 import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
-import Main from './components/Main/Main'
+import Notes from './components/Notes/Notes'
 import Folders from './components/SideBar/Folders/Folders';
 
 let folderInp;
@@ -224,7 +224,7 @@ class App extends Component {
           />
 
           {/* <div>
-            {this.props.notes.map((note) => (<Main noteTitle={this.state.noteTitle} 
+            {this.props.notes.map((note) => (<Notes noteTitle={this.state.noteTitle} 
             noteContent={this.state.noteContent} 
             />))}
           </div> */}

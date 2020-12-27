@@ -3,11 +3,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
-import './Main.scss';
+import './Notes.scss';
 import { v4 as uuidv4 } from 'uuid';
 import ContentEditable from 'react-contenteditable';
 
-class Main extends Component {
+class Notes extends Component {
 
   assignRef = (element) => {
     this.target = element;
@@ -50,4 +50,4 @@ class Main extends Component {
 }
 
 
-export default Main;
+export default Notes;
