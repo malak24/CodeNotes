@@ -11,7 +11,7 @@ p {
   width:71vw;
 
   &__header {
-    padding: 0 0.3rem;
+    padding-top : 0.5rem;
     padding-left: 1rem;
     padding-right:1rem;
     background-color: #d1c6c9;
@@ -19,15 +19,13 @@ p {
   }
 
   &__title {
-    min-width:8rem;
-    display: inline-block;
     outline : none;
-    resize: vertical;
     width:100%;
-    overflow: hidden;
-    height:auto;
-    background-origin: content-box;
-    display: block;
+    border : none;
+    border-radius : 0.3rem;
+    border-bottom-left-radius : 0;
+    border-bottom-right-radius : 0;
+    font-weight : 500;
   }
 
   &__title:hover {
@@ -36,11 +34,10 @@ p {
 
   &__content {
     outline : none;
-    font-size:1.4rem;
-    resize:both;
-    overflow: hidden;
-    display : inline-block;
-    min-width : 10rem;
+    font-size:1.15rem;
+    width:100%;
+    border-radius : 0.3rem;
+    border : none;
   }
 }
 
@@ -50,15 +47,23 @@ p {
   border:none;
 }
 
+.close {
+  margin : 0;
+  position : absolute;
+  right : 1rem;
+  top : 0.5rem;
+}
+
 .btn-secondary {
   background-color: grey;
 }
 
 .modal-header {
-  align-items: unset;
+  padding : 0;
 }
 
 .modal-body {
   padding-top:0;
   margin-top:0.4rem;
+  padding-right : 2rem;
 }
