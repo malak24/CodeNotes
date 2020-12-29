@@ -18,6 +18,7 @@ class App extends Component {
 
     this.state = {
 
+      data : [],
       folders: [],
       notes: [],
 
@@ -39,6 +40,7 @@ class App extends Component {
 
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
+    console.log(folder_id);
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
@@ -123,7 +125,7 @@ class App extends Component {
 
   //CREATE A NEW NOTE
   createNote = (folder_id) => {
-    console.log(typeof (folder_id))
+    console.log(this.folderId)
     // if (typeof(folder_id == 'undefined')) {
     //   alert ('Please select a folder to create a note')
     // }
