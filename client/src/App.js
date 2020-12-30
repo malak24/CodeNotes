@@ -35,8 +35,18 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.getFolders();
+    this.getData();
   }
+
+  // GET ALL DATA FROM THE DB
+  getData = () => {
+    axios
+    .get(`${url}/data`)
+    .then(response => {
+      this.setState({data : response.data})
+    })
+  }
+
 
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
@@ -51,18 +61,6 @@ class App extends Component {
       })
   }
 
-  //GET ALL FOLDERS
-  getFolders = () => {
-    axios
-      .get(`${url}/folders`)
-      .then(response => {
-        console.log(response.data)
-        this.setState({ folders: response.data })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
 
   //CREATE A NEW FOLDER
   createFolder = () => {

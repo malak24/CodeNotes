@@ -9,31 +9,16 @@ const connection = mysql.createConnection({ //create connection between node js 
   database: 'CodeNotes'
 });
 
-let notes = [];
-
 connection.connect(function (error) {
   if (error) throw error;
 });
 
 
-
-// GET ALL DATA FROM NOTES TABLE
-getData = () => {
-  connection.query('SELECT * FROM notes', (error, results) => {
-    notes = results
-    console.log(notes);
-  })
-} 
-
-getData();
-
-
-
-//GET ALL DATA FROM FOLDERS TABLE (DATABASE)
-router.get('/folders', function (req, res) {
-  connection.query('SELECT * FROM folders', (error, results, fields) => {
+//GET ALL DATA FROM NOTES TABLE (DATABASE)
+router.get('/data', function (req, res) {
+  connection.query('SELECT * FROM notes', (error, results, fields) => {
     if (error) throw error;
-    console.log('Folders : ', results); //use results[0].folder_id for specific data
+    console.log('Notes : ', results);
     res.status(200).send(results)
   });
 });
