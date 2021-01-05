@@ -4,6 +4,7 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
+import { data } from 'jquery';
 
 
 let folderInp;
@@ -43,8 +44,20 @@ class App extends Component {
     axios
     .get(`${url}/data`)
     .then(response => {
-      this.setState({data : response.data})
+      console.log(response.data);
+      this.setState({data : response.data});
     })
+  }
+
+
+  // GET ALL FOLDERS NAME
+  getFolders = () => {
+    let foldersArr = [];
+
+    for (let i = 0; i < this.state.data.length; i++) {
+      foldersArr.push(this.state.data[i].folder_name);
+    }
+    this.setState({folders : foldersArr});
   }
 
 
@@ -155,7 +168,7 @@ class App extends Component {
   //   })
   // }
 
-  //GET THE FOLDER NAME
+  //GET THE FOLDER NAME FROM USER INPUT
   getFolderName = (e) => {
     folderInp = e.target.value;
     this.setState({ folderName: folderInp })
