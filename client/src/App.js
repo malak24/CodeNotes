@@ -4,13 +4,13 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
-import { data } from 'jquery';
 
 
 let folderInp;
 let noteCont;
 let noteTit;
 let searchInp;
+let foldersArr = [];
 let url = 'http://localhost:8080'
 
 class App extends Component {
@@ -19,7 +19,7 @@ class App extends Component {
 
     this.state = {
 
-      data : [],
+      data: [],
       folders: [],
       notes: [],
 
@@ -32,33 +32,54 @@ class App extends Component {
       noteId: '',
 
       search: '',
+
+      void : ''
     };
   }
 
   componentDidMount() {
     this.getData();
+    this.getFolders();
   }
 
   // GET ALL DATA FROM THE DB
   getData = () => {
     axios
-    .get(`${url}/data`)
-    .then(response => {
-      console.log(response.data);
-      this.setState({data : response.data});
-    })
+      .get(`${url}/data`)
+      .then(response => {
+        console.log(response.data);
+        this.setState({ data: response.data });
+        this.getFolders();
+      })
   }
 
 
   // GET ALL FOLDERS NAME
   getFolders = () => {
-    let foldersArr = [];
-
     for (let i = 0; i < this.state.data.length; i++) {
-      foldersArr.push(this.state.data[i].folder_name);
+
+      if (i == 0) {
+        foldersArr.push(this.state.data[i].folder_name);
+
+      } else if (i != 0) {
+
+        let item = this.state.data[i - 1].folder_name;
+        if (this.state.data[i].folder_name == item) {
+          continue;
+        } else {
+          foldersArr.push(this.state.data[i].folder_name);
+        }
+      }
+      this.setState({ folders: foldersArr });
     }
-    this.setState({folders : foldersArr});
+    // this.getFoldersData();
   }
+
+  // getFoldersData = () => {
+  //   console.log('this function is being called');
+  //   console.log(this.state.folders)
+  //   this.setState({ void: 'void' });
+  // }
 
 
   //GET THE NOTES OF A SPECIFIC FOLDER
