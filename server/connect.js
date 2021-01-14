@@ -1,6 +1,8 @@
+const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql'); //importing mysql module
+const data = [];
 
 const connection = mysql.createConnection({ //create connection between node js and the database
   host: 'localhost',
@@ -16,9 +18,28 @@ connection.connect(function (error) {
 
 //GET ALL DATA FROM NOTES TABLE (DATABASE)
 router.get('/data', function (req, res) {
-  connection.query('SELECT * FROM notes', (error, results, fields) => {
+  connection.query('SELECT * FROM notes', (error, results) => {
+
+    for (let i = 0; i < results.length; i++) {
+
+      item = {
+        folder_id: results[i].folder_id,
+        folder_name: `${results[i].folder_name}`,
+        notes: [
+          {
+            note_id: results[i].note_id,
+            note_title: `${results[i].note_title}`,
+            note_content: `${results[i].note_content}`
+          }
+        ]
+      }
+
+      data.push(item);
+    }
+
+    console.log(data[0].notes);
+
     if (error) throw error;
-    console.log('Notes : ', results);
     res.status(200).send(results)
   });
 });
@@ -88,8 +109,9 @@ router.post('/folders/:folderId/:noteId', function (req, res) {
 
 
 //GET LIST OF GENERAL NOTES TITLES
-router.get('/notes', function(req, res) {
-  connection.query(`SELECT note_title FROM notes;` , (error, results, fields) => {
+router.get('/notes', function (req, res) {
+  connection.query(`SELECT note_title FROM notes;`, (error, results, fields) => {
+
     if (error) throw error;
     res.status(200).send(results)
   })
@@ -98,8 +120,8 @@ router.get('/notes', function(req, res) {
 
 
 //GET ALL GENERAL NOTES CONTENTS
-router.get('/notes', function(req, res) {
-  connection.query(`SELECT note_content FROM notes;` , (error, results, fields) => {
+router.get('/notes', function (req, res) {
+  connection.query(`SELECT note_content FROM notes;`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send(results)
   })

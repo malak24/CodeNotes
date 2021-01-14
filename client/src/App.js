@@ -7,8 +7,6 @@ import Notes from './components/Notes/Notes'
 
 
 let folderInp;
-let noteCont;
-let noteTit;
 let searchInp;
 let foldersArr = [];
 let url = 'http://localhost:8080'
@@ -32,14 +30,11 @@ class App extends Component {
       noteId: '',
 
       search: '',
-
-      void : ''
     };
   }
 
   componentDidMount() {
     this.getData();
-    this.getFolders();
   }
 
   // GET ALL DATA FROM THE DB
@@ -48,8 +43,8 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         console.log(response.data);
-        this.setState({ data: response.data });
-        this.getFolders();
+        // this.setState({ data: response.data });
+        // this.getFolders();
       })
   }
 
@@ -70,16 +65,9 @@ class App extends Component {
           foldersArr.push(this.state.data[i].folder_name);
         }
       }
-      this.setState({ folders: foldersArr });
     }
-    // this.getFoldersData();
+    this.setState({ folders: foldersArr });
   }
-
-  // getFoldersData = () => {
-  //   console.log('this function is being called');
-  //   console.log(this.state.folders)
-  //   this.setState({ void: 'void' });
-  // }
 
 
   //GET THE NOTES OF A SPECIFIC FOLDER
