@@ -43,21 +43,18 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         console.log(response.data);
-        // this.setState({ data: response.data });
-        // this.getFolders();
+        this.setState({ data: response.data });
+        this.getFolders();
       })
   }
-
 
   // GET ALL FOLDERS NAME
   getFolders = () => {
     for (let i = 0; i < this.state.data.length; i++) {
-
       if (i == 0) {
         foldersArr.push(this.state.data[i].folder_name);
 
       } else if (i != 0) {
-
         let item = this.state.data[i - 1].folder_name;
         if (this.state.data[i].folder_name == item) {
           continue;
@@ -69,6 +66,9 @@ class App extends Component {
     this.setState({ folders: foldersArr });
   }
 
+  get = () => {
+    console.log(this.state.folders)
+  }
 
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
@@ -113,21 +113,6 @@ class App extends Component {
     target.style.height = height + 'px';
   };
 
-  //SET STATE NOTETITLE FROM NOTE TITLE INPUT 
-  // setNoteTitle = (e) => {
-  //   noteTit = e.target.textContent;
-  //   this.setState({noteTitle : noteTit});
-  //   e.preventDefault();
-  //   console.log(noteTit);
-  // }
-
-  // //SET STATE NOTECONTENT FROM NOTE CONTENT INPUT 
-  // setNoteContent = (e) => {
-  //   noteCont = e.target.textContent;
-  //   this.setState({noteContent : noteCont});
-  //   e.preventDefault();
-  //   console.log(noteCont);
-  // }
 
   //SAVE THE NOTE'S CONTENT
   saveNote(folder_id, note_id) {
@@ -162,20 +147,6 @@ class App extends Component {
       })
   }
 
-  //DELETE A SPECIFIC FOLDER
-  // deleteFolder = (folder_id) => {
-  //   axios
-  //   .post(`${url}/folders/${folder_id}`, {
-  //     folderId: folder_id 
-  //   })
-  //   .then(response => {
-  //     console.log(response);
-  //     this.getFolders(folder_id);
-  //   })
-  //   .catch(error => {
-  //     console.log(error)
-  //   })
-  // }
 
   //GET THE FOLDER NAME FROM USER INPUT
   getFolderName = (e) => {
@@ -285,6 +256,8 @@ class App extends Component {
             // getTarget = {this.getTarget}
             autoexpand={this.autoexpand}
           />
+
+          <button onClick={this.get}>Click me</button>
         </div>
       </div>
     );

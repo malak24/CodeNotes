@@ -2,7 +2,6 @@ const { response } = require('express');
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql'); //importing mysql module
-const data = [];
 
 const connection = mysql.createConnection({ //create connection between node js and the database
   host: 'localhost',
@@ -18,41 +17,34 @@ connection.connect(function (error) {
 
 //GET ALL DATA FROM NOTES TABLE (DATABASE)
 router.get('/data', function (req, res) {
-  connection.query('SELECT * FROM notes', (error, results) => {
+  connection.query('SELECT folders.folder_id , folders.folder_name, notes.note_id, notes.note_title, notes.note_content FROM folders INNER JOIN notes ON folders.folder_id = notes.folder_id;', (error, results) => {
+    
+    const data = {}
 
-    for (let i = 0; i < results.length; i++) {
-
-      item = {
-        folder_id: results[i].folder_id,
-        folder_name: `${results[i].folder_name}`,
-        notes: [
-          {
-            note_id: results[i].note_id,
-            note_title: `${results[i].note_title}`,
-            note_content: `${results[i].note_content}`
-          }
-        ]
+    for (let note of results) {
+      const note_details = {
+          note_id: note.note_id,
+          note_title: note.note_title,
+          note_content: note.note_content
       }
 
-      data.push(item);
+      if (note.folder_id in data) {
+        data.note.folder_id.notes.push(note_details)
+      }
+      else {
+        let item = {
+          folder_id: note.folder_id,
+          folder_name: note.folder_name,
+          notes: [note_details]
+        }
+        data[note.folder_id] = item;
+      }
     }
 
-    console.log(data[0].notes);
-
     if (error) throw error;
-    res.status(200).send(results)
+    res.status(200).send(data)
   });
 });
-
-
-
-// SEARCH FOR A FOLDER BY FOLDER NAME
-// router.post('/folders', function (req, res) {
-//   connection.query(`SELECT LOCATE('${req.body.search}', folder_name) FROM folders;`, (error, results, fields) => {
-//       if (error) throw error;
-//       res.status(200).send(results)
-//     })
-// })
 
 
 
@@ -61,6 +53,11 @@ router.post('/folders/:folderId', function (req, res) {
   connection.query(
     `INSERT INTO folders (folder_name) 
      VALUES ('${req.body.folder_name}')`, (error, results, fields) => {
+
+    `INSERT INTO notes (folder_name, folder_id)
+     SELECT folder_name, folder_id
+     FROM folders`
+
     if (error) throw error;
     res.status(200).send("Folder created successfully")
   })
