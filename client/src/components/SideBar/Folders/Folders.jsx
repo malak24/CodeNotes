@@ -18,20 +18,17 @@ class Folders extends Component {
           </div>
 
           <ul className="list-group">
-            {this.props.folders.map((folder) => (
-              <li
-                key={uuidv4()}
-                onClick={() => {
-                  this.props.getNotes(folder.folder_id)
-                }}
+            {Object.keys(this.props.folders).map((keyName, keyIndex) => (
+              <li key={uuidv4()}
+                onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }}
                 className="list-group-item">
-                
+
                 <div className="folders__wrapper">
-                  <p className='folders__folder-name'>{folder.folder_name}</p>
+                  <p className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
                 </div>
-                
+
                 <ul className='folders__notes-list'>
-                  {this.props.notes.map((note) => (
+                  {this.props.folders[keyName].notes.map((note) => (
                     <li key={uuidv4()} className='folders__notes-item'>{note.note_title}</li>
                   ))}
                 </ul>

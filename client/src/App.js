@@ -8,7 +8,7 @@ import Notes from './components/Notes/Notes'
 
 let folderInp;
 let searchInp;
-let foldersArr = [];
+let foldersObj = {};
 let url = 'http://localhost:8080'
 
 class App extends Component {
@@ -17,8 +17,8 @@ class App extends Component {
 
     this.state = {
 
-      data: [],
-      folders: [],
+      data: {},
+      folders: {},
       notes: [],
 
       folderName: '',
@@ -37,6 +37,12 @@ class App extends Component {
     this.getData();
   }
 
+  // componentDidUpdate(prevState) {
+  //   if(this.state.data !== prevState.data) {
+  //     this.getFolders();
+  //   }
+  // }
+
   // GET ALL DATA FROM THE DB
   getData = () => {
     axios
@@ -50,25 +56,15 @@ class App extends Component {
 
   // GET ALL FOLDERS NAME
   getFolders = () => {
-    for (let i = 0; i < this.state.data.length; i++) {
-      if (i == 0) {
-        foldersArr.push(this.state.data[i].folder_name);
-
-      } else if (i != 0) {
-        let item = this.state.data[i - 1].folder_name;
-        if (this.state.data[i].folder_name == item) {
-          continue;
-        } else {
-          foldersArr.push(this.state.data[i].folder_name);
-        }
-      }
+    for (let key in this.state.data) {
+      foldersObj[key] = (this.state.data[key]);
     }
-    this.setState({ folders: foldersArr });
+    this.setState({ folders: foldersObj });
   }
 
-  get = () => {
-    console.log(this.state.folders)
-  }
+  // get = () => {
+  //   console.log(this.state.folders)
+  // }
 
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
@@ -241,7 +237,6 @@ class App extends Component {
             // getSearchVal={this.getSearchVal}
             // search={this.search}
             folders={this.state.folders}
-            notes={this.state.notes}
             getNotes={this.getNotes}
             getFolderName={this.getFolderName}
             createFolder={this.createFolder}
@@ -257,7 +252,7 @@ class App extends Component {
             autoexpand={this.autoexpand}
           />
 
-          <button onClick={this.get}>Click me</button>
+          {/* <button onClick={this.get}>Click me</button> */}
         </div>
       </div>
     );

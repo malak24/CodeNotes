@@ -29,7 +29,7 @@ router.get('/data', function (req, res) {
       }
 
       if (note.folder_id in data) {
-        data.note.folder_id.notes.push(note_details)
+        data[note.folder_id].notes.push(note_details)
       }
       else {
         let item = {
