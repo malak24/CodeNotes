@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const mysql = require('mysql'); //importing mysql module
 
-const connection = mysql.createConnection({ //create connection between node js and the database
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
@@ -17,20 +17,24 @@ connection.connect(function (error) {
 
 //GET ALL DATA FROM NOTES TABLE (DATABASE)
 router.get('/data', function (req, res) {
-  connection.query('SELECT folders.folder_id , folders.folder_name, notes.note_id, notes.note_title, notes.note_content FROM folders INNER JOIN notes ON folders.folder_id = notes.folder_id;', (error, results) => {
-    
+  connection.query('SELECT folders.folder_id , folders.folder_name, notes.note_id, notes.note_title, notes.note_content FROM folders LEFT JOIN notes ON folders.folder_id = notes.folder_id;', (error, results) => {
+
     const data = {}
+    console.log(results);
 
     for (let note of results) {
       const note_details = {
-          note_id: note.note_id,
-          note_title: note.note_title,
-          note_content: note.note_content
+        note_id: note.note_id,
+        note_title: note.note_title,
+        note_content: note.note_content
       }
 
+
+      console.log('note : ', note.note_id)
       if (note.folder_id in data) {
-        data[note.folder_id].notes.push(note_details)
+          data[note.folder_id].notes.push(note_details)
       }
+
       else {
         let item = {
           folder_id: note.folder_id,
@@ -49,14 +53,10 @@ router.get('/data', function (req, res) {
 
 
 //CREATE A NEW FOLDER
-router.post('/folders/:folderId', function (req, res) {
+router.post('/folders', function (req, res) {
   connection.query(
     `INSERT INTO folders (folder_name) 
-     VALUES ('${req.body.folder_name}')`, (error, results, fields) => {
-
-    `INSERT INTO notes (folder_name, folder_id)
-     SELECT folder_name, folder_id
-     FROM folders`
+     VALUES ('${req.body.folder_name}');`, (error, results, fields) => {
 
     if (error) throw error;
     res.status(200).send("Folder created successfully")

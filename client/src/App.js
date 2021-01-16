@@ -8,7 +8,6 @@ import Notes from './components/Notes/Notes'
 
 let folderInp;
 let searchInp;
-let foldersObj = {};
 let url = 'http://localhost:8080'
 
 class App extends Component {
@@ -17,7 +16,6 @@ class App extends Component {
 
     this.state = {
 
-      data: {},
       folders: {},
       notes: [],
 
@@ -25,6 +23,7 @@ class App extends Component {
 
       noteTitle: '',
       noteContent: '',
+      model : '',
 
       folderId: '',
       noteId: '',
@@ -37,11 +36,6 @@ class App extends Component {
     this.getData();
   }
 
-  // componentDidUpdate(prevState) {
-  //   if(this.state.data !== prevState.data) {
-  //     this.getFolders();
-  //   }
-  // }
 
   // GET ALL DATA FROM THE DB
   getData = () => {
@@ -49,17 +43,8 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         console.log(response.data);
-        this.setState({ data: response.data });
-        this.getFolders();
+        this.setState({ folders: response.data });
       })
-  }
-
-  // GET ALL FOLDERS NAME
-  getFolders = () => {
-    for (let key in this.state.data) {
-      foldersObj[key] = (this.state.data[key]);
-    }
-    this.setState({ folders: foldersObj });
   }
 
   // get = () => {
@@ -83,12 +68,12 @@ class App extends Component {
   //CREATE A NEW FOLDER
   createFolder = () => {
     axios
-      .post(`${url}/folders/folderId`, {
+      .post(`${url}/folders`, {
         folder_name: this.state.folderName,
       })
       .then(response => {
         console.log(response);
-        this.getFolders();
+        this.getData();
       })
       .catch(error => {
         console.log(error)
