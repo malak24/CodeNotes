@@ -19,6 +19,7 @@ class Topbar extends Component {
 
             <div className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <p onClick = {this.props.createNote} className="btn"> New</p>
+                <input onChange={this.props.getNoteTitle} className = 'topbar__note-input form-control' type='text' placeholder='Note title ...' />
             </div>
 
             <form className="form-inline my-2 my-lg-0">

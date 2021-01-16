@@ -23,7 +23,7 @@ class App extends Component {
 
       noteTitle: '',
       noteContent: '',
-      model : '',
+      model: '',
 
       folderId: '',
       noteId: '',
@@ -47,10 +47,6 @@ class App extends Component {
       })
   }
 
-  // get = () => {
-  //   console.log(this.state.folders)
-  // }
-
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
     console.log(folder_id);
@@ -63,7 +59,6 @@ class App extends Component {
         console.log(error)
       })
   }
-
 
   //CREATE A NEW FOLDER
   createFolder = () => {
@@ -112,9 +107,7 @@ class App extends Component {
   //CREATE A NEW NOTE
   createNote = (folder_id) => {
     console.log(this.folderId)
-    // if (typeof(folder_id == 'undefined')) {
-    //   alert ('Please select a folder to create a note')
-    // }
+
     axios
       .post(`${url}/folders/${folder_id}/noteId`, {
         note_title: this.state.noteTitle,
@@ -134,6 +127,14 @@ class App extends Component {
     folderInp = e.target.value;
     this.setState({ folderName: folderInp })
     console.log(folderInp);
+  }
+
+  //GET THE NOTE TITLE FROM USER INPUT
+  getNoteTitle = (e) => {
+    let noteInp;
+    noteInp = e.target.value;
+    this.setState({ noteTitle: noteInp })
+    console.log(noteInp);
   }
 
   //GET SEARCH WORD (INPUT BY USER)
@@ -214,6 +215,7 @@ class App extends Component {
     return (
       <div className="app">
         <Topbar
+          getNoteTitle = {this.getNoteTitle}
           createNote={this.createNote}
         />
 
@@ -237,7 +239,6 @@ class App extends Component {
             autoexpand={this.autoexpand}
           />
 
-          {/* <button onClick={this.get}>Click me</button> */}
         </div>
       </div>
     );
