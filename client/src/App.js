@@ -4,11 +4,12 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
+import { get } from 'jquery';
 
 
 let folderInp;
 let searchInp;
-let url = 'http://localhost:8080'
+let url = 'http://api.kataie.com:80'
 
 class App extends Component {
   constructor() {
@@ -36,6 +37,9 @@ class App extends Component {
     this.getData();
   }
 
+  // get = () => {
+  //   console.log(this.state.folderId);
+  // }
 
   // GET ALL DATA FROM THE DB
   getData = () => {
@@ -47,9 +51,11 @@ class App extends Component {
       })
   }
 
+
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
     console.log(folder_id);
+    this.setState({ folderId: folder_id })
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
@@ -60,6 +66,7 @@ class App extends Component {
       })
   }
 
+
   //CREATE A NEW FOLDER
   createFolder = () => {
     axios
@@ -69,6 +76,22 @@ class App extends Component {
       .then(response => {
         console.log(response);
         this.getData();
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+  //CREATE A NEW NOTE
+  createNote = (folder_id) => {
+    console.log(this.state.noteTitle)
+    axios
+      .post(`${url}/folders/${this.state.folderId}/noteId`, {
+        note_title: this.state.noteTitle,
+      })
+      .then(response => {
+        console.log(response);
+        this.getNotes(this.state.folderId);
       })
       .catch(error => {
         console.log(error)
@@ -98,23 +121,6 @@ class App extends Component {
       })
       .then(response => {
         console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  //CREATE A NEW NOTE
-  createNote = (folder_id) => {
-    console.log(this.folderId)
-
-    axios
-      .post(`${url}/folders/${folder_id}/noteId`, {
-        note_title: this.state.noteTitle,
-      })
-      .then(response => {
-        console.log(response);
-        this.getNotes(folder_id);
       })
       .catch(error => {
         console.log(error)
@@ -206,16 +212,11 @@ class App extends Component {
     this.saveNote(this.state.folderId, this.state.noteId)
   }
 
-  //GET A FOLDER'S ID
-  getFolderId = (folder_id) => {
-    console.log(folder_id)
-  }
-
   render() {
     return (
       <div className="app">
         <Topbar
-          getNoteTitle = {this.getNoteTitle}
+          getNoteTitle={this.getNoteTitle}
           createNote={this.createNote}
         />
 
@@ -238,6 +239,8 @@ class App extends Component {
             // getTarget = {this.getTarget}
             autoexpand={this.autoexpand}
           />
+
+          {/* <button onClick = {this.get}></button> */}
 
         </div>
       </div>
