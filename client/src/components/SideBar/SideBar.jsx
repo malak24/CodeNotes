@@ -15,14 +15,18 @@ class SideBar extends Component {
           <p className='sidebar__email'>malakkataie@gmail.com</p>
           <p className='sidebar__name'>Malak Kataie</p>
         </div>
+
         <Calendar className='sidebar__calendar' />
+
         <Folders
           folders={this.props.folders}
           notes={this.props.notes}
           getNotes={this.props.getNotes}
-          getFolderName = {this.props.getFolderName}
-          createFolder = {this.props.createFolder}
-          getFolderId = {this.props.getFolderId}
+          getFolderName={this.props.getFolderName}
+          createFolder={this.props.createFolder}
+          getFolderId={this.props.getFolderId}
+          openFolders = {this.props.openFolders}
+          show = {this.props.show}
         />
       </div>
     )

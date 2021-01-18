@@ -4,12 +4,12 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
-import { get } from 'jquery';
+import { get, nodeName } from 'jquery';
 
 
 let folderInp;
 let searchInp;
-let url = 'http://api.kataie.com:80'
+let url = 'http://localhost:8080'
 
 class App extends Component {
   constructor() {
@@ -30,6 +30,7 @@ class App extends Component {
       noteId: '',
 
       search: '',
+      openFolders : false
     };
   }
 
@@ -212,6 +213,13 @@ class App extends Component {
     this.saveNote(this.state.folderId, this.state.noteId)
   }
 
+  show = () => {
+    console.log('this is working')
+    this.setState({
+      openFolders : !(this.state.openFolders)
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -222,13 +230,13 @@ class App extends Component {
 
         <div className='app__container'>
           <SideBar
-            // getSearchVal={this.getSearchVal}
-            // search={this.search}
             folders={this.state.folders}
             getNotes={this.getNotes}
             getFolderName={this.getFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
+            openFolders = {this.state.openFolders}
+            show = {this.show}
           />
 
           <Notes
@@ -236,12 +244,8 @@ class App extends Component {
             onModelChange={this.state.onModelChange}
             model={this.state.model}
             target={this.state.target}
-            // getTarget = {this.getTarget}
             autoexpand={this.autoexpand}
           />
-
-          {/* <button onClick = {this.get}></button> */}
-
         </div>
       </div>
     );

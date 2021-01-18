@@ -5,18 +5,13 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import './Notes.scss';
 import { v4 as uuidv4 } from 'uuid';
-import ContentEditable from 'react-contenteditable';
 
 class Notes extends Component {
 
-  assignRef = (element) => {
-    this.target = element;
-    console.log(element);
-  }
-
   render() {
     return (
-      <div>
+      <div id = 'notes'>
+      <div className = 'notes'>
         {this.props.notes.map((note) => (
           <div key = {uuidv4()}>
             <Modal.Dialog className='note'>
@@ -45,6 +40,8 @@ class Notes extends Component {
           </div>
         ))}
       </div>
+      </div>
+
     )
   }
 }

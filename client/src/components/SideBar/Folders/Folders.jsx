@@ -10,14 +10,17 @@ class Folders extends Component {
       <div id="folders">
         <div className='folders'>
           <div className='folders__title-container'>
-            <p className='folders__title'>Folders</p>
+            <div className = 'folders__title-sub-container'>
+              <p className='folders__title'>Folders</p>
+              <button onClick = {this.props.show} className = 'folders__arrows btn'>&#128259;</button>
+            </div>
             <div className='folders__new-folder'>
               <input onChange={this.props.getFolderName} className='folders__input' type='text' placeholder='Folder name ...' />
               <p onClick={this.props.createFolder} className="btn folders__new-btn">New</p>
             </div>
           </div>
 
-          <ul className="list-group">
+          <ul className={this.props.openFolders ?  'list-group' : ' folders__hidden'}>
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()}
                 onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }}
