@@ -7,6 +7,10 @@
     margin-top:-1rem;
   }
 
+  @include desktop {
+    width:100%;
+  }
+
   .folders {
     font-size:1.3rem;
     margin-top : 1rem;
@@ -26,6 +30,10 @@
       display : flex;
       justify-content: space-between;
       padding-top : 0.6rem;
+
+      @include desktop {
+        justify-content:space-between;
+      }
     }
   
     &__title {
@@ -55,24 +63,27 @@
     }
 
     &__input {
-      width:18vw;
-      height:2.5rem;
+      width:14rem;
+      height:2rem;
+      font-size: 1rem;
       border-radius : 0.25rem;
       border:none;
       outline : none;
       padding-left : 10px;
 
-      @include mobile {
-        width : 14rem;
-        height : 2rem;
-        font-size : 1rem;
+      @include tablet {
+        width : 16rem;
+      }
+
+      @include desktop {
+        width:18vw;
       }
     }
 
     &__new-btn {
       margin:0;
 
-      @include mobile {
+      @include tablet {
         height : 2rem;
         text-align : center;
         padding-top : 0.3rem;
@@ -103,10 +114,10 @@
     }
 
     &__folder-name {
-      font-size:1.3rem;
+      font-size:1.1rem;
       font-weight : 600;
 
-      @include mobile {
+      @include desktop {
         font-size : 1.1rem;
       }
     }

@@ -15,6 +15,11 @@
       @include tablet {
         height : 7.5rem;
       }
+
+      @include desktop {
+        background-color:unset;
+        display : flex;
+      }
     }
 
     &__logo {
@@ -28,6 +33,11 @@
       @include tablet {
         font-size: 2.8rem;
       }
+
+      @include desktop {
+        font-size:2.2rem;
+        margin-right: 12rem;
+      }
     }
   }
 
@@ -38,6 +48,11 @@
     text-align : center;
     padding: 0;
     padding-top : 0.3rem;
+
+    @include desktop {
+      height:2.4rem;
+      padding-top:0.5rem;
+    }
   }
 
   .btn:active{
@@ -56,6 +71,10 @@
     width: 3.6rem;
     height : 2rem;
     padding-top : 0.1rem;
+
+    @include desktop {
+      height:2.4rem;
+    }
   }
 
   .navbar {
@@ -76,6 +95,11 @@
 
     @include tablet {
       width : 12rem;
+    }
+
+    @include desktop {
+      width:15rem;
+      height:2.5rem;
     }
   }
 
