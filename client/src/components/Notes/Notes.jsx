@@ -17,7 +17,6 @@ class Notes extends Component {
             <Modal.Dialog className='note'>
               <Modal.Header closeButton>
                 <textarea
-                ref = {'target'}
                 onChange = {this.props.autoexpand}
                 // onChange = {this.props.setNoteTitle} 
                 className = 'note__title note__header'
