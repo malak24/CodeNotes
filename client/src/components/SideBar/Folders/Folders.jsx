@@ -12,7 +12,7 @@ class Folders extends Component {
           <div className='folders__title-container'>
             <div className = 'folders__title-sub-container'>
               <p className='folders__title'>Folders</p>
-              <button onClick = {this.props.show} className = 'folders__arrows btn'>&#128259;</button>
+              <button onClick = {this.props.showFolders} className = 'folders__arrows btn'>ᐁ</button>
             </div>
             <div className='folders__new-folder'>
               <input onChange={this.props.getFolderName} className='folders__input' type='text' placeholder='Folder name ...' />
@@ -28,6 +28,7 @@ class Folders extends Component {
 
                 <div className="folders__wrapper">
                   <p className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
+                  <button onClick = {this.props.showNotes}>ᐁ</button>
                 </div>
 
                 <ul className='folders__notes-list'>
