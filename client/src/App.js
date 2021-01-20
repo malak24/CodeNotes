@@ -21,16 +21,15 @@ class App extends Component {
       notes: [],
 
       folderName: '',
-
       noteTitle: '',
       noteContent: '',
-      model: '',
 
       folderId: '',
       noteId: '',
 
       search: '',
-      openFolders : false
+      openFolders : true,
+      openNotes : false
     };
   }
 
@@ -54,13 +53,13 @@ class App extends Component {
 
 
   //GET THE NOTES OF A SPECIFIC FOLDER
-  getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
-    console.log(folder_id);
-    this.setState({ folderId: folder_id })
+  getNotes = (folder_id) => {
+    // this.setState({ folderId: folder_id })//for now nothing happens if it is commented
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
-        this.setState({ notes: response.data, folderId: folder_id });
+        console.log(response.data)
+        this.setState({ notes: response.data});
       })
       .catch(error => {
         console.log(error)
@@ -85,7 +84,6 @@ class App extends Component {
 
   //CREATE A NEW NOTE
   createNote = (folder_id) => {
-    console.log(this.state.noteTitle)
     axios
       .post(`${url}/folders/${this.state.folderId}/noteId`, {
         note_title: this.state.noteTitle,
@@ -114,11 +112,25 @@ class App extends Component {
   };
 
 
+  //SAVE THE NOTE'S TITLE
+  saveTitle(folder_id, note_id) {
+    axios
+      .put(`${url}/folders/${folder_id}/${note_id}/note` , {
+        note_title : this.state.noteTitle,
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   //SAVE THE NOTE'S CONTENT
   saveNote(folder_id, note_id) {
     axios
       .post(`${url}/folders/${folder_id}/${note_id}/note`, {
-        noteContent: this.state.model,
+        note_content: this.state.noteContent,
       })
       .then(response => {
         console.log(response);
@@ -213,10 +225,15 @@ class App extends Component {
     this.saveNote(this.state.folderId, this.state.noteId)
   }
 
-  show = () => {
-    console.log('this is working')
+  showFolders = () => {
     this.setState({
       openFolders : !(this.state.openFolders)
+    });
+  }
+
+  showNotes = () => {
+    this.setState ({
+      openNotes : !(this.state.openNotes)
     });
   }
 
