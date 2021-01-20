@@ -29,7 +29,8 @@ class SideBar extends Component {
             createFolder={this.props.createFolder}
             getFolderId={this.props.getFolderId}
             openFolders = {this.props.openFolders}
-            show = {this.props.show}
+            showFolders = {this.props.showFolders}
+            showNotes = {this.props.showNotes}
           />
         </div>
 
