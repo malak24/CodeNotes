@@ -4,12 +4,12 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
-import { get } from 'jquery';
+import { get, nodeName } from 'jquery';
 
 
 let folderInp;
 let searchInp;
-let url = 'http://api.kataie.com:80'
+let url = 'http://localhost:8080'
 
 class App extends Component {
   constructor() {
@@ -21,15 +21,15 @@ class App extends Component {
       notes: [],
 
       folderName: '',
-
       noteTitle: '',
       noteContent: '',
-      model: '',
 
       folderId: '',
       noteId: '',
 
       search: '',
+      openFolders : true,
+      openNotes : false
     };
   }
 
@@ -53,13 +53,13 @@ class App extends Component {
 
 
   //GET THE NOTES OF A SPECIFIC FOLDER
-  getNotes = (folder_id) => { //folder_id comes from db to folders array in state to each folder on creation from folders array (using map) passed to onClick function
-    console.log(folder_id);
-    this.setState({ folderId: folder_id })
+  getNotes = (folder_id) => {
+    // this.setState({ folderId: folder_id })//for now nothing happens if it is commented
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
-        this.setState({ notes: response.data, folderId: folder_id });
+        console.log(response.data)
+        this.setState({ notes: response.data});
       })
       .catch(error => {
         console.log(error)
@@ -84,7 +84,6 @@ class App extends Component {
 
   //CREATE A NEW NOTE
   createNote = (folder_id) => {
-    console.log(this.state.noteTitle)
     axios
       .post(`${url}/folders/${this.state.folderId}/noteId`, {
         note_title: this.state.noteTitle,
@@ -113,11 +112,25 @@ class App extends Component {
   };
 
 
+  //SAVE THE NOTE'S TITLE
+  saveTitle(folder_id, note_id) {
+    axios
+      .put(`${url}/folders/${folder_id}/${note_id}/note` , {
+        note_title : this.state.noteTitle,
+      })
+      .then(response => {
+        console.log(response)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
   //SAVE THE NOTE'S CONTENT
   saveNote(folder_id, note_id) {
     axios
       .post(`${url}/folders/${folder_id}/${note_id}/note`, {
-        noteContent: this.state.model,
+        note_content: this.state.noteContent,
       })
       .then(response => {
         console.log(response);
@@ -212,6 +225,18 @@ class App extends Component {
     this.saveNote(this.state.folderId, this.state.noteId)
   }
 
+  showFolders = () => {
+    this.setState({
+      openFolders : !(this.state.openFolders)
+    });
+  }
+
+  showNotes = () => {
+    this.setState ({
+      openNotes : !(this.state.openNotes)
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -222,13 +247,13 @@ class App extends Component {
 
         <div className='app__container'>
           <SideBar
-            // getSearchVal={this.getSearchVal}
-            // search={this.search}
             folders={this.state.folders}
             getNotes={this.getNotes}
             getFolderName={this.getFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
+            openFolders = {this.state.openFolders}
+            show = {this.show}
           />
 
           <Notes
@@ -236,12 +261,8 @@ class App extends Component {
             onModelChange={this.state.onModelChange}
             model={this.state.model}
             target={this.state.target}
-            // getTarget = {this.getTarget}
             autoexpand={this.autoexpand}
           />
-
-          {/* <button onClick = {this.get}></button> */}
-
         </div>
       </div>
     );

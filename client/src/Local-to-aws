@@ -1,0 +1,13 @@
+let url = 'http://localhost:8080'
+
+const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost"
+const connection = mysql.createConnection({
+  host: host,
+  user: 'root',
+  password: '',
+  database: 'CodeNotes',
+  port : 3306
+});
+
+const PORT = 8080;
+app is running on port 8080

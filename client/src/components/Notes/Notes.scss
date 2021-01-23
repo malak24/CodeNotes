@@ -4,11 +4,19 @@
 p {
   margin:0.45rem 0;
 }
+
 .note {
   box-sizing: unset;
-  margin-left:1rem;
   max-width: unset;
-  width:71vw;
+
+  @include tablet {
+    width:95%;
+  }
+
+  @include desktop {
+    margin-left : 1rem;
+    width:71vw;
+  }
 
   &__header {
     padding-top : 0.5rem;
@@ -57,6 +65,7 @@ p {
 .btn-secondary {
   background-color: grey;
 }
+
 
 .modal-header {
   padding : 0;
