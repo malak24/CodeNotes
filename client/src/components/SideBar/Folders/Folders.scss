@@ -141,23 +141,21 @@
       }
     }
 
-    .list-group-item {
-      display: flex;
-      flex-direction: column;
-      font-size : 1rem;
-      
-    }
-
     &__notes-list {
       list-style-type: none;
       padding-left:0.4rem;
+      font-size:1rem;
+    }
+
+    &__notes-hidden {
+      display : none;
     }
 
     &__notes-item {
       margin-top: 0.4rem;
       color : #8f8f8f;
       font-weight : 600;
-      padding-left:0.5rem;
+      padding-left:0.6rem;
 
       &:hover {
         background-color:#a8717f;

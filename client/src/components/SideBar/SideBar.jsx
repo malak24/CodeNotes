@@ -31,6 +31,7 @@ class SideBar extends Component {
             openFolders = {this.props.openFolders}
             showFolders = {this.props.showFolders}
             showNotes = {this.props.showNotes}
+            openNotes = {this.props.openNotes}
           />
         </div>
 

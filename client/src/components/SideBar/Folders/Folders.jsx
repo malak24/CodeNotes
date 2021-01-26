@@ -23,7 +23,7 @@ class Folders extends Component {
           <ul className={this.props.openFolders ?  'list-group' : ' folders__hidden'}>
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()}
-                onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }}
+                onClick={() => {this.props.getNotes(this.props.folders[keyName].folder_id)}}
                 className="list-group-item">
 
                 <div className="folders__wrapper">
@@ -31,9 +31,9 @@ class Folders extends Component {
                   <button onClick = {this.props.showNotes} className = 'btn folders__folder-name-arrow'>ᐁ</button>
                 </div>
 
-                <ul className='folders__notes-list'>
+                <ul className = {this.props.openNotes ? 'folders__notes-list folders__notes-item' : 'folders__notes-hidden'}>
                   {this.props.folders[keyName].notes.map((note) => (
-                    <li key={uuidv4()} className='folders__notes-item'>{note.note_title}</li>
+                    <li key={uuidv4()} >{note.note_title}</li>
                   ))}
                 </ul>
               </li>

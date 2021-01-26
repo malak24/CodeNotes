@@ -64,7 +64,7 @@ class App extends Component {
       .catch(error => {
         console.log(error)
       })
-  }
+   }
 
 
   //CREATE A NEW FOLDER
@@ -83,7 +83,7 @@ class App extends Component {
   }
 
   //CREATE A NEW NOTE
-  createNote = (folder_id) => {
+  createNote = () => {
     axios
       .post(`${url}/folders/${this.state.folderId}/noteId`, {
         note_title: this.state.noteTitle,
@@ -229,12 +229,14 @@ class App extends Component {
     this.setState({
       openFolders : !(this.state.openFolders)
     });
+    console.log('this is working')
   }
 
   showNotes = () => {
     this.setState ({
       openNotes : !(this.state.openNotes)
     });
+    console.log(this.state.openNotes)
   }
 
   render() {
@@ -252,8 +254,11 @@ class App extends Component {
             getFolderName={this.getFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
+
             openFolders = {this.state.openFolders}
-            show = {this.show}
+            showFolders = {this.showFolders}
+            openNotes = {this.state.openNotes}
+            showNotes = {this.showNotes}
           />
 
           <Notes
