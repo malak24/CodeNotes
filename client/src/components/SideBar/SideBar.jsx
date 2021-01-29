@@ -12,14 +12,14 @@ class SideBar extends Component {
       <div className='sidebar'>
         <div className='sidebar__profile'>
           <div className='sidebar__avatar'></div>
-          <div className = 'sidebar__info'>
-          <p className='sidebar__email'>malakkataie@gmail.com</p>
-          <p className='sidebar__name'>Malak Kataie</p>
+          <div className='sidebar__info'>
+            <p className='sidebar__email'>malakkataie@gmail.com</p>
+            <p className='sidebar__name'>Malak Kataie</p>
           </div>
         </div>
 
-        <div className = 'sidebar__wrapper'>
-          <Calendar/>
+        <div className='sidebar__wrapper'>
+          <Calendar />
 
           <Folders
             folders={this.props.folders}
@@ -28,10 +28,10 @@ class SideBar extends Component {
             getFolderName={this.props.getFolderName}
             createFolder={this.props.createFolder}
             getFolderId={this.props.getFolderId}
-            openFolders = {this.props.openFolders}
-            showFolders = {this.props.showFolders}
-            showNotes = {this.props.showNotes}
-            openNotes = {this.props.openNotes}
+            openFolders={this.props.openFolders}
+            showFolders={this.props.showFolders}
+            showNotes={this.props.showNotes}
+            openNotes={this.props.openNotes}
           />
         </div>
 

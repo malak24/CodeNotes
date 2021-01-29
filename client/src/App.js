@@ -6,7 +6,7 @@ import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
 import { get, nodeName } from 'jquery';
 
-
+let noteTitle;
 let folderInp;
 let searchInp;
 let url = 'http://localhost:8080'
@@ -28,8 +28,8 @@ class App extends Component {
       noteId: '',
 
       search: '',
-      openFolders : true,
-      openNotes : false
+      openFolders: true,
+      openNotes: false
     };
   }
 
@@ -37,9 +37,9 @@ class App extends Component {
     this.getData();
   }
 
-  // get = () => {
-  //   console.log(this.state.folderId);
-  // }
+  get = () => {
+    console.log(this.state.noteId);
+  }
 
   // GET ALL DATA FROM THE DB
   getData = () => {
@@ -54,17 +54,17 @@ class App extends Component {
 
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => {
-    // this.setState({ folderId: folder_id })//for now nothing happens if it is commented
+    this.setState({ folderId: folder_id })
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
         console.log(response.data)
-        this.setState({ notes: response.data});
+        this.setState({ notes: response.data });
       })
       .catch(error => {
         console.log(error)
       })
-   }
+  }
 
 
   //CREATE A NEW FOLDER
@@ -113,10 +113,10 @@ class App extends Component {
 
 
   //SAVE THE NOTE'S TITLE
-  saveTitle(folder_id, note_id) {
+  saveNewTitle(folder_id, note_id) {
     axios
-      .put(`${url}/folders/${folder_id}/${note_id}/note` , {
-        note_title : this.state.noteTitle,
+      .put(`${url}/folders/${folder_id}/${note_id}/note`, {
+        note_title: this.state.noteTitle,
       })
       .then(response => {
         console.log(response)
@@ -150,10 +150,7 @@ class App extends Component {
 
   //GET THE NOTE TITLE FROM USER INPUT
   getNoteTitle = (e) => {
-    let noteInp;
-    noteInp = e.target.value;
-    this.setState({ noteTitle: noteInp })
-    console.log(noteInp);
+    this.setState({ noteTitle: e.target.value })
   }
 
   //GET SEARCH WORD (INPUT BY USER)
@@ -227,14 +224,14 @@ class App extends Component {
 
   showFolders = () => {
     this.setState({
-      openFolders : !(this.state.openFolders)
+      openFolders: !(this.state.openFolders)
     });
     console.log('this is working')
   }
 
   showNotes = () => {
-    this.setState ({
-      openNotes : !(this.state.openNotes)
+    this.setState({
+      openNotes: !(this.state.openNotes)
     });
     console.log(this.state.openNotes)
   }
@@ -255,20 +252,22 @@ class App extends Component {
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
 
-            openFolders = {this.state.openFolders}
-            showFolders = {this.showFolders}
-            openNotes = {this.state.openNotes}
-            showNotes = {this.showNotes}
+            openFolders={this.state.openFolders}
+            showFolders={this.showFolders}
+            openNotes={this.state.openNotes}
+            showNotes={this.showNotes}
           />
 
           <Notes
             notes={this.state.notes}
-            onModelChange={this.state.onModelChange}
-            model={this.state.model}
-            target={this.state.target}
+            // onModelChange={this.state.onModelChange}
+            // model={this.state.model}
+            // target={this.state.target}
             autoexpand={this.autoexpand}
-          />
+            getNoteTitle={this.getNoteTitle}
+            />
         </div>
+        <button onClick={this.get}>CLICK HEEEEERE</button>
       </div>
     );
   }

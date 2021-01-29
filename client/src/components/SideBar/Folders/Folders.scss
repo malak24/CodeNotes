@@ -107,7 +107,13 @@
     }
 
     .list-group {
-      width:100%
+      width:100%;
+
+      &-item {
+        display : flex;
+        flex-direction: row-reverse;
+        padding: 0.3rem;
+      }
     }
 
     &__wrapper {
@@ -122,6 +128,8 @@
     &__folder-name {
       font-size:1.1rem;
       font-weight : 600;
+      width : 16rem;
+      cursor: pointer;
 
       @include desktop {
         font-size : 1.1rem;
@@ -134,6 +142,8 @@
         width:1.5rem;
         padding : 0;
         padding-top : 0.15rem;
+        margin-top : 0.6rem;
+        margin-right: 0.9rem;
 
         &:hover {
           background-color: #8f8f8f

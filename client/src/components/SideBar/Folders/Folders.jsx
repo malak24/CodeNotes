@@ -10,9 +10,9 @@ class Folders extends Component {
       <div id="folders">
         <div className='folders'>
           <div className='folders__title-container'>
-            <div className = 'folders__title-sub-container'>
+            <div className='folders__title-sub-container'>
               <p className='folders__title'>Folders</p>
-              <button onClick = {this.props.showFolders} className = 'folders__arrows btn'>ᐁ</button>
+              <button onClick={this.props.showFolders} className='folders__arrows btn'>ᐁ</button>
             </div>
             <div className='folders__new-folder'>
               <input onChange={this.props.getFolderName} className='folders__input' type='text' placeholder='Folder name ...' />
@@ -20,22 +20,21 @@ class Folders extends Component {
             </div>
           </div>
 
-          <ul className={this.props.openFolders ?  'list-group' : ' folders__hidden'}>
+          <ul className={this.props.openFolders ? 'list-group' : ' folders__hidden'}>
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()}
-                onClick={() => {this.props.getNotes(this.props.folders[keyName].folder_id)}}
                 className="list-group-item">
+                <button onClick={this.props.showNotes} className='btn folders__folder-name-arrow'>ᐁ</button>
 
-                <div className="folders__wrapper">
-                  <p className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
-                  <button onClick = {this.props.showNotes} className = 'btn folders__folder-name-arrow'>ᐁ</button>
-                </div>
+                <div>
+                  <p onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }} className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
 
-                <ul className = {this.props.openNotes ? 'folders__notes-list folders__notes-item' : 'folders__notes-hidden'}>
+                <ul className={this.props.openNotes ? 'folders__notes-list' : 'folders__notes-hidden'}>
                   {this.props.folders[keyName].notes.map((note) => (
-                    <li key={uuidv4()} >{note.note_title}</li>
+                    <li className = 'folders__notes-item' key={uuidv4()} >{note.note_title}</li>
                   ))}
                 </ul>
+                </div>
               </li>
             ))}
           </ul>

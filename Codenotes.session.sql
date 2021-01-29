@@ -1,5 +1,3 @@
-MAIN COMMANDS :
-'-----------------------------------------------------------'
 CREATE TABLE notes (
     note_id INT AUTO_INCREMENT,
     note_title VARCHAR(20),
@@ -31,8 +29,8 @@ BY ''
 
 DELETE :
 '-----------------------------------------------------------'
-DELETE FROM notes
-WHERE note_id = (19);
+DELETE FROM folders
+WHERE folder_id = 5;
 '-----------------------------------------------------------'
 
 
