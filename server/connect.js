@@ -9,7 +9,8 @@ const connection = mysql.createConnection({
   user: 'root',
   password: '',
   database: 'CodeNotes',
-  port : 3306
+  port : 3306,
+  insecureAuth : true
 });
 
 connection.connect(function (error) {
@@ -65,7 +66,13 @@ router.post('/folders', function (req, res) {
   })
 })
 
-
+// //UPDATE NOTE TITLE
+// router.put(`/folders/:folderId/noteId`) , function(req, res) {
+//   connection.query(`UPDATE notes SET note_title = ${req.body.new_title}` , (error, results, fields) => {
+//     if (error) throw error;
+//     res.status(200).send(results)
+//   });
+// };
 
 // GET NOTES OF A SPECIFIC FOLDER
 router.get('/folders/:folderId/notes', function (req, res) {

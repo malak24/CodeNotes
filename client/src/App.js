@@ -6,7 +6,6 @@ import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
 import { get, nodeName } from 'jquery';
 
-let noteTitle;
 let folderInp;
 let searchInp;
 let url = 'http://localhost:8080'
@@ -46,7 +45,7 @@ class App extends Component {
     axios
       .get(`${url}/data`)
       .then(response => {
-        console.log(response.data);
+        // console.log(response.data);
         this.setState({ folders: response.data });
       })
   }
@@ -58,7 +57,6 @@ class App extends Component {
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
-        console.log(response.data)
         this.setState({ notes: response.data });
       })
       .catch(error => {
@@ -74,7 +72,7 @@ class App extends Component {
         folder_name: this.state.folderName,
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.getData();
       })
       .catch(error => {
@@ -89,7 +87,7 @@ class App extends Component {
         note_title: this.state.noteTitle,
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
         this.getNotes(this.state.folderId);
       })
       .catch(error => {
@@ -112,18 +110,37 @@ class App extends Component {
   };
 
 
-  //SAVE THE NOTE'S TITLE
-  saveNewTitle(folder_id, note_id) {
-    axios
-      .put(`${url}/folders/${folder_id}/${note_id}/note`, {
-        note_title: this.state.noteTitle,
-      })
-      .then(response => {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-      })
+  //GET NOTE ID
+  getNoteId = (note_id) => {
+    console.log(note_id);
+    this.setState({noteId: note_id})
+  }
+
+  // SAVE THE NOTE'S TITLE
+  saveNewTitle(e, folder_id, note_id) {
+
+    let newTitle = e.target.value;
+    console.log(newTitle);
+    console.log(folder_id);
+    console.log(note_id);
+    console.log(this.state.folderId);
+
+
+    //
+    // SHOULD FIND A WAY TO GET THE NOTE ID FOR THE FUNCTION TO WORK
+    //
+    // setTimeout(()=> {
+    //   axios
+    //   .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}`, {
+    //     note_title: newTitle,
+    //   })
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
+    // }, 5000);
   }
 
   //SAVE THE NOTE'S CONTENT
@@ -150,8 +167,21 @@ class App extends Component {
 
   //GET THE NOTE TITLE FROM USER INPUT
   getNoteTitle = (e) => {
+    console.log(e.target.value)
     this.setState({ noteTitle: e.target.value })
   }
+
+  // editFolderName = () => {
+  //   new Prompt({
+  //     title: 'Edit folder name',
+  //     content: "Please enter the folder's new name",
+  //     placeholderText: "New name",
+  //     submitText: true,
+  //     onSubmit(component, value) {
+  //       console.log(value)
+  //     }
+  // });
+  // }
 
   //GET SEARCH WORD (INPUT BY USER)
   getSearchVal = (e) => {
@@ -233,7 +263,6 @@ class App extends Component {
     this.setState({
       openNotes: !(this.state.openNotes)
     });
-    console.log(this.state.openNotes)
   }
 
   render() {
@@ -259,12 +288,14 @@ class App extends Component {
           />
 
           <Notes
+            folders={this.state.folders}
             notes={this.state.notes}
             // onModelChange={this.state.onModelChange}
             // model={this.state.model}
             // target={this.state.target}
             autoexpand={this.autoexpand}
-            getNoteTitle={this.getNoteTitle}
+            getNoteId={this.getNoteId}
+            saveNewTitle={this.saveNewTitle}
             />
         </div>
         <button onClick={this.get}>CLICK HEEEEERE</button>

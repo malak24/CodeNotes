@@ -14,9 +14,6 @@ class Topbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-
-            <p className="topbar__logo">CodeNotes</p>
-
             <div className='topbar__wrapper'>
               <div className="navbar-nav mr-auto mt-2 mt-lg-0">
                 <p onClick={this.props.createNote} className="btn"> New</p>

@@ -116,20 +116,30 @@
       }
     }
 
-    &__wrapper {
-      display: flex;
-      justify-content: space-between;
+    &__btn-wrapper {
+      display : flex;
+      align-items : center ;
+    }
+
+    &__edit {
+      border : none;
+      background-color:#e7d0d6;
       height : 1.5rem;
-      align-items : center;
-      border-radius : 0;
-      font-weight: 500;
+      border-radius :.25rem;
+      font-size : 0.9rem;
+      margin-right:0.2rem;
+      color : rgb(75, 75, 75);
+      padding-top : 0.1rem;
     }
 
     &__folder-name {
       font-size:1.1rem;
       font-weight : 600;
-      width : 16rem;
-      cursor: pointer;
+      width : 13rem;
+      height:1.3rem;
+      border: none;
+      resize : none;
+      cursor: pointer; 
 
       @include desktop {
         font-size : 1.1rem;
@@ -142,7 +152,6 @@
         width:1.5rem;
         padding : 0;
         padding-top : 0.15rem;
-        margin-top : 0.6rem;
         margin-right: 0.9rem;
 
         &:hover {

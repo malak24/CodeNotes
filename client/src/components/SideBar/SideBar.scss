@@ -21,58 +21,11 @@
     }
   }
 
-  &__profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 2rem;
-
-    @include tablet {
-      flex-direction: row;
-      justify-content: space-evenly;
-      padding-right:8rem;
-      padding-left:8rem;
-    }
-
-    @include desktop {
-      flex-direction: column;
-    }
-  }
-
-  &__avatar {
-    display : none;
-
-    @include tablet {
-      display : block;
-      background-color:rgb(204, 204, 204);
-      width:7rem;
-      height:7rem;
-      border-radius:50%;
-    }
-  }
-
-  &__info {
-    display : flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__email, &__name{
-    color:white;
-    font-size:1.3rem;
-    margin:0;
-  }
-
-  .react-calendar {
-    @include tablet {
-      margin:0 !important;
-      height : 21rem;
-      width:54%;
-    }
-
-    @include desktop {
-      width:100%;
-    }
+  &__logo {
+    width:13rem;
+    border-radius : 7px;
+    display : block;
+    margin : auto;
+    margin-bottom : 2rem;
   }
 }
