@@ -105,7 +105,7 @@ class App extends Component {
 
 
   // SAVE THE NOTE'S TITLE
-  saveNewTitle = (e) => {
+  saveTitle = (e) => {
     let newTitle = e.target.value;
     console.log(newTitle)
 
@@ -123,13 +123,17 @@ class App extends Component {
 
 
   //SAVE THE NOTE'S CONTENT
-  saveNote(folder_id, note_id) {
+  saveNote = (e) => {
+    let noteContent = e.target.value;
+    console.log(noteContent);
+    // this.autoexpand(e);
+
     axios
-      .post(`${url}/folders/${folder_id}/${note_id}/note`, {
-        note_content: this.state.noteContent,
+      .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
+        note_content: noteContent,
       })
       .then(response => {
-        // console.log(response);
+        console.log(response);
       })
       .catch(error => {
         console.log(error)
@@ -286,7 +290,8 @@ class App extends Component {
             autoexpand={this.autoexpand}
             getNoteId={this.getNoteId}
             getNoteTitle={this.getNoteTitle}
-            saveNewTitle={this.saveNewTitle}
+            saveTitle={this.saveNewTitle}
+            saveNote={this.saveNote}
           />
         </div>
         <button onClick={this.get}>CLICK HEEEEERE</button>
