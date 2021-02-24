@@ -37,8 +37,9 @@ class App extends Component {
   }
 
   get = () => {
-    console.log(this.state.noteId);
+    console.log(this.state.noteTitle);
   }
+
 
   // GET ALL DATA FROM THE DB
   getData = () => {
@@ -48,6 +49,30 @@ class App extends Component {
         // console.log(response.data);
         this.setState({ folders: response.data });
       })
+  }
+
+
+  //NOTES
+  //CREATE A NEW NOTE
+  createNote = () => {
+    axios
+      .post(`${url}/folders/${this.state.folderId}/noteId`, {
+        note_title: this.state.noteTitle,
+      })
+      .then(response => {
+        // console.log(response);
+        this.getNotes(this.state.folderId);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
+
+  showNotes = () => {
+    this.setState({
+      openNotes: !(this.state.openNotes)
+    });
   }
 
 
@@ -65,35 +90,52 @@ class App extends Component {
   }
 
 
-  //CREATE A NEW FOLDER
-  createFolder = () => {
-    axios
-      .post(`${url}/folders`, {
-        folder_name: this.state.folderName,
+  //GET NOTE ID
+  getNoteId = (note_id) => {
+    console.log(note_id);
+    this.setState({ noteId: note_id })
+  }
+
+
+  //GET THE NOTE TITLE FROM USER INPUT
+  getNoteTitle = (e) => {
+    console.log(e.target.value)
+    this.setState({ noteTitle: e.target.value })
+  }
+
+
+  // SAVE THE NOTE'S TITLE
+  saveNewTitle = (e) => {
+    let newTitle = e.target.value;
+    console.log(newTitle)
+
+      axios
+      .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}`, {
+        note_title: newTitle,
       })
       .then(response => {
-        // console.log(response);
-        this.getData();
+        console.log(response);
       })
       .catch(error => {
         console.log(error)
       })
   }
 
-  //CREATE A NEW NOTE
-  createNote = () => {
+
+  //SAVE THE NOTE'S CONTENT
+  saveNote(folder_id, note_id) {
     axios
-      .post(`${url}/folders/${this.state.folderId}/noteId`, {
-        note_title: this.state.noteTitle,
+      .post(`${url}/folders/${folder_id}/${note_id}/note`, {
+        note_content: this.state.noteContent,
       })
       .then(response => {
         // console.log(response);
-        this.getNotes(this.state.folderId);
       })
       .catch(error => {
         console.log(error)
       })
   }
+
 
   autoexpand = (event) => {
     let target = event.target
@@ -110,47 +152,16 @@ class App extends Component {
   };
 
 
-  //GET NOTE ID
-  getNoteId = (note_id) => {
-    console.log(note_id);
-    this.setState({noteId: note_id})
-  }
-
-  // SAVE THE NOTE'S TITLE
-  saveNewTitle(e, folder_id, note_id) {
-
-    let newTitle = e.target.value;
-    console.log(newTitle);
-    console.log(folder_id);
-    console.log(note_id);
-    console.log(this.state.folderId);
-
-
-    //
-    // SHOULD FIND A WAY TO GET THE NOTE ID FOR THE FUNCTION TO WORK
-    //
-    // setTimeout(()=> {
-    //   axios
-    //   .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}`, {
-    //     note_title: newTitle,
-    //   })
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   })
-    // }, 5000);
-  }
-
-  //SAVE THE NOTE'S CONTENT
-  saveNote(folder_id, note_id) {
+  //FOLDERS
+  //CREATE A NEW FOLDER
+  createFolder = () => {
     axios
-      .post(`${url}/folders/${folder_id}/${note_id}/note`, {
-        note_content: this.state.noteContent,
+      .post(`${url}/folders`, {
+        folder_name: this.state.folderName,
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
+        this.getData();
       })
       .catch(error => {
         console.log(error)
@@ -162,14 +173,9 @@ class App extends Component {
   getFolderName = (e) => {
     folderInp = e.target.value;
     this.setState({ folderName: folderInp })
-    console.log(folderInp);
+    // console.log(folderInp);
   }
 
-  //GET THE NOTE TITLE FROM USER INPUT
-  getNoteTitle = (e) => {
-    console.log(e.target.value)
-    this.setState({ noteTitle: e.target.value })
-  }
 
   // editFolderName = () => {
   //   new Prompt({
@@ -187,18 +193,18 @@ class App extends Component {
   getSearchVal = (e) => {
     searchInp = e.target.value;
     this.setState({ search: searchInp })
-    console.log(searchInp)
+    // console.log(searchInp)
   }
 
   //SEARCH FOR A FOLDER BY FOLDER NAME
   folderSearchFn = () => {
-    console.log('folder search function is working')
+    // console.log('folder search function is working')
     axios
       .post(`${url}/folders`, {
         search: this.state.search
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
       })
       .catch(error => {
         console.log(error)
@@ -212,7 +218,7 @@ class App extends Component {
         search: this.state.search
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
       })
       .catch(error => {
         console.log(error)
@@ -226,7 +232,7 @@ class App extends Component {
         search: this.state.search
       })
       .then(response => {
-        console.log(response);
+        // console.log(response);
       })
       .catch(error => {
         console.log(error)
@@ -244,26 +250,13 @@ class App extends Component {
     }
   }
 
-  //GET CHANGES IN NOTE CONTENT TO SAVE IT WITH SAVE FUNCTION
-  handleModelChange = (model) => {
-    this.setState({
-      model: model
-    })
-    this.saveNote(this.state.folderId, this.state.noteId)
-  }
 
   showFolders = () => {
     this.setState({
       openFolders: !(this.state.openFolders)
     });
-    console.log('this is working')
   }
 
-  showNotes = () => {
-    this.setState({
-      openNotes: !(this.state.openNotes)
-    });
-  }
 
   render() {
     return (
@@ -290,13 +283,11 @@ class App extends Component {
           <Notes
             folders={this.state.folders}
             notes={this.state.notes}
-            // onModelChange={this.state.onModelChange}
-            // model={this.state.model}
-            // target={this.state.target}
             autoexpand={this.autoexpand}
             getNoteId={this.getNoteId}
+            getNoteTitle={this.getNoteTitle}
             saveNewTitle={this.saveNewTitle}
-            />
+          />
         </div>
         <button onClick={this.get}>CLICK HEEEEERE</button>
       </div>

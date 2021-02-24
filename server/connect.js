@@ -60,20 +60,26 @@ router.post('/folders', function (req, res) {
   connection.query(
     `INSERT INTO folders (folder_name) 
      VALUES ('${req.body.folder_name}');`, (error, results, fields) => {
-
     if (error) throw error;
     res.status(200).send("Folder created successfully")
   })
 })
 
-// //UPDATE NOTE TITLE
-// router.put(`/folders/:folderId/noteId`) , function(req, res) {
-//   connection.query(`UPDATE notes SET note_title = ${req.body.new_title}` , (error, results, fields) => {
-//     if (error) throw error;
-//     res.status(200).send(results)
-//   });
-// };
+//UPDATE NOTE TITLE
+router.put('/folders/:folderId/:noteId', function(req, res) {
+  connection.query(`UPDATE notes SET note_title = '${req.body.note_title}' WHERE note_id = '${req.params.noteId}';` , (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  })
+});
 
+//CREATE A NEW NOTE
+router.post('/folders/:folderId/:noteId', function (req, res) {
+  connection.query(`INSERT INTO notes (folder_id, note_title) VALUES ('${req.params.folderId}', '${req.body.note_title}')`, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send("Note created !")
+  })
+});
 // GET NOTES OF A SPECIFIC FOLDER
 router.get('/folders/:folderId/notes', function (req, res) {
   connection.query(`SELECT * FROM notes WHERE folder_id = ${req.params.folderId}`, (error, results, fields) => {
@@ -85,32 +91,26 @@ router.get('/folders/:folderId/notes', function (req, res) {
 
 
 // GET NOTE CONTENT OF A SPECIFIC NOTE
-router.get('/folders/:folder_id/:note_id/note', function (req, res) {
-  connection.query(`SELECT note_content FROM notes WHERE note_id = ${req.params.note_id}`, (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send(results)
-  })
-})
+// router.get('/folders/:folder_id/:note_id/note', function (req, res) {
+//   connection.query(`SELECT note_content FROM notes WHERE note_id = ${req.params.note_id}`, (error, results, fields) => {
+//     if (error) throw error;
+//     res.status(200).send(results)
+//   })
+// })
 
 
 
 // ADD CONTENT TO A SPECIFIC NOTE
-router.post('/folders/:folderId/:noteId/note', function (req, res) {
-  connection.query(`UPDATE notes SET note_content = '${req.body.noteContent}' WHERE note_id = ${req.params.noteId}`, (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send("Note saved !")
-  })
-})
+// router.post('/folders/:folderId/:noteId/note', function (req, res) {
+//   connection.query(`UPDATE notes SET note_content = '${req.body.noteContent}' WHERE note_id = ${req.params.noteId}`, (error, results, fields) => {
+//     if (error) throw error;
+//     res.status(200).send("Note saved !")
+//   })
+// })
 
 
 
-//CREATE A NEW NOTE
-router.post('/folders/:folderId/:noteId', function (req, res) {
-  connection.query(`INSERT INTO notes (folder_id, note_title) VALUES ('${req.params.folderId}', '${req.body.note_title}')`, (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send("Note created !")
-  })
-});
+
 
 
 
@@ -126,12 +126,12 @@ router.get('/notes', function (req, res) {
 
 
 //GET ALL GENERAL NOTES CONTENTS
-router.get('/notes', function (req, res) {
-  connection.query(`SELECT note_content FROM notes;`, (error, results, fields) => {
-    if (error) throw error;
-    res.status(200).send(results)
-  })
-})
+// router.get('/notes', function (req, res) {
+//   connection.query(`SELECT note_content FROM notes;`, (error, results, fields) => {
+//     if (error) throw error;
+//     res.status(200).send(results)
+//   })
+// })
 
 
 
@@ -153,7 +153,6 @@ router.get('/notes', function (req, res) {
 //     res.status(200).send(results)
 //   })
 // })
-
 
 
 

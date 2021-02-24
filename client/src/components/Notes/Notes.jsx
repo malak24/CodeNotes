@@ -17,10 +17,10 @@ class Notes extends Component {
               <Modal.Dialog className='note'>
                 <Modal.Header closeButton>
                   <textarea
-                    onClick={ () => this.props.getNoteId(note.note_id)}
-                    onChange={this.props.getNoteTitle}
+                    onMouseEnter={() => this.props.getNoteId(note.note_id)}
+                    onChange={this.props.saveNewTitle}
                     className='note__title note__header'
-                    defaultValue={note.note_id}>
+                    defaultValue={note.note_title}>
                   </textarea>
                 </Modal.Header>
 
@@ -28,7 +28,6 @@ class Notes extends Component {
                   <textarea
                     className='note__content'
                     onChange={this.props.autoexpand}
-                    // onChange = {this.props.setNoteContent}
                     model={this.props.model}>{note.note_content}</textarea>
                 </Modal.Body>
 

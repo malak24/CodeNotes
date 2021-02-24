@@ -35,7 +35,7 @@ class Folders extends Component {
                   <ul className={this.props.openNotes ? 'folders__notes-list' : 'folders__notes-hidden'}>
                     {this.props.folders[keyName].notes.map((note) => (
                       <li
-                        onClick={console.log (`this is note id : ${note.note_id}`)}
+                        // onClick={console.log (`this is note id : ${note.note_id}`)}
                         className='folders__notes-item' key={uuidv4()} >{note.note_title}</li>
                     ))}
                   </ul>
