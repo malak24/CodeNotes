@@ -27,6 +27,7 @@ class Folders extends Component {
                 <div className='folders__btn-wrapper'>
                   <button className='folders__edit'>Edit</button>
                   <button onClick={this.props.showNotes} className='btn folders__folder-name-arrow'>ᐁ</button>
+                  <button className='folders__delete'>x</button>
                 </div>
 
                 <div className='folders__container'>
@@ -35,7 +36,8 @@ class Folders extends Component {
                   <ul className={this.props.openNotes ? 'folders__notes-list' : 'folders__notes-hidden'}>
                     {this.props.folders[keyName].notes.map((note) => (
                       <li
-                        // onClick={console.log (`this is note id : ${note.note_id}`)}
+                        onMouseEnter = { () => {this.props.getNoteId(note.note_id)}}
+                        onClick = {this.props.openNote}
                         className='folders__notes-item' key={uuidv4()} >{note.note_title}</li>
                     ))}
                   </ul>

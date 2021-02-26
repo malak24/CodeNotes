@@ -37,7 +37,7 @@ class App extends Component {
   }
 
   get = () => {
-    console.log(this.state.noteTitle);
+    console.log(this.state.noteId);
   }
 
 
@@ -89,6 +89,17 @@ class App extends Component {
       })
   }
 
+  openNote = () => {
+    axios
+      .get(`${url}/notes/${this.state.noteId}`)
+      .then(response => {
+        this.setState({ notes: response.data });
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
 
   //GET NOTE ID
   getNoteId = (note_id) => {
@@ -109,7 +120,7 @@ class App extends Component {
     let newTitle = e.target.value;
     console.log(newTitle)
 
-      axios
+    axios
       .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}`, {
         note_title: newTitle,
       })
@@ -128,16 +139,16 @@ class App extends Component {
     console.log(noteContent);
     // this.autoexpand(e);
 
-    axios
-      .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
-        note_content: noteContent,
-      })
-      .then(response => {
-        console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
+    // axios
+    //   .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
+    //     note_content: noteContent,
+    //   })
+    //   .then(response => {
+    //     console.log(response);
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    //   })
   }
 
 
@@ -179,6 +190,8 @@ class App extends Component {
     this.setState({ folderName: folderInp })
     // console.log(folderInp);
   }
+
+
 
 
   // editFolderName = () => {
@@ -277,11 +290,12 @@ class App extends Component {
             getFolderName={this.getFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
-
             openFolders={this.state.openFolders}
             showFolders={this.showFolders}
             openNotes={this.state.openNotes}
             showNotes={this.showNotes}
+            openNote = {this.openNote}
+            getNoteId={this.getNoteId}
           />
 
           <Notes
@@ -290,7 +304,7 @@ class App extends Component {
             autoexpand={this.autoexpand}
             getNoteId={this.getNoteId}
             getNoteTitle={this.getNoteTitle}
-            saveTitle={this.saveNewTitle}
+            saveTitle={this.saveTitle}
             saveNote={this.saveNote}
           />
         </div>

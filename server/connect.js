@@ -82,6 +82,16 @@ router.put('/folders/:folderId/:noteId/note', function (req, res) {
 })
 
 
+
+// OPEN A SPECIFIC NOTE
+router.get('/notes/:noteId', function (req, res) {
+  connection.query(`SELECT * FROM notes WHERE note_id = ${req.params.noteId}`, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send(results)
+  });
+});
+
+
 //CREATE A NEW NOTE
 router.post('/folders/:folderId/:noteId', function (req, res) {
   connection.query(`INSERT INTO notes (folder_id, note_title) VALUES ('${req.params.folderId}', '${req.body.note_title}')`, (error, results, fields) => {
@@ -110,28 +120,10 @@ router.get('/folders/:folderId/notes', function (req, res) {
 // })
 
 
-
-
-
-
-
-
-
-
-//GET LIST OF GENERAL NOTES TITLES
-router.get('/notes', function (req, res) {
-  connection.query(`SELECT note_title FROM notes;`, (error, results, fields) => {
-
-    if (error) throw error;
-    res.status(200).send(results)
-  })
-})
-
-
-
-//GET ALL GENERAL NOTES CONTENTS
+// //GET LIST OF GENERAL NOTES TITLES
 // router.get('/notes', function (req, res) {
-//   connection.query(`SELECT note_content FROM notes;`, (error, results, fields) => {
+//   connection.query(`SELECT note_title FROM notes;`, (error, results, fields) => {
+
 //     if (error) throw error;
 //     res.status(200).send(results)
 //   })
