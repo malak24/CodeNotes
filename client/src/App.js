@@ -28,7 +28,6 @@ class App extends Component {
 
       search: '',
       openFolders: true,
-      openNotes: false
     };
   }
 
@@ -37,7 +36,8 @@ class App extends Component {
   }
 
   get = () => {
-    console.log(this.state.noteId);
+    console.log(this.state.notes);
+    console.log(this.state.notes.length == 0)
   }
 
 
@@ -66,13 +66,6 @@ class App extends Component {
       .catch(error => {
         console.log(error)
       })
-  }
-
-
-  showNotes = () => {
-    this.setState({
-      openNotes: !(this.state.openNotes)
-    });
   }
 
 
@@ -137,18 +130,18 @@ class App extends Component {
   saveNote = (e) => {
     let noteContent = e.target.value;
     console.log(noteContent);
-    // this.autoexpand(e);
+    this.autoexpand(e);
 
-    // axios
-    //   .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
-    //     note_content: noteContent,
-    //   })
-    //   .then(response => {
-    //     console.log(response);
-    //   })
-    //   .catch(error => {
-    //     console.log(error)
-    //   })
+    axios
+      .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
+        note_content: noteContent,
+      })
+      .then(response => {
+        console.log(response);
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
 
@@ -286,16 +279,17 @@ class App extends Component {
         <div className='app__container'>
           <SideBar
             folders={this.state.folders}
+            notes={this.state.notes}
             getNotes={this.getNotes}
             getFolderName={this.getFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
             openFolders={this.state.openFolders}
             showFolders={this.showFolders}
-            openNotes={this.state.openNotes}
             showNotes={this.showNotes}
             openNote = {this.openNote}
             getNoteId={this.getNoteId}
+            folderId = {this.state.folderId}
           />
 
           <Notes
@@ -308,7 +302,7 @@ class App extends Component {
             saveNote={this.saveNote}
           />
         </div>
-        <button onClick={this.get}>CLICK HEEEEERE</button>
+        {/* <button onClick={this.get}>CLICK HEEEEERE</button> */}
       </div>
     );
   }

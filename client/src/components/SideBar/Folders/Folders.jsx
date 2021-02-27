@@ -26,20 +26,24 @@ class Folders extends Component {
                 className="list-group-item">
                 <div className='folders__btn-wrapper'>
                   <button className='folders__edit'>Edit</button>
-                  <button onClick={this.props.showNotes} className='btn folders__folder-name-arrow'>ᐁ</button>
+                  <button className='btn folders__folder-name-arrow'>ᐁ</button>
                   <button className='folders__delete'>x</button>
                 </div>
 
                 <div className='folders__container'>
-                  <p onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }} className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
+                  <p onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }}
+                    className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
 
-                  <ul className={this.props.openNotes ? 'folders__notes-list' : 'folders__notes-hidden'}>
-                    {this.props.folders[keyName].notes.map((note) => (
-                      <li
-                        onMouseEnter = { () => {this.props.getNoteId(note.note_id)}}
-                        onClick = {this.props.openNote}
-                        className='folders__notes-item' key={uuidv4()} >{note.note_title}</li>
-                    ))}
+                  <ul className='folders__notes-list'>
+                    {this.props.notes.length === 0
+                      ? console.log('this is null') : keyName != this.props.folderId ? console.log('this is null 2') : this.props.notes.map((note) =>
+                        <li
+                          onMouseEnter={() => { this.props.getNoteId(note.note_id) }}
+                          onClick={this.props.openNote}
+                          className='folders__notes-item' key={uuidv4()}
+                        >{note.note_title}</li>
+                      )
+                    }
                   </ul>
                 </div>
               </li>

@@ -24,6 +24,7 @@ class SideBar extends Component {
             openNotes={this.props.openNotes}
             openNote={this.props.openNote}
             getNoteId={this.props.getNoteId}
+            folderId = {this.props.folderId}
           />
         </div>
       </div>

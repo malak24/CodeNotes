@@ -15,7 +15,7 @@ class Notes extends Component {
           {this.props.notes.map((note) => (
             <div key={uuidv4()}>
               <Modal.Dialog className='note'>
-                <Modal.Header closeButton>
+                <Modal.Header>
                   <textarea
                     onMouseEnter={() => this.props.getNoteId(note.note_id)}
                     onChange={this.props.saveTitle}
@@ -35,7 +35,7 @@ class Notes extends Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <Button>Save</Button>
+                  <Button>Delete</Button>
                 </Modal.Footer>
               </Modal.Dialog>
             </div>
