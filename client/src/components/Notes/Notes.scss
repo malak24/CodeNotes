@@ -56,20 +56,16 @@ p {
   border:none;
 
   &:hover {
-    background-color:#d9bec5;
+    background-color:#d9bec5; 
+    border-color: #d9bec5;
   }
 }
 
-.close {
-  margin : 0;
-  position : absolute;
-  right : 1rem;
-  top : 0.5rem;
-
-  &:hover {
-    color: black;
-  }
+.btn-primary:not(:disabled):not(.disabled):focus {
+  color: #fff;
+  background-color :#a8717f;
 }
+
 
 .btn-secondary {
   background-color: grey;

@@ -146,6 +146,19 @@ class App extends Component {
       })
   }
 
+  // DELETE NOTE
+  deleteNote = () => {
+    axios
+      .put(`${url}/notes/${this.state.noteId}`, {
+      })
+      .then(response => {
+        this.getNotes(this.state.folderId);
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
 
   autoexpand = (event) => {
     let target = event.target
@@ -324,6 +337,7 @@ class App extends Component {
             getNoteTitle={this.getNoteTitle}
             saveTitle={this.saveTitle}
             saveNote={this.saveNote}
+            deleteNote = {this.deleteNote}
           />
         </div>
         <button onClick={this.get}>CLICK HEEEEERE</button>

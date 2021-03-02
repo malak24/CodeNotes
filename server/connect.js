@@ -111,11 +111,19 @@ router.get('/folders/:folderId/notes', function (req, res) {
 
 
 
-// UPDATE NOTE CONTENT OF A SPECIFIC NOTE
+// DELETE FOLDER
 router.put('/folders/:folderId', function (req, res) {
   connection.query(`DELETE FROM folders WHERE folder_id = ${req.params.folderId}`, (error, results, fields) => {
     if (error) throw error;
     res.status(200).send("Folder deleted !")
+  })
+})
+
+// DELETE NOTE
+router.put('/notes/:noteId', function (req, res) {
+  connection.query(`DELETE FROM notes WHERE note_id = ${req.params.noteId}`, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send("Note deleted !")
   })
 })
 
