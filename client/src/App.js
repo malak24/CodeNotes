@@ -82,6 +82,11 @@ class App extends Component {
       })
   }
 
+  hideNotes = () => {
+    this.setState({notes : []})
+    console.log('this is at least working')
+  }
+
   openNote = () => {
     axios
       .get(`${url}/notes/${this.state.noteId}`)
@@ -187,78 +192,78 @@ class App extends Component {
 
 
 
-  // editFolderName = () => {
-  //   new Prompt({
-  //     title: 'Edit folder name',
-  //     content: "Please enter the folder's new name",
-  //     placeholderText: "New name",
-  //     submitText: true,
-  //     onSubmit(component, value) {
-  //       console.log(value)
-  //     }
-  // });
+  // // editFolderName = () => {
+  // //   new Prompt({
+  // //     title: 'Edit folder name',
+  // //     content: "Please enter the folder's new name",
+  // //     placeholderText: "New name",
+  // //     submitText: true,
+  // //     onSubmit(component, value) {
+  // //       console.log(value)
+  // //     }
+  // // });
+  // // }
+
+  // //GET SEARCH WORD (INPUT BY USER)
+  // getSearchVal = (e) => {
+  //   searchInp = e.target.value;
+  //   this.setState({ search: searchInp })
+  //   // console.log(searchInp)
   // }
 
-  //GET SEARCH WORD (INPUT BY USER)
-  getSearchVal = (e) => {
-    searchInp = e.target.value;
-    this.setState({ search: searchInp })
-    // console.log(searchInp)
-  }
+  // //SEARCH FOR A FOLDER BY FOLDER NAME
+  // folderSearchFn = () => {
+  //   // console.log('folder search function is working')
+  //   axios
+  //     .post(`${url}/folders`, {
+  //       search: this.state.search
+  //     })
+  //     .then(response => {
+  //       // console.log(response);
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
 
-  //SEARCH FOR A FOLDER BY FOLDER NAME
-  folderSearchFn = () => {
-    // console.log('folder search function is working')
-    axios
-      .post(`${url}/folders`, {
-        search: this.state.search
-      })
-      .then(response => {
-        // console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+  // //SEARCH FOR NOTE BY NOTE TITLE
+  // noteSearchFn = () => {
+  //   axios
+  //     .post(`${url}/notes`, {
+  //       search: this.state.search
+  //     })
+  //     .then(response => {
+  //       // console.log(response);
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
 
-  //SEARCH FOR NOTE BY NOTE TITLE
-  noteSearchFn = () => {
-    axios
-      .post(`${url}/notes`, {
-        search: this.state.search
-      })
-      .then(response => {
-        // console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+  // //SEARCH FOR NOTE BY NOTE CONTENT
+  // noteSearchFn = () => {
+  //   axios
+  //     .post(`${url}/notes`, {
+  //       search: this.state.search
+  //     })
+  //     .then(response => {
+  //       // console.log(response);
+  //     })
+  //     .catch(error => {
+  //       console.log(error)
+  //     })
+  // }
 
-  //SEARCH FOR NOTE BY NOTE CONTENT
-  noteSearchFn = () => {
-    axios
-      .post(`${url}/notes`, {
-        search: this.state.search
-      })
-      .then(response => {
-        // console.log(response);
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-  //GENERAL SEARCH FUNCTION FOR FOLDERS AND NOTES
-  search = () => {
-    if (this.state.selectedOption === 'folder name') {
-      this.folderSearchFn()
-    } else if (this.state.selectedOption === 'note title') {
-      this.noteSearchFn()
-    } else {
-      this.noteSearchFn()
-    }
-  }
+  // //GENERAL SEARCH FUNCTION FOR FOLDERS AND NOTES
+  // search = () => {
+  //   if (this.state.selectedOption === 'folder name') {
+  //     this.folderSearchFn()
+  //   } else if (this.state.selectedOption === 'note title') {
+  //     this.noteSearchFn()
+  //   } else {
+  //     this.noteSearchFn()
+  //   }
+  // }
 
 
   showFolders = () => {
@@ -290,6 +295,7 @@ class App extends Component {
             openNote = {this.openNote}
             getNoteId={this.getNoteId}
             folderId = {this.state.folderId}
+            hideNotes = {this.hideNotes}
           />
 
           <Notes

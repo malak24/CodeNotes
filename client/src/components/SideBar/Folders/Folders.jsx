@@ -12,7 +12,7 @@ class Folders extends Component {
           <div className='folders__title-container'>
             <div className='folders__title-sub-container'>
               <p className='folders__title'>Folders</p>
-              <button onClick={this.props.showFolders} className='folders__arrows btn'>ᐁ</button>
+              <button onClick={this.props.showFolders} className='folders__arrows btn'>▽</button>
             </div>
             <div className='folders__new-folder'>
               <input onChange={this.props.getFolderName} className='folders__input' type='text' placeholder='Folder name ...' />
@@ -26,7 +26,7 @@ class Folders extends Component {
                 className="list-group-item">
                 <div className='folders__btn-wrapper'>
                   <button className='folders__edit'>Edit</button>
-                  <button className='btn folders__folder-name-arrow'>ᐁ</button>
+                  <button onClick = {this.props.hideNotes} className='btn folders__folder-name-arrow'>△</button>
                   <button className='folders__delete'>x</button>
                 </div>
 
