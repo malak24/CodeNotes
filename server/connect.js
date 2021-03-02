@@ -111,25 +111,13 @@ router.get('/folders/:folderId/notes', function (req, res) {
 
 
 
-// GET NOTE CONTENT OF A SPECIFIC NOTE
-// router.get('/folders/:folder_id/:note_id/note', function (req, res) {
-//   connection.query(`SELECT note_content FROM notes WHERE note_id = ${req.params.note_id}`, (error, results, fields) => {
-//     if (error) throw error;
-//     res.status(200).send(results)
-//   })
-// })
-
-
-// //GET LIST OF GENERAL NOTES TITLES
-// router.get('/notes', function (req, res) {
-//   connection.query(`SELECT note_title FROM notes;`, (error, results, fields) => {
-
-//     if (error) throw error;
-//     res.status(200).send(results)
-//   })
-// })
-
-
+// UPDATE NOTE CONTENT OF A SPECIFIC NOTE
+router.put('/folders/:folderId', function (req, res) {
+  connection.query(`DELETE FROM folders WHERE folder_id = ${req.params.folderId}`, (error, results, fields) => {
+    if (error) throw error;
+    res.status(200).send("Folder deleted !")
+  })
+})
 
 // SEARCH FOR A NOTE BY TITLE
 // router.post('/notes', function(req, res) {

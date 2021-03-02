@@ -26,12 +26,13 @@ class Folders extends Component {
                 className="list-group-item">
                 <div className='folders__btn-wrapper'>
                   <button className='folders__edit'>Edit</button>
-                  <button onClick = {this.props.hideNotes} className='btn folders__folder-name-arrow'>△</button>
-                  <button className='folders__delete'>x</button>
+                  <button onClick={this.props.hideNotes} className='btn folders__folder-name-arrow'>△</button>
+                  <button onMouseEnter={() => { this.props.getFolderId(this.props.folders[keyName].folder_id) }} onClick={this.props.deleteFolder} className='folders__delete'>x</button>
                 </div>
 
                 <div className='folders__container'>
-                  <p onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }}
+                  <p
+                    onClick={() => { this.props.getNotes(this.props.folders[keyName].folder_id) }}
                     className='folders__folder-name'>{this.props.folders[keyName].folder_name}</p>
 
                   <ul className='folders__notes-list'>

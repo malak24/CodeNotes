@@ -4,10 +4,8 @@ import './App.scss';
 import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
-import { get, nodeName } from 'jquery';
 
 let folderInp;
-let searchInp;
 let url = 'http://localhost:8080'
 
 class App extends Component {
@@ -36,8 +34,7 @@ class App extends Component {
   }
 
   get = () => {
-    console.log(this.state.notes);
-    console.log(this.state.notes.length == 0)
+    console.log((this.state.folders[12] == []));
   }
 
 
@@ -46,7 +43,6 @@ class App extends Component {
     axios
       .get(`${url}/data`)
       .then(response => {
-        // console.log(response.data);
         this.setState({ folders: response.data });
       })
   }
@@ -82,10 +78,11 @@ class App extends Component {
       })
   }
 
+
   hideNotes = () => {
-    this.setState({notes : []})
-    console.log('this is at least working')
+    this.setState({ notes: [] })
   }
+
 
   openNote = () => {
     axios
@@ -181,6 +178,20 @@ class App extends Component {
       })
   }
 
+  // DELETE FOLDER
+  deleteFolder = () => {
+    console.log('this is working')
+    axios
+      .put(`${url}/folders/${this.state.folderId}`, {
+      })
+      .then(response => {
+        this.getData();
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  }
+
 
   //GET THE FOLDER NAME FROM USER INPUT
   getFolderName = (e) => {
@@ -189,6 +200,12 @@ class App extends Component {
     // console.log(folderInp);
   }
 
+
+  //GET FOLDER ID
+  getFolderId = (folder_id) => {
+    console.log(folder_id);
+    this.setState({ folderId: folder_id })
+  }
 
 
 
@@ -292,10 +309,11 @@ class App extends Component {
             openFolders={this.state.openFolders}
             showFolders={this.showFolders}
             showNotes={this.showNotes}
-            openNote = {this.openNote}
+            openNote={this.openNote}
             getNoteId={this.getNoteId}
-            folderId = {this.state.folderId}
-            hideNotes = {this.hideNotes}
+            folderId={this.state.folderId}
+            hideNotes={this.hideNotes}
+            deleteFolder={this.deleteFolder}
           />
 
           <Notes
@@ -308,7 +326,7 @@ class App extends Component {
             saveNote={this.saveNote}
           />
         </div>
-        {/* <button onClick={this.get}>CLICK HEEEEERE</button> */}
+        <button onClick={this.get}>CLICK HEEEEERE</button>
       </div>
     );
   }
