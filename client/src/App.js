@@ -33,17 +33,13 @@ class App extends Component {
     this.getData();
   }
 
-  get = () => {
-    console.log((this.state.folders[12] == []));
-  }
-
-
   // GET ALL DATA FROM THE DB
   getData = () => {
     axios
       .get(`${url}/data`)
       .then(response => {
         this.setState({ folders: response.data });
+        console.log(response.data)
       })
   }
 
@@ -340,7 +336,6 @@ class App extends Component {
             deleteNote = {this.deleteNote}
           />
         </div>
-        <button onClick={this.get}>CLICK HEEEEERE</button>
       </div>
     );
   }
