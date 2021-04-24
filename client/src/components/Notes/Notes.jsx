@@ -35,7 +35,7 @@ class Notes extends Component {
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <Button onClick = {this.props.deleteNote}
+                  <Button className = 'delete-btn'onClick = {this.props.deleteNote}
                   onMouseEnter={() => this.props.getNoteId(note.note_id)}
                   >Delete</Button>
                 </Modal.Footer>

@@ -340,7 +340,7 @@ class App extends Component {
             deleteNote = {this.deleteNote}
           />
         </div>
-        <button onClick = {this.getInfo}>Click me I'm here</button>
+        {/* <button onClick = {this.getInfo}>Click me I'm here</button> */}
       </div>
     );
   }

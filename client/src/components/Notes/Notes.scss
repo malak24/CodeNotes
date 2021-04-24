@@ -23,7 +23,7 @@ p {
     padding-top : 0.5rem;
     padding-left: 1rem;
     padding-right:1rem;
-    background-color: #d1c6c9;
+    background-color: #f0ede9;
     height : 2.4rem;
   }
 
@@ -50,6 +50,7 @@ p {
   }
 }
 
+
 .btn {
   background-color :#a8717f;
   color:white;
@@ -71,6 +72,10 @@ p {
   background-color: grey;
 }
 
+.delete-btn {
+  color: black;
+  background-color: #f0ede9;
+}
 
 .modal-header {
   padding : 0;
