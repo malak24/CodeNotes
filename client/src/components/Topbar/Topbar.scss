@@ -5,12 +5,12 @@
 #topbar {
   .topbar {
     &__wrapper {
-      background-color: rgba(92, 91, 91, 0.836);
-      border-radius: 0.4rem;
-      padding-left:1rem;
+      background-color: #5c5b5b;
+      padding-left:1.5rem;
       padding-top : 0.2rem;
       height : 8rem;
       width:100%;
+      margin-top: 0.6rem;
 
       @include tablet {
         height : 7.5rem;
@@ -24,12 +24,12 @@
   }
 
   .btn {
-    font-size : 1rem;
-    width: 3rem;
+    width: 3.6rem;
     height : 2rem;
     text-align : center;
     padding: 0;
     padding-top : 0.3rem;
+    background-color: #d8a45a;
 
     @include desktop {
       height:2.4rem;
@@ -39,16 +39,16 @@
 
   .btn:active{
     outline : none;
-    background-color:#ac8891;
-    color:white;
+    background-color: #d8a45a;
+    color:black;
   }
 
   .btn:hover {
-    color:white;
+    color:black;
   }
 
   .btn-secondary {
-    background-color: grey;
+    background-color: #d8a45a;
     font-size : 1rem;
     width: 3.6rem;
     height : 2rem;
@@ -61,7 +61,7 @@
 
   .navbar {
     height : 4rem;
-    background-color: rgb(173, 173, 173);
+    background-color: #DB6C79;
   }
 
   .navbar-nav {
@@ -71,8 +71,20 @@
     align-items: center;
   }
 
+  .navbar-light .navbar-toggler {
+  color: rgba(0,0,0,.5);
+  border-color: rgba(0,0,0,.1);
+  padding: 0.5rem;
+  border: none;
+  }
+
+  .navbar-toggler:focus, .navbar-toggler:focus-visible{
+    outline:none;
+  }
+  
+
   .form-control {
-    width:8rem;
+    width:11rem;
     height : 2rem;
 
     @include tablet {

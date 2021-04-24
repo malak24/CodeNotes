@@ -2,8 +2,7 @@
 @import '../../partials/variables.scss';
 
 .sidebar {
-  background-color:#a78b92;
-  padding-top:2rem;
+  background-color:#f0ede9;;
 
   @include desktop {
     width:26%;
@@ -22,10 +21,13 @@
   }
 
   &__logo {
-    width:13rem;
+    width:18rem;
+    height: 18rem;
     border-radius : 7px;
     display : block;
     margin : auto;
-    margin-bottom : 2rem;
+    margin-top: -3rem;
+    margin-bottom: -3rem;
+    margin-right: 1.8rem;
   }
 }
