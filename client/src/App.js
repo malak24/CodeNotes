@@ -33,6 +33,10 @@ class App extends Component {
     this.getData();
   }
 
+  getInfo = () => {
+    console.log(this.state.noteId)
+  }
+
   // GET ALL DATA FROM THE DB
   getData = () => {
     axios
@@ -85,6 +89,7 @@ class App extends Component {
       .get(`${url}/notes/${this.state.noteId}`)
       .then(response => {
         this.setState({ notes: response.data });
+        console.log('this is a request for notes/note id', response.data)
       })
       .catch(error => {
         console.log(error)
@@ -94,7 +99,6 @@ class App extends Component {
 
   //GET NOTE ID
   getNoteId = (note_id) => {
-    console.log(note_id);
     this.setState({ noteId: note_id })
   }
 
@@ -336,6 +340,7 @@ class App extends Component {
             deleteNote = {this.deleteNote}
           />
         </div>
+        <button onClick = {this.getInfo}>Click me I'm here</button>
       </div>
     );
   }

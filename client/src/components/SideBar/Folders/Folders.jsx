@@ -37,9 +37,11 @@ class Folders extends Component {
 
                   <ul className='folders__notes-list'>
                     {this.props.notes.length === 0
-                      ? console.log('this is null') : keyName != this.props.folderId ? console.log('this is null 2') : this.props.notes.map((note) =>
+                      ? console.log('this is null') : 
+                      keyName != this.props.folderId ? console.log('this is null 2') : this.props.notes.map((note) =>
                         <li
                           onMouseEnter={() => { this.props.getNoteId(note.note_id) }}
+                          onTouchStart={() => { this.props.getNoteId(note.note_id) }}
                           onClick={this.props.openNote}
                           className='folders__notes-item' key={uuidv4()}
                         >{note.note_title}</li>
