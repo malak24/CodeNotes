@@ -4,8 +4,7 @@ const PORT = 8080;
 const app = express();
 const route = require('./connect');
 
-app.use(cors());
-app.use(express.json());
+// git sttapp.use(express.json());
 
 app.use("/", route);
 
