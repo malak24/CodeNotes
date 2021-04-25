@@ -33,6 +33,10 @@ class App extends Component {
     this.getData();
   }
 
+  alert = () => {
+    alert('Click on the Instruction folder')
+  }
+
   getInfo = () => {
     console.log(this.state.noteId)
   }
@@ -43,7 +47,8 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         this.setState({ folders: response.data });
-        console.log(response.data)
+        this.alert();
+        // console.log(response.data)
       })
   }
 
@@ -72,6 +77,8 @@ class App extends Component {
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
         this.setState({ notes: response.data });
+        setTimeout(() => alert('Hover over "How does this app work" note to expand it'), 500)
+
       })
       .catch(error => {
         console.log(error)
@@ -89,7 +96,7 @@ class App extends Component {
       .get(`${url}/notes/${this.state.noteId}`)
       .then(response => {
         this.setState({ notes: response.data });
-        console.log('this is a request for notes/note id', response.data)
+        console.log(response.data)        
       })
       .catch(error => {
         console.log(error)
@@ -338,6 +345,7 @@ class App extends Component {
             saveTitle={this.saveTitle}
             saveNote={this.saveNote}
             deleteNote = {this.deleteNote}
+            noteId={this.state.noteId}
           />
         </div>
         {/* <button onClick = {this.getInfo}>Click me I'm here</button> */}

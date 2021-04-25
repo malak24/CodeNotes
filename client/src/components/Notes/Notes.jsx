@@ -30,6 +30,7 @@ class Notes extends Component {
                     className='note__content'
                     onChange={this.props.saveNote}
                     onMouseOver={this.props.autoexpand}
+                    onTouchStart={this.props.autoexapnd}
                     defaultValue={note.note_content}>
                   </textarea>
                 </Modal.Body>
