@@ -3,7 +3,6 @@
 
 #folders {
   @include tablet {
-    width : 46%;
     margin-top:-1rem;
   }
 
@@ -24,6 +23,10 @@
       font-size:1.3rem;
       background-color: #C0DF85;
       height : 6rem;
+
+      @include tablet {
+        margin-top: -5rem;
+      }
     }
 
     &__title-sub-container {
@@ -59,7 +62,7 @@
       color: black;
 
       &:hover {
-        background-color : #9c9c9c
+        background-color : #d3d0cd
       }
     }
 
@@ -101,7 +104,7 @@
 
     .btn:active{
       outline : none;
-      background-color:#ac8891;
+      background-color:#d3d0cd;
       color:white;
     }
   
@@ -116,6 +119,11 @@
         display : flex;
         flex-direction: row-reverse;
         padding: 0.3rem;
+
+        @include tablet {
+          justify-content: space-between;
+          padding-left: 2rem;
+        }
       }
     }
 
@@ -123,6 +131,10 @@
       display : flex;
       align-items : center ;
       height: 2.5rem;
+
+      @include tablet {
+        margin-right: 1rem;
+      }
     }
 
     &__edit {
@@ -136,7 +148,7 @@
       padding-top : 0.1rem;
 
       &:hover {
-        background-color:#d9bec5;
+        background-color:#db8891;
       }
     }
 
@@ -163,7 +175,7 @@
         font-weight: bold;
 
         &:hover {
-          background-color: #8f8f8f
+          background-color:#dfb984;
         }
       }
     }
@@ -200,6 +212,10 @@
       color : #8f8f8f;
       font-weight : 600;
       padding-left:0.6rem;
+
+      @include tablet {
+        width: 38rem;
+      }
 
       &:hover {
         background-color: #f0ede9;

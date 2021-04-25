@@ -2,18 +2,13 @@
 @import '../../partials/variables.scss';
 
 .sidebar {
-  background-color:#f0ede9;;
+  background-color:#f0ede9;
 
   @include desktop {
     width:26%;
   }
 
   &__wrapper {
-    @include tablet {
-      display : flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-    }
 
     @include desktop {
       display : block;
@@ -23,11 +18,17 @@
   &__logo {
     width:18rem;
     height: 18rem;
-    border-radius : 7px;
     display : block;
     margin : auto;
     margin-top: -3rem;
     margin-bottom: -3rem;
     margin-right: 1.8rem;
+
+    @include tablet {
+      margin: auto;
+      margin-top: -4.2rem;
+      width: 16rem;
+      height: 16rem;
+    }
   }
 }

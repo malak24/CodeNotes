@@ -52,25 +52,19 @@ p {
 
 
 .btn {
-  background-color :#a8717f;
   color:white;
   border:none;
 
   &:hover {
-    background-color:#d9bec5; 
-    border-color: #d9bec5;
+    background-color: #d3d0cd;
+    border-color: #d3d0cd;
   }
 }
 
-.btn-primary:not(:disabled):not(.disabled):focus {
-  color: #fff;
-  background-color :#a8717f;
-}
-
-
-.btn-secondary {
-  background-color: grey;
-}
+// .btn-primary:not(:disabled):not(.disabled):focus {
+//   color: #fff;
+//   background-color: #f0ede9;
+// }
 
 .delete-btn {
   color: black;
