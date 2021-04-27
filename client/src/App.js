@@ -34,11 +34,7 @@ class App extends Component {
   }
 
   alert = () => {
-    alert('Click on the Instruction folder')
-  }
-
-  getInfo = () => {
-    console.log(this.state.noteId)
+    alert("To know how this app works, click on the 'Instructions' folder then click on the note to expand it")
   }
 
   // GET ALL DATA FROM THE DB
@@ -47,8 +43,6 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         this.setState({ folders: response.data });
-        this.alert();
-        // console.log(response.data)
       })
   }
 
@@ -61,7 +55,6 @@ class App extends Component {
         note_title: this.state.noteTitle,
       })
       .then(response => {
-        // console.log(response);
         this.getNotes(this.state.folderId);
       })
       .catch(error => {
@@ -77,7 +70,6 @@ class App extends Component {
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
         this.setState({ notes: response.data });
-        setTimeout(() => alert('Hover over "How does this app work" note to expand it'), 500)
 
       })
       .catch(error => {
@@ -106,6 +98,7 @@ class App extends Component {
 
   //GET NOTE ID
   getNoteId = (note_id) => {
+    this.state.noteId === note_id ? console.log('note has the same id') :
     this.setState({ noteId: note_id })
   }
 
@@ -138,7 +131,6 @@ class App extends Component {
   //SAVE THE NOTE'S CONTENT
   saveNote = (e) => {
     let noteContent = e.target.value;
-    console.log(noteContent);
     this.autoexpand(e);
 
     axios
@@ -346,9 +338,10 @@ class App extends Component {
             saveNote={this.saveNote}
             deleteNote = {this.deleteNote}
             noteId={this.state.noteId}
+            checkExpantion = {this.checkExpantion}
           />
         </div>
-        {/* <button onClick = {this.getInfo}>Click me I'm here</button> */}
+        <button className = 'app__btn' onClick = {this.alert}>Read me</button>
       </div>
     );
   }
