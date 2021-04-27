@@ -1,6 +1,3 @@
-DROP TABLE folders;
-DROP TABLE notes;
-
 CREATE TABLE notes (
     note_id INT AUTO_INCREMENT,
     note_title VARCHAR(100),
@@ -29,3 +26,5 @@ SELECT * FROM notes;
 UPDATE folders 
 SET folder_name = 'Instructions' 
 WHERE folder_id = 1;
+
+SELECT * FROM notes;

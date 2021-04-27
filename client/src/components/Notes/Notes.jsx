@@ -15,6 +15,7 @@ class Notes extends Component {
           {this.props.notes.map((note) => (
             <div key={uuidv4()}>
               <Modal.Dialog className='note'>
+
                 <Modal.Header>
                   <textarea
                     onMouseEnter={() => this.props.getNoteId(note.note_id)}
@@ -25,16 +26,14 @@ class Notes extends Component {
                 </Modal.Header>
 
                 <Modal.Body>
-                  {note.note_id == 1? this.props.autoexpand : 
                   <textarea
                     onMouseEnter={() => this.props.getNoteId(note.note_id)}
                     className='note__content'
                     onChange={this.props.saveNote}
-                    onMouseOver={this.props.autoexpand}
-                    onTouchStart={this.props.autoexapnd}
+                    onClick={this.props.autoexpand}
+                    // onMouseOut = {this.props.autoexpand}
                     defaultValue={note.note_content}>
                   </textarea>
-                  }
                 </Modal.Body>
 
                 <Modal.Footer>
