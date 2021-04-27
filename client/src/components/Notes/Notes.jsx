@@ -25,6 +25,7 @@ class Notes extends Component {
                 </Modal.Header>
 
                 <Modal.Body>
+                  {note.note_id == 1? this.props.autoexpand : 
                   <textarea
                     onMouseEnter={() => this.props.getNoteId(note.note_id)}
                     className='note__content'
@@ -33,10 +34,11 @@ class Notes extends Component {
                     onTouchStart={this.props.autoexapnd}
                     defaultValue={note.note_content}>
                   </textarea>
+                  }
                 </Modal.Body>
 
                 <Modal.Footer>
-                  <Button className = 'delete-btn'onClick = {this.props.deleteNote}
+                  <Button className = 'footer-btn'onClick = {this.props.deleteNote}
                   onMouseEnter={() => this.props.getNoteId(note.note_id)}
                   >Delete</Button>
                 </Modal.Footer>

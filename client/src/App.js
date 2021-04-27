@@ -33,12 +33,12 @@ class App extends Component {
     this.getData();
   }
 
-  alert = () => {
-    alert('Click on the Instruction folder')
-  }
+  // alert = () => {
+  //   alert('Click on the Instruction folder')
+  // }
 
   getInfo = () => {
-    console.log(this.state.noteId)
+    console.log(this.state.expanded)
   }
 
   // GET ALL DATA FROM THE DB
@@ -47,7 +47,7 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         this.setState({ folders: response.data });
-        this.alert();
+        // this.alert();
         // console.log(response.data)
       })
   }
@@ -77,7 +77,7 @@ class App extends Component {
       .get(`${url}/folders/${folder_id}/notes`)
       .then(response => {
         this.setState({ notes: response.data });
-        setTimeout(() => alert('Hover over "How does this app work" note to expand it'), 500)
+        // setTimeout(() => alert('Hover over "How does this app work" note to expand it'), 500)
 
       })
       .catch(error => {
@@ -138,7 +138,6 @@ class App extends Component {
   //SAVE THE NOTE'S CONTENT
   saveNote = (e) => {
     let noteContent = e.target.value;
-    console.log(noteContent);
     this.autoexpand(e);
 
     axios
@@ -346,9 +345,10 @@ class App extends Component {
             saveNote={this.saveNote}
             deleteNote = {this.deleteNote}
             noteId={this.state.noteId}
+            checkExpantion = {this.checkExpantion}
           />
         </div>
-        {/* <button onClick = {this.getInfo}>Click me I'm here</button> */}
+        <button onClick = {this.getInfo}>Click me I'm here</button>
       </div>
     );
   }
