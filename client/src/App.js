@@ -43,6 +43,7 @@ class App extends Component {
       .get(`${url}/data`)
       .then(response => {
         this.setState({ folders: response.data });
+        console.log(response.data);
       })
   }
 
@@ -100,6 +101,7 @@ class App extends Component {
   getNoteId = (note_id) => {
     this.state.noteId === note_id ? console.log('note has the same id') :
     this.setState({ noteId: note_id })
+    console.log(note_id)
   }
 
 

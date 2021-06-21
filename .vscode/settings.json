@@ -12,6 +12,19 @@
             "database": "CodeNotes",
             "username": "root",
             "password": ""
+        },
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com",
+            "port": 3306,
+            "askForPassword": true,
+            "driver": "MySQL",
+            "database": "test1",
+            "username": "admin",
+            "name": "codenotes-db"
         }
     ]
 }
