@@ -3,53 +3,53 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql"); //importing mysql module
 
-// const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost"
-// const connection = mysql.createConnection({
-//   host: host,
-//   user: 'root',
-//   password: '',
-//   database: 'CodeNotes',
-//   port : 3306,
-//   insecureAuth : true
-// });
-
-// connection.connect(function (error) {
-//   if (error) throw error;
-// });
-
-const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost";
-const db_config = {
+const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost"
+const connection = mysql.createConnection({
   host: host,
-  user: "root",
-  password: "",
-  database: "CodeNotes",
-  port: 3306,
-  insecureAuth: true,
-};
+  user: 'root',
+  password: '',
+  database: 'CodeNotes',
+  port : 3306,
+  insecureAuth : true
+});
 
-let connection;
+connection.connect(function (error) {
+  if (error) throw error;
+});
 
-function handleDisconnect() {
-  connection = mysql.createConnection(db_config);
+// const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost";
+// const db_config = {
+//   host: host,
+//   user: "root",
+//   password: "",
+//   database: "CodeNotes",
+//   port: 3306,
+//   insecureAuth: true,
+// };
 
-  connection.connect(function (err) {
-    if (err) {
-      console.log("error when connecting to db:", err);
-      setTimeout(handleDisconnect, 2000);
-    }
-  });
+// let connection;
 
-  connection.on("error", function (err) {
-    console.log("db error", err);
-    if (err.code === "PROTOCOL_CONNECTION_LOST") {
-      handleDisconnect();
-    } else {
-      throw err;
-    }
-  });
-}
+// function handleDisconnect() {
+//   connection = mysql.createConnection(db_config);
 
-handleDisconnect();
+//   connection.connect(function (err) {
+//     if (err) {
+//       console.log("error when connecting to db:", err);
+//       setTimeout(handleDisconnect, 2000);
+//     }
+//   });
+
+//   connection.on("error", function (err) {
+//     console.log("db error", err);
+//     if (err.code === "PROTOCOL_CONNECTION_LOST") {
+//       handleDisconnect();
+//     } else {
+//       throw err;
+//     }
+//   });
+// }
+
+// handleDisconnect();
 
 //GET ALL DATA FROM NOTES TABLE (DATABASE)
 router.get("/data", function (req, res) {
