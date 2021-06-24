@@ -5,6 +5,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./Notes.scss";
 import { v4 as uuidv4 } from "uuid";
+import JoditEditor from "jodit-react";
+
+// const editor = useRef(null);
+
+const config = {
+  readonly: false, // all options from https://xdsoft.net/jodit/doc/
+};
+
 
 class Notes extends Component {
   render() {
@@ -25,6 +33,15 @@ class Notes extends Component {
                 </Modal.Header>
 
                 <Modal.Body>
+                  <JoditEditor
+                    // ref={editor}
+                    // value={content}
+                    config={config}
+                    tabIndex={1} // tabIndex of textarea
+                    // onBlur={(newContent) => setContent(newContent)}
+                    // onChange={(newContent) => {}}
+                  />
+
                   <textarea
                     onMouseOver={() => this.props.getNoteId(note.note_id)}
                     className="note__content"
