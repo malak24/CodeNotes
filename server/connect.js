@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql"); //importing mysql module
 
-const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost"
+const host = codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com
 const connection = mysql.createConnection({
   host: host,
   user: 'root',
