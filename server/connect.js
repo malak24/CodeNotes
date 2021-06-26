@@ -6,7 +6,7 @@ const mysql = require("mysql"); //importing mysql module
 const connection = mysql.createConnection({
   host: 'codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com',
   user: 'admin',
-  password: '',
+  password: '5684999Hm',
   database: 'test1',
   port : 3306,
   insecureAuth : true
