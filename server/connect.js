@@ -3,9 +3,8 @@ const express = require("express");
 const router = express.Router();
 const mysql = require("mysql"); //importing mysql module
 
-const host = 'codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com';
 const connection = mysql.createConnection({
-  host: host,
+  host: 'codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com',
   user: 'admin',
   password: '',
   database: 'test1',
