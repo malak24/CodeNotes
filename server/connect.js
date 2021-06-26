@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   host: host,
   user: 'admin',
   password: '',
-  database: 'CodeNotes',
+  database: 'test1',
   port : 3306,
   insecureAuth : true
 });
