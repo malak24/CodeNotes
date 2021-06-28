@@ -7,8 +7,6 @@ import "./Notes.scss";
 import { v4 as uuidv4 } from "uuid";
 import JoditEditor from "jodit-react";
 
-// const editor = useRef(null);
-
 const config = {
   readonly: false, // all options from https://xdsoft.net/jodit/doc/
 };
@@ -40,15 +38,12 @@ class Notes extends Component {
                     tabIndex={1} // tabIndex of textarea
                     // onBlur={(newContent) => setContent(newContent)}
                     // onChange={(newContent) => {}}
-                  />
-
-                  <textarea
                     onMouseOver={() => this.props.getNoteId(note.note_id)}
                     className="note__content"
                     onChange={this.props.saveNote}
                     onClick={this.props.autoexpand}
                     defaultValue={note.note_content}
-                  ></textarea>
+                  />
                 </Modal.Body>
 
                 <Modal.Footer>
