@@ -1,13 +1,30 @@
 const { response } = require("express");
 const express = require("express");
 const router = express.Router();
-const mysql = require("mysql"); //importing mysql module
+const mysql = require("mysql");
 
+
+//-----------CONNECTION TO AWS --------------
+// const connection = mysql.createConnection({
+//   host: 'codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com',
+//   user: 'admin',
+//   password: '',
+//   database: 'test1',
+//   port : 3306,
+//   insecureAuth : true
+// });
+
+// connection.connect(function (error) {
+//   if (error) throw error;
+// });
+
+
+// ------------ CONNECTION TO LOCALHOST --------------
 const connection = mysql.createConnection({
-  host: 'codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com',
-  user: 'admin',
+  host: 'localhost',
+  user: 'root',
   password: '',
-  database: 'test1',
+  database: 'CodeNotes',
   port : 3306,
   insecureAuth : true
 });
@@ -16,6 +33,8 @@ connection.connect(function (error) {
   if (error) throw error;
 });
 
+
+// ----------- RECONNECT AFTER DISCONNECT --------------
 // const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost";
 // const db_config = {
 //   host: host,
