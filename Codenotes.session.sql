@@ -23,8 +23,8 @@ ON DELETE SET NULL;
 SELECT * FROM folders;
 SELECT * FROM notes;
 
-UPDATE folders 
-SET folder_name = 'Instructions' 
-WHERE folder_id = 1;
+UPDATE notes 
+SET note_content = 'These are some instructions' 
+WHERE note_id = 8;
 
 SELECT * FROM notes;
