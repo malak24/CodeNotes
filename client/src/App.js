@@ -33,8 +33,11 @@ class App extends Component {
     this.getData();
   }
 
-  alert = () => {
-    alert("To know how this app works, click on the 'Instructions' folder then click on the note to expand it")
+  checkBtn = (e) => {
+    if (e.target.classList == 'app__btn') {
+      this.getFolderId();
+      // this.deleteFolder();
+    }
   }
 
   // GET ALL DATA FROM THE DB
@@ -193,10 +196,9 @@ class App extends Component {
   }
 
   // DELETE FOLDER
-  deleteFolder = () => {
-    console.log('this is working')
+  deleteFolder = (folder_id) => {
     axios
-      .put(`${url}/folders/${this.state.folderId}`, {
+      .put(`${url}/folders/${folder_id}`, {
       })
       .then(response => {
         this.getData();
@@ -328,6 +330,7 @@ class App extends Component {
             folderId={this.state.folderId}
             hideNotes={this.hideNotes}
             deleteFolder={this.deleteFolder}
+            checkBtn={this.checkBtn}
           />
 
           <Notes
@@ -343,7 +346,6 @@ class App extends Component {
             checkExpantion = {this.checkExpantion}
           />
         </div>
-        <button className = 'app__btn' onClick = {this.alert}>Read me</button>
       </div>
     );
   }

@@ -51,11 +51,8 @@ class Folders extends Component {
                     △
                   </button>
                   <button
-                    onMouseEnter={() => {this.props.getFolderId(this.props.folders[keyName].folder_id);}}
-                    onClick={this.props.deleteFolder}
-                    className="folders__delete"
-                  >
-                    x
+                    onClick={() => { this.props.deleteFolder(this.props.folders[keyName].folder_id); }}
+                    className="folders__delete">x
                   </button>
                 </div>
 
