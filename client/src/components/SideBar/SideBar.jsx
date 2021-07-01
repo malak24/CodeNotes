@@ -27,7 +27,6 @@ class SideBar extends Component {
             folderId = {this.props.folderId}
             hideNotes = {this.props.hideNotes}
             deleteFolder={this.props.deleteFolder}
-            checkBtn={this.props.checkBtn}
           />
         </div>
       </div>

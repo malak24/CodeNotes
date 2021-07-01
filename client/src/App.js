@@ -33,13 +33,6 @@ class App extends Component {
     this.getData();
   }
 
-  checkBtn = (e) => {
-    if (e.target.classList == 'app__btn') {
-      this.getFolderId();
-      // this.deleteFolder();
-    }
-  }
-
   // GET ALL DATA FROM THE DB
   getData = () => {
     axios
@@ -330,7 +323,6 @@ class App extends Component {
             folderId={this.state.folderId}
             hideNotes={this.hideNotes}
             deleteFolder={this.deleteFolder}
-            checkBtn={this.checkBtn}
           />
 
           <Notes
