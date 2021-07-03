@@ -48,6 +48,10 @@ p {
       border-radius : 0.3rem;
       border : none;
     }
+
+    &__content--hidden {
+      height: 0rem;
+    }
   }
 
 
@@ -76,12 +80,27 @@ p {
   .footer-btn {
     color: black;
     background-color: #f0ede9;
-
+    transform: rotate(0deg);
+    transition: transform 0.5s;
 
   &:active{
       color: black;
       background-color: #f0ede9;  
     }
+
+    &:focus {
+      box-shadow: 0 0 0 0;
+    }
+
+    &-rotate {
+      color: black;
+      background-color: #f0ede9;
+      transform: rotate(180deg);
+    }
+  }
+
+  .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0;
   }
 
   .modal-header {
@@ -110,5 +129,4 @@ p {
     border-top: 0px;
     background-color: white;
   }
-
 }

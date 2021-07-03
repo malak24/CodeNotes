@@ -16,7 +16,7 @@ class Folders extends Component {
                 onClick={this.props.showFolders}
                 className="folders__arrows btn"
               >
-                ▽
+                ▼
               </button>
             </div>
             <div className="folders__new-folder">
@@ -51,15 +51,27 @@ class Folders extends Component {
                     △
                   </button>
                   <button
-                    onClick={() => { this.props.deleteFolder(this.props.folders[keyName].folder_id); }}
-                    className="folders__delete">x
+                    onClick={() => {
+                      this.props.deleteFolder(
+                        this.props.folders[keyName].folder_id
+                      );
+                    }}
+                    className="folders__delete"
+                  >
+                    x
                   </button>
                 </div>
 
                 <div className="folders__container">
                   <p
-                    onClick={() => {this.props.getNotes(this.props.folders[keyName].folder_id);}}
-                    className="folders__folder-name">{this.props.folders[keyName].folder_name}
+                    onClick={() => {
+                      this.props.getNotes(
+                        this.props.folders[keyName].folder_id
+                      );
+                    }}
+                    className="folders__folder-name"
+                  >
+                    {this.props.folders[keyName].folder_name}
                   </p>
 
                   <ul className="folders__notes-list">
@@ -67,11 +79,17 @@ class Folders extends Component {
                     {this.props.notes.length === 0
                       ? console.log("Folder is empty")
                       : keyName != this.props.folderId
-                      ? console.log("This folder can't have the notes of another folder")
+                      ? console.log(
+                          "This folder can't have the notes of another folder"
+                        )
                       : this.props.notes.map((note) => (
                           <li
-                            onMouseEnter={() => {this.props.getNoteId(note.note_id);}}
-                            onTouchStart={() => {this.props.getNoteId(note.note_id);}}
+                            onMouseEnter={() => {
+                              this.props.getNoteId(note.note_id);
+                            }}
+                            onTouchStart={() => {
+                              this.props.getNoteId(note.note_id);
+                            }}
                             onClick={this.props.openNote}
                             className="folders__notes-item"
                             key={uuidv4()}

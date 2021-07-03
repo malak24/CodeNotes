@@ -13,19 +13,20 @@ class App extends Component {
     super();
 
     this.state = {
-
       folders: {},
       notes: [],
 
-      folderName: '',
-      noteTitle: '',
-      noteContent: '',
+      folderName: "",
+      noteTitle: "",
+      noteContent: "",
 
-      folderId: '',
-      noteId: '',
+      folderId: "",
+      noteId: "",
 
-      search: '',
+      search: "",
       openFolders: true,
+      hideNote: false,
+      rotate: false,
     };
   }
 
@@ -35,14 +36,11 @@ class App extends Component {
 
   // GET ALL DATA FROM THE DB
   getData = () => {
-    axios
-      .get(`${url}/data`)
-      .then(response => {
-        this.setState({ folders: response.data });
-        console.log(response.data);
-      })
-  }
-
+    axios.get(`${url}/data`).then((response) => {
+      this.setState({ folders: response.data });
+      console.log(response.data);
+    });
+  };
 
   //NOTES
   //CREATE A NEW NOTE
@@ -51,80 +49,74 @@ class App extends Component {
       .post(`${url}/folders/${this.state.folderId}/noteId`, {
         note_title: this.state.noteTitle,
       })
-      .then(response => {
+      .then((response) => {
         this.getNotes(this.state.folderId);
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => {
-    this.setState({ folderId: folder_id })
+    this.setState({ folderId: folder_id });
     axios
       .get(`${url}/folders/${folder_id}/notes`)
-      .then(response => {
+      .then((response) => {
         this.setState({ notes: response.data });
-
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   hideNotes = () => {
-    this.setState({ notes: [] })
-  }
-
+    this.setState({ notes: [] });
+  };
 
   openNote = () => {
     axios
       .get(`${url}/notes/${this.state.noteId}`)
-      .then(response => {
+      .then((response) => {
         this.setState({ notes: response.data });
-        console.log(response.data)        
+        console.log(response.data);
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
 
   //GET NOTE ID
   getNoteId = (note_id) => {
-    this.state.noteId === note_id ? console.log('note has the same id') :
-    this.setState({ noteId: note_id })
-    console.log(note_id)
-  }
-
+    this.state.noteId === note_id
+      ? console.log("note has the same id")
+      : this.setState({ noteId: note_id });
+    console.log(note_id);
+  };
 
   //GET THE NOTE TITLE FROM USER INPUT
   getNoteTitle = (e) => {
-    console.log(e.target.value)
-    this.setState({ noteTitle: e.target.value })
-  }
-
+    console.log(e.target.value);
+    this.setState({ noteTitle: e.target.value });
+  };
 
   // SAVE THE NOTE'S TITLE
   saveTitle = (e) => {
     let newTitle = e.target.value;
-    console.log(newTitle)
+    console.log(newTitle);
 
     axios
       .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}`, {
         note_title: newTitle,
       })
-      .then(response => {
+      .then((response) => {
         console.log(response);
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   //SAVE THE NOTE'S CONTENT
   saveNote = (e) => {
@@ -135,42 +127,40 @@ class App extends Component {
       .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
         note_content: noteContent,
       })
-      .then(response => {
+      .then((response) => {
         console.log(response);
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // DELETE NOTE
   deleteNote = () => {
     axios
-      .put(`${url}/notes/${this.state.noteId}`, {
-      })
-      .then(response => {
+      .put(`${url}/notes/${this.state.noteId}`, {})
+      .then((response) => {
         this.getNotes(this.state.folderId);
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
-
-  autoexpand = (event) => {
-    let target = event.target
-    target.style.height = 'inherit'
-
-    let computed = window.getComputedStyle(target);
-    let height = parseInt(computed.getPropertyValue('border-top-width'), 10)
-      + parseInt(computed.getPropertyValue('padding-top'), 10)
-      + target.scrollHeight
-      + parseInt(computed.getPropertyValue('padding-bottom'), 10)
-      + parseInt(computed.getPropertyValue('border-bottom-width'), 10);
-
-    target.style.height = height + 'px';
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
+  autoexpand = (event) => {
+    let target = event.target;
+    target.style.height = "inherit";
+
+    let computed = window.getComputedStyle(target);
+    let height =
+      parseInt(computed.getPropertyValue("border-top-width"), 10) +
+      parseInt(computed.getPropertyValue("padding-top"), 10) +
+      target.scrollHeight +
+      parseInt(computed.getPropertyValue("padding-bottom"), 10) +
+      parseInt(computed.getPropertyValue("border-bottom-width"), 10);
+
+    target.style.height = height + "px";
+  };
 
   //FOLDERS
   //CREATE A NEW FOLDER
@@ -179,44 +169,39 @@ class App extends Component {
       .post(`${url}/folders`, {
         folder_name: this.state.folderName,
       })
-      .then(response => {
+      .then((response) => {
         // console.log(response);
         this.getData();
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   // DELETE FOLDER
   deleteFolder = (folder_id) => {
     axios
-      .put(`${url}/folders/${folder_id}`, {
-      })
-      .then(response => {
+      .put(`${url}/folders/${folder_id}`, {})
+      .then((response) => {
         this.getData();
       })
-      .catch(error => {
-        console.log(error)
-      })
-  }
-
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   //GET THE FOLDER NAME FROM USER INPUT
   getFolderName = (e) => {
     folderInp = e.target.value;
-    this.setState({ folderName: folderInp })
+    this.setState({ folderName: folderInp });
     // console.log(folderInp);
-  }
-
+  };
 
   //GET FOLDER ID
   getFolderId = (folder_id) => {
     console.log(folder_id);
-    this.setState({ folderId: folder_id })
-  }
-
-
+    this.setState({ folderId: folder_id });
+  };
 
   // // editFolderName = () => {
   // //   new Prompt({
@@ -291,23 +276,25 @@ class App extends Component {
   //   }
   // }
 
-
   showFolders = () => {
-    this.setState({
-      openFolders: !(this.state.openFolders)
-    });
+    this.setState({openFolders: !this.state.openFolders,});
+  };
+
+  toggleNote = () => {
+    this.setState({ hideNote: !this.state.hideNote })
+    this.toggleRotate();
   }
 
+  toggleRotate = () => {
+    this.setState({rotate: !this.state.rotate})
+  }
 
   render() {
     return (
       <div className="app">
-        <Topbar
-          getNoteTitle={this.getNoteTitle}
-          createNote={this.createNote}
-        />
+        <Topbar getNoteTitle={this.getNoteTitle} createNote={this.createNote} />
 
-        <div className='app__container'>
+        <div className="app__container">
           <SideBar
             folders={this.state.folders}
             notes={this.state.notes}
@@ -333,9 +320,11 @@ class App extends Component {
             getNoteTitle={this.getNoteTitle}
             saveTitle={this.saveTitle}
             saveNote={this.saveNote}
-            deleteNote = {this.deleteNote}
+            deleteNote={this.deleteNote}
             noteId={this.state.noteId}
-            checkExpantion = {this.checkExpantion}
+            hideNote={this.state.hideNote}
+            toggleNote={this.toggleNote}
+            rotate={this.state.rotate}
           />
         </div>
       </div>
