@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-import './Folders.scss';
-
+import React, { Component } from "react";
+import { v4 as uuidv4 } from "uuid";
+import "./Folders.scss";
 
 class Folders extends Component {
-
   render() {
     return (
       <div id="folders">
@@ -15,7 +13,9 @@ class Folders extends Component {
               <button
                 onClick={this.props.showFolders}
                 className="folders__arrows btn"
-              >▼</button>
+              >
+                ▼
+              </button>
             </div>
             <div className="folders__new-folder">
               <input
@@ -55,7 +55,9 @@ class Folders extends Component {
                       );
                     }}
                     className="folders__delete"
-                  >x</button>
+                  >
+                    x
+                  </button>
                 </div>
 
                 <div>
@@ -80,13 +82,9 @@ class Folders extends Component {
                         )
                       : this.props.notes.map((note) => (
                           <li
-                            onMouseEnter={() => {
-                              this.props.getNoteId(note.note_id);
+                            onClick={() => {
+                              this.props.openNote(note.note_id);
                             }}
-                            onTouchStart={() => {
-                              this.props.getNoteId(note.note_id);
-                            }}
-                            onClick={this.props.openNote}
                             className="folders__notes-item"
                             key={uuidv4()}
                           >

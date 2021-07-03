@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Topbar.scss";
-import { v4 as uuidv4 } from "uuid";
 
 class Topbar extends Component {
   render() {

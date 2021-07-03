@@ -74,9 +74,9 @@ class App extends Component {
     this.setState({ notes: [] });
   };
 
-  openNote = () => {
+  openNote = (note_id) => {
     axios
-      .get(`${url}/notes/${this.state.noteId}`)
+      .get(`${url}/notes/${note_id}`)
       .then((response) => {
         this.setState({ notes: response.data });
         console.log(response.data);
@@ -136,9 +136,9 @@ class App extends Component {
   };
 
   // DELETE NOTE
-  deleteNote = () => {
+  deleteNote = (note_id) => {
     axios
-      .put(`${url}/notes/${this.state.noteId}`, {})
+      .put(`${url}/notes/${note_id}`, {})
       .then((response) => {
         this.getNotes(this.state.folderId);
       })

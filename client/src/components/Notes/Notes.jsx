@@ -113,9 +113,7 @@ class Notes extends Component {
                 <Modal.Footer>
                   <Button
                     className="footer-btn"
-                    onClick={this.props.deleteNote}
-                    onMouseEnter={() => this.props.getNoteId(note.note_id)}
-                    onTouchStart={() => this.props.getNoteId(note.note_id)}
+                    onClick={() => { this.props.deleteNote(note.note_id) }}
                   >
                     Delete
                   </Button>
