@@ -12,25 +12,4 @@
       display : flex;
     }
   }
-
-  &__btn {
-    background-color: #9cb66b;
-    outline: none;
-    border: none;
-    border-radius: 7px;
-    color: white;
-    display: block;
-    margin: auto;
-    margin-top: 1rem;
-    padding: 0.5rem;
-
-    &:hover {
-      background-color: #C0DF85;
-      color: black;
-    }
-
-    &:focus {
-      outline: none;
-    }
-  }
 }

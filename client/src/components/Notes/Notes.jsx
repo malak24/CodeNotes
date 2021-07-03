@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import JoditEditor from "jodit-react";
 
 const config = {
-  readonly: false, // all options from https://xdsoft.net/jodit/doc/
+  readonly: false,
 };
 
 class Notes extends Component {
@@ -18,7 +18,7 @@ class Notes extends Component {
         <div className="notes">
           <Modal.Dialog className="note">
             <Modal.Header>
-              <div className="note__title note__header">Instructions</div>
+              <div className="note__title">Instructions</div>
             </Modal.Header>
 
             <Modal.Body className="note__content">
@@ -73,10 +73,16 @@ class Notes extends Component {
                 </p>
               )}
             </Modal.Body>
+
             <Modal.Footer>
               <Button
                 onClick={this.props.toggleNote}
-                className={this.props.rotate ? "footer-btn-rotate" : "footer-btn"}>▲</Button>
+                className={
+                  this.props.rotate ? "footer-btn-rotate" : "footer-btn"
+                }
+              >
+                ▲
+              </Button>
             </Modal.Footer>
           </Modal.Dialog>
           {this.props.notes.map((note) => (
@@ -84,20 +90,20 @@ class Notes extends Component {
               <Modal.Dialog className="note">
                 <Modal.Header>
                   <textarea
+                    className="note__title"
                     onClick={() => this.props.getNoteId(note.note_id)}
                     onTouchStart={() => this.props.getNoteId(note.note_id)}
                     onChange={this.props.saveTitle}
-                    className="note__title note__header"
                     defaultValue={note.note_title}
                   ></textarea>
                 </Modal.Header>
 
                 <Modal.Body>
                   <JoditEditor
+                    className="note__content"
                     config={config}
                     tabIndex={1}
                     onMouseOver={() => this.props.getNoteId(note.note_id)}
-                    className="note__content"
                     onChange={this.props.saveNote}
                     onClick={this.props.autoexpand}
                     defaultValue={note.note_content}

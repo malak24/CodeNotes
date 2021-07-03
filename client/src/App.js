@@ -292,7 +292,10 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Topbar getNoteTitle={this.getNoteTitle} createNote={this.createNote} />
+        <Topbar
+          getNoteTitle={this.getNoteTitle}
+          createNote={this.createNote}
+        />
 
         <div className="app__container">
           <SideBar

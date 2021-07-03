@@ -19,15 +19,16 @@ p {
       width:71vw;
     }
 
-    &__header {
-      padding-top : 0.5rem;
+  .modal-header {
+    padding : 0;
+  }
+
+    &__title {
+       padding-top : 0.5rem;
       padding-left: 1rem;
       padding-right:1rem;
       background-color: #f0ede9;
       height : 2.4rem;
-    }
-
-    &__title {
       outline : none;
       width:100%;
       border : none;
@@ -35,77 +36,11 @@ p {
       border-bottom-left-radius : 0;
       border-bottom-right-radius : 0;
       font-weight : 500;
+
+      &:hover {
+        cursor : text;
+      }
     }
-
-    &__title:hover {
-      cursor : text;
-    }
-
-    &__content {
-      outline : none;
-      font-size:1rem;
-      width:100%;
-      border-radius : 0.3rem;
-      border : none;
-    }
-
-    &__content--hidden {
-      height: 0rem;
-    }
-  }
-
-
-  .btn {
-    color:white;
-    border:none;
-
-    &:hover {
-      background-color: #d3d0cd;
-      border-color: #d3d0cd;
-    }
-
-    &:active, &:focus {
-      color: black;
-      background-color: #f0ede9;  
-    }
-  }
-
-
-  .btn-primary:not(:disabled):not(.disabled):active {
-  color: black;
-  background-color: #f0ede9;
-  border-color: #f0ede9;
-  }
-
-  .footer-btn {
-    color: black;
-    background-color: #f0ede9;
-    transform: rotate(0deg);
-    transition: transform 0.5s;
-
-  &:active{
-      color: black;
-      background-color: #f0ede9;  
-    }
-
-    &:focus {
-      box-shadow: 0 0 0 0;
-    }
-
-    &-rotate {
-      color: black;
-      background-color: #f0ede9;
-      transform: rotate(180deg);
-    }
-  }
-
-  .btn-primary.focus, .btn-primary:focus {
-    box-shadow: 0 0 0 0;
-  }
-
-  .modal-header {
-    padding : 0;
-  }
 
   .modal-body {
     padding-top:0;
@@ -128,5 +63,61 @@ p {
   .jodit-workplace+.jodit-status-bar:not(:empty) {
     border-top: 0px;
     background-color: white;
+  }
+
+    &__content {
+      outline : none;
+      font-size:1rem;
+      width:100%;
+      border-radius : 0.3rem;
+      border : none;
+    }
+  }
+
+  .btn {
+    color:white;
+    border:none;
+
+    &:hover {
+      background-color: #d3d0cd;
+      border-color: #d3d0cd;
+    }
+
+    &:active, &:focus {
+      color: black;
+      background-color: #f0ede9;  
+    }
+  }
+
+  .btn-primary:not(:disabled):not(.disabled):active {
+    color: black;
+    background-color: #f0ede9;
+    border-color: #f0ede9;
+  }
+
+  .btn-primary.focus, .btn-primary:focus {
+    box-shadow: 0 0 0 0;
+  }
+
+  .footer-btn {
+    color: black;
+    background-color: #f0ede9;
+    transform: rotate(0deg);
+    transition: transform 0.5s;
+
+    &:active{
+      color: black;
+      background-color: #f0ede9;  
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0;
+    }
+
+    &-rotate {
+      color: black;
+      background-color: #f0ede9;
+      transform: rotate(180deg);
+    }
   }
 }
