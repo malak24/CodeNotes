@@ -15,9 +15,7 @@ class Folders extends Component {
               <button
                 onClick={this.props.showFolders}
                 className="folders__arrows btn"
-              >
-                ▼
-              </button>
+              >▼</button>
             </div>
             <div className="folders__new-folder">
               <input
@@ -57,12 +55,10 @@ class Folders extends Component {
                       );
                     }}
                     className="folders__delete"
-                  >
-                    x
-                  </button>
+                  >x</button>
                 </div>
 
-                <div className="folders__container">
+                <div>
                   <p
                     onClick={() => {
                       this.props.getNotes(

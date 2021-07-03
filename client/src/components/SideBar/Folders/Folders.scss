@@ -2,14 +2,6 @@
 @import '../../../partials/variables.scss';
 
 #folders {
-  @include tablet {
-    margin-top:-1rem;
-  }
-
-  @include desktop {
-    width:100%;
-  }
-
   .folders {
     font-size:1.3rem;
     margin-top : 1rem;
@@ -102,33 +94,32 @@
       }
     }
 
-    .btn:active{
-      outline : none;
-      background-color:#d3d0cd;
-      color:white;
-    }
+  .btn:active{
+    outline : none;
+    background-color:#d3d0cd;
+    color:white;
+  }
   
-    .btn:hover {
-      color:white;
-    }
+  .btn:hover {
+    color:white;
+  }
 
-    .list-group {
-      width:100%;
+  .list-group {
+    width:100%;
+  }
 
-      &-item {
-        display : flex;
-        flex-direction: row-reverse;
-        padding: 0.3rem;
+  .list-group-item {
+    display : flex;
+    flex-direction: row-reverse;
+    padding: 0.3rem;
 
-        @include tablet {
-          justify-content: space-between;
-          padding-left: 2rem;
-        }
+      @include tablet {
+        justify-content: space-between;
+        padding-left: 2rem;
+      }
 
-        @include desktop {
-          // justify-content: space-evenly;
-          padding-left: 2rem;
-        }
+      @include desktop {
+        padding-left: 2rem;
       }
     }
 
@@ -161,31 +152,17 @@
       }
     }
 
-    &__folder-name {
-      font-size:1.1rem;
-      font-weight : 600;
-      width : 13rem;
-      height:1.3rem;
-      border: none;
-      resize : none;
-      cursor: pointer; 
+    &__folder-name-arrow {
+      border : none;
+      background-color:#d8a45a;
+      height : 1.5rem;
+      width:1.5rem;
+      padding : 0;
+      padding-bottom : 0.15rem;
+      font-weight: bold;
 
-      @include desktop {
-        font-size : 1.1rem;
-      }
-
-      &-arrow {
-        border : none;
-        background-color:#d8a45a;
-        height : 1.5rem;
-        width:1.5rem;
-        padding : 0;
-        padding-bottom : 0.15rem;
-        font-weight: bold;
-
-        &:hover {
-          background-color:#dfb984;
-        }
+      &:hover {
+        background-color:#dfb984;
       }
     }
 
@@ -206,14 +183,24 @@
       }
     }
 
+    &__folder-name {
+      font-size:1.1rem;
+      font-weight : 600;
+      width : 13rem;
+      height:1.3rem;
+      border: none;
+      resize : none;
+      cursor: pointer; 
+
+      @include desktop {
+        font-size : 1.1rem;
+      }
+    }
+
     &__notes-list {
       list-style-type: none;
       padding-left:0.4rem;
       font-size:1rem;
-    }
-
-    &__notes-hidden {
-      display : none;
     }
 
     &__notes-item {
