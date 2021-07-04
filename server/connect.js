@@ -5,69 +5,24 @@ const mysql = require("mysql");
 
 
 //-----------CONNECTION TO AWS --------------
-// const connection = mysql.createConnection({
-//   host: 'codenotes-db.cgimhaaiabi7.us-east-2.rds.amazonaws.com',
-//   user: 'admin',
-//   password: '',
-//   database: 'test1',
-//   port : 3306,
-//   insecureAuth : true
-// });
+const db_host = process.env.DB_HOST ? process.env.DB_HOST : "localhost";
+const db_user = process.env.DB_USER ? process.env.DB_USER : "root";
+const db_password = process.env.DB_PASSWORD ? process.env.DB_PASSWORD : "";
+const db_name = process.env.DB_NAME ? process.env.DB_NAME : "CodeNotes";
 
-// connection.connect(function (error) {
-//   if (error) throw error;
-// });
-
-
-// ------------ CONNECTION TO LOCALHOST --------------
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'CodeNotes',
-  port : 3306,
-  insecureAuth : true
+  host: db_host,
+  user: db_user,
+  password: db_password,
+  database: db_name,
+  port: 3306,
+  insecureAuth: true,
 });
 
 connection.connect(function (error) {
   if (error) throw error;
 });
 
-
-// ----------- RECONNECT AFTER DISCONNECT --------------
-// const host = process.env.DB_HOST ? process.env.DB_HOST : "localhost";
-// const db_config = {
-//   host: host,
-//   user: "root",
-//   password: "",
-//   database: "CodeNotes",
-//   port: 3306,
-//   insecureAuth: true,
-// };
-
-// let connection;
-
-// function handleDisconnect() {
-//   connection = mysql.createConnection(db_config);
-
-//   connection.connect(function (err) {
-//     if (err) {
-//       console.log("error when connecting to db:", err);
-//       setTimeout(handleDisconnect, 2000);
-//     }
-//   });
-
-//   connection.on("error", function (err) {
-//     console.log("db error", err);
-//     if (err.code === "PROTOCOL_CONNECTION_LOST") {
-//       handleDisconnect();
-//     } else {
-//       throw err;
-//     }
-//   });
-// }
-
-// handleDisconnect();
 
 //GET ALL DATA FROM NOTES TABLE (DATABASE)
 router.get("/data", function (req, res) {
