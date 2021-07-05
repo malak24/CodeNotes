@@ -135,18 +135,6 @@ class App extends Component {
       });
   };
 
-  // insert = () => {
-  //   let str = "this is a sentenece's words"
-  //   let arr = str.split('');
-    
-  //   for(let i = 0 ; i<arr.length; i++) {
-  //      if(arr[i] == '"' || arr[i] == "'") {
-  //         //  arr.splice(i, 0, "\\")
-  //      } 
-  //   }
-  //   console.log('arr');
-  // }
-
   // DELETE NOTE
   deleteNote = (note_id) => {
     axios

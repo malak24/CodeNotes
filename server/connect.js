@@ -84,13 +84,14 @@ router.put("/folders/:folderId/:noteId", function (req, res) {
 // UPDATE NOTE CONTENT OF A SPECIFIC NOTE
 router.put("/folders/:folderId/:noteId/note", function (req, res) {
   connection.query(
-    `UPDATE notes SET note_content = "${req.body.note_content}" WHERE note_id = ${req.params.noteId}`,
-    (error, results, fields) => {
-      if (error) throw error;
-      res.status(200).send("Note saved !");
-    }
-  );
-});
+    "UPDATE notes SET note_content = ? WHERE note_id = ?", [
+    req.body.note_content,
+    req.params.noteId
+  ], (error, results, fields) => {
+    if(error) throw error;
+    res.status(200).send("Note saved !");
+  });
+})
 
 // OPEN A SPECIFIC NOTE
 router.get("/notes/:noteId", function (req, res) {
