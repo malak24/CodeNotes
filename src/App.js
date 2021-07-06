@@ -6,7 +6,7 @@ import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
 
 let folderInp;
-let url = "https://codenotes-app.herokuapp.com/";
+let url = "https://codenotes-app.herokuapp.com";
 // let url = "http://localhost:8080";
 
 class App extends Component {
