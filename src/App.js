@@ -6,7 +6,8 @@ import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
 
 let folderInp;
-let url = 'http://localhost:8080'
+let url = "https://codenotes-app.herokuapp.com/";
+// let url = "http://localhost:8080";
 
 class App extends Component {
   constructor() {
@@ -330,7 +331,6 @@ class App extends Component {
             rotate={this.state.rotate}
           />
         </div>
-        <button className = "but" onClick={this.insert}>click me</button>
       </div>
     );
   }
