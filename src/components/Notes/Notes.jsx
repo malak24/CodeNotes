@@ -1,15 +1,12 @@
 import React, { Component } from "react";
+import SunEditor from "suneditor-react";
+import 'suneditor/dist/css/suneditor.min.css';
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./Notes.scss";
 import { v4 as uuidv4 } from "uuid";
-import JoditEditor from "jodit-react";
-
-const config = {
-  readonly: false,
-};
 
 class Notes extends Component {
   render() {
@@ -25,7 +22,7 @@ class Notes extends Component {
               {this.props.hideNote ? (
                 <p></p>
               ) : (
-                <p>
+                <div>
                   In CodeNotes app you can do the following:
                   <br /> For folders :
                   <ul>
@@ -70,7 +67,7 @@ class Notes extends Component {
                     </li>
                     <li>The search feature is coming soon!</li>
                   </ul>
-                </p>
+                </div>
               )}
             </Modal.Body>
 
@@ -99,21 +96,27 @@ class Notes extends Component {
                 </Modal.Header>
 
                 <Modal.Body>
-                  <JoditEditor
-                    className="note__content"
-                    config={config}
-                    tabIndex={1}
-                    onMouseOver={() => this.props.getNoteId(note.note_id)}
+                  <SunEditor
+                    placeholder="Please type here ..."
+                    autoFocus={true}
+                    onTouchStart={() => this.props.getNoteId(note.note_id)}
                     onChange={this.props.saveNote}
-                    onClick={this.props.autoexpand}
+                    onClick={() => this.props.getNoteId(note.note_id)}
                     defaultValue={note.note_content}
+                    // setOptions={{
+                    //   height: 200,
+                    //   buttonList: [["font", "align"], ["image"]],
+                    // }}
+                    setContents={note.note_content}
                   />
                 </Modal.Body>
 
                 <Modal.Footer>
                   <Button
                     className="footer-btn"
-                    onClick={() => { this.props.deleteNote(note.note_id) }}
+                    onClick={() => {
+                      this.props.deleteNote(note.note_id);
+                    }}
                   >
                     Delete
                   </Button>

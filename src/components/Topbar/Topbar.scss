@@ -26,9 +26,9 @@
       background-color: #5c5b5b;
       padding-left:1.5rem;
       padding-top : 0.2rem;
-      height : 8rem;
+      height : 9rem;
       width:100%;
-      margin-top: 0.6rem;
+      margin-top: 1rem;
 
       @include tablet {
         height: 7.5rem;
@@ -38,6 +38,16 @@
         background-color:unset;
         display : flex;
       }
+    }
+
+    &__tip {
+      background-color: white;
+      width: 14.9rem;
+      border-radius: 5px;
+      padding: 0.4rem;
+      font-size: 0.8rem;
+      margin-bottom: -0.3rem;
+      margin-top: 0.7rem;
     }
 
     &__nav {
