@@ -5,8 +5,8 @@ import Topbar from './components/Topbar/Topbar'
 import SideBar from './components/SideBar/SideBar'
 import Notes from './components/Notes/Notes'
 
-let folderInp;
-let url = 'http://localhost:8080'
+// let url = "https://codenotes-app.herokuapp.com";
+let url = "http://localhost:8080";
 
 class App extends Component {
   constructor() {
@@ -120,8 +120,9 @@ class App extends Component {
 
   //SAVE THE NOTE'S CONTENT
   saveNote = (e) => {
-    let noteContent = e.target.value;
-    this.autoexpand(e);
+    let noteContent = e;
+    // this.autoexpand(e);
+    console.log(noteContent)
 
     axios
       .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
@@ -147,8 +148,8 @@ class App extends Component {
       });
   };
 
-  autoexpand = (event) => {
-    let target = event.target;
+  autoexpand = (e) => {
+    let target = e.target;
     target.style.height = "inherit";
 
     let computed = window.getComputedStyle(target);
@@ -192,9 +193,8 @@ class App extends Component {
 
   //GET THE FOLDER NAME FROM USER INPUT
   getFolderName = (e) => {
-    folderInp = e.target.value;
+    let folderInp = e.target.value;
     this.setState({ folderName: folderInp });
-    // console.log(folderInp);
   };
 
   //GET FOLDER ID
@@ -330,7 +330,6 @@ class App extends Component {
             rotate={this.state.rotate}
           />
         </div>
-        <button className = "but" onClick={this.insert}>click me</button>
       </div>
     );
   }
