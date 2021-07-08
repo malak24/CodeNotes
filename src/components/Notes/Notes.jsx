@@ -103,10 +103,34 @@ class Notes extends Component {
                     onChange={this.props.saveNote}
                     onClick={() => this.props.getNoteId(note.note_id)}
                     defaultValue={note.note_content}
-                    // setOptions={{
-                    //   height: 200,
-                    //   buttonList: [["font", "align"], ["image"]],
-                    // }}
+                    setOptions={{
+                      height: 200,
+                      buttonList: [
+                        [
+                          "undo",
+                          "redo",
+                          "font",
+                          "fontSize",
+                          "fontColor",
+                          "bold",
+                          "underline",
+                          "italic",
+                          "strike",
+                          "subscript",
+                          "superscript",
+                          "hiliteColor",
+                          "removeFormat",
+                          "align",
+                          "list",
+                          "fullScreen",
+                          "horizontalRule",
+                          "image",
+                          "link",
+                          "table",
+                          "codeView",
+                        ],
+                      ],
+                    }}
                     setContents={note.note_content}
                   />
                 </Modal.Body>
