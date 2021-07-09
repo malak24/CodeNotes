@@ -3,6 +3,17 @@
     height: $height;
 }
 
+@mixin border ($border, $border-radius) {
+  border: $border;
+  border-radius: $border-radius;
+}
+
+@mixin colors ($color, $background-color, $border-color) {
+  color: $color;
+  background-color:$background-color;
+  border-color: $border-color;
+}
+
 @mixin positioning ($justify-content, $flex-direction:row) {
   display: flex;
   justify-content: $justify-content;
@@ -13,12 +24,6 @@
     font-size: $font-s;
     line-height: $line-h; 
     font-weight: $font-w;
-}
-
-@mixin placement ($top, $left) {
-  position : absolute;
-  top : $top;
-  left: $left;
 }
 
 @mixin mobile {

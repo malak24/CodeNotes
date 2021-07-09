@@ -24,17 +24,11 @@ p {
   }
 
     &__title {
-      padding-top : 0.5rem;
-      padding-left: 1rem;
-      padding-right:1rem;
-      background-color: #f0ede9;
-      height : 2.4rem;
-      outline : none;
-      width:100%;
-      border : none;
-      border-radius : 0.3rem;
-      border-bottom-left-radius : 0;
-      border-bottom-right-radius : 0;
+      @include dimensions (100%, 2.4rem);
+      @include border ($main-border, 0.3rem 0rem); 
+      padding: 0.5rem 1rem 1rem 1rem;
+      background-color: $primary-color;
+      outline : $main-outline;
       font-weight : 500;
 
       &:hover {
@@ -44,12 +38,12 @@ p {
   }
 
   .sun-editor-editable {
-    font-family: "Baloo 2", cursive;
+    font-family: $font;
     font-size: 1rem;
   }
 
   .sun-editor {
-    border: none;
+    border: $main-border;
   }
 
   .se-btn-tool-font {
@@ -61,39 +55,35 @@ p {
   }
 
   .se-toolbar {
-    outline: none;
+    outline: $main-outline;
     background-color: unset;
   }
 
  .se-btn-module-border {
-    border: 0;
+    border: $main-border;
   }
 
   .sun-editor .se-resizing-bar.se-resizing-none {
     min-height: 0;
-    border: 0;
+    border: $main-border;
     height: 0;
   }
 
   .btn {
-    color:white;
-    border:none;
+    color:$third-color;
+    border: $main-border;
 
     &:hover {
-      background-color: #d3d0cd;
-      border-color: #d3d0cd;
+      @include colors (unset,$fourth-color, $fourth-color);
     }
 
     &:active, &:focus {
-      color: black;
-      background-color: #f0ede9;  
+      @include colors ($secondary-color, $primary-color, unset)
     }
   }
 
   .btn-primary:not(:disabled):not(.disabled):active {
-    color: black;
-    background-color: #f0ede9;
-    border-color: #f0ede9;
+    @include colors ($secondary-color, $primary-color, $primary-color);
   }
 
   .btn-primary.focus, .btn-primary:focus {
@@ -101,14 +91,12 @@ p {
   }
 
   .footer-btn {
-    color: black;
-    background-color: #f0ede9;
+    @include colors ($secondary-color, $primary-color, unset);
     transform: rotate(0deg);
     transition: transform 0.5s;
 
     &:active{
-      color: black;
-      background-color: #f0ede9;  
+      @include colors ($secondary-color, $primary-color, unset);
     }
 
     &:focus {
@@ -116,14 +104,12 @@ p {
     }
 
     &-rotate {
-      color: black;
-      background-color: #f0ede9;
+      @include colors ($secondary-color, $primary-color, unset);
       transform: rotate(180deg);
     }
   }
 
   .modal-footer {
-    padding: 0.2rem;
-    padding-right: 0.5rem;
+    padding: 0.2rem 0.5rem 0.2rem 0.2rem;
   }
 }

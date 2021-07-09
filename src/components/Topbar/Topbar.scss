@@ -4,7 +4,7 @@
 
 #topbar {
   .navbar {
-    height : 4rem;
+    height: 4rem;
     background-color: #DB6C79;
 
     @include desktop {
@@ -12,22 +12,19 @@
     }
 
     &-light &-toggler {
-      color: rgba(0,0,0,.5);
-      border-color: rgba(0,0,0,.1);
+      @include colors (rgba(0,0,0,.5), unset, rgba(0,0,0,.1));
       padding: 0.5rem;
-      border: none;
+      border: $main-border;
     }
 
     &-toggler:focus, &-toggler:focus-visible {
-      outline:none;
+      outline: $main-outline;
     }
 
     &__wrapper {
+      @include dimensions (100%, 9rem);
+      padding: 0.2rem unset unset 1.5rem;
       background-color: #5c5b5b;
-      padding-left:1.5rem;
-      padding-top : 0.2rem;
-      height : 9rem;
-      width:100%;
       margin-top: 1rem;
 
       @include tablet {
@@ -35,25 +32,22 @@
       }
 
       @include desktop {
-        background-color:unset;
-        display : flex;
+        background-color: unset;
+        display: flex;
       }
     }
 
     &__tip {
-      background-color: white;
+      margin: 0.7rem unset -0.3rem unset;
+      padding: 0.4rem;
+      background-color: $third-color;
       width: 14.9rem;
       border-radius: 5px;
-      padding: 0.4rem;
       font-size: 0.8rem;
-      margin-bottom: -0.3rem;
-      margin-top: 0.7rem;
     }
 
     &__nav {
-      display : flex;
-      flex-direction: row-reverse;
-      justify-content: flex-end;
+      @include positioning (flex-end, row-reverse);
       align-items: center;
 
       @include desktop {
@@ -62,15 +56,11 @@
     }
   }
 
-
-
   .btn {
-    width: 3.6rem;
-    height : 2rem;
+    @include dimensions (3.6rem, 2rem);
+    padding: 0.3rem 0 0 0;
     text-align : center;
-    padding: 0;
-    padding-top : 0.3rem;
-    background-color: #d8a45a;
+    background-color: $fifth-color;
 
     @include desktop {
       height:2.4rem;
@@ -78,21 +68,19 @@
     }
 
     &:active {
-      outline : none;
-      background-color: #d8a45a;
-      color:black;
+      @include colors ($secondary-color, $fifth-color, unset);
+      outline : $main-outline;
     }
 
     &:hover {
-      color:black;
+      color:$secondary-color;
     }
   }
 
   .btn-secondary {
-    background-color: #d8a45a;
+    @include dimensions (3.6rem, 2rem);
+    background-color: $fifth-color;
     font-size : 1rem;
-    width: 3.6rem;
-    height : 2rem;
     padding-top : 0.1rem;
 
     @include desktop {
@@ -101,16 +89,14 @@
   }
 
   .form-control {
-    width:11.3rem;
-    height : 2rem;
+    @include dimensions (11.3rem, 2rem);
 
     @include tablet {
       width : 17rem;
     }
 
     @include desktop {
-      width:15rem;
-      height:2.5rem;
+      @include dimensions (15rem, 2.5rem);
     }
   }
 

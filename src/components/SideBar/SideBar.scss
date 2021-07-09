@@ -2,25 +2,20 @@
 @import '../../partials/variables.scss';
 
 .sidebar {
-  background-color:#f0ede9;
+  background-color:$primary-color;
 
   @include desktop {
     width:26%;
   }
 
   &__logo {
-    width:7rem;
-    height: 7rem;
+    @include dimensions (7rem, 7rem);
+    margin: -1.5rem auto -2.5rem auto;
     display : block;
-    margin : auto;
-    margin-top: -1.5rem;
-    margin-bottom: -2.5rem;
 
     @include tablet {
-      margin: auto;
-      margin-top: -4.2rem;
-      width: 16rem;
-      height: 16rem;
+      @include dimensions (16rem, 16rem);
+      margin : -4.2rem auto unset auto;
     }
   }
 
