@@ -10,51 +10,53 @@
     @include desktop {
       height: 5rem;
     }
+  }
 
-    &-light &-toggler {
-      @include colors (rgba(0,0,0,.5), unset, rgba(0,0,0,.1));
-      padding: 0.5rem;
-      border: $main-border;
+  .navbar-light .navbar-toggler {
+    @include colors (rgba(0,0,0,.5), unset, rgba(0,0,0,.1));
+    padding: 0.5rem;
+    border: $main-border;
+  }
+
+  .navbar-toggler:focus, .navbar-toggler:focus-visible {
+    outline: $main-outline;
+  }
+
+  .topbar-wrapper {
+    @include dimensions (18rem, 9rem);
+    padding: 0.2rem 0rem 1rem 1.5rem;
+    background-color: #5c5b5b;
+    margin-top: 1rem;
+    border-radius: 0 0 5px 5px;
+
+    @include tablet {
+      height: 7.5rem;
     }
 
-    &-toggler:focus, &-toggler:focus-visible {
-      outline: $main-outline;
-    }
-
-    &__wrapper {
-      @include dimensions (100%, 9rem);
-      padding: 0.2rem unset unset 1.5rem;
-      background-color: #5c5b5b;
-      margin-top: 1rem;
-
-      @include tablet {
-        height: 7.5rem;
-      }
-
-      @include desktop {
-        background-color: unset;
-        display: flex;
-      }
-    }
-
-    &__tip {
-      margin: 0.7rem unset -0.3rem unset;
-      padding: 0.4rem;
-      background-color: $third-color;
-      width: 14.9rem;
-      border-radius: 5px;
-      font-size: 0.8rem;
-    }
-
-    &__nav {
-      @include positioning (flex-end, row-reverse);
-      align-items: center;
-
-      @include desktop {
-        padding-bottom: 0.8rem;
-      }
+    @include desktop {
+      background-color: unset;
+      display: flex;
     }
   }
+
+  .tip {
+    margin: 0.7rem unset -0.3rem unset;
+    padding: 0.4rem;
+    background-color: $third-color;
+    width: 14.9rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+  }
+
+  .nav {
+    @include positioning (flex-end, row-reverse);
+    align-items: center;
+
+    @include desktop {
+      padding-bottom: 0.8rem;
+    }
+  }
+
 
   .btn {
     @include dimensions (3.6rem, 2rem);

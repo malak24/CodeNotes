@@ -8,9 +8,9 @@ class SideBar extends Component {
   render() {
     return (
       <div className='sidebar'>
-        <img className='sidebar__logo' src={logo} alt='logo' />
+        <img className='logo' src={logo} alt='logo' />
 
-        <div className='sidebar__wrapper'>
+        <div className='wrapper'>
           <Folders
             folders={this.props.folders}
             notes={this.props.notes}

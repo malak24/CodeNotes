@@ -5,91 +5,104 @@
   .folders {
     font-size:1.3rem;
     margin-top : 1rem;
+  }
 
-    &__hidden {
+  .folders-hidden {
       display : none;
-    }
+  }
   
-    &__title-container{
-      padding : 0 1.2rem;
-      font-size:1.3rem;
-      background-color: #C0DF85;
-      height : 6rem;
+  .title-container{
+    padding : 0 1.2rem;
+    font-size:1.3rem;
+    background-color: #C0DF85;
+    height : 9rem;
 
-      @include tablet {
-        margin-top: -5rem;
-      }
+    @include tablet {
+      margin-top: -5rem;
     }
+  }
 
-    &__title-sub-container {
-      @include positioning (space-between, );
-      padding-top : 0.6rem;
-    }
+  .title-subcontainer {
+    @include positioning (space-between, );
+    padding-top : 0.6rem;
+  }
   
-    &__title {
-      @include font (1.6rem, unset , 600);
-      margin-top: -0.6rem;
-      padding-top : 0.5rem;
+  .title {
+    @include font (1.6rem, unset , 600);
+    margin-top: -0.6rem;
+    padding-top : 0.5rem;
 
-      @include mobile {
-        font-size : 20px;
-      }
+    @include mobile {
+      font-size : 20px;
+    }
+  }
+
+  .arrow-btn {
+    @include dimensions (1.5rem, 1.5rem);
+    @include colors ($secondary-color, $primary-color, unset);
+    border: $main-border;
+    text-align: center;
+    padding: 0.1rem 0 0 0;
+    margin-right : 0.25rem;
+
+    .arrow-btn:hover {
+      background-color : $fourth-color;
+    }
+  }
+
+  .new-title {
+    display : flex;
+    flex-direction: column;
+    padding-bottom:1.5rem;
+  }
+
+  .input {
+    @include dimensions (14rem, 2rem);
+    font-size: 1rem;
+    border-radius : 0.25rem;
+    border: $main-border;
+    outline : $main-outline;
+    padding-left : 10px;
+
+    @include tablet {
+      width : 16rem;
     }
 
-    &__arrows {
-      @include dimensions (1.5rem, 1.5rem);
-      @include colors ($secondary-color, $primary-color, unset);
-      border: $main-border;
-      text-align: center;
-      padding: 0.1rem 0 0 0;
-      margin-right : 0.25rem;
-
-      &:hover {
-        background-color : $fourth-color;
-      }
+    @include desktop {
+      width:18vw;
     }
+  }
 
-    &__new-folder {
-      display : flex;
-      padding-bottom:1.5rem;
+  .edit-input {
+    margin-top: 0.5rem;
+  }
+
+  .new-btn {
+    @include colors ($secondary-color, $primary-color, none);
+    padding-top: 0.3rem;
+    margin:0;
+    height:2rem;
+    margin-top: 0.2rem;
+
+    @include tablet {
+      height : 2rem;
+      text-align : center;
+      padding-top : 0.3rem;
     }
-
-    &__input {
-      @include dimensions (14rem, 2rem);
-      font-size: 1rem;
-      border-radius : 0.25rem;
-      border: $main-border;
-      outline : $main-outline;
-      padding-left : 10px;
-
-      @include tablet {
-        width : 16rem;
-      }
-
-      @include desktop {
-        width:18vw;
-      }
-    }
-
-    &__new-btn {
-      @include colors ($secondary-color, $primary-color, unset);
-      margin:0;
-      height:2rem;
-
-      @include tablet {
-        height : 2rem;
-        text-align : center;
-        padding-top : 0.3rem;
-      }
-    }
+  }
 
   .btn:active{
-    @include colors ($third-color, $fourth-color, unset);
+    @include colors ($third-color, $fourth-color, $fourth-color);
     outline : $main-outline;
   }
   
   .btn:hover {
     color:$third-color;
+  }
+
+  .btn:focus {
+    color: $secondary-color;
+    box-shadow: none;
   }
 
   .list-group {
@@ -100,106 +113,95 @@
     @include positioning (unset, row-reverse);
     padding: 0.3rem;
 
-      @include tablet {
-        @include positioning (space-between, row-reverse);
-        padding-left: 2rem;
-      }
-
-      @include desktop {
-        padding-left: 2rem;
-      }
+    @include tablet {
+      @include positioning (space-between, row-reverse);
+      padding-left: 2rem;
     }
 
-    &__btn-wrapper {
-      display : flex;
-      align-items : center ;
-      height: 2.5rem;
+    @include desktop {
+      padding-left: 2rem;
+    }
+  }
 
-      @include tablet {
-        margin-right: 1rem;
-      }
+  .btns-wrapper {
+    display : flex;
+    align-items : center ;
+    height: 2.5rem;
 
-      @include tablet {
-        margin-right: 0;
-      }
+    @include tablet {
+      margin-right: 1rem;
     }
 
-    &__edit {
-      @include colors ($third-color, #DB6C79, unset);
-      @include border (none, 0.25rem);
-      height : 1.5rem;
-      font-size : 0.9rem;
-      margin-right:0.2rem;
-      padding-top : 0.1rem;
+    @include tablet {
+      margin-right: 0;
+    }
+  }
 
-      &:hover {
-        background-color:#db8891;
-      }
+  .name-arrow-btn {
+    @include dimensions (1.5rem, 1.5rem);
+    padding: 0.13rem 0 0.15rem 0;
+    border : $main-border;
+    background-color:$fifth-color;
+    font-weight: 600;
+    color:black;
+    transform: rotate(180deg);
+
+    .name-arrow-btn:hover {
+      background-color:#dfb984;
+    }
+  }
+
+  .delete-btn {
+    @include dimensions (1rem, 2rem);
+    @include colors (grey, unset, unset);
+    margin: 0 0.3rem 0 0.3rem;
+    border: $main-border;
+    font-weight: bold;
+    text-align: center;
+    padding: 0;
+
+    .delete-btn:hover {
+      color: $secondary-color;
+    }
+  }
+
+  .folder-name {
+    @include dimensions (15rem, 1.3rem);
+    @include font (1.1rem, unset, 600);
+    border: $main-border;
+    resize : none;
+    cursor: pointer; 
+    overflow: hidden;
+
+    @include desktop {
+      font-size : 1.1rem;
+    }
+  }
+
+  .notes-list {
+    list-style-type: none;
+    padding-left: 0.4rem;
+    font-size: 1rem;
+  }
+
+  .notes-list-item {
+    margin-top: 0.4rem;
+    color : #8f8f8f;
+    font-weight : 600;
+    padding-left:0.6rem;
+
+    @include tablet {
+      width: 38rem;
     }
 
-    &__folder-name-arrow {
-      @include dimensions (1.5rem, 1.5rem);
-      padding: 0 0 0.15rem 0;
-      border : $main-border;
-      background-color:$fifth-color;
-      font-weight: bold;
-
-      &:hover {
-        background-color:#dfb984;
-      }
+    @include desktop {
+      width: 11.5rem;
     }
 
-    &__delete {
-      @include dimensions (1rem, 2rem);
-      @include colors (grey, unset, unset);
-      margin: unset 0.3rem unset 0.4rem;
-      border: $main-border;
-      font-weight: bold;
-      text-align: center;
-      padding: 0;
-
-      &:hover {
-        color: $secondary-color;
-      }
-    }
-
-    &__folder-name {
-      @include dimensions (13rem, 1.3rem);
-      @include font (1.1rem, unset, 600);
-      border: $main-border;
-      resize : none;
-      cursor: pointer; 
-
-      @include desktop {
-        font-size : 1.1rem;
-      }
-    }
-
-    &__notes-list {
-      list-style-type: none;
-      padding-left: 0.4rem;
-      font-size: 1rem;
-    }
-
-    &__notes-item {
-      margin-top: 0.4rem;
-      color : #8f8f8f;
-      font-weight : 600;
-      padding-left:0.6rem;
-
-      @include tablet {
-        width: 38rem;
-      }
-
-      @include desktop {
-        width: 11.5rem;
-      }
-
-      &:hover {
-        background-color: $primary-color;
-        cursor : pointer;
-        border-radius : 0.25rem;
-      }
+    .notes-list-item:hover {
+      background-color: $primary-color;
+      cursor : pointer;
+      border-radius : 0.25rem;
     }
   }
 }

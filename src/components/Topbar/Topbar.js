@@ -19,11 +19,11 @@ class Topbar extends Component {
           </button>
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <div className="navbar__wrapper">
-              <p className="navbar__tip">
+            <div className="topbar-wrapper">
+              <p className="tip">
                 Click on a folder before creating a note
               </p>
-              <div className="navbar__nav mr-auto mt-2 mt-lg-0">
+              <div className="nav mr-auto mt-2 mt-lg-0">
                 <button onClick={this.props.createNote} className="btn">
                   New
                 </button>

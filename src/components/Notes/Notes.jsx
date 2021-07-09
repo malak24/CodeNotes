@@ -15,17 +15,17 @@ class Notes extends Component {
         <div className="notes">
           <Modal.Dialog className="note">
             <Modal.Header>
-              <div className="note__title">Instructions</div>
+              <div className="note-title">Instructions</div>
             </Modal.Header>
 
-            <Modal.Body className="note__content">
+            <Modal.Body>
               {this.props.hideNote ? (
                 <p></p>
               ) : (
                 <div>
-                  In CodeNotes app you can do the following:
+                  In CodeNotes app you can do :
                   <br /> For folders :
-                  <ul>
+                  <ul className="instructions-list">
                     <li>
                       Create a new folder by typing the folder's name in the box
                       and clicking on 'New'.
@@ -33,37 +33,32 @@ class Notes extends Component {
                     <li>Delete a folder by clicking on the 'x' button.</li>
                     <li>
                       Edit the folder's name by clicking on 'Edit'. Folders'
-                      names are saved automatically!
+                      names saves automatically!
                     </li>
                   </ul>
                   For notes :
-                  <ul>
+                  <ul className="instructions-list">
                     <li>
-                      Create a note inside a folder by selecting the folder
-                      first and then entering the note's title in the box and
+                      Create a note by entering the note's title in the box and
                       clicking on 'New'.
                     </li>
                     <li>Edit the note's title by clicking on it.</li>
-                    <li>Edit the note by typing in it.</li>
+                    <li>Edit the note by clicking on its content.</li>
                     <li>Delete the note by clicking on the 'Delete' button.</li>
                   </ul>
                   What's more?
-                  <ul>
-                    <li>Notes shrink automatically to save space.</li>
+                  <ul className="instructions-list">
+                    <li>Expand a note for better visibility</li>
                     <li>
-                      Notes expand automatically when you hover over them.
+                      Format the text, create a table, add links, images etc..
                     </li>
                     <li>
-                      You can hide the folders' list by clicking on the
-                      down-arrow right in the 'Folders' section.
+                      Hide the folders' list by clicking on the down-arrow in
+                      the 'Folders' section.
                     </li>
                     <li>
-                      You can hide the notes list by clicking on the up-arrow
-                      next to the folder's name.
-                    </li>
-                    <li>
-                      You can view a note separately from other notes by
-                      clicking on it.
+                      Hide the notes list by clicking on the up-arrow next to
+                      the folder's name.
                     </li>
                     <li>The search feature is coming soon!</li>
                   </ul>
@@ -87,7 +82,7 @@ class Notes extends Component {
               <Modal.Dialog className="note">
                 <Modal.Header>
                   <textarea
-                    className="note__title"
+                    className="note-title"
                     onClick={() => this.props.getNoteId(note.note_id)}
                     onTouchStart={() => this.props.getNoteId(note.note_id)}
                     onChange={this.props.saveTitle}
@@ -98,14 +93,14 @@ class Notes extends Component {
                 <Modal.Body>
                   <SunEditor
                     placeholder="Please type here ..."
-                    autoFocus={true}
                     onTouchStart={() => this.props.getNoteId(note.note_id)}
                     onChange={this.props.saveNote}
                     onClick={() => this.props.getNoteId(note.note_id)}
                     defaultValue={note.note_content}
                     setOptions={{
                       height: 200,
-                      buttonList: [
+                      buttonList: 
+                      [
                         [
                           "undo",
                           "redo",
@@ -116,8 +111,6 @@ class Notes extends Component {
                           "underline",
                           "italic",
                           "strike",
-                          "subscript",
-                          "superscript",
                           "hiliteColor",
                           "removeFormat",
                           "align",

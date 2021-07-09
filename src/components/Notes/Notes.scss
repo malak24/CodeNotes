@@ -18,23 +18,28 @@ p {
       margin-left : 1rem;
       width:71vw;
     }
+  }
 
   .modal-header {
     padding : 0;
   }
 
-    &__title {
-      @include dimensions (100%, 2.4rem);
-      @include border ($main-border, 0.3rem 0rem); 
-      padding: 0.5rem 1rem 1rem 1rem;
-      background-color: $primary-color;
-      outline : $main-outline;
-      font-weight : 500;
+  .note-title {
+    @include dimensions (100%, 2.4rem);
+    @include border ($main-border, 0.3rem 0rem); 
+    padding: 0.5rem 1rem 1rem 1rem;
+    background-color: $primary-color;
+    outline : $main-outline;
+    font-weight : 500;
 
-      &:hover {
-        cursor : text;
-      }
+    .note-title:hover {
+      cursor : text;
     }
+  }
+
+  .instructions-list {
+    padding-left: 28px;
+    font-size: 0.8rem;
   }
 
   .sun-editor-editable {
@@ -59,7 +64,7 @@ p {
     background-color: unset;
   }
 
- .se-btn-module-border {
+  .se-btn-module-border {
     border: $main-border;
   }
 
@@ -73,11 +78,11 @@ p {
     color:$third-color;
     border: $main-border;
 
-    &:hover {
+    .btn:hover {
       @include colors (unset,$fourth-color, $fourth-color);
     }
 
-    &:active, &:focus {
+    .btn:active, .btn:focus {
       @include colors ($secondary-color, $primary-color, unset)
     }
   }
@@ -95,15 +100,15 @@ p {
     transform: rotate(0deg);
     transition: transform 0.5s;
 
-    &:active{
+    .footer-btn:active{
       @include colors ($secondary-color, $primary-color, unset);
     }
 
-    &:focus {
+    .footer-btn:focus {
       box-shadow: 0 0 0 0;
     }
 
-    &-rotate {
+    .footer-btn-rotate {
       @include colors ($secondary-color, $primary-color, unset);
       transform: rotate(180deg);
     }

@@ -7,21 +7,21 @@
   @include desktop {
     width:26%;
   }
+}
 
-  &__logo {
-    @include dimensions (7rem, 7rem);
-    margin: -1.5rem auto -2.5rem auto;
-    display : block;
+.logo {
+  @include dimensions (7rem, 7rem);
+  margin: -1.5rem auto -2.5rem auto;
+  display : block;
 
-    @include tablet {
-      @include dimensions (16rem, 16rem);
-      margin : -4.2rem auto unset auto;
-    }
+  @include tablet {
+    @include dimensions (16rem, 16rem);
+    margin : -4.2rem auto unset auto;
   }
+}
 
-  &__wrapper {
-    @include desktop {
-      display : block;
-    }
+.wrapper {
+  @include desktop {
+    display : block;
   }
 }

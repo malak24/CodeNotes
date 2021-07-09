@@ -148,21 +148,6 @@ class App extends Component {
       });
   };
 
-  autoexpand = (e) => {
-    let target = e.target;
-    target.style.height = "inherit";
-
-    let computed = window.getComputedStyle(target);
-    let height =
-      parseInt(computed.getPropertyValue("border-top-width"), 10) +
-      parseInt(computed.getPropertyValue("padding-top"), 10) +
-      target.scrollHeight +
-      parseInt(computed.getPropertyValue("padding-bottom"), 10) +
-      parseInt(computed.getPropertyValue("border-bottom-width"), 10);
-
-    target.style.height = height + "px";
-  };
-
   //FOLDERS
   //CREATE A NEW FOLDER
   createFolder = () => {
