@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import './App.scss';
-import Topbar from './components/Topbar/Topbar'
-import SideBar from './components/SideBar/SideBar'
-import Notes from './components/Notes/Notes'
+import React, { Component } from "react";
+import axios from "axios";
+import "./App.scss";
+import Topbar from "./components/Topbar/Topbar";
+import SideBar from "./components/SideBar/SideBar";
+import Notes from "./components/Notes/Notes";
 
 // let url = "https://codenotes-app.herokuapp.com";
 let url = "http://localhost:8080";
@@ -64,6 +64,7 @@ class App extends Component {
       .get(`${url}/folders/${folder_id}/notes`)
       .then((response) => {
         this.setState({ notes: response.data });
+        console.log(folder_id);
       })
       .catch((error) => {
         console.log(error);
@@ -85,7 +86,6 @@ class App extends Component {
         console.log(error);
       });
   };
-
 
   //GET NOTE ID
   getNoteId = (note_id) => {
@@ -121,8 +121,7 @@ class App extends Component {
   //SAVE THE NOTE'S CONTENT
   saveNote = (e) => {
     let noteContent = e;
-    // this.autoexpand(e);
-    console.log(noteContent)
+    console.log(noteContent);
 
     axios
       .put(`${url}/folders/${this.state.folderId}/${this.state.noteId}/note`, {
@@ -164,6 +163,20 @@ class App extends Component {
       });
   };
 
+  editFolderName = () => {
+    axios
+      .put(`${url}/folders/${this.state.folderId}/folderName`, {
+        folder_name: this.state.folderName,
+      })
+      .then((response) => {
+        this.getData();
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   // DELETE FOLDER
   deleteFolder = (folder_id) => {
     axios
@@ -180,6 +193,7 @@ class App extends Component {
   getFolderName = (e) => {
     let folderInp = e.target.value;
     this.setState({ folderName: folderInp });
+    console.log(e.target.value)
   };
 
   //GET FOLDER ID
@@ -262,25 +276,22 @@ class App extends Component {
   // }
 
   showFolders = () => {
-    this.setState({openFolders: !this.state.openFolders,});
+    this.setState({ openFolders: !this.state.openFolders });
   };
 
   toggleNote = () => {
-    this.setState({ hideNote: !this.state.hideNote })
+    this.setState({ hideNote: !this.state.hideNote });
     this.toggleRotate();
-  }
+  };
 
   toggleRotate = () => {
-    this.setState({rotate: !this.state.rotate})
-  }
+    this.setState({ rotate: !this.state.rotate });
+  };
 
   render() {
     return (
       <div className="app">
-        <Topbar
-          getNoteTitle={this.getNoteTitle}
-          createNote={this.createNote}
-        />
+        <Topbar getNoteTitle={this.getNoteTitle} createNote={this.createNote} />
 
         <div className="app__container">
           <SideBar
@@ -288,6 +299,7 @@ class App extends Component {
             notes={this.state.notes}
             getNotes={this.getNotes}
             getFolderName={this.getFolderName}
+            editFolderName={this.editFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
             openFolders={this.state.openFolders}

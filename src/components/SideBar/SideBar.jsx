@@ -16,6 +16,7 @@ class SideBar extends Component {
             notes={this.props.notes}
             getNotes={this.props.getNotes}
             getFolderName={this.props.getFolderName}
+            editFolderName={this.props.editFolderName}
             createFolder={this.props.createFolder}
             getFolderId={this.props.getFolderId}
             openFolders={this.props.openFolders}

@@ -27,25 +27,19 @@ class Folders extends Component {
                 />
                 <button
                   onClick={this.props.createFolder}
-                  className="btn new-btn"
-                >
-                  New
+                  className="btn new-btn">New
                 </button>
               </div>
               <div className="edit-input">
                 <input
-                  onChange={this.props.getFolderName}
+                  onChange={(e) => {this.props.getFolderName(e)}}
                   className="input"
                   type="text"
                   placeholder="Folder name ..."
                 />
                 <button
-                  onClick={(e) => {
-                    this.props.getFolderName();
-                  }}
-                  className="btn new-btn"
-                >
-                  Edit
+                  onClick={this.props.editFolderName}
+                  className="btn new-btn">Edit
                 </button>
               </div>
             </div>
@@ -53,17 +47,13 @@ class Folders extends Component {
 
           <ul
             className={
-              this.props.openFolders ? "list-group" : " folders-hidden"
-            }
-          >
+              this.props.openFolders ? "list-group" : " folders-hidden"}>
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">
                   <button
                     onClick={this.props.hideNotes}
-                    className="btn name-arrow-btn"
-                  >
-                    ▼
+                    className="btn name-arrow-btn">▼
                   </button>
                   <button
                     onClick={() => {
@@ -71,9 +61,7 @@ class Folders extends Component {
                         this.props.folders[keyName].folder_id
                       );
                     }}
-                    className="delete-btn"
-                  >
-                    x
+                    className="delete-btn">x
                   </button>
                 </div>
 
@@ -84,8 +72,7 @@ class Folders extends Component {
                         this.props.folders[keyName].folder_id
                       );
                     }}
-                    className="folder-name"
-                  >
+                    className="folder-name">
                     {this.props.folders[keyName].folder_name}
                   </p>
 
