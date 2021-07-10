@@ -95,6 +95,10 @@ p {
     box-shadow: 0 0 0 0;
   }
 
+  .btn-primary:hover {
+    @include colors ($secondary-color, $primary-color, $primary-color);  
+  }
+
   .footer-btn {
     @include colors ($secondary-color, $primary-color, unset);
     transform: rotate(0deg);

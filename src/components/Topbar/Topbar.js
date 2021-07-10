@@ -42,7 +42,7 @@ class Topbar extends Component {
                   aria-label="Search"
                 ></input>
                 <button
-                  className="btn btn-secondary my-2 my-sm-0 "
+                  className="btn my-2 my-sm-0 "
                   type="submit"
                 >
                   Search
