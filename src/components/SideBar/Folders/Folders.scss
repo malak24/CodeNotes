@@ -50,6 +50,11 @@
     }
   }
 
+  .arrow-btn-rotate {
+    @extend .arrow-btn;
+    transform: rotate(180deg);
+  }
+
   .new-title {
     display : flex;
     flex-direction: column;

@@ -75,47 +75,25 @@ p {
   }
 
   .btn {
-    color:$third-color;
+    @include colors ($secondary-color, $primary-color, unset);
     border: $main-border;
 
     .btn:hover {
       @include colors (unset,$fourth-color, $fourth-color);
     }
 
-    .btn:active, .btn:focus {
-      @include colors ($secondary-color, $primary-color, unset)
+    .btn:active .btn:focus {
+      @include colors ($secondary-color, $primary-color, unset);
     }
   }
 
-  .btn-primary:not(:disabled):not(.disabled):active {
-    @include colors ($secondary-color, $primary-color, $primary-color);
-  }
-
-  .btn-primary.focus, .btn-primary:focus {
-    box-shadow: 0 0 0 0;
-  }
-
-  .btn-primary:hover {
-    @include colors ($secondary-color, $primary-color, $primary-color);  
-  }
-
-  .footer-btn {
+  .btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle, .btn-primary.focus, .btn-primary:focus {
     @include colors ($secondary-color, $primary-color, unset);
-    transform: rotate(0deg);
-    transition: transform 0.5s;
+   box-shadow: 0 0 0 0;
+}
 
-    .footer-btn:active{
-      @include colors ($secondary-color, $primary-color, unset);
-    }
-
-    .footer-btn:focus {
-      box-shadow: 0 0 0 0;
-    }
-
-    .footer-btn-rotate {
-      @include colors ($secondary-color, $primary-color, unset);
-      transform: rotate(180deg);
-    }
+  .footer-btn-rotate {
+    transform: rotate(180deg);
   }
 
   .modal-footer {

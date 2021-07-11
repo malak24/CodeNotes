@@ -11,8 +11,8 @@ class Folders extends Component {
             <div className="title-subcontainer">
               <p className="title">Folders</p>
               <button
-                onClick={this.props.showFolders}
-                className="arrow-btn btn"
+                onClick={this.props.extendFolders}
+                className={this.props.showFolders? "arrow-btn-rotate btn" : "arrow-btn btn"}
               >
                 ▼
               </button>
@@ -47,7 +47,7 @@ class Folders extends Component {
 
           <ul
             className={
-              this.props.openFolders ? "list-group" : " folders-hidden"}>
+              this.props.showFolders ? "list-group" : " folders-hidden"}>
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">

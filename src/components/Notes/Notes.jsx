@@ -69,11 +69,7 @@ class Notes extends Component {
             <Modal.Footer>
               <Button
                 onClick={this.props.toggleNote}
-                className={
-                  this.props.rotate ? "footer-btn-rotate" : "footer-btn"
-                }
-              >
-                ▲
+                className= {this.props.showInstructions ? ".btn" : "footer-btn-rotate"}>▲
               </Button>
             </Modal.Footer>
           </Modal.Dialog>

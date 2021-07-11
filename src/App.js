@@ -24,9 +24,9 @@ class App extends Component {
       noteId: "",
 
       search: "",
-      openFolders: true,
+      showFolders: true,
       hideNote: false,
-      rotate: false,
+      showInstructions: true,
     };
   }
 
@@ -275,17 +275,17 @@ class App extends Component {
   //   }
   // }
 
-  showFolders = () => {
-    this.setState({ openFolders: !this.state.openFolders });
+  extendFolders = () => {
+    this.setState({ showFolders: !this.state.showFolders });
   };
 
   toggleNote = () => {
     this.setState({ hideNote: !this.state.hideNote });
-    this.toggleRotate();
+    this.showInstructions();
   };
 
-  toggleRotate = () => {
-    this.setState({ rotate: !this.state.rotate });
+  showInstructions = () => {
+    this.setState({showInstructions: !this.state.showInstructions});
   };
 
   render() {
@@ -302,8 +302,8 @@ class App extends Component {
             editFolderName={this.editFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
-            openFolders={this.state.openFolders}
-            showFolders={this.showFolders}
+            showFolders={this.state.showFolders}
+            extendFolders={this.extendFolders}
             showNotes={this.showNotes}
             openNote={this.openNote}
             getNoteId={this.getNoteId}
@@ -324,7 +324,7 @@ class App extends Component {
             noteId={this.state.noteId}
             hideNote={this.state.hideNote}
             toggleNote={this.toggleNote}
-            rotate={this.state.rotate}
+            showInstructions={this.state.showInstructions}
           />
         </div>
       </div>
