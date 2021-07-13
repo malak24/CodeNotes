@@ -20,18 +20,16 @@ class Topbar extends Component {
 
           <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <div className="topbar-wrapper">
-              <p className="tip">
-                Click on a folder before creating a note
-              </p>
+              <p className="tip">Click on a folder before creating a note</p>
               <div className="nav mr-auto mt-2 mt-lg-0">
                 <button onClick={this.props.createNote} className="btn">
                   New
                 </button>
                 <input
                   onChange={this.props.getNoteTitle}
-                  className="form-control"
+                  className="form-control mr-sm-2"
                   type="text"
-                  placeholder="Note title ..."
+                  placeholder="Note title"
                 />
               </div>
               <form className="form-inline my-2 my-lg-0">
@@ -41,10 +39,7 @@ class Topbar extends Component {
                   placeholder="Search"
                   aria-label="Search"
                 ></input>
-                <button
-                  className="btn my-2 my-sm-0 "
-                  type="submit"
-                >
+                <button className="btn my-2 my-sm-0 " type="submit">
                   Search
                 </button>
               </form>

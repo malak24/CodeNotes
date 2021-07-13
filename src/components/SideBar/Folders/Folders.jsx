@@ -23,7 +23,7 @@ class Folders extends Component {
                   onChange={this.props.getFolderName}
                   className="input"
                   type="text"
-                  placeholder="Folder name ..."
+                  placeholder="New folder name"
                 />
                 <button
                   onClick={this.props.createFolder}
@@ -35,7 +35,7 @@ class Folders extends Component {
                   onChange={(e) => {this.props.getFolderName(e)}}
                   className="input"
                   type="text"
-                  placeholder="Folder name ..."
+                  placeholder="Edit folder name"
                 />
                 <button
                   onClick={this.props.editFolderName}
