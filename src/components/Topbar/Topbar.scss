@@ -9,5 +9,9 @@
     color: rgba(0, 0, 0, 0.678);
     padding-top: 0.3rem;
     background-color: #dff1b5;
+
+    @include tablet {
+      margin-bottom: 5.5rem;
+    }
   }
 }

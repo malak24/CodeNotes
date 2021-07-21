@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./App.scss";
 import Topbar from "./components/Topbar/Topbar";
-import SideBar from "./components/SideBar/SideBar";
+import Form from "./components/Form/Form";
 import Notes from "./components/Notes/Notes";
 import Folders from "./components/Folders/Folders";
 
@@ -283,33 +283,35 @@ class App extends Component {
         <Topbar />
 
         <div className="app__container">
-          <SideBar
-            getFolderName={this.getFolderName}
-            editFolderName={this.editFolderName}
-            createFolder={this.createFolder}
-            getNoteTitle={this.getNoteTitle}
-            createNote={this.createNote}
-          />
+          <div>
+            <Form
+              getFolderName={this.getFolderName}
+              editFolderName={this.editFolderName}
+              createFolder={this.createFolder}
+              getNoteTitle={this.getNoteTitle}
+              createNote={this.createNote}
+            />
 
-          <Folders
-            folders={this.state.folders}
-            notes={this.state.notes}
-            getNotes={this.getNotes}
-            getFolderName={this.getFolderName}
-            editFolderName={this.editFolderName}
-            createFolder={this.createFolder}
-            getFolderId={this.getFolderId}
-            shownFolders={this.state.shownFolders}
-            extendFolders={this.extendFolders}
-            showNotes={this.showNotes}
-            openNotes={this.state.openNotes}
-            openNote={this.openNote}
-            getNoteId={this.getNoteId}
-            folderId={this.state.folderId}
-            hideNotes={this.hideNotes}
-            deleteFolder={this.deleteFolder}
-          />
-
+            <Folders
+              folders={this.state.folders}
+              notes={this.state.notes}
+              getNotes={this.getNotes}
+              getFolderName={this.getFolderName}
+              editFolderName={this.editFolderName}
+              createFolder={this.createFolder}
+              getFolderId={this.getFolderId}
+              shownFolders={this.state.shownFolders}
+              extendFolders={this.extendFolders}
+              showNotes={this.showNotes}
+              openNotes={this.state.openNotes}
+              openNote={this.openNote}
+              getNoteId={this.getNoteId}
+              folderId={this.state.folderId}
+              hideNotes={this.hideNotes}
+              deleteFolder={this.deleteFolder}
+            />
+          </div>
+          
           <Notes
             folders={this.state.folders}
             notes={this.state.notes}

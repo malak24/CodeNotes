@@ -131,7 +131,7 @@ class Notes extends Component {
                       this.props.deleteNote(note.note_id);
                     }}
                   >
-                    Delete
+                    x
                   </Button>
                 </Modal.Footer>
               </Modal.Dialog>
