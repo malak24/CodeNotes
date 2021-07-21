@@ -172,10 +172,6 @@
     cursor: pointer; 
     overflow: hidden;
     margin-top: 0.32rem;
-
-    @include desktop {
-      font-size : 1.1rem;
-    }
   }
 
   .notes-list {
