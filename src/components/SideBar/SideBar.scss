@@ -16,9 +16,9 @@
     }
   }
 
-  .inputs-wrapper {
-    height: 15rem;
-    padding : 0 1.2rem;
+  .bloc-wrapper {
+    height: 16rem;
+    padding : 0 1rem;
     font-size:1.3rem;
     background-color: rgba(0, 0, 0, 0.096);
 
@@ -28,21 +28,20 @@
   }
 
   .title {
-    @include font (1.6rem, unset , 600);
+    @include font (1.3rem, unset , 600);
     padding-top : 0.5rem;
-
-    @include mobile {
-      font-size : 20px;
-    }
+    color: rgba(0, 0, 0, 0.678);
   }
 
   .tip {
     margin: 0.7rem unset -0.3rem unset;
     padding: 0.4rem;
-    background-color: $third-color;
+    background-color: rgba(0, 0, 0, 0.678);
     width: 14.9rem;
     border-radius: 5px;
     font-size: 0.8rem;
+    color:white;
+    font-weight: 500;
   }
 
   .input-container {
@@ -53,6 +52,11 @@
 
   .form-control {
     @include dimensions (15rem, 2rem);
+    font-size: 0.8rem;
+  }
+
+  ::placeholder {
+    font-size: 0.8rem;
   }
 
   .btn {
@@ -61,6 +65,7 @@
     font-size: 0.9rem;
     font-weight: 500;
     background-color: rgb(223, 241, 181);
+    color: rgba(0, 0, 0, 0.678);
 
     @include desktop {
       height:2.4rem;

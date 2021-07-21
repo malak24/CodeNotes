@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./SideBar.scss";
-import Folders from "./Folders/Folders";
 
 class SideBar extends Component {
   render() {
@@ -8,7 +7,7 @@ class SideBar extends Component {
       <div id="sidebar">
         <div className="sidebar">
           <div className="wrapper">
-            <div className="inputs-wrapper">
+            <div className="bloc-wrapper">
               <h1 className="title">Form</h1>
               <p className="tip">Click on a folder before creating a note</p>
 
@@ -69,25 +68,6 @@ class SideBar extends Component {
                 </button>
               </div>
             </div>
-
-            <Folders
-              folders={this.props.folders}
-              notes={this.props.notes}
-              getNotes={this.props.getNotes}
-              getFolderName={this.props.getFolderName}
-              editFolderName={this.props.editFolderName}
-              createFolder={this.props.createFolder}
-              getFolderId={this.props.getFolderId}
-              showFolders={this.props.showFolders}
-              extendFolders={this.props.extendFolders}
-              showNotes={this.props.showNotes}
-              openNotes={this.props.openNotes}
-              openNote={this.props.openNote}
-              getNoteId={this.props.getNoteId}
-              folderId={this.props.folderId}
-              hideNotes={this.props.hideNotes}
-              deleteFolder={this.props.deleteFolder}
-            />
           </div>
         </div>
       </div>

@@ -1,10 +1,9 @@
-@import '../../../partials/mixins';
-@import '../../../partials/variables.scss';
+@import '../../partials/mixins';
+@import '../../partials/variables.scss';
 
 #folders {
   .folders {
     font-size:1.3rem;
-    margin-top : 1rem;
   }
 
   .folders-hidden {
@@ -29,22 +28,19 @@
   }
   
   .title {
-    @include font (1.6rem, unset , 600);
-    margin-top: -0.6rem;
-    padding-top : 0.5rem;
-
-    @include mobile {
-      font-size : 20px;
-    }
+    @include font (1.2rem, unset , 600);
+    color: rgba(0, 0, 0, 0.678);
+    padding-left: 1.1rem;
   }
 
   .arrow-btn {
-    @include dimensions (1.5rem, 1.5rem);
-    @include colors ($secondary-color, $primary-color, unset);
+    @include dimensions (1.2rem, 1.2rem);
+    @include colors (white, rgba(0, 0, 0, 0.678), unset);
+    font-size: 0.8rem;
     border: $main-border;
     text-align: center;
     padding: 0.1rem 0 0 0;
-    margin-right : 0.25rem;
+    margin-right : 1.1rem;
 
     .arrow-btn:hover {
       background-color : $fourth-color;
@@ -132,7 +128,7 @@
   .btns-wrapper {
     display : flex;
     align-items : center ;
-    height: 2.5rem;
+    height: 1.8rem;
 
     @include tablet {
       margin-right: 1rem;
@@ -144,13 +140,9 @@
   }
 
   .name-arrow-btn {
-    @include dimensions (1.5rem, 1.5rem);
-    padding: 0.13rem 0 0.15rem 0;
-    border : $main-border;
-    background-color:$fifth-color;
-    font-weight: 600;
-    color:black;
+    @extend .arrow-btn;
     transform: rotate(180deg);
+    margin-right: 0.71rem;
 
     .name-arrow-btn:hover {
       background-color:#dfb984;
@@ -160,7 +152,8 @@
   .delete-btn {
     @include dimensions (1rem, 2rem);
     @include colors (grey, unset, unset);
-    margin: 0 0.3rem 0 0.3rem;
+    font-size: 1.1rem;
+    margin: 0 0.7rem 0 0;
     border: $main-border;
     font-weight: bold;
     text-align: center;
@@ -172,12 +165,13 @@
   }
 
   .folder-name {
-    @include dimensions (15rem, 1.3rem);
-    @include font (1.1rem, unset, 600);
+    @include dimensions (15rem, 1rem);
+    @include font (0.9rem, unset, 600);
     border: $main-border;
     resize : none;
     cursor: pointer; 
     overflow: hidden;
+    margin-top: 0.32rem;
 
     @include desktop {
       font-size : 1.1rem;

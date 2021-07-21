@@ -12,7 +12,7 @@ class Folders extends Component {
             <button
               onClick={this.props.extendFolders}
               className={
-                this.props.showFolders
+                this.props.shownFolders
                   ? "arrow-btn-rotate btn"
                   : "arrow-btn btn"
               }
@@ -23,18 +23,12 @@ class Folders extends Component {
 
           <ul
             className={
-              this.props.showFolders ? "list-group" : " folders-hidden"
+              this.props.shownFolders ? "list-group" : " folders-hidden"
             }
           >
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">
-                  <button
-                    onClick={this.props.hideNotes}
-                    className="btn name-arrow-btn"
-                  >
-                    ▼
-                  </button>
                   <button
                     onClick={() => {
                       this.props.deleteFolder(
@@ -44,6 +38,12 @@ class Folders extends Component {
                     className="delete-btn"
                   >
                     x
+                  </button>
+                  <button
+                    onClick={this.props.hideNotes}
+                    className="btn name-arrow-btn"
+                  >
+                    ▼
                   </button>
                 </div>
 

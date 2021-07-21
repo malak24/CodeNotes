@@ -75,8 +75,13 @@ p {
   }
 
   .btn {
-    @include colors ($secondary-color, $primary-color, unset);
+    @include dimensions (1.2rem, 1.2rem);
+    @include colors (white, rgba(0, 0, 0, 0.678), unset);
+    font-size: 0.8rem;
     border: $main-border;
+    text-align: center;
+    padding: 0.05rem 0 0 0.05rem;
+    margin-right : 0.5rem;
 
     .btn:hover {
       @include colors (unset,$fourth-color, $fourth-color);

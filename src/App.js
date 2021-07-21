@@ -4,6 +4,7 @@ import "./App.scss";
 import Topbar from "./components/Topbar/Topbar";
 import SideBar from "./components/SideBar/SideBar";
 import Notes from "./components/Notes/Notes";
+import Folders from "./components/Folders/Folders";
 
 // let url = "https://codenotes-app.herokuapp.com";
 let url = "http://localhost:8080";
@@ -24,7 +25,7 @@ class App extends Component {
       noteId: "",
 
       search: "",
-      showFolders: true,
+      shownFolders: true,
       hideNote: false,
       showInstructions: true,
     };
@@ -202,18 +203,6 @@ class App extends Component {
     this.setState({ folderId: folder_id });
   };
 
-  // // editFolderName = () => {
-  // //   new Prompt({
-  // //     title: 'Edit folder name',
-  // //     content: "Please enter the folder's new name",
-  // //     placeholderText: "New name",
-  // //     submitText: true,
-  // //     onSubmit(component, value) {
-  // //       console.log(value)
-  // //     }
-  // // });
-  // // }
-
   // //GET SEARCH WORD (INPUT BY USER)
   // getSearchVal = (e) => {
   //   searchInp = e.target.value;
@@ -276,7 +265,7 @@ class App extends Component {
   // }
 
   extendFolders = () => {
-    this.setState({ showFolders: !this.state.showFolders });
+    this.setState({ shownFolders: !this.state.shownFolders });
   };
 
   toggleNote = () => {
@@ -291,10 +280,18 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Topbar getNoteTitle={this.getNoteTitle} createNote={this.createNote} />
+        <Topbar />
 
         <div className="app__container">
           <SideBar
+            getFolderName={this.getFolderName}
+            editFolderName={this.editFolderName}
+            createFolder={this.createFolder}
+            getNoteTitle={this.getNoteTitle}
+            createNote={this.createNote}
+          />
+
+          <Folders
             folders={this.state.folders}
             notes={this.state.notes}
             getNotes={this.getNotes}
@@ -302,9 +299,10 @@ class App extends Component {
             editFolderName={this.editFolderName}
             createFolder={this.createFolder}
             getFolderId={this.getFolderId}
-            showFolders={this.state.showFolders}
+            shownFolders={this.state.shownFolders}
             extendFolders={this.extendFolders}
             showNotes={this.showNotes}
+            openNotes={this.state.openNotes}
             openNote={this.openNote}
             getNoteId={this.getNoteId}
             folderId={this.state.folderId}
