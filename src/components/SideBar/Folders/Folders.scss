@@ -12,11 +12,12 @@
   }
   
   .title-container{
-    padding : 0 1.2rem;
     font-size:1.3rem;
-    background-color: #C0DF85;
-    height : 9rem;
-
+    background-color: #dff1b5;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
     @include tablet {
       margin-top: -5rem;
     }

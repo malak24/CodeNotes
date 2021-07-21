@@ -8,52 +8,32 @@ class Folders extends Component {
       <div id="folders">
         <div className="folders">
           <div className="title-container">
-            <div className="title-subcontainer">
-              <p className="title">Folders</p>
-              <button
-                onClick={this.props.extendFolders}
-                className={this.props.showFolders? "arrow-btn-rotate btn" : "arrow-btn btn"}
-              >
-                ▼
-              </button>
-            </div>
-            <div className="new-title">
-              <div>
-                <input
-                  onChange={this.props.getFolderName}
-                  className="input"
-                  type="text"
-                  placeholder="New folder name"
-                />
-                <button
-                  onClick={this.props.createFolder}
-                  className="btn new-btn">New
-                </button>
-              </div>
-              <div className="edit-input">
-                <input
-                  onChange={(e) => {this.props.getFolderName(e)}}
-                  className="input"
-                  type="text"
-                  placeholder="Edit folder name"
-                />
-                <button
-                  onClick={this.props.editFolderName}
-                  className="btn new-btn">Edit
-                </button>
-              </div>
-            </div>
+            <p className="title">Folders</p>
+            <button
+              onClick={this.props.extendFolders}
+              className={
+                this.props.showFolders
+                  ? "arrow-btn-rotate btn"
+                  : "arrow-btn btn"
+              }
+            >
+              ▼
+            </button>
           </div>
 
           <ul
             className={
-              this.props.showFolders ? "list-group" : " folders-hidden"}>
+              this.props.showFolders ? "list-group" : " folders-hidden"
+            }
+          >
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">
                   <button
                     onClick={this.props.hideNotes}
-                    className="btn name-arrow-btn">▼
+                    className="btn name-arrow-btn"
+                  >
+                    ▼
                   </button>
                   <button
                     onClick={() => {
@@ -61,7 +41,9 @@ class Folders extends Component {
                         this.props.folders[keyName].folder_id
                       );
                     }}
-                    className="delete-btn">x
+                    className="delete-btn"
+                  >
+                    x
                   </button>
                 </div>
 
@@ -72,7 +54,8 @@ class Folders extends Component {
                         this.props.folders[keyName].folder_id
                       );
                     }}
-                    className="folder-name">
+                    className="folder-name"
+                  >
                     {this.props.folders[keyName].folder_name}
                   </p>
 

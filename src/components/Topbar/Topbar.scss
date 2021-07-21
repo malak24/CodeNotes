@@ -1,119 +1,13 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
-@import url('https://fonts.googleapis.com/css2?family=Unica+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap');
 
 #topbar {
-  .navbar {
-    height: 4rem;
-    background-color: #DB6C79;
-
-    @include desktop {
-      height: 5rem;
-    }
-  }
-
-  .navbar-light .navbar-toggler {
-    @include colors (rgba(0,0,0,.5), unset, rgba(0,0,0,.1));
-    padding: 0.5rem;
-    border: $main-border;
-  }
-
-  .navbar-toggler:focus, .navbar-toggler:focus-visible {
-    outline: $main-outline;
-  }
-
-  .topbar-wrapper {
-    @include dimensions (18rem, 9rem);
-    padding: 0.2rem 0rem 1rem 1.5rem;
-    background-color: #5c5b5b;
-    margin-top: 1rem;
-    border-radius: 0 0 5px 5px;
-
-    @include tablet {
-      height: 7.5rem;
-    }
-
-    @include desktop {
-      background-color: unset;
-      display: flex;
-    }
-  }
-
-  .tip {
-    margin: 0.7rem unset -0.3rem unset;
-    padding: 0.4rem;
-    background-color: $third-color;
-    width: 14.9rem;
-    border-radius: 5px;
-    font-size: 0.8rem;
-  }
-
-  .nav {
-    @include positioning (flex-end, row-reverse);
-    align-items: center;
-
-    @include desktop {
-      padding-bottom: 0.8rem;
-    }
-  }
-
-
-  .btn {
-    @include dimensions (3.6rem, 2rem);
-    padding: 0.3rem 0 0 0;
-    text-align : center;
-    background-color: $fifth-color;
-
-    @include desktop {
-      height:2.4rem;
-      padding-top:0.5rem;
-    }
-
-    &:active {
-      @include colors ($secondary-color, $fifth-color, unset);
-      outline : $main-outline;
-    }
-
-    &:hover {
-      color:$secondary-color;
-    }
-  }
-
-  .btn-secondary {
-    @include dimensions (3.6rem, 2rem);
-    background-color: $fifth-color;
-    font-size : 1rem;
-    padding-top : 0.1rem;
-
-    @include desktop {
-      height:2.4rem;
-    }
-  }
-
-  .form-control {
-    @include dimensions (11.3rem, 2rem);
-    margin: 0;
-
-    @include tablet {
-      width : 17rem;
-    }
-
-    @include desktop {
-      @include dimensions (15rem, 2.5rem);
-    }
-  }
-
-  .form-inline {
-    @include desktop {
-      padding-bottom: 0.8rem;
-    }
-  }
-
-  .mr-sm-2, .mx-sm-2 {
-    margin-right: 0 !important;
-  }
-
-  .form-inline {
-    margin-right:0.3rem;
+  .topbar {
+    font-family: 'Ropa Sans', sans-serif;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.678);
+    padding-top: 0.3rem;
+    background-color: #dff1b5;
   }
 }

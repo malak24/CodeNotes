@@ -1,27 +1,90 @@
 @import '../../partials/mixins.scss';
 @import '../../partials/variables.scss';
 
-.sidebar {
-  background-color:$primary-color;
+#sidebar {
+  .sidebar {
+    background-color:$primary-color;
+
+    @include desktop {
+      width:26%;
+    }
+  }
+
+  .wrapper {
+    @include desktop {
+      display : block;
+    }
+  }
+
+  .inputs-wrapper {
+    height: 15rem;
+    padding : 0 1.2rem;
+    font-size:1.3rem;
+    background-color: rgba(0, 0, 0, 0.096);
+
+    @include tablet {
+      margin-top: -5rem;
+    }
+  }
+
+  .title {
+    @include font (1.6rem, unset , 600);
+    padding-top : 0.5rem;
+
+    @include mobile {
+      font-size : 20px;
+    }
+  }
+
+  .tip {
+    margin: 0.7rem unset -0.3rem unset;
+    padding: 0.4rem;
+    background-color: $third-color;
+    width: 14.9rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.2rem;
+  }
+
+  .form-control {
+    @include dimensions (15rem, 2rem);
+  }
+
+  .btn {
+    @include dimensions (3.6rem, 1.9rem);
+    padding: 0.2rem 0 0 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+    background-color: rgb(223, 241, 181);
+
+    @include desktop {
+      height:2.4rem;
+      padding-top:0.5rem;
+    }
+
+      &:active {
+        @include colors ($secondary-color, $fifth-color, unset);
+        outline : $main-outline;
+      }
+
+      &:hover {
+        color:$secondary-color;
+      }
+    }
+
+.btn-secondary {
+  @include dimensions (3.6rem, 2rem);
+  background-color: $fifth-color;
+  font-size : 1rem;
+  padding-top : 0.1rem;
 
   @include desktop {
-    width:26%;
+    height:2.4rem;
   }
-}
-
-.logo {
-  @include dimensions (7rem, 7rem);
-  margin: -1.5rem auto -2.5rem auto;
-  display : block;
-
-  @include tablet {
-    @include dimensions (16rem, 16rem);
-    margin : -4.2rem auto unset auto;
-  }
-}
-
-.wrapper {
-  @include desktop {
-    display : block;
   }
 }
