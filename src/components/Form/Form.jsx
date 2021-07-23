@@ -24,9 +24,7 @@ class Form extends Component {
 
             <div className="input-container">
               <input
-                onChange={(e) => {
-                  this.props.getFolderName(e);
-                }}
+                onChange={(e) => {this.props.getFolderName(e);}}
                 className="form-control"
                 type="text"
                 placeholder="Edit folder name"
@@ -52,7 +50,7 @@ class Form extends Component {
 
             <div className="input-container">
               <input
-                onChange={this.props.getNoteTitle}
+                onChange={this.props.getSearchInp}
                 className="form-control"
                 type="search"
                 placeholder="Search"
@@ -60,7 +58,7 @@ class Form extends Component {
               />
 
               <button
-                onClick={this.props.createNote}
+                onClick={this.props.search}
                 type="submit"
                 className="btn"
               >

@@ -25,6 +25,7 @@ class App extends Component {
       noteId: "",
 
       search: "",
+      searchTxt: "",
       shownFolders: true,
       hideNote: false,
       showInstructions: true,
@@ -194,7 +195,7 @@ class App extends Component {
   getFolderName = (e) => {
     let folderInp = e.target.value;
     this.setState({ folderName: folderInp });
-    console.log(e.target.value)
+    console.log(e.target.value);
   };
 
   //GET FOLDER ID
@@ -203,66 +204,48 @@ class App extends Component {
     this.setState({ folderId: folder_id });
   };
 
-  // //GET SEARCH WORD (INPUT BY USER)
-  // getSearchVal = (e) => {
-  //   searchInp = e.target.value;
-  //   this.setState({ search: searchInp })
-  //   // console.log(searchInp)
-  // }
-
-  // //SEARCH FOR A FOLDER BY FOLDER NAME
-  // folderSearchFn = () => {
-  //   // console.log('folder search function is working')
-  //   axios
-  //     .post(`${url}/folders`, {
-  //       search: this.state.search
-  //     })
-  //     .then(response => {
-  //       // console.log(response);
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // }
-
-  // //SEARCH FOR NOTE BY NOTE TITLE
-  // noteSearchFn = () => {
-  //   axios
-  //     .post(`${url}/notes`, {
-  //       search: this.state.search
-  //     })
-  //     .then(response => {
-  //       // console.log(response);
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // }
+  getSearchInp = (e) => {
+    let searchInp = e.target.value;
+    this.setState({ search: searchInp });
+    console.log(searchInp);
+  };
 
   // //SEARCH FOR NOTE BY NOTE CONTENT
-  // noteSearchFn = () => {
-  //   axios
-  //     .post(`${url}/notes`, {
-  //       search: this.state.search
-  //     })
-  //     .then(response => {
-  //       // console.log(response);
-  //     })
-  //     .catch(error => {
-  //       console.log(error)
-  //     })
-  // }
+  search = () => {
+    axios
+      .get(`${url}/notes`)
+      .then((response) => {
+        for (const i in response.data) {
+          let str = response.data[i].note_content;
+          let replaced = str.replace(
+            `${this.state.search}`,
+            `<span style = "background-color:#d12b2b96">${this.state.search}</span>`
+          );
 
-  // //GENERAL SEARCH FUNCTION FOR FOLDERS AND NOTES
-  // search = () => {
-  //   if (this.state.selectedOption === 'folder name') {
-  //     this.folderSearchFn()
-  //   } else if (this.state.selectedOption === 'note title') {
-  //     this.noteSearchFn()
-  //   } else {
-  //     this.noteSearchFn()
-  //   }
-  // }
+          for (const x in this.state.folders) {
+            for (const y in this.state.folders[x].notes) {
+              if (this.state.folders[x].notes[y].note_content == response.data[i].note_content) {
+
+                axios
+                  .post(
+                    `${url}/notes/${this.state.folders[x].notes[y].note_id}`,
+                    {note_content: replaced})
+                  .then((response) => {
+                    console.log(response);
+                  })
+                  .catch((error) => {
+                    console.log(error);
+                  });
+              }
+            }
+          }
+        }
+        this.getData();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   extendFolders = () => {
     this.setState({ shownFolders: !this.state.shownFolders });
@@ -274,7 +257,7 @@ class App extends Component {
   };
 
   showInstructions = () => {
-    this.setState({showInstructions: !this.state.showInstructions});
+    this.setState({ showInstructions: !this.state.showInstructions });
   };
 
   render() {
@@ -290,6 +273,9 @@ class App extends Component {
               createFolder={this.createFolder}
               getNoteTitle={this.getNoteTitle}
               createNote={this.createNote}
+              getSearchInp={this.getSearchInp}
+              search={this.search}
+              folderId={this.state.folderId}
             />
 
             <Folders
@@ -311,7 +297,7 @@ class App extends Component {
               deleteFolder={this.deleteFolder}
             />
           </div>
-          
+
           <Notes
             folders={this.state.folders}
             notes={this.state.notes}
