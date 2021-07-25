@@ -6,8 +6,8 @@ import Form from "./components/Form/Form";
 import Notes from "./components/Notes/Notes";
 import Folders from "./components/Folders/Folders";
 
-// let url = "https://codenotes-app.herokuapp.com";
-let url = "http://localhost:8080";
+let url = "https://codenotes-app.herokuapp.com";
+// let url = "http://localhost:8080";
 
 class App extends Component {
   constructor() {
@@ -210,42 +210,36 @@ class App extends Component {
     console.log(searchInp);
   };
 
-  // //SEARCH FOR NOTE BY NOTE CONTENT
+  //SEARCH FOR NOTE BY NOTE CONTENT
   search = () => {
+    let x;
+    let search = this.state.search;
+    let content;
+
     axios
       .get(`${url}/notes`)
       .then((response) => {
         for (const i in response.data) {
-          let str = response.data[i].note_content;
-          let replaced = str.replace(
-            `${this.state.search}`,
-            `<span style = "background-color:#d12b2b96">${this.state.search}</span>`
-          );
+          content = response.data[i].note_content;
+          let arr = content.split(" ");
 
-          for (const x in this.state.folders) {
-            for (const y in this.state.folders[x].notes) {
-              if (this.state.folders[x].notes[y].note_content == response.data[i].note_content) {
-
-                axios
-                  .post(
-                    `${url}/notes/${this.state.folders[x].notes[y].note_id}`,
-                    {note_content: replaced})
-                  .then((response) => {
-                    console.log(response);
-                  })
-                  .catch((error) => {
-                    console.log(error);
-                  });
-              }
+          for (x = 0; x < arr.length; x++) {
+            if (arr[x] == search) {
+              arr.splice(x, 1, `<span style = "background-color:#d12b2b96"><b>${search}</b></span>`);
+              
+              let text = arr.join(" ");
             }
           }
         }
-        this.getData();
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
+  highlightSearch = () => {
+    
+  }
 
   extendFolders = () => {
     this.setState({ shownFolders: !this.state.shownFolders });
