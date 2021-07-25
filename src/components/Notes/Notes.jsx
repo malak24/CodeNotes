@@ -89,6 +89,7 @@ class Notes extends Component {
                 <Modal.Body>
                   <SunEditor
                     placeholder="Please type here ..."
+                    autoFocus={false}
                     onTouchStart={() => this.props.getNoteId(note.note_id)}
                     onChange={this.props.saveNote}
                     onClick={() => this.props.getNoteId(note.note_id)}
