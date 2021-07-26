@@ -11,52 +11,29 @@ class Folders extends Component {
             <p className="title">Folders</p>
             <button
               onClick={this.props.extendFolders}
-              className={
-                this.props.shownFolders
-                  ? "arrow-btn-rotate btn"
-                  : "arrow-btn btn"
-              }
-            >
-              ▼
+              className={this.props.shownFolders? "arrow-btn-rotate btn": "arrow-btn btn"}>▼
             </button>
           </div>
 
           <ul
-            className={
-              this.props.shownFolders ? "list-group" : " folders-hidden"
-            }
-          >
+            className={this.props.shownFolders ? "list-group" : " folders-hidden"}>
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">
                   <button
-                    onClick={() => {
-                      this.props.deleteFolder(
-                        this.props.folders[keyName].folder_id
-                      );
-                    }}
-                    className="delete-btn"
-                  >
-                    x
+                    onClick={() => {this.props.deleteFolder(this.props.folders[keyName].folder_id);}}
+                    className="delete-btn">x
                   </button>
                   <button
                     onClick={this.props.hideNotes}
-                    className="btn name-arrow-btn"
-                  >
-                    ▼
+                    className="btn name-arrow-btn">▼
                   </button>
                 </div>
 
                 <div>
                   <p
-                    onClick={() => {
-                      this.props.getNotes(
-                        this.props.folders[keyName].folder_id
-                      );
-                    }}
-                    className="folder-name"
-                  >
-                    {this.props.folders[keyName].folder_name}
+                    onClick={() => {this.props.getNotes(this.props.folders[keyName].folder_id);}}
+                    className="folder-name">{this.props.folders[keyName].folder_name}
                   </p>
 
                   <ul className="notes-list">

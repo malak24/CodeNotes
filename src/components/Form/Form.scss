@@ -3,6 +3,7 @@
 
 #form {
   .form {
+    padding-top: 1rem;
     background-color: #f0ede9;
     @include tablet {
       height: 21.5rem;
@@ -14,7 +15,7 @@
   }
 
   .bloc-wrapper {
-    height: 16rem;
+    height: 13rem;
     padding : 0 1rem;
     font-size:1.3rem;
 
@@ -25,12 +26,6 @@
     @include desktop {
       height: 17rem;
     }
-  }
-
-  .title {
-    @include font (1.3rem, unset , 600);
-    padding-top : 0.5rem;
-    color: rgba(0, 0, 0, 0.678);
   }
 
   .tip {
