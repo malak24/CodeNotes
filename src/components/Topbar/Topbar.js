@@ -6,7 +6,9 @@ class Topbar extends Component {
   render() {
     return (
       <div id="topbar">
-        <h1 className="topbar">CodeNotes</h1>
+        <div className="topbar">
+          <img className="logo" src={logo} />
+        </div>
       </div>
     );
   }

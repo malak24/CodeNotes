@@ -3,7 +3,7 @@
 
 #form {
   .form {
-    padding-top: 1rem;
+    padding-top: 1.5rem;
     background-color: #f0ede9;
     @include tablet {
       height: 21.5rem;
@@ -15,7 +15,7 @@
   }
 
   .bloc-wrapper {
-    height: 13rem;
+    height: 10.2rem;
     padding : 0 1rem;
     font-size:1.3rem;
 
@@ -26,17 +26,6 @@
     @include desktop {
       height: 17rem;
     }
-  }
-
-  .tip {
-    margin: 0.7rem unset -0.3rem unset;
-    padding: 0.4rem;
-    background-color: rgba(0, 0, 0, 0.678);
-    width: 14.9rem;
-    border-radius: 5px;
-    font-size: 0.8rem;
-    color:white;
-    font-weight: 500;
   }
 
   .input-container {

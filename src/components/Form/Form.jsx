@@ -7,7 +7,6 @@ class Form extends Component {
       <div id="form">
         <div className="form">
           <div className="bloc-wrapper">
-            <p className="tip">Click on a folder before creating a note</p>
 
             <div className="input-container">
               <input
