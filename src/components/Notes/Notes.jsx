@@ -13,6 +13,7 @@ class Notes extends Component {
     return (
       <div id="notes">
         <div className="notes">
+          {/* -------- Instructions note -------- */}
           <Modal.Dialog className="note">
             <Modal.Header>
               <div className="note-title note-title-instructions">READ ME</div>
@@ -44,6 +45,8 @@ class Notes extends Component {
             </Modal.Footer>
           </Modal.Dialog>
 
+          
+          {/* -------- Note structure --------- */}
           {this.props.notes.map((note) => (
             <div key={uuidv4()}>
               <Modal.Dialog className="note">
