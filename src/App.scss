@@ -6,10 +6,10 @@
   font-family: 'Baloo 2', cursive;
   background-color: rgb(233, 233, 233);
   margin-bottom: 10rem;
+}
 
-  &__container {
-    @include desktop {
-      display : flex;
-    }
+.app-container {
+  @include desktop {
+    // display : flex;
   }
 }

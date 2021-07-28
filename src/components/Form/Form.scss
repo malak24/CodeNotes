@@ -5,8 +5,9 @@
   .form {
     padding-top: 1.5rem;
     background-color: #f0ede9;
+
     @include tablet {
-      height: 21.5rem;
+      height: 16.6rem;
     }
 
     @include desktop {
@@ -18,10 +19,6 @@
     height: 10.2rem;
     padding : 0 1rem;
     font-size:1.3rem;
-
-    @include tablet {
-      margin-top: -5rem;
-    }
 
     @include desktop {
       height: 17rem;

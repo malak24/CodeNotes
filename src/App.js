@@ -6,8 +6,8 @@ import Form from "./components/Form/Form";
 import Notes from "./components/Notes/Notes";
 import Folders from "./components/Folders/Folders";
 
-let url = "https://codenotes-app.herokuapp.com";
-// let url = "http://localhost:8080";
+// let url = "https://codenotes-app.herokuapp.com";
+let url = "http://localhost:8080";
 
 class App extends Component {
   constructor() {
@@ -66,16 +66,20 @@ class App extends Component {
       .get(`${url}/folders/${folder_id}/notes`)
       .then((response) => {
         this.setState({ notes: response.data });
-        console.log(folder_id);
+        console.log(response.data);
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  hideNotes = () => {
-    this.setState({ notes: [] });
-  };
+  // hideNotes = () => {
+  //   this.setState({ notes: [] });
+  // };
+
+  // extendNotes = () => {
+  //   this.setState({shownNotes : !this.state.shownNotes})
+  // }
 
   openNote = (note_id) => {
     axios
@@ -225,8 +229,12 @@ class App extends Component {
 
           for (x = 0; x < arr.length; x++) {
             if (arr[x] == search) {
-              arr.splice(x, 1, `<span style = "background-color:#d12b2b96"><b>${search}</b></span>`);
-              
+              arr.splice(
+                x,
+                1,
+                `<span style = "background-color:#d12b2b96"><b>${search}</b></span>`
+              );
+
               let text = arr.join(" ");
             }
           }
@@ -237,9 +245,7 @@ class App extends Component {
       });
   };
 
-  highlightSearch = () => {
-    
-  }
+  highlightSearch = () => {};
 
   extendFolders = () => {
     this.setState({ shownFolders: !this.state.shownFolders });
@@ -257,9 +263,9 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <Topbar />
+        <div className="app-container">
+          <Topbar />
 
-        <div className="app__container">
           <div>
             <Form
               getFolderName={this.getFolderName}
@@ -289,6 +295,8 @@ class App extends Component {
               folderId={this.state.folderId}
               hideNotes={this.hideNotes}
               deleteFolder={this.deleteFolder}
+              shownNotes={this.state.shownNotes}
+              extendNotes={this.extendNotes}
             />
           </div>
 

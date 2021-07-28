@@ -38,6 +38,8 @@ p {
     background-color: $primary-color;
     outline : $main-outline;
     font-weight : 500;
+    resize: none;
+    overflow: hidden;
 
     .note-title:hover {
       cursor : text;

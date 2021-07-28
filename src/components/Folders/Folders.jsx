@@ -16,7 +16,20 @@ class Folders extends Component {
           </div>
 
           <ul
-            className={this.props.shownFolders ? "list-group" : " folders-hidden"}>
+            className={this.props.shownFolders ? "list-group" : "folders-hidden"}>
+            {/* <li className="list-group-item">
+              <div className="btns-wrapper">
+                <button className="delete-btn">x</button>
+                <button className="btn name-arrow-btn">▼</button>
+              </div>
+              <div>
+                <p className = 'folder-name'>Default Folder</p>
+                <ul className = 'notes-list'>
+                  <li className = 'notes-list-item'>Default note</li>
+                </ul>
+              </div>
+            </li> */}
+
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">
@@ -33,7 +46,8 @@ class Folders extends Component {
                 <div>
                   <p
                     onClick={() => {this.props.getNotes(this.props.folders[keyName].folder_id);}}
-                    className="folder-name">{this.props.folders[keyName].folder_name}
+                    className="folder-name">
+                    {this.props.folders[keyName].folder_name}
                   </p>
 
                   <ul className="notes-list">
@@ -41,18 +55,13 @@ class Folders extends Component {
                     {this.props.notes.length === 0
                       ? console.log("Folder is empty")
                       : keyName != this.props.folderId
-                      ? console.log(
-                          "This folder can't have the notes of another folder"
-                        )
+                      ? console.log("This folder can't have the notes of another folder")
                       : this.props.notes.map((note) => (
-                          <li
-                            onClick={() => {
-                              this.props.openNote(note.note_id);
-                            }}
-                            className="notes-list-item"
-                            key={uuidv4()}
-                          >
-                            {note.note_title}
+                        <li
+                          onClick={() => { this.props.openNote(note.note_id); }}
+                          className="notes-list-item"
+                          key={uuidv4()}
+                        >{note.note_title}
                           </li>
                         ))}
                   </ul>
