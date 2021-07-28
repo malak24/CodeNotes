@@ -11,7 +11,7 @@
     }
 
     @include desktop {
-      width:22rem;
+      width:100%;
     }
   }
 
@@ -19,10 +19,6 @@
     height: 10.2rem;
     padding : 0 1rem;
     font-size:1.3rem;
-
-    @include desktop {
-      height: 17rem;
-    }
   }
 
   .input-container {

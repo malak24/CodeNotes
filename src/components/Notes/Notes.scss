@@ -6,13 +6,6 @@ p {
 }
 
 #notes {
-
-  .notes {
-    @include desktop {
-    margin-top: -6.5rem;
-    }
-  }
-
   .note {
     box-sizing: unset;
     max-width: unset;

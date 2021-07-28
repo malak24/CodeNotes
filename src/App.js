@@ -5,6 +5,7 @@ import Topbar from "./components/Topbar/Topbar";
 import Form from "./components/Form/Form";
 import Notes from "./components/Notes/Notes";
 import Folders from "./components/Folders/Folders";
+import { get } from "jquery";
 
 // let url = "https://codenotes-app.herokuapp.com";
 let url = "http://localhost:8080";
@@ -27,6 +28,7 @@ class App extends Component {
       search: "",
       searchTxt: "",
       shownFolders: true,
+      shownNotes: true,
       hideNote: false,
       showInstructions: true,
     };
@@ -75,13 +77,9 @@ class App extends Component {
       });
   };
 
-  // hideNotes = () => {
-  //   this.setState({ notes: [] });
-  // };
-
-  // extendNotes = () => {
-  //   this.setState({shownNotes : !this.state.shownNotes})
-  // }
+  extendNotes = () => {
+    this.setState({shownNotes : !this.state.shownNotes})
+  }
 
   openNote = (note_id) => {
     axios
@@ -149,6 +147,7 @@ class App extends Component {
       .put(`${url}/notes/${note_id}`, {})
       .then((response) => {
         this.getNotes(this.state.folderId);
+        this.getData();
       })
       .catch((error) => {
         console.log(error);
@@ -188,9 +187,9 @@ class App extends Component {
   // DELETE FOLDER
   deleteFolder = (folder_id) => {
     axios
-      .put(`${url}/folders/${folder_id}`, {})
+      .put(`${url}/folders/${folder_id}`)
       .then((response) => {
-        this.getData();
+        this.getNotes(folder_id);
       })
       .catch((error) => {
         console.log(error);
@@ -290,6 +289,7 @@ class App extends Component {
               getFolderId={this.getFolderId}
               shownFolders={this.state.shownFolders}
               extendFolders={this.extendFolders}
+              extendNotes={this.extendNotes}
               showNotes={this.showNotes}
               openNotes={this.state.openNotes}
               openNote={this.openNote}
@@ -298,7 +298,6 @@ class App extends Component {
               hideNotes={this.hideNotes}
               deleteFolder={this.deleteFolder}
               shownNotes={this.state.shownNotes}
-              extendNotes={this.extendNotes}
             />
           </div>
 
