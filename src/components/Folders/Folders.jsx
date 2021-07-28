@@ -5,65 +5,89 @@ import "./Folders.scss";
 class Folders extends Component {
   render() {
     return (
+      // -------- Folders component header --------
       <div id="folders">
         <div className="folders">
           <div className="title-container">
             <p className="title">Folders</p>
             <button
               onClick={this.props.extendFolders}
-              className={this.props.shownFolders? "arrow-btn-rotate btn": "arrow-btn btn"}>▼
+              className={
+                this.props.shownFolders
+                  ? "arrow-btn-rotate btn"
+                  : "arrow-btn btn"
+              }
+            >
+              ▼
             </button>
           </div>
 
+          {/* -------- Default folder and note -------- */}
           <ul
-            className={this.props.shownFolders ? "list-group" : "folders-hidden"}>
-            {/* <li className="list-group-item">
+            className={
+              this.props.shownFolders ? "list-group" : "folders-hidden"
+            }
+          >
+            <li className="list-group-item">
               <div className="btns-wrapper">
                 <button className="delete-btn">x</button>
                 <button className="btn name-arrow-btn">▼</button>
               </div>
+
               <div>
-                <p className = 'folder-name'>Default Folder</p>
-                <ul className = 'notes-list'>
-                  <li className = 'notes-list-item'>Default note</li>
+                <p className="folder-name">Default Folder</p>
+                <ul className="notes-list">
+                  <li className="notes-list-item">Default note</li>
                 </ul>
               </div>
-            </li> */}
+            </li>
 
+            {/* -------- Folder buttons -------- */}
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
                 <div className="btns-wrapper">
                   <button
-                    onClick={() => {this.props.deleteFolder(this.props.folders[keyName].folder_id);}}
-                    className="delete-btn">x
+                    onClick={() => {
+                      this.props.deleteFolder(
+                        this.props.folders[keyName].folder_id
+                      );
+                    }}
+                    className="delete-btn"
+                  >
+                    x
                   </button>
                   <button
                     onClick={this.props.hideNotes}
-                    className="btn name-arrow-btn">▼
+                    className="btn name-arrow-btn"
+                  >
+                    ▼
                   </button>
                 </div>
 
+                {/* -------- Folder name -------- */}
                 <div>
                   <p
-                    onClick={() => {this.props.getNotes(this.props.folders[keyName].folder_id);}}
-                    className="folder-name">
+                    onClick={() => {
+                      this.props.getNotes(
+                        this.props.folders[keyName].folder_id
+                      );
+                    }}
+                    className="folder-name"
+                  >
                     {this.props.folders[keyName].folder_name}
                   </p>
 
+                  {/* -------- Notes list -------- */}
                   <ul className="notes-list">
-                    {/* This logic below prevents folders from getting the notes of the clicked folder */}
-                    {this.props.notes.length === 0
-                      ? console.log("Folder is empty")
-                      : keyName != this.props.folderId
-                      ? console.log("This folder can't have the notes of another folder")
-                      : this.props.notes.map((note) => (
-                        <li
-                          onClick={() => { this.props.openNote(note.note_id); }}
-                          className="notes-list-item"
-                          key={uuidv4()}
-                        >{note.note_title}
-                          </li>
-                        ))}
+                    {this.props.folders[keyName].notes.map((note) => (
+                      <li
+                        onClick={() => {this.props.openNote(note.note_id);}}
+                        className="notes-list-item"
+                        key={uuidv4()}
+                      >
+                        {note.note_title}
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </li>

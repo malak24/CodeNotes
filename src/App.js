@@ -53,6 +53,7 @@ class App extends Component {
       })
       .then((response) => {
         this.getNotes(this.state.folderId);
+        this.getData();
       })
       .catch((error) => {
         console.log(error);
@@ -62,6 +63,7 @@ class App extends Component {
   //GET THE NOTES OF A SPECIFIC FOLDER
   getNotes = (folder_id) => {
     this.setState({ folderId: folder_id });
+    
     axios
       .get(`${url}/folders/${folder_id}/notes`)
       .then((response) => {

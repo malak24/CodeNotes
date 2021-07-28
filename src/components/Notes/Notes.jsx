@@ -39,81 +39,53 @@ class Notes extends Component {
             <Modal.Footer>
               <Button
                 onClick={this.props.toggleNote}
-                className={
-                  this.props.showInstructions ? ".btn" : "footer-btn-rotate"
-                }
-              >
-                ▲
+                className={this.props.showInstructions ? ".btn" : "footer-btn-rotate"}>▲
               </Button>
             </Modal.Footer>
           </Modal.Dialog>
 
-          {Object.keys(this.props.folders).map((keyName, keyIndex) =>
-            this.props.folders[keyName].notes.map((note) => (
-              <div key={uuidv4()}>
-                <Modal.Dialog className="note">
-                  <Modal.Header>
-                    <textarea
-                      className="note-title"
-                      onClick={() => this.props.getNoteId(note.note_id)}
-                      onTouchStart={() => this.props.getNoteId(note.note_id)}
-                      onChange={this.props.saveTitle}
-                      defaultValue={note.note_title}
-                    ></textarea>
-                  </Modal.Header>
+          {this.props.notes.map((note) => (
+            <div key={uuidv4()}>
+              <Modal.Dialog className="note">
+                <Modal.Header>
+                  <textarea
+                    className="note-title"
+                    onClick={() => this.props.getNoteId(note.note_id)}
+                    onTouchStart={() => this.props.getNoteId(note.note_id)}
+                    onChange={this.props.saveTitle}
+                    defaultValue={note.note_title}
+                  ></textarea>
+                </Modal.Header>
 
-                  <Modal.Body>
-                    <SunEditor
-                      placeholder="Please type here ..."
-                      autoFocus={false}
-                      onTouchStart={() => this.props.getNoteId(note.note_id)}
-                      onChange={this.props.saveNote}
-                      onClick={() => this.props.getNoteId(note.note_id)}
-                      defaultValue={note.note_content}
-                      setOptions={{
-                        height: 200,
-                        buttonList: [
-                          [
-                            "undo",
-                            "redo",
-                            "font",
-                            "fontSize",
-                            "fontColor",
-                            "bold",
-                            "underline",
-                            "italic",
-                            "strike",
-                            "hiliteColor",
-                            "removeFormat",
-                            "align",
-                            "list",
-                            "fullScreen",
-                            "horizontalRule",
-                            "image",
-                            "link",
-                            "table",
-                            "codeView",
-                          ],
-                        ],
-                      }}
-                      setContents={note.note_content}
-                    />
-                  </Modal.Body>
+                <Modal.Body>
+                  <SunEditor
+                    placeholder="Please type here ..."
+                    autoFocus={false}
+                    onTouchStart={() => this.props.getNoteId(note.note_id)}
+                    onChange={this.props.saveNote}
+                    onClick={() => this.props.getNoteId(note.note_id)}
+                    defaultValue={note.note_content}
+                    setOptions={{
+                      height: 200,
+                      buttonList: [
+                        ["undo","redo","font","fontSize","fontColor","bold","underline","italic",
+                          "strike","hiliteColor","removeFormat","align","list","fullScreen",
+                          "horizontalRule","image","link","table","codeView",],
+                      ],
+                    }}
+                    setContents={note.note_content}
+                  />
+                </Modal.Body>
 
-                  <Modal.Footer>
-                    <Button
-                      className="footer-btn"
-                      onClick={() => {
-                        this.props.deleteNote(note.note_id);
-                      }}
-                    >
-                      x
-                    </Button>
-                  </Modal.Footer>
-                </Modal.Dialog>
-              </div>
-            ))
-          )}
+                <Modal.Footer>
+                  <Button
+                    className="footer-btn"
+                    onClick={() => {this.props.deleteNote(note.note_id);}}>x
+                  </Button>
+                </Modal.Footer>
+              </Modal.Dialog>
+            </div>
+          ))}
         </div>
       </div>
     );
