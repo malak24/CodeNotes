@@ -22,19 +22,6 @@ class Form extends Component {
 
             <div className="input-container">
               <input
-                onChange={(e) => {this.props.getFolderName(e);}}
-                className="form-control"
-                type="text"
-                placeholder="Edit folder name"
-              />
-
-              <button onClick={this.props.editFolderName} className="btn">
-                Edit
-              </button>
-            </div>
-
-            <div className="input-container">
-              <input
                 onChange={this.props.getNoteTitle}
                 className="form-control"
                 type="text"

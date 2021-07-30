@@ -141,6 +141,7 @@
   .name-arrow-btn {
     @extend .arrow-btn;
     margin-right: 0.71rem;
+    transform: rotate(180deg);
 
     .name-arrow-btn:hover {
       background-color:#dfb984;
@@ -149,7 +150,7 @@
 
   .name-arrow-btn-rotate {
     @extend .name-arrow-btn;
-    transform: rotate(180deg);
+    transform: rotate(360deg);
   }
 
   .delete-btn {
@@ -175,6 +176,10 @@
     cursor: pointer; 
     overflow: hidden;
     margin-top: 0.32rem;
+  }
+
+  .folder-name:focus-visible {
+    outline: 0;
   }
 
   .notes-hidden {

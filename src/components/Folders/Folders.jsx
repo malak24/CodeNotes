@@ -16,23 +16,12 @@ class Folders extends Component {
             </button>
           </div>
 
+          
           {/* -------- Default folder and note -------- */}
           <ul
             className={this.props.shownFolders ? "list-group" : "folders-hidden"}>
-            <li className="list-group-item">
-              <div className="btns-wrapper">
-                <button className="delete-btn">x</button>
-                <button className="btn name-arrow-btn">▼</button>
-              </div>
 
-              <div>
-                <p className="folder-name">Default Folder</p>
-                <ul className="notes-list">
-                  <li className="notes-list-item">Default note</li>
-                </ul>
-              </div>
-            </li>
-
+            
             {/* -------- Folder buttons -------- */}
             {Object.keys(this.props.folders).map((keyName, keyIndex) => (
               <li key={uuidv4()} className="list-group-item">
@@ -47,14 +36,17 @@ class Folders extends Component {
                   </button>
                 </div>
 
+                
                 {/* -------- Folder name -------- */}
                 <div>
-                  <p
-                    onClick={() => { this.props.getFolderId(this.props.folders[keyName].folder_id);}}
-                    className="folder-name">
-                    {this.props.folders[keyName].folder_name}
-                  </p>
+                  <input
+                    className="folder-name"
+                    onMouseEnter={() => { this.props.getFolderId(this.props.folders[keyName].folder_id)}}
+                    onChange={this.props.editFolderName}
+                    defaultValue = {this.props.folders[keyName].folder_name}>
+                  </input>
 
+                  
                   {/* -------- Notes list -------- */}
                   <ul className={this.props.shownNotes? "notes-list" : "notes-hidden"}>
                     {this.props.folders[keyName].notes.map((note) => (

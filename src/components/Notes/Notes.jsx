@@ -13,6 +13,7 @@ class Notes extends Component {
     return (
       <div id="notes">
         <div className="notes">
+          
           {/* -------- Instructions note -------- */}
           <Modal.Dialog className="note">
             <Modal.Header>
@@ -30,7 +31,6 @@ class Notes extends Component {
                     <br /> In CodeNotes you can format the text, add code
                     snippets, tables, lists, images, links ... etc
                     <br />
-                    <br />
                     <b>Everything you type is automatically saved!</b>
                   </p>
                 </div>
@@ -40,7 +40,7 @@ class Notes extends Component {
             <Modal.Footer>
               <Button
                 onClick={this.props.toggleNote}
-                className={this.props.showInstructions ? ".btn" : "footer-btn-rotate"}>▲
+                className={this.props.hideNote ? "footer-btn-rotate":".btn" }>▲
               </Button>
             </Modal.Footer>
           </Modal.Dialog>
@@ -55,7 +55,7 @@ class Notes extends Component {
                     className="note-title"
                     onClick={() => this.props.getNoteId(note.note_id)}
                     onTouchStart={() => this.props.getNoteId(note.note_id)}
-                    onChange={this.props.saveTitle}
+                    onChange={this.props.editTitle}
                     defaultValue={note.note_title}
                   ></textarea>
                 </Modal.Header>
@@ -65,7 +65,7 @@ class Notes extends Component {
                     placeholder="Please type here ..."
                     autoFocus={false}
                     onTouchStart={() => this.props.getNoteId(note.note_id)}
-                    onChange={this.props.saveNote}
+                    onChange={this.props.editNote}
                     onClick={() => this.props.getNoteId(note.note_id)}
                     defaultValue={note.note_content}
                     setOptions={{
