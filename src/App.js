@@ -30,6 +30,7 @@ class App extends Component {
       shownFolders: true,
       shownNotes: true,
       hideNote: false,
+      selectedFolder: '',
     };
   }
 
@@ -248,6 +249,13 @@ class App extends Component {
       });
   };
 
+//========================================================
+  selectFolder = (e) => {
+    console.log(e.target.value);
+    this.setState ({selectedFolder: e.target.value})
+  }
+
+
   render() {
     return (
       <div className="app">
@@ -257,20 +265,20 @@ class App extends Component {
           <div>
             <Form
               getFolderName={this.getFolderName}
-              editFolderName={this.editFolderName}
               createFolder={this.createFolder}
               getNoteTitle={this.getNoteTitle}
               createNote={this.createNote}
               getSearchInp={this.getSearchInp}
               search={this.search}
               folderId={this.state.folderId}
+              folders={this.state.folders}
+              selectFolder={this.selectFolder}
             />
 
             <Folders
               folders={this.state.folders}
               notes={this.state.notes}
               getNotes={this.getNotes}
-              getFolderName={this.getFolderName}
               editFolderName={this.editFolderName}
               createFolder={this.createFolder}
               getFolderId={this.getFolderId}
